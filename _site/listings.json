@@ -1,0 +1,19 @@
+[
+  {
+    "listing": "/projects.html",
+    "items": [
+      "/projects/keypadScanner/keypadScanner.html",
+      "/projects/E80Bot/E80Bot.html",
+      "/projects/abyssExplorer/abyssExplorer.html",
+      "/projects/hammer/hammer.html"
+    ]
+  },
+  {
+    "listing": "/index.html",
+    "items": [
+      "/projects/abyssExplorer/abyssExplorer.html",
+      "/projects/keypadScanner/keypadScanner.html",
+      "/projects/E80Bot/E80Bot.html"
+    ]
+  }
+]

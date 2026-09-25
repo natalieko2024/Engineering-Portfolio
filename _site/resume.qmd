@@ -1,0 +1,62 @@
+---
+format: html
+---
+
+::: {.main-container}
+
+::: {.resume-card}
+
+::: {.resume-header-flex}
+[Download PDF Resume](resume.pdf){.btn-blue-download target="_blank"}
+:::
+
+::: {.resume-section-title}
+EDUCATION
+:::
+
+::: {.resume-row}
+[B.S., Engineering (Mechatronics Specialization)]{.resume-bold-title}
+
+[Expected May 2028]{.resume-date}
+:::
+::: {.resume-subtext}
+Harvey Mudd College — Claremont, California
+:::
+
+**Major GPA:** 4.0 / 4.0 | **Cumulative GPA:** 3.918 / 4.0 | **Dean's List** (all graded semesters)
+
+**Relevant Coursework:**  
+Continuum Mechanics; Digital Elec & Comp Engineering; Engineering Systems; Experimental Engineering; Applied Math for Engineering; Intro Engr Design/Manufacturing; Probability/Stats for Engineers; Intro to Computer Science
+
+::: {.resume-section-title}
+WORK EXPERIENCE
+:::
+
+::: {.resume-row}
+[Lab Improver]{.resume-bold-title}
+
+[Aug 2026 – Present]{.resume-date}
+:::
+::: {.resume-subtext}
+Intro to Engineering Design/Manufacturing, Harvey Mudd College
+:::
+
+* Authored & validated 5 SolidWorks tutorials used by 60+ students to clarify procedures across software versions.
+* Restructured course content, eliminated continuity errors between teachings & final student deliverables.
+
+<br>
+
+::: {.resume-row}
+[Paid Engineering Intern]{.resume-bold-title}
+
+[Jul 2026 – Aug 2026]{.resume-date}
+:::
+::: {.resume-subtext}
+Cathay Pacific
+:::
+
+* Developed a cross-company maintenance Power App; cut daily task time from 1hr+ to 24min (100% adoption).
+
+:::
+
+:::

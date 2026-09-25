@@ -1,0 +1,33 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "Natalie Ko's Engineering Portfolio"
+  navbar:
+    background: "#ffffff"          # Disable standard background
+    search: false              # Hide search icon if not needed
+    right:
+      - text: "Home"
+        href: index.qmd
+      - text: "Projects"
+        href: projects.qmd
+      - text: "CV"
+        href: resume.qmd
+      - text: "About Me"
+        href: about.qmd
+  page-footer:
+    background: "#1e293b"
+    center: |
+      <div class="custom-footer">
+        <a href="https://www.linkedin.com/in/ko12nat/" target="_blank">LinkedIn</a> • 
+        <a href="https://github.com/natalieko2024" target="_blank">GitHub</a>
+        <p>© 2026 Natalie Ko. All rights reserved.</p>
+      </div>
+
+format:
+  html:
+    theme: default
+    css: styles.css
+    toc: true
+    page-layout: full          # Allows page to use full screen width

@@ -1,0 +1,21 @@
+---
+title: "Hammer"
+date: "2025-04-11"
+date-range: "Jan 2025 – Apr 2025"
+description: "Manually machined a hammer using conventional manual machining tools to specifications following technical drawings."
+subtitle : ""
+image: "hammer.png"
+categories:
+  - "Manufacturing"
+skills: "Precision Manual Machining, Geometric Dimensioning & Tolerancing (GD&T), Process Planning & Documentation, Metallurgy"
+---
+
+<div class="project-metadata-bar">
+  <div><strong>Timeline:</strong> {{< meta date-range >}}</div>
+  <div><strong>Skills:</strong> {{< meta skills >}}</div>
+</div>
+
+# TEst heading
+## YAHOOOO
+
+# wee woo

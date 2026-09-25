@@ -1,0 +1,24 @@
+---
+title: "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)"
+date: "2026-05-08"
+date-range: "Mar 2026 – May 2026"
+description: "Developed and deployed an AUV to map metal debris distribution on the ocean floor and back-calculate debris drop locations."
+subtitle : ""
+image: "E80Bot.png"
+categories:
+  - "Robotics & Control Systems"
+  - "PCB Design & Electronics"
+  - "Embedded Systems & Firmware"
+  - "Mechanical Design & FEA"
+skills: "P-Control, Circuit Design, Mechanical Design, C++, MATLAB, Data Analysis, Troubleshooting, Technical Documentation"
+---
+
+<div class="project-metadata-bar">
+  <div><strong>Timeline:</strong> {{< meta date-range >}}</div>
+  <div><strong>Skills:</strong> {{< meta skills >}}</div>
+</div>
+
+# TEst heading
+## YAHOOOO
+
+# wee woo

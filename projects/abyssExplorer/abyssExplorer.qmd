@@ -1,0 +1,22 @@
+---
+title: "Abyss Explorer"
+date: "2025-05-01"
+date-range: "Feb 2025 – May 2025"
+description: "Designed and manufactured a system to raise and lower sensors through a 600ft radioactive mine shaft (shrinking to an unknown diameter) for data collection without direct human contact."
+subtitle : ""
+image: "abyssExplorer.jpg"
+categories:
+  - "Mechanical Design & FEA"
+  - "Manufacturing"
+skills: "SolidWorks, Mechanical Design, Prototyping, Manufacturing, Project Management, Technical Documentation"
+---
+
+<div class="project-metadata-bar">
+  <div><strong>Timeline:</strong> {{< meta date-range >}}</div>
+  <div><strong>Skills:</strong> {{< meta skills >}}</div>
+</div>
+
+# TEst heading
+## YAHOOOO
+
+# wee woo

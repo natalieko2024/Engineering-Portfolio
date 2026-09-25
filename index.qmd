@@ -1,0 +1,44 @@
+---
+format: html
+listing:
+  id: homepage-projects
+  contents: 
+   - projects/abyssExplorer/abyssExplorer.qmd
+   - projects/keypadScanner/keypadScanner.qmd
+   - projects/E80Bot/E80Bot.qmd
+  type: grid
+  grid-columns: 3
+  max-items: 3
+  max-description-length: 1000
+  fields: [image, title, description, categories]
+---
+
+::: {.main-container}
+
+::: {.grid .hero-section}
+
+::: {.g-col-12 .g-col-md-6}
+<p class="main-heading">Engineering a More Accessible World</p>
+
+<p class="hero-subtitle">I thrive on the challenge of translating complex human needs into functional, reliable engineering solutions. I am passionate about applying my skills to solve complex problems through intentional mechatronic design.</p>
+:::
+
+::: {.g-col-12 .g-col-md-6 .hero-right-content}
+<p class="hero-first-p">I'm a Junior Engineering student at Harvey Mudd College specializing in mechatronics. My academic work focuses on mechanics, digital and electronic systems, controls, and human-centred design. </p>
+
+<p>Beyond the classroom, you can always find me tinkering with my personal projects - whether it's building a new electromechanical device or improving upon my previous designs, I'm always on the move to build highly reliable, real-world products.</p>
+
+<div class="hero-buttons">
+  <a href="projects.qmd" class="btn-dark">View My Projects</a>
+  <a href="resume.qmd" class="btn-link-custom">View Digital CV &rarr;</a>
+</div>
+:::
+
+:::
+
+## Some Highlighted Projects
+
+::: {#homepage-projects}
+:::
+
+:::
