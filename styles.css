@@ -1,0 +1,379 @@
+/* Container & Width Extensions */
+.main-container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #ffffff !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  padding: 0.8rem 1.5rem !important;
+  box-shadow: none !important;
+}
+
+.navbar .navbar-brand {
+  color: #2563eb !important;
+  font-weight: 700 !important;
+  font-size: 1.05rem;
+}
+
+.navbar-nav .nav-link {
+  color: #475569 !important;
+  font-weight: 500;
+  font-size: 0.95rem;
+  margin-left: 0.5rem;
+}
+
+.navbar-nav .nav-link.active {
+  color: #2563eb !important;
+  font-weight: 600;
+}
+
+/* Ensure the Grid container aligns items at the top */
+.hero-section {
+  padding: 1rem 0 3.5rem 0;
+  align-items: start !important;
+}
+
+/* Zero out top margins on the heading */
+.main-heading {
+  font-size: 3.5rem !important;
+  font-weight: 700 !important;
+  line-height: 1.15 !important;
+  color: #0f172a !important;
+  border: none !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  margin-bottom: 1.25rem !important;
+  max-width: 100% !important;
+}
+
+/* Zero out top margins on the right column's first paragraph */
+.hero-right-content {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.hero-right-content .hero-first-p,
+.hero-right-content > p:first-child {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.hero-subtitle {
+  font-size: 1.05rem;
+  color: #64748b;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.hero-buttons {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.btn-dark {
+  background-color: #0f172a;
+  color: #ffffff !important;
+  padding: 0.75rem 1.35rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.btn-link-custom {
+  color: #2563eb !important;
+  padding: 0.75rem 1.35rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+/* Resume Page Card Styling */
+body {
+  background-color: #f8fafc;
+}
+
+.resume-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  padding: 3rem;
+  max-width: 1000px;
+  margin: 2.5rem auto;
+  border: 1px solid #f1f5f9;
+}
+
+.resume-header-flex {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+.btn-blue-download {
+  background-color: #2563eb;
+  color: #ffffff !important;
+  padding: 0.65rem 1.25rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.btn-blue-download:hover {
+  background-color: #1d4ed8;
+}
+
+.resume-section-title {
+  color: #2563eb;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  font-size: 0.95rem;
+  line-height: 0;
+  border-bottom: 1.5px solid #2563eb;
+  padding-bottom: 0rem;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.resume-general-text {
+    color: #0f172a;
+    font-size: 1rem;
+    margin-top: 0rem;
+    margin-bottom: 1.5rem;
+}
+
+.resume-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: -1rem;
+}
+
+.resume-bold-title {
+  font-weight: 700;
+  color: #0f172a;
+  font-size: 1rem;
+}
+
+.resume-date {
+  color: #64748b;
+  font-size: 0.9rem;
+  text-align: right;
+}
+
+.resume-subtext {
+  color: #64748b;
+  font-size: 0.9rem;
+  margin-top: 0.15rem;
+  margin-bottom: -1rem;
+}
+
+.resume-gpa {
+  font-size: 0.95rem;
+  color: #334155;
+  margin-bottom: 1rem;
+}
+
+.resume-coursework {
+  font-size: 0.9rem;
+  color: #475569;
+  line-height: 1.5;
+}
+
+.resume-list {
+  padding-left: 1.25rem;
+  margin-top: 0.5rem;
+  color: #334155;
+  font-size: 0.925rem;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   PAGE HEADER & ACCENT LINE CENTERING
+   ========================================================================== */
+header#title-block-header {
+  margin-top: 0 !important;
+  padding-top: 0.5rem !important;
+}
+
+h1.title {
+  text-align: center !important;
+  font-size: 2.5rem !important;
+  font-weight: 800 !important;
+  color: #0f172a !important;
+  margin-top: 0 !important;
+  margin-bottom: 0.5rem !important;
+  line-height: 1.1 !important;
+}
+
+.accent-line {
+  width: 48px;
+  height: 4px;
+  background-color: #2563eb;
+  border-radius: 2px;
+  margin: 0 auto 2.5rem auto !important;
+}
+
+/* Hide Skills Container Completely on Listing Pages */
+.quarto-grid-item .listing-skills,
+.quarto-grid-item [class*="skills"] {
+  display: none !important;
+}
+
+/* Format Card Categories (Grey Pill Badges) */
+.quarto-grid-item .listing-categories {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 0.35rem !important;
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.75rem !important;
+}
+
+.quarto-grid-item .listing-category {
+  background-color: #f1f5f9 !important;
+  color: #64748b !important;
+  font-size: 0.68rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  padding: 0.2rem 0.55rem !important;
+  border-radius: 4px !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+/* ==========================================================================
+   SIDEBAR CATEGORIES: PERFECT VERTICAL ALIGNMENT & COMPACT FONTS
+   ========================================================================== */
+
+/* Align top edge of sidebar content with the main title top edge */
+#quarto-margin-sidebar,
+.quarto-margin-sidebar {
+  padding-top: 2.6rem !important; /* Pushes Categories down to match "Project Catalog" */
+  margin-top: 0 !important;
+}
+
+/* Sidebar "Categories" Heading Style */
+#quarto-margin-sidebar h2,
+#quarto-margin-sidebar .quarto-margin-sidebar-title,
+.quarto-listing-category-title {
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  color: #0f172a !important;
+  margin-top: 0 !important;
+  margin-bottom: 0.75rem !important;
+  padding-top: 0 !important;
+  line-height: 1.1 !important;
+}
+
+/* Category Text Formatting & Sizing */
+.quarto-listing-category .category,
+.quarto-listing-category a,
+.quarto-margin-sidebar ul li a {
+  font-size: 0.825rem !important;
+  line-height: 1.4 !important;
+  color: #475569 !important;
+  font-weight: 500 !important;
+  padding: 0.15rem 0 !important;
+  display: block !important;
+  text-decoration: none !important;
+  transition: color 0.15s ease !important;
+}
+
+.quarto-listing-category a:hover,
+.quarto-listing-category .category:hover {
+  color: #2563eb !important;
+}
+
+/* ==========================================================================
+   PROJECT POST CLEANUP & TOC SIDEBAR STYLES
+   ========================================================================== */
+
+/* Hide description/subtitle directly under post titles on individual pages */
+.quarto-title-block .description,
+.quarto-title-block p.subtitle,
+.quarto-title-meta-contents .description {
+  display: none !important;
+}
+
+/* Style the Table of Contents (TOC) on the right sidebar */
+#TOC {
+  border-left: 2px solid #e2e8f0;
+  padding-left: 1rem;
+}
+
+#TOC .toc-title {
+  font-size: 0.85rem !important;
+  font-weight: 700 !important;
+  color: #475569 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+}
+
+#TOC ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+#TOC ul li a {
+  font-size: 0.85rem;
+  color: #64748b;
+  text-decoration: none;
+  line-height: 1.6;
+}
+
+#TOC ul li a.active,
+#TOC ul li a:hover {
+  color: #2563eb !important;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   PROJECT PAGE METADATA BAR FIX
+   ========================================================================== */
+.project-metadata-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0.85rem 1.25rem;
+  background-color: #f8fafc;
+  border-left: 3px solid #2563eb;
+  border-radius: 6px;
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+  color: #334155;
+}
+
+.skills-wrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+/* Individual Pill Badge Styling */
+.skill-badge {
+  background-color: #eff6ff !important;
+  color: #1d4ed8 !important;
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  padding: 0.15rem 0.55rem !important;
+  border-radius: 4px !important;
+  border: 1px solid #bfdbfe !important;
+  display: inline-block;
+}
+
+/* Hide Quarto's default title block date on project posts */
+/* Suppress Quarto's auto-generated metadata block on project pages */
+.quarto-title-block .quarto-title-meta {
+  display: none !important;
+}
