@@ -71,9 +71,20 @@
 
 .hero-buttons {
   margin-top: 2rem;
+  margin-bottom: 2rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 1.25rem;
+  row-gap: 3rem;
+}
+
+@media (min-width: 768px) {
+  .hero-buttons {
+    flex-direction: row;  /* Side-by-side on desktop */
+    
+    /* 2. Explicitly set horizontal space when next to each other */
+    column-gap: 3rem;     
+  }
 }
 
 .btn-dark {
@@ -84,15 +95,18 @@
   font-weight: 600;
   text-decoration: none;
   font-size: 0.9rem;
+  margin-top: 5rem;
 }
 
 .btn-link-custom {
+  white-space: nowrap;
   color: #2563eb !important;
   padding: 0.75rem 1.35rem;
   border-radius: 8px;
   font-weight: 600;
   text-decoration: none;
   font-size: 0.9rem;
+  margin-top: 5rem;
 }
 
 /* Resume Page Card Styling */
@@ -376,4 +390,103 @@ h1.title {
 /* Suppress Quarto's auto-generated metadata block on project pages */
 .quarto-title-block .quarto-title-meta {
   display: none !important;
+}
+
+/* ==========================================================================
+   ABOUT ME PAGE STYLING
+   ========================================================================== */
+
+/* Align left and right columns to top */
+.about-container {
+  align-items: start !important;
+  margin-top: 1rem;
+}
+
+/* Profile Image Styling */
+.profile-image-wrapper {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.profile-img {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Contact Box Sidebar */
+/* Contact Card Markdown Styling */
+.contact-card {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 1.25rem;
+  max-width: 280px;
+  margin: 1.5rem auto 0 auto;
+}
+
+.contact-card h3 {
+  font-size: 0.85rem !important;
+  font-weight: 700 !important;
+  color: #0f172a !important;
+  letter-spacing: 0.05em;
+  margin-top: 0 !important;
+  margin-bottom: 0.85rem !important;
+  border-bottom: 1px solid #cbd5e1;
+  padding-bottom: 0.4rem;
+}
+
+.contact-card p {
+  margin-bottom: 0.6rem !important;
+  font-size: 0.875rem;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contact-card a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.contact-card a:hover {
+  text-decoration: underline;
+}
+
+/* Main Content Area (Right Side) */
+.about-content h1 {
+  font-size: 2.25rem !important;
+  font-weight: 800 !important;
+  color: #0f172a !important;
+  margin-top: 0 !important;
+  margin-bottom: 1.25rem !important;
+}
+
+.about-content h2 {
+  font-size: 1.4rem !important;
+  font-weight: 700 !important;
+  color: #1e293b !important;
+  margin-top: 1.5rem !important;
+  margin-bottom: 0.75rem !important;
+}
+
+.about-content hr {
+  border: 0;
+  border-top: 1px solid #e2e8f0;
+  margin: 2rem 0;
+}
+
+.about-content p, 
+.about-content li {
+  font-size: 0.975rem;
+  line-height: 1.65;
+  color: #334155;
 }

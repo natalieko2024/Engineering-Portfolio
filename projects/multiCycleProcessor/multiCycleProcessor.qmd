@@ -1,14 +1,13 @@
 ---
-title: "Keypad Scanner"
-date: "2026-09-23"
-date-range: "Aug 2026 – Sep 2026"
+title: "Multi-cycle Processor"
+date: "2025-12-12"
+date-range: "Aug 2025 – Dec 2025"
 description: "Programmed an FPGA to read a 4x4 matrix keypad and display the last two hexadecimal inputs on a dual seven-segment display. Accounted for key bounce, multi-press, and timing inconsistencies."
 subtitle : ""
 image: "keypadScanner.jpeg"
 categories:
   - "Embedded Systems & Firmware"
-  - "PCB Design & Electronics"
-skills: "SystemVerilog, FPGA, Circuit Design, Lattice Radiant, Waveform Simulation, Testbench"
+skills: "SystemVerilog, FPGA, Waveform Simulation"
 ---
 
 <div class="project-metadata-bar">

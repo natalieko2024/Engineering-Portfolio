@@ -56,7 +56,7 @@ WORK EXPERIENCE
 [Aug 2026 – Present]{.resume-date}
 :::
 ::: {.resume-subtext}
-MiniMed (Through Harvey Mudd College Clinic Program)
+Medtronic MiniMed (Through Harvey Mudd College Clinic Program)
 :::
 
 * Optimized Continuous Glucose Monitor sensor manufacturing process, reduced cycle time from __ to __ hrs
@@ -153,6 +153,20 @@ PUBLICATIONS AND PRESENTATIONS
 
 **Publication:** **Ko, N. M. T.** (2024). An evaluation of the adhesive capabilities of dry adhesive gecko tapes produced using diffraction gratings. STEM Fellowship Journal, e-First.  https://doi.org/10.17975/sfj-2024-002
 
+::: {.resume-section-title}
+VOLUNTEERING
+:::
+
+::: {.resume-row}
+[Unpaid Engineering Tutor]{.resume-bold-title}
+
+[Aug 2026 - Present]{.resume-date}
+:::
+::: {.resume-subtext}
+Tau Beta Pi (California Omega Chapter), Harvey Mudd College
+:::
+
+* Provided free tutoring services for students in core Engineering courses for 1 hour per week
 
 :::
 

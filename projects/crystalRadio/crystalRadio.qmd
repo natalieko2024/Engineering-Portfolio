@@ -1,0 +1,21 @@
+---
+title: "Crystal Radio Experiments"
+date: "2026-05-10"
+date-range: "Feb 2025 – Mar 2026"
+description: "Analysed RLC Circuits to debug Dunwoody, Pickard, and Armstrong crystal radios. Devised an innovative antenna for optimal signal receiving."
+subtitle : ""
+image: "radio.jpeg"
+categories:
+  - "PCB Design & Electronics"
+skills: "Radio Frequency Engineering, Software Defined Radio, Circuit Analysis"
+---
+
+<div class="project-metadata-bar">
+  <div><strong>Timeline:</strong> {{< meta date-range >}}</div>
+  <div><strong>Skills:</strong> {{< meta skills >}}</div>
+</div>
+
+# TEst heading
+## YAHOOOO
+
+# wee woo

@@ -1,0 +1,23 @@
+---
+title: "Temperature and Position Detecting Remotely Operated Vehicle (ROV)"
+date: "2025-12-12"
+date-range: "Aug 2025 – Dec 2025"
+description: "Developed and deployed an PID-controlled ROV to collect temperature and depth measurements underwater."
+subtitle : ""
+image: "E79Bot.png"
+categories:
+  - "Robotics & Control Systems"
+  - "PCB Design & Electronics"
+  - "Mechanical Design & FEA"
+skills: "PID-Control, Circuit Design, Mechanical Design, Data Analysis, LabView, Soldering, Breadboarding, Mathematical Modeling"
+---
+
+<div class="project-metadata-bar">
+  <div><strong>Timeline:</strong> {{< meta date-range >}}</div>
+  <div><strong>Skills:</strong> {{< meta skills >}}</div>
+</div>
+
+# TEst heading
+## YAHOOOO
+
+# wee woo
