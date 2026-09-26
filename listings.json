@@ -2,8 +2,15 @@
   {
     "listing": "/projects.html",
     "items": [
+      "/projects/nomnom/nomnom.html",
+      "/projects/bionicHand/bionicHand.html",
       "/projects/keypadScanner/keypadScanner.html",
+      "/projects/crystalRadio/crystalRadio.html",
       "/projects/E80Bot/E80Bot.html",
+      "/projects/E80Fluids/E80Fluids.html",
+      "/projects/E79Bot/E79Bot.html",
+      "/projects/multiCycleProcessor/multiCycleProcessor.html",
+      "/projects/animatronicEyes/animatronicEyes.html",
       "/projects/abyssExplorer/abyssExplorer.html",
       "/projects/hammer/hammer.html"
     ]

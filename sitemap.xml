@@ -2,15 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://natalieko2024.github.io/Engineering-Portfolio/about.html</loc>
-    <lastmod>2026-09-25T09:11:55.998Z</lastmod>
+    <lastmod>2026-09-26T04:03:22.339Z</lastmod>
   </url>
   <url>
     <loc>https://natalieko2024.github.io/Engineering-Portfolio/projects.html</loc>
     <lastmod>2026-09-25T11:07:21.995Z</lastmod>
   </url>
   <url>
-    <loc>https://natalieko2024.github.io/Engineering-Portfolio/projects/keypadScanner/keypadScanner.html</loc>
-    <lastmod>2026-09-25T11:08:55.954Z</lastmod>
+    <loc>https://natalieko2024.github.io/Engineering-Portfolio/projects/abyssExplorer/abyssExplorer.html</loc>
+    <lastmod>2026-09-25T10:53:16.042Z</lastmod>
+  </url>
+  <url>
+    <loc>https://natalieko2024.github.io/Engineering-Portfolio/projects/E80Fluids/E80Fluids.html</loc>
+    <lastmod>2026-09-25T19:58:54.811Z</lastmod>
+  </url>
+  <url>
+    <loc>https://natalieko2024.github.io/Engineering-Portfolio/projects/multiCycleProcessor/multiCycleProcessor.html</loc>
+    <lastmod>2026-09-26T00:44:36.325Z</lastmod>
+  </url>
+  <url>
+    <loc>https://natalieko2024.github.io/Engineering-Portfolio/projects/E80Bot/E80Bot.html</loc>
+    <lastmod>2026-09-25T10:46:07.048Z</lastmod>
   </url>
   <url>
     <loc>https://natalieko2024.github.io/Engineering-Portfolio/projects/hammer/hammer.html</loc>
@@ -18,15 +30,31 @@
   </url>
   <url>
     <loc>https://natalieko2024.github.io/Engineering-Portfolio/resume.html</loc>
-    <lastmod>2026-09-25T09:34:46.051Z</lastmod>
+    <lastmod>2026-09-26T03:27:57.195Z</lastmod>
   </url>
   <url>
-    <loc>https://natalieko2024.github.io/Engineering-Portfolio/projects/E80Bot/E80Bot.html</loc>
-    <lastmod>2026-09-25T10:46:07.048Z</lastmod>
+    <loc>https://natalieko2024.github.io/Engineering-Portfolio/projects/E79Bot/E79Bot.html</loc>
+    <lastmod>2026-09-25T17:49:50.454Z</lastmod>
   </url>
   <url>
-    <loc>https://natalieko2024.github.io/Engineering-Portfolio/projects/abyssExplorer/abyssExplorer.html</loc>
-    <lastmod>2026-09-25T10:53:16.042Z</lastmod>
+    <loc>https://natalieko2024.github.io/Engineering-Portfolio/projects/crystalRadio/crystalRadio.html</loc>
+    <lastmod>2026-09-25T18:10:40.892Z</lastmod>
+  </url>
+  <url>
+    <loc>https://natalieko2024.github.io/Engineering-Portfolio/projects/nomnom/nomnom.html</loc>
+    <lastmod>2026-09-25T19:56:44.129Z</lastmod>
+  </url>
+  <url>
+    <loc>https://natalieko2024.github.io/Engineering-Portfolio/projects/keypadScanner/keypadScanner.html</loc>
+    <lastmod>2026-09-26T00:46:18.859Z</lastmod>
+  </url>
+  <url>
+    <loc>https://natalieko2024.github.io/Engineering-Portfolio/projects/animatronicEyes/animatronicEyes.html</loc>
+    <lastmod>2026-09-25T18:14:45.373Z</lastmod>
+  </url>
+  <url>
+    <loc>https://natalieko2024.github.io/Engineering-Portfolio/projects/bionicHand/bionicHand.html</loc>
+    <lastmod>2026-09-25T19:56:19.768Z</lastmod>
   </url>
   <url>
     <loc>https://natalieko2024.github.io/Engineering-Portfolio/index.html</loc>

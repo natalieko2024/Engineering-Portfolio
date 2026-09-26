@@ -4,26 +4,82 @@
     "href": "about.html",
     "title": "About Me",
     "section": "",
-    "text": "About this site"
+    "text": "ko12nat[at]gmail[dot]com\n Claremont, California, USA\n Vancouver, British Columbia, Canada\n Hong Kong, Hong Kong\n LinkedIn\n GitHub\n\n\n\n\n\nI’m an junior Engineering student at Harvey Mudd College specializing in mechatronics, with a Humanities, Social Sciences, and Arts concentration in Science, Technology, and Society. My work focuses on building reliable engineering solutions that prioritize the end user. My goal is to make Engineering solutions more accessible to everyone.\nI thrive on solving physical problems through dynamic mechanical, electrical, and computer design, analytical modeling, rapid prototyping, and live troubleshooting.\n\n\n\n\nMechatronics: Integrating electronic sensors and actuators with mechanical design, and controlling them through embedded systems and firmware.\nControl Systems: Utilizing feedback loops, characterizing system behaviour, predicting system outputs.\nHuman Centered Design: Prioritizing human needs through empathizing with users and understanding their problems.\n\n\n\n\n\nTo be honest, I consider all of the projects on this page as well as my on-campus jobs part of my hobbies, but outside of that…\n\nMusic: Composing and arranging music, playing in bands or solo (mainly trumpet and drum kit). I was in 4 bands at once in high school, I arranged compositions for us to play during concerts, and I’ve played all modern brass instruments!\nPhysical Activity: Competitive ball hockey (ice hockey but you run instead of skate), biking, hiking. I’ve played defence, forward, and goalie in the 4 years I represented my high school in ball hockey. In the year I played goalie, we had several shutouts and my team ranked 2nd in the Hong Kong International Schools Sports Federation!"
+  },
+  {
+    "objectID": "about.html#interests",
+    "href": "about.html#interests",
+    "title": "About Me",
+    "section": "",
+    "text": "Mechatronics: Integrating electronic sensors and actuators with mechanical design, and controlling them through embedded systems and firmware.\nControl Systems: Utilizing feedback loops, characterizing system behaviour, predicting system outputs.\nHuman Centered Design: Prioritizing human needs through empathizing with users and understanding their problems."
+  },
+  {
+    "objectID": "about.html#hobbies-outside-the-lab",
+    "href": "about.html#hobbies-outside-the-lab",
+    "title": "About Me",
+    "section": "",
+    "text": "To be honest, I consider all of the projects on this page as well as my on-campus jobs part of my hobbies, but outside of that…\n\nMusic: Composing and arranging music, playing in bands or solo (mainly trumpet and drum kit). I was in 4 bands at once in high school, I arranged compositions for us to play during concerts, and I’ve played all modern brass instruments!\nPhysical Activity: Competitive ball hockey (ice hockey but you run instead of skate), biking, hiking. I’ve played defence, forward, and goalie in the 4 years I represented my high school in ball hockey. In the year I played goalie, we had several shutouts and my team ranked 2nd in the Hong Kong International Schools Sports Federation!"
   },
   {
     "objectID": "projects.html",
     "href": "projects.html",
     "title": "Click to Learn About Each of My Projects!",
     "section": "",
-    "text": "Keypad Scanner\n\n\n\nEmbedded Systems & Firmware\n\nPCB Design & Electronics\n\n\n\nProgrammed an FPGA to read a 4x4 matrix keypad and display the last two hexadecimal inputs on a dual seven-segment display. Accounted for key bounce, multi-press, and timing inconsistencies.\n\n\n\n\n\n\n\n\n\n\n\n\nOcean Debris-Detecting Autonomous Underwater Vehicle (AUV)\n\n\n\nRobotics & Control Systems\n\nPCB Design & Electronics\n\nEmbedded Systems & Firmware\n\nMechanical Design & FEA\n\n\n\nDeveloped and deployed an AUV to map metal debris distribution on the ocean floor and back-calculate debris drop locations.\n\n\n\n\n\n\n\n\n\n\n\n\nAbyss Explorer\n\n\n\nMechanical Design & FEA\n\nManufacturing\n\n\n\nDesigned and manufactured a system to raise and lower sensors through a 600ft radioactive mine shaft (shrinking to an unknown diameter) for data collection without direct human contact.\n\n\n\n\n\n\n\n\n\n\n\n\nHammer\n\n\n\nManufacturing\n\n\n\nManually machined a hammer using conventional manual machining tools to specifications following technical drawings.\n\n\n\n\n\nNo matching items"
+    "text": "Keypad Scanner\n\n\n\nEmbedded Systems & Firmware\n\nPCB Design & Electronics\n\n\n\nProgrammed an FPGA to read a 4x4 matrix keypad and display the last two hexadecimal inputs on a dual seven-segment display. Accounted for key bounce, multi-press, and timing inconsistencies.\n\n\n\n\n\n\n\n\n\n\n\n\nCrystal Radio Experiments\n\n\n\nPCB Design & Electronics\n\n\n\nAnalysed RLC Circuits to debug Dunwoody, Pickard, and Armstrong crystal radios. Devised an innovative antenna for optimal signal receiving.\n\n\n\n\n\n\n\n\n\n\n\n\nOcean Debris-Detecting Autonomous Underwater Vehicle (AUV)\n\n\n\nRobotics & Control Systems\n\nPCB Design & Electronics\n\nEmbedded Systems & Firmware\n\nMechanical Design & FEA\n\n\n\nDeveloped and deployed an AUV to map metal debris distribution on the ocean floor and back-calculate debris drop locations.\n\n\n\n\n\n\n\n\n\n\n\n\nFluid Dynamics Simulation\n\n\n\nMiscellaneous\n\n\n\nUsed the principle of similitude to characterize ROV behaviour in the water through wind tunnel simulations.\n\n\n\n\n\n\n\n\n\n\n\n\nTemperature and Position Detecting Remotely Operated Vehicle (ROV)\n\n\n\nRobotics & Control Systems\n\nPCB Design & Electronics\n\nMechanical Design & FEA\n\n\n\nDeveloped and deployed an PID-controlled ROV to collect temperature and depth measurements underwater.\n\n\n\n\n\n\n\n\n\n\n\n\nMulti-cycle Processor\n\n\n\nEmbedded Systems & Firmware\n\n\n\nProgrammed an FPGA to read a 4x4 matrix keypad and display the last two hexadecimal inputs on a dual seven-segment display. Accounted for key bounce, multi-press, and timing inconsistencies.\n\n\n\n\n\n\n\n\n\n\n\n\nAnimatronic Eyes\n\n\n\nEmbedded Systems & Firmware\n\nMechanical Design & FEA\n\n\n\nDesigned and programmed a set of animatronic eyes controlled by servo motors and joysticks through Arduino.\n\n\n\n\n\n\n\n\n\n\n\n\nAbyss Explorer\n\n\n\nMechanical Design & FEA\n\nManufacturing\n\n\n\nDesigned and manufactured a system to raise and lower sensors through a 600ft radioactive mine shaft (shrinking to an unknown diameter) for data collection without direct human contact.\n\n\n\n\n\n\n\n\n\n\n\n\nHammer\n\n\n\nManufacturing\n\n\n\nManually machined a hammer using conventional manual machining tools to specifications following technical drawings.\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "projects/keypadScanner/keypadScanner.html",
-    "href": "projects/keypadScanner/keypadScanner.html",
-    "title": "Keypad Scanner",
+    "objectID": "projects/abyssExplorer/abyssExplorer.html",
+    "href": "projects/abyssExplorer/abyssExplorer.html",
+    "title": "Abyss Explorer",
     "section": "",
-    "text": "Timeline: Aug 2026 – Sep 2026\n\n\nSkills: SystemVerilog, FPGA, Circuit Design, Lattice Radiant"
+    "text": "Timeline: Feb 2025 – May 2025\n\n\nSkills: SolidWorks, Mechanical Design, Prototyping, Manufacturing, Project Management, Technical Documentation"
   },
   {
-    "objectID": "projects/keypadScanner/keypadScanner.html#yahoooo",
-    "href": "projects/keypadScanner/keypadScanner.html#yahoooo",
-    "title": "Keypad Scanner",
+    "objectID": "projects/abyssExplorer/abyssExplorer.html#yahoooo",
+    "href": "projects/abyssExplorer/abyssExplorer.html#yahoooo",
+    "title": "Abyss Explorer",
+    "section": "YAHOOOO",
+    "text": "YAHOOOO"
+  },
+  {
+    "objectID": "projects/E80Fluids/E80Fluids.html",
+    "href": "projects/E80Fluids/E80Fluids.html",
+    "title": "Fluid Dynamics Simulation",
+    "section": "",
+    "text": "Timeline: Feb 2026 – Mar 2026\n\n\nSkills: COMSOL, Technical Documentation"
+  },
+  {
+    "objectID": "projects/E80Fluids/E80Fluids.html#yahoooo",
+    "href": "projects/E80Fluids/E80Fluids.html#yahoooo",
+    "title": "Fluid Dynamics Simulation",
+    "section": "YAHOOOO",
+    "text": "YAHOOOO"
+  },
+  {
+    "objectID": "projects/multiCycleProcessor/multiCycleProcessor.html",
+    "href": "projects/multiCycleProcessor/multiCycleProcessor.html",
+    "title": "Multi-cycle Processor",
+    "section": "",
+    "text": "Timeline: Aug 2025 – Dec 2025\n\n\nSkills: SystemVerilog, FPGA, Waveform Simulation"
+  },
+  {
+    "objectID": "projects/multiCycleProcessor/multiCycleProcessor.html#yahoooo",
+    "href": "projects/multiCycleProcessor/multiCycleProcessor.html#yahoooo",
+    "title": "Multi-cycle Processor",
+    "section": "YAHOOOO",
+    "text": "YAHOOOO"
+  },
+  {
+    "objectID": "projects/E80Bot/E80Bot.html",
+    "href": "projects/E80Bot/E80Bot.html",
+    "title": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)",
+    "section": "",
+    "text": "Timeline: Mar 2026 – May 2026\n\n\nSkills: P-Control, Circuit Design, Mechanical Design, C++, MATLAB, Data Analysis, Troubleshooting, Technical Documentation"
+  },
+  {
+    "objectID": "projects/E80Bot/E80Bot.html#yahoooo",
+    "href": "projects/E80Bot/E80Bot.html#yahoooo",
+    "title": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)",
     "section": "YAHOOOO",
     "text": "YAHOOOO"
   },
@@ -46,33 +102,61 @@
     "href": "resume.html",
     "title": "Natalie Ko's Engineering Portfolio",
     "section": "",
-    "text": "Download PDF Resume\n\n\nEDUCATION\n\n\nB.S., Engineering (Mechatronics Specialization)\nExpected May 2028\n\n\nHarvey Mudd College — Claremont, California, USA\n\nMajor GPA: 4.0 / 4.0 | Cumulative GPA: 3.918 / 4.0 | Dean’s List (all graded semesters)\n\nRelevant Coursework: Microprocessor Systems: Design & Application; Digital Electronics & Computer Engineering; Continuum Mechanics; Electrical & Magnetic Circuits/Devices; Advanced Systems Engineering; Experimental Engineering; Engineering Systems; Intro to Engineering Design/Manufacturing; Applied Math for Engineering; Probability/Stats for Engineers; Intro to Computer Science\n\n\nAWARDS AND ACHIEVEMENTS\n\n\nTau Beta Pi Member (United States Engineering Honours Society, Top 12.5% of Junior Class)\n2026 – Present\n\n\nHarvey Mudd Merit Scholarship (Top 15% of Entering Class)\n2024 – Present\n\n\nWORK EXPERIENCE\n\n\nR&D Manufacturing Contractor\nAug 2026 – Present\n\n\nMiniMed (Through Harvey Mudd College Clinic Program)\n\n\nOptimized Continuous Glucose Monitor sensor manufacturing process, reduced cycle time from __ to __ hrs\nPrototyped & tested a sensor clamping fixture, prevented sensor damage & improved operator ergonomics\nPerformed materials analysis & testing, met ISO 7 classifications & withstood corrosive baths during 24/5 use\n\n\nPaid Engineering Intern\nJul 2026 – Aug 2026\n\n\nCathay Pacific, Hong Kong\n\n\nDeveloped a cross-company maintenance Power App; cut daily task time from 1hr+ to 24min (100% adoption)\nBuilt a Power BI automated predictive model, optimized servicing for 13 cabin layouts under operational limits\nImproved aircraft regulatory compliance by analyzing Acceptable Deferred Defects in Ultramain & Skywise\nCo-developed an Ultralytics YOLO computer vision model to detect cabin defects & automate inspections\n\n\nUndergraduate Student Researcher\nJan 2026 – Present\n\n\nFlow Imaging Lab at Mudd, Dept. of Engineering, Harvey Mudd College\n\n\nDesigned & manufactured a mechanical 3-axis calibrator for a live class-4 laser for Particle Image Velocimetry\nProcessed 6-axis load cell data using MATLAB to quantify thrust generated by a biomimetic fish fin\nProgrammed a PI-controlled rotational degree of freedom for the fin; troubleshot load cell/motor interference\nManaged waterjet safety & maintenance; advised team of 5 on machining processes to eliminate fin defects\n\n\nLab Teaching Assistant / Lab Improver\nAug 2025 – Present\n\n\nIntro to Engineering Design/Manufacturing, Harvey Mudd College\n\n\nTaught 20+ students SolidWorks, CAD, motion studies, finite element analysis, prototyping, material selection\nReviewed technical drawings for manufacturing; final products used in research labs, courses, school services\nAuthored 5 SolidWorks tutorials teaching feature logic and software troubleshooting, used by 60+ students\nPioneered new student role, eliminated continuity errors between teachings & deliverable expectations\n\n\nRepair Steward\nJan 2025 – Present\n\n\nMakerspace, Harvey Mudd College\n\n\nMaintained, repaired & troubleshot fabrication equipment failures; minimized downtime for 2500+ users\nCoordinated with 5 undergraduates to write/update user, safety & repair manuals & SOPs for all equipment\nOptimized services; provided remote technical support, analyzed maintenance logs, reported inconsistencies\n\n\nUndergraduate Student Researcher\nJan 2025 – Dec 2025\n\n\nHMC Biophotonics Lab, Dept. of Engineering, Harvey Mudd College\n\n\nCo-developed an open-source in vivo imaging system, reduced production cost to &lt;1% of commercial price\nImproved speckle contrast & bioluminescence imaging capabilities; device used @ Claremont McKenna College\nDevised experimental optics setups; troubleshot modules with oscilloscopes; processed images with Python\n\n\nPaid Student Intern\nJul 2023 - Jul 2023\n\n\nMéridaLabs, Dept. of Mechanical Engineering, University of British Columbia\n\n\nCollaborated with two co-op students to build a JavaScript/Svelte Smart Hydrogen Energy District website\nReworked 3D models, produced renders and animations in AutoCAD for a national technology conference\n\n\nPUBLICATIONS AND PRESENTATIONS\n\nPoster/Presenter: “Integrating Laser Speckle Contrast Imaging with OpenIVIS,” Ko, N., Tran, M., Brake, J. Southern California Conference for Undergraduate Research, Nov 2025\nPoster/Presenter: “Open-source bioluminescence imaging for low-light biological applications using the OpenIVIS platform,” Tran, M., Ko, N., Brake, J. Southern California Conference for Undergraduate Research, Nov 2025\nPublication: Ko, N. M. T. (2024). An evaluation of the adhesive capabilities of dry adhesive gecko tapes produced using diffraction gratings. STEM Fellowship Journal, e-First. https://doi.org/10.17975/sfj-2024-002"
+    "text": "Download PDF Resume\n\n\nEDUCATION\n\n\nB.S., Engineering (Mechatronics Specialization)\nExpected May 2028\n\n\nHarvey Mudd College — Claremont, California, USA\n\nMajor GPA: 4.0 / 4.0 | Cumulative GPA: 3.918 / 4.0 | Dean’s List (all graded semesters)\n\nRelevant Coursework: Microprocessor Systems: Design & Application; Digital Electronics & Computer Engineering; Continuum Mechanics; Electrical & Magnetic Circuits/Devices; Advanced Systems Engineering; Experimental Engineering; Engineering Systems; Intro to Engineering Design/Manufacturing; Applied Math for Engineering; Probability/Stats for Engineers; Intro to Computer Science\n\n\nAWARDS AND ACHIEVEMENTS\n\n\nTau Beta Pi Member (United States Engineering Honours Society, Top 12.5% of Junior Class)\n2026 – Present\n\n\nHarvey Mudd Merit Scholarship (Top 15% of Entering Class)\n2024 – Present\n\n\nWORK EXPERIENCE\n\n\nR&D Manufacturing Contractor\nAug 2026 – Present\n\n\nMedtronic MiniMed (Through Harvey Mudd College Clinic Program)\n\n\nOptimized Continuous Glucose Monitor sensor manufacturing process, reduced cycle time from __ to __ hrs\nPrototyped & tested a sensor clamping fixture, prevented sensor damage & improved operator ergonomics\nPerformed materials analysis & testing, met ISO 7 classifications & withstood corrosive baths during 24/5 use\n\n\nPaid Engineering Intern\nJul 2026 – Aug 2026\n\n\nCathay Pacific, Hong Kong\n\n\nDeveloped a cross-company maintenance Power App; cut daily task time from 1hr+ to 24min (100% adoption)\nBuilt a Power BI automated predictive model, optimized servicing for 13 cabin layouts under operational limits\nImproved aircraft regulatory compliance by analyzing Acceptable Deferred Defects in Ultramain & Skywise\nCo-developed an Ultralytics YOLO computer vision model to detect cabin defects & automate inspections\n\n\nUndergraduate Student Researcher\nJan 2026 – Present\n\n\nFlow Imaging Lab at Mudd, Dept. of Engineering, Harvey Mudd College\n\n\nDesigned & manufactured a mechanical 3-axis calibrator for a live class-4 laser for Particle Image Velocimetry\nProcessed 6-axis load cell data using MATLAB to quantify thrust generated by a biomimetic fish fin\nProgrammed a PI-controlled rotational degree of freedom for the fin; troubleshot load cell/motor interference\nManaged waterjet safety & maintenance; advised team of 5 on machining processes to eliminate fin defects\n\n\nLab Teaching Assistant / Lab Improver\nAug 2025 – Present\n\n\nIntro to Engineering Design/Manufacturing, Harvey Mudd College\n\n\nTaught 20+ students SolidWorks, CAD, motion studies, finite element analysis, prototyping, material selection\nReviewed technical drawings for manufacturing; final products used in research labs, courses, school services\nAuthored 5 SolidWorks tutorials teaching feature logic and software troubleshooting, used by 60+ students\nPioneered new student role, eliminated continuity errors between teachings & deliverable expectations\n\n\nRepair Steward\nJan 2025 – Present\n\n\nMakerspace, Harvey Mudd College\n\n\nMaintained, repaired & troubleshot fabrication equipment failures; minimized downtime for 2500+ users\nCoordinated with 5 undergraduates to write/update user, safety & repair manuals & SOPs for all equipment\nOptimized services; provided remote technical support, analyzed maintenance logs, reported inconsistencies\n\n\nUndergraduate Student Researcher\nJan 2025 – Dec 2025\n\n\nHMC Biophotonics Lab, Dept. of Engineering, Harvey Mudd College\n\n\nCo-developed an open-source in vivo imaging system, reduced production cost to &lt;1% of commercial price\nImproved speckle contrast & bioluminescence imaging capabilities; device used @ Claremont McKenna College\nDevised experimental optics setups; troubleshot modules with oscilloscopes; processed images with Python\n\n\nPaid Student Intern\nJul 2023 - Jul 2023\n\n\nMéridaLabs, Dept. of Mechanical Engineering, University of British Columbia\n\n\nCollaborated with two co-op students to build a JavaScript/Svelte Smart Hydrogen Energy District website\nReworked 3D models, produced renders and animations in AutoCAD for a national technology conference\n\n\nPUBLICATIONS AND PRESENTATIONS\n\nPoster/Presenter: “Integrating Laser Speckle Contrast Imaging with OpenIVIS,” Ko, N., Tran, M., Brake, J. Southern California Conference for Undergraduate Research, Nov 2025\nPoster/Presenter: “Open-source bioluminescence imaging for low-light biological applications using the OpenIVIS platform,” Tran, M., Ko, N., Brake, J. Southern California Conference for Undergraduate Research, Nov 2025\nPublication: Ko, N. M. T. (2024). An evaluation of the adhesive capabilities of dry adhesive gecko tapes produced using diffraction gratings. STEM Fellowship Journal, e-First. https://doi.org/10.17975/sfj-2024-002\n\nVOLUNTEERING\n\n\nUnpaid Engineering Tutor\nAug 2026 - Present\n\n\nTau Beta Pi (California Omega Chapter), Harvey Mudd College\n\n\nProvided free tutoring services for students in core Engineering courses for 1 hour per week"
   },
   {
-    "objectID": "projects/E80Bot/E80Bot.html",
-    "href": "projects/E80Bot/E80Bot.html",
-    "title": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)",
+    "objectID": "projects/E79Bot/E79Bot.html",
+    "href": "projects/E79Bot/E79Bot.html",
+    "title": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)",
     "section": "",
-    "text": "Timeline: Mar 2026 – May 2026\n\n\nSkills: P-Control, Circuit Design, Mechanical Design, C++, MATLAB, Data Analysis, Troubleshooting, Technical Documentation"
+    "text": "Timeline: Aug 2025 – Dec 2025\n\n\nSkills: PID-Control, Circuit Design, Mechanical Design, Data Analysis, LabView, Soldering, Breadboarding, Mathematical Modeling"
   },
   {
-    "objectID": "projects/E80Bot/E80Bot.html#yahoooo",
-    "href": "projects/E80Bot/E80Bot.html#yahoooo",
-    "title": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)",
+    "objectID": "projects/E79Bot/E79Bot.html#yahoooo",
+    "href": "projects/E79Bot/E79Bot.html#yahoooo",
+    "title": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)",
     "section": "YAHOOOO",
     "text": "YAHOOOO"
   },
   {
-    "objectID": "projects/abyssExplorer/abyssExplorer.html",
-    "href": "projects/abyssExplorer/abyssExplorer.html",
-    "title": "Abyss Explorer",
+    "objectID": "projects/crystalRadio/crystalRadio.html",
+    "href": "projects/crystalRadio/crystalRadio.html",
+    "title": "Crystal Radio Experiments",
     "section": "",
-    "text": "Timeline: Feb 2025 – May 2025\n\n\nSkills: SolidWorks, Mechanical Design, Prototyping, Manufacturing, Project Management, Technical Documentation"
+    "text": "Timeline: Feb 2025 – Mar 2026\n\n\nSkills: Radio Frequency Engineering, Software Defined Radio, Circuit Analysis"
   },
   {
-    "objectID": "projects/abyssExplorer/abyssExplorer.html#yahoooo",
-    "href": "projects/abyssExplorer/abyssExplorer.html#yahoooo",
-    "title": "Abyss Explorer",
+    "objectID": "projects/crystalRadio/crystalRadio.html#yahoooo",
+    "href": "projects/crystalRadio/crystalRadio.html#yahoooo",
+    "title": "Crystal Radio Experiments",
+    "section": "YAHOOOO",
+    "text": "YAHOOOO"
+  },
+  {
+    "objectID": "projects/keypadScanner/keypadScanner.html",
+    "href": "projects/keypadScanner/keypadScanner.html",
+    "title": "Keypad Scanner",
+    "section": "",
+    "text": "Timeline: Aug 2026 – Sep 2026\n\n\nSkills: SystemVerilog, FPGA, Circuit Design, Lattice Radiant, Waveform Simulation, Testbench"
+  },
+  {
+    "objectID": "projects/keypadScanner/keypadScanner.html#yahoooo",
+    "href": "projects/keypadScanner/keypadScanner.html#yahoooo",
+    "title": "Keypad Scanner",
+    "section": "YAHOOOO",
+    "text": "YAHOOOO"
+  },
+  {
+    "objectID": "projects/animatronicEyes/animatronicEyes.html",
+    "href": "projects/animatronicEyes/animatronicEyes.html",
+    "title": "Animatronic Eyes",
+    "section": "",
+    "text": "Timeline: Jul 2025 – Oct 2025\n\n\nSkills: SolidWorks, 3D Printing, C++, Arduino"
+  },
+  {
+    "objectID": "projects/animatronicEyes/animatronicEyes.html#yahoooo",
+    "href": "projects/animatronicEyes/animatronicEyes.html#yahoooo",
+    "title": "Animatronic Eyes",
     "section": "YAHOOOO",
     "text": "YAHOOOO"
   },
