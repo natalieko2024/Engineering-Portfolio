@@ -16,6 +16,7 @@ website:
         href: resume.qmd
       - text: "About Me"
         href: about.qmd
+    draft-mode: gone
   page-footer:
     background: "#1e293b"
     center: |

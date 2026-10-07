@@ -51,7 +51,7 @@ WORK EXPERIENCE
 :::
 
 ::: {.resume-row}
-[R&D Manufacturing Contractor]{.resume-bold-title}
+[R&D Manufacturing Engineering Contractor]{.resume-bold-title}
 
 [Aug 2026 – Present]{.resume-date}
 :::
@@ -64,7 +64,7 @@ Medtronic MiniMed (Through Harvey Mudd College Clinic Program)
 * Performed materials analysis & testing, met ISO 7 classifications & withstood corrosive baths during 24/5 use
 
 ::: {.resume-row}
-[Paid Engineering Intern]{.resume-bold-title}
+[Paid Aerospace Engineering Intern]{.resume-bold-title}
 
 [Jul 2026 – Aug 2026]{.resume-date}
 :::

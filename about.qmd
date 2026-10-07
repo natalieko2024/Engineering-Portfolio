@@ -46,6 +46,7 @@ I thrive on solving physical problems through dynamic mechanical, electrical, an
 * **Mechatronics:** Integrating electronic sensors and actuators with mechanical design, and controlling them through embedded systems and firmware.
 * **Control Systems:** Utilizing feedback loops, characterizing system behaviour, predicting system outputs.
 * **Human Centered Design:** Prioritizing human needs through empathizing with users and understanding their problems.
+* **Manufacturing:** Optimizing manufacturing and maintenance processes, ensuring efficiency, quality, and safety.
 
 ---
 
@@ -55,7 +56,7 @@ To be honest, I consider all of the projects on this page as well as my on-campu
 
 * **Music:** Composing and arranging music, playing in bands or solo (mainly trumpet and drum kit). I was in 4 bands at once in high school, I arranged compositions for us to play during concerts, and I've played all modern brass instruments!
 
-* **Physical Activity:** Competitive ball hockey (ice hockey but you run instead of skate), biking, hiking. I've played defence, forward, and goalie in the 4 years I represented my high school in ball hockey. In the year I played goalie, we had several shutouts and my team ranked 2nd in the Hong Kong International Schools Sports Federation!
+* **Physical Activity:** Competitive ball hockey (ice hockey but you run instead of skate), biking, axe-throwing, hiking. I've played defence, forward, and goalie in the 4 years I represented my high school in ball hockey. In the year I played goalie, we had several shutouts and my team ranked 2nd in the Hong Kong International Schools Sports Federation!
 
 :::
 

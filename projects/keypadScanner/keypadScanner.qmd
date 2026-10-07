@@ -16,7 +16,82 @@ skills: "SystemVerilog, FPGA, Circuit Design, Lattice Radiant, Waveform Simulati
   <div><strong>Skills:</strong> {{< meta skills >}}</div>
 </div>
 
-# TEst heading
-## YAHOOOO
+# Introduction
+In this project, I designed an FPGA implementation to read a 4x4 matrix keypad input
 
-# wee woo
+Watch this video below to see the final deployment!
+{{< video https://youtu.be/qhZsKVxzVlM >}}
+
+# Phase 1 - Single 7-Segment Display
+
+## Design and Testing Methodology
+
+## Technical Documentation
+
+### Block Diagram
+
+### Circuit Schematic
+
+## Results and Discussion
+
+### Testbench Simulation
+
+### Hardware Deployment
+
+### Oscilloscope Testing
+
+# Phase 2 - Time-Multiplexed Dual 7-Segment Display
+
+## Design and Testing Methodology
+
+## Technical Documentation
+
+### Block Diagram
+
+### Circuit Schematic
+
+## Results and Discussion
+
+### Testbench Simulation
+
+### Hardware Deployment
+
+### Oscilloscope Testing
+
+# Phase 3 - Keypad Reader
+
+## Design and Testing Methodology
+
+## Technical Documentation
+
+### Block Diagram
+
+### Circuit Schematic
+
+## Results and Discussion
+
+### Testbench Simulation
+
+### Hardware Deployment
+
+### Oscilloscope Testing
+
+# Phase 4 - Integrated Keypad Scanner and 7-Segment Output
+
+## Design and Testing Methodology
+
+## Technical Documentation
+
+### Block Diagram
+
+### Circuit Schematic
+
+## Results and Discussion
+
+### Testbench Simulation
+
+### Hardware Deployment
+
+### Oscilloscope Testing
+
+# Conclusion

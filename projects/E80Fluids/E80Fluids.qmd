@@ -1,10 +1,10 @@
 ---
-title: "Fluid Dynamics Simulation"
-date: "2026-03-08"
+title: "Wind Tunnel Experiments and Fluid Dynamics Simulation"
+date: "2026-03-21"
 date-range: "Feb 2026 – Mar 2026"
 description: "Used the principle of similitude to characterize ROV behaviour in the water through wind tunnel simulations."
 subtitle : ""
-image: "fluidsLab.png"
+image: "windTunnel.png"
 categories:
   - "Miscellaneous"
 skills: "COMSOL, Technical Documentation"
