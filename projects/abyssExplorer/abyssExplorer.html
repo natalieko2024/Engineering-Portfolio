@@ -128,11 +128,34 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#test-heading" id="toc-test-heading" class="nav-link active" data-scroll-target="#test-heading">TEst heading</a>
+  <li><a href="#introduction-and-background" id="toc-introduction-and-background" class="nav-link active" data-scroll-target="#introduction-and-background">Introduction and Background</a></li>
+  <li><a href="#problem-framing" id="toc-problem-framing" class="nav-link" data-scroll-target="#problem-framing">Problem Framing</a>
   <ul class="collapse">
-  <li><a href="#yahoooo" id="toc-yahoooo" class="nav-link" data-scroll-target="#yahoooo">YAHOOOO</a></li>
+  <li><a href="#problem-statement" id="toc-problem-statement" class="nav-link" data-scroll-target="#problem-statement">Problem Statement</a></li>
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a></li>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
+  <li><a href="#constraints" id="toc-constraints" class="nav-link" data-scroll-target="#constraints">Constraints</a></li>
   </ul></li>
-  <li><a href="#wee-woo" id="toc-wee-woo" class="nav-link" data-scroll-target="#wee-woo">wee woo</a></li>
+  <li><a href="#ideating-and-selecting-alternative-solutions" id="toc-ideating-and-selecting-alternative-solutions" class="nav-link" data-scroll-target="#ideating-and-selecting-alternative-solutions">Ideating and Selecting Alternative Solutions</a>
+  <ul class="collapse">
+  <li><a href="#prioritizing-objectives" id="toc-prioritizing-objectives" class="nav-link" data-scroll-target="#prioritizing-objectives">Prioritizing Objectives</a></li>
+  <li><a href="#possible-solutions-to-the-functions" id="toc-possible-solutions-to-the-functions" class="nav-link" data-scroll-target="#possible-solutions-to-the-functions">Possible Solutions to the Functions</a></li>
+  <li><a href="#design-alternatives" id="toc-design-alternatives" class="nav-link" data-scroll-target="#design-alternatives">Design Alternatives</a></li>
+  <li><a href="#downselection-of-the-alternatives" id="toc-downselection-of-the-alternatives" class="nav-link" data-scroll-target="#downselection-of-the-alternatives">Downselection of the Alternatives</a></li>
+  </ul></li>
+  <li><a href="#prototyping" id="toc-prototyping" class="nav-link" data-scroll-target="#prototyping">Prototyping</a>
+  <ul class="collapse">
+  <li><a href="#low-resolution-prototyping" id="toc-low-resolution-prototyping" class="nav-link" data-scroll-target="#low-resolution-prototyping">Low-resolution Prototyping</a></li>
+  <li><a href="#checkpoint-prototype" id="toc-checkpoint-prototype" class="nav-link" data-scroll-target="#checkpoint-prototype">Checkpoint Prototype</a></li>
+  <li><a href="#final-prototype" id="toc-final-prototype" class="nav-link" data-scroll-target="#final-prototype">Final Prototype</a></li>
+  </ul></li>
+  <li><a href="#final-product" id="toc-final-product" class="nav-link" data-scroll-target="#final-product">Final Product</a>
+  <ul class="collapse">
+  <li><a href="#solidworks-cad-files" id="toc-solidworks-cad-files" class="nav-link" data-scroll-target="#solidworks-cad-files">SolidWorks CAD Files</a></li>
+  <li><a href="#technical-drawings" id="toc-technical-drawings" class="nav-link" data-scroll-target="#technical-drawings">Technical Drawings</a></li>
+  <li><a href="#bill-of-materials" id="toc-bill-of-materials" class="nav-link" data-scroll-target="#bill-of-materials">Bill of Materials</a></li>
+  <li><a href="#process-router" id="toc-process-router" class="nav-link" data-scroll-target="#process-router">Process Router</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -181,16 +204,129 @@ ul.task-list li input[type="checkbox"] {
 <strong>Skills:</strong> SolidWorks, Mechanical Design, Prototyping, Manufacturing, Project Management, Technical Documentation
 </div>
 </div>
-<section id="test-heading" class="level1">
-<h1>TEst heading</h1>
-<section id="yahoooo" class="level2">
-<h2 class="anchored" data-anchor-id="yahoooo">YAHOOOO</h2>
+<section id="introduction-and-background" class="level1">
+<h1>Introduction and Background</h1>
+<p>Our client owned two mining claims in Utah, aiming to clean them up and protect them from federal land protection reversals. One of these mining claims (active from the 1950s to 1980s) was one of the largest uranium producers in the Red Canyon District.</p>
+<p>Since its closure, human exploration has been impossible due to low oxygen levels, high concentrations of radioactive materials, and the risk of structural collapse. Furthermore, at the time of this project, the mine interior was only accessible via two ventilation shafts. One shaft was only 4 inches in diameter, while the other shaft was 24 inches in diameter but narrowed to an unknown diameter further down. Both shafts had potential sudden narrows or shifts, and obstacles within them.</p>
+<p>Our client wanted a solution to safely explore the mine interior without sending humans into the hazardous environment. This project’s goal was to design a system to lower a payload filled with various sensors, cameras, and lights to the bottom of the mine, collect data, and return safely. The system needed to correctly report the depth of the payload at all times. It also needed to be lightweight and portable, as the client would be driving to the mine site in a 2019 Subaru Crosstrek with limited cargo space, and hiking up to the mine shaft with the system.</p>
+</section>
+<section id="problem-framing" class="level1">
+<h1>Problem Framing</h1>
+<p>Through interviewing the client, my team reframed the problem to focus on the key challenges and requirements for the design.</p>
+<section id="problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
+<p>This revised problem statement concisely defines the project scope and eliminated errors, biases, and implied solutions.</p>
+<p>“The client is trying to explore an old mine site. However, the interior of the mine is hostile to human entry. The main section of the mine can only be accessed through a narrow ventilation shaft that gets smaller during descent from 24 inches to an unknown diameter. The client needs a way to lower a variety of sensors, cameras, and lights into the mine’s interior through the shaft to determine the inside nature of the cave and its environmental conditions while monitoring their depth in real time, as well as retrieve them without damage.”</p>
+</section>
+<section id="functions" class="level2">
+<h2 class="anchored" data-anchor-id="functions">Functions</h2>
+<p>Functions are capabilities that the design must perform to meet the client’s needs. The following are the constraints for the design:</p>
+<ul>
+<li>Raise and lower a platform</li>
+<li>Support the lowering mechanism and payload</li>
+<li>Protect the client’s hardware</li>
+<li>Navigate potential obstacles</li>
+<li>Convey the depth of the payload</li>
+</ul>
+</section>
+<section id="objectives" class="level2">
+<h2 class="anchored" data-anchor-id="objectives">Objectives</h2>
+<p>An objective is a property of the design that has a preferred or target direction. The following are the objectives for the design:</p>
+<ul>
+<li>Minimize the horizontal area of the payload</li>
+<li>Minimize the weight of the device (payload and lowering mechanism)</li>
+<li>Minimize the device’s volumetric footprint while being transported</li>
+<li>Maximize precision of depth tracking</li>
+<li>Maximize the reusability of the device</li>
+<li>Minimize environmental contaminants sticking to the payload</li>
+</ul>
+</section>
+<section id="constraints" class="level2">
+<h2 class="anchored" data-anchor-id="constraints">Constraints</h2>
+<p>A constraint is a requirement that the design must fully satisfy, or else it is unacceptable. The following are the constraints for the design:</p>
+<ul>
+<li>Must <strong>fit within half the space of a 2019 Subaru Crosstrek</strong> for transport and be light and compact enough to <strong>take only one trip to carry up to the shaft with at most two people</strong></li>
+<li>Must <strong>hold a sensor payload that fits within an 8-inch diameter</strong> and potentially hazardous environment</li>
+<li>Must <strong>descend to at least 600 ft</strong> down.</li>
+<li>Must have a <strong>vertical speed of at least 1 ft/s</strong> and provide control over ascent and descent at all times by being able to hold its position and resume movement at any point</li>
+</ul>
 </section>
 </section>
-<section id="wee-woo" class="level1">
-<h1>wee woo</h1>
+<section id="ideating-and-selecting-alternative-solutions" class="level1">
+<h1>Ideating and Selecting Alternative Solutions</h1>
+<section id="prioritizing-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="prioritizing-objectives">Prioritizing Objectives</h2>
+<p>The team used a pairwise comparison chart to rank the priority of each objective.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/PCCChart.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 1. Pairwise Comparison Chart</figcaption>
+</figure>
+</div>
+<p>From Figure 1, the prioritized order of objectives is as follows:</p>
+<ol type="1">
+<li>Minimize the horizontal area of the payload</li>
+<li>Minimize the weight of the device (payload and lowering mechanism)</li>
+<li>Minimize the device’s volumetric footprint while being transported</li>
+<li>Maximize precision of depth tracking</li>
+<li>Maximize the reusability of the device</li>
+<li>Minimize environmental contaminants sticking to the payload</li>
+</ol>
+<p>Objective 1 outranked the other objectives since a smaller top-down area footprint would increase the likelihood of the payload completely making it down the shaft, given the unknown smallest diameter and potential obstacles. Objective 2 ranked second, since the client is operating on a tight schedule of one day and needs to get the device up to the shaft in one trip to run it through the shaft multiple times. Objective 3 ranked third, because the client has limited space in his car to transport both teams’ devices, and the dimensions of the other team’s design are unknown, so minimizing the volumetric footprint would increase the client’s chances of getting the device to the site. Objective 4 ranked fourth, since the client specified he wanted to know the depth of the payload to an ideal, but not necessary, precision of 1ft. Objective 5 was placed above objective 6 as the client expects to lower and raise the payload through the full length of the shaft at least five times, and as long as the attempts are made on the same day, he will only remove contaminants once at the end of trials.</p>
+</section>
+<section id="possible-solutions-to-the-functions" class="level2">
+<h2 class="anchored" data-anchor-id="possible-solutions-to-the-functions">Possible Solutions to the Functions</h2>
+<p>Various means were generated as possibilities to fulfill each function. These means were organized through a morphological chart. Note: the functions listed in Figure 2 are slightly different from the functions listed earlier, as they were refined during later stages of the design process. The functions as described earlier combine and clarify some of the functions listed here.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/MorphChart.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 2. Morphological Chart</figcaption>
+</figure>
+</div>
+<p>In Figure 2, Function 1 refers to what would allow the lowering mechanism to shorten or lengthen the rope attached to a platform. Function 2 refers to what would prevent the lowering mechanism from falling into the ventilation shaft or falling on its side, considering forces applied from the client and means for function 1. Function 3 refers to how the payload would be attached to the hypothetical rope. Function 4 refers to how the payload should be constructed to allow the sensors to operate, including the shape and structure of the payload. Function 5 refers to how the components could be shielded or cushioned from the harsh environment and obstacles. Function 6 refers to how the client will tell how deep the payload has gone into the shaft. Function 7 refers to how the payload would avoid, move around, or destroy obstacles within the shaft.</p>
+</section>
+<section id="design-alternatives" class="level2">
+<h2 class="anchored" data-anchor-id="design-alternatives">Design Alternatives</h2>
+<p>From the morphological chart, five design alternatives were developed as outlined in Figure 3.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/DesignAlternatives.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 3. Design Alternatives</figcaption>
+</figure>
+</div>
+</section>
+<section id="downselection-of-the-alternatives" class="level2">
+<h2 class="anchored" data-anchor-id="downselection-of-the-alternatives">Downselection of the Alternatives</h2>
+</section>
+</section>
+<section id="prototyping" class="level1">
+<h1>Prototyping</h1>
+<section id="low-resolution-prototyping" class="level2">
+<h2 class="anchored" data-anchor-id="low-resolution-prototyping">Low-resolution Prototyping</h2>
+</section>
+<section id="checkpoint-prototype" class="level2">
+<h2 class="anchored" data-anchor-id="checkpoint-prototype">Checkpoint Prototype</h2>
+</section>
+<section id="final-prototype" class="level2">
+<h2 class="anchored" data-anchor-id="final-prototype">Final Prototype</h2>
+</section>
+</section>
+<section id="final-product" class="level1">
+<h1>Final Product</h1>
+<section id="solidworks-cad-files" class="level2">
+<h2 class="anchored" data-anchor-id="solidworks-cad-files">SolidWorks CAD Files</h2>
+</section>
+<section id="technical-drawings" class="level2">
+<h2 class="anchored" data-anchor-id="technical-drawings">Technical Drawings</h2>
+</section>
+<section id="bill-of-materials" class="level2">
+<h2 class="anchored" data-anchor-id="bill-of-materials">Bill of Materials</h2>
+</section>
+<section id="process-router" class="level2">
+<h2 class="anchored" data-anchor-id="process-router">Process Router</h2>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
