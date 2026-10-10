@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="dcterms.date" content="2025-05-01">
-<meta name="description" content="Designed and manufactured a system to raise and lower sensors through a 600ft radioactive mine shaft (shrinking to an unknown diameter) for data collection without direct human contact.">
+<meta name="description" content="Designed and manufactured a system to raise and lower sensors through a ~600ft radioactive mine shaft (shrinking to an unknown diameter) for data collection without direct human contact.">
 
 <title>Abyss Explorer – Natalie Ko’s Engineering Portfolio</title>
 <style>
@@ -48,6 +48,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-c5e35b1cbbda7aca693bdec97cf96fcb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/videojs/video.min.js"></script>
+<link href="../../site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/embedpdf-1.0.2/embedpdf.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -75,6 +78,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -128,7 +132,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction-and-background" id="toc-introduction-and-background" class="nav-link active" data-scroll-target="#introduction-and-background">Introduction and Background</a></li>
+  <li><a href="#heres-a-short-clip-of-our-design-in-action" id="toc-heres-a-short-clip-of-our-design-in-action" class="nav-link active" data-scroll-target="#heres-a-short-clip-of-our-design-in-action">Here’s a short clip of our design in action!</a></li>
+  <li><a href="#introduction-and-background" id="toc-introduction-and-background" class="nav-link" data-scroll-target="#introduction-and-background">Introduction and Background</a></li>
   <li><a href="#problem-framing" id="toc-problem-framing" class="nav-link" data-scroll-target="#problem-framing">Problem Framing</a>
   <ul class="collapse">
   <li><a href="#problem-statement" id="toc-problem-statement" class="nav-link" data-scroll-target="#problem-statement">Problem Statement</a></li>
@@ -145,16 +150,27 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#prototyping" id="toc-prototyping" class="nav-link" data-scroll-target="#prototyping">Prototyping</a>
   <ul class="collapse">
-  <li><a href="#low-resolution-prototyping" id="toc-low-resolution-prototyping" class="nav-link" data-scroll-target="#low-resolution-prototyping">Low-resolution Prototyping</a></li>
+  <li><a href="#design-review-and-changes-to-the-design-alternative" id="toc-design-review-and-changes-to-the-design-alternative" class="nav-link" data-scroll-target="#design-review-and-changes-to-the-design-alternative">Design Review and Changes to the Design Alternative</a></li>
+  <li><a href="#low-resolution-prototyping" id="toc-low-resolution-prototyping" class="nav-link" data-scroll-target="#low-resolution-prototyping">Low-resolution Prototyping</a>
+  <ul class="collapse">
+  <li><a href="#prototype-1-lowering-mechanism-base" id="toc-prototype-1-lowering-mechanism-base" class="nav-link" data-scroll-target="#prototype-1-lowering-mechanism-base">Prototype 1: Lowering Mechanism Base</a></li>
+  <li><a href="#prototype-2-payload-angle" id="toc-prototype-2-payload-angle" class="nav-link" data-scroll-target="#prototype-2-payload-angle">Prototype 2: Payload Angle</a></li>
+  <li><a href="#prototype-3-payload-interior-dimensions" id="toc-prototype-3-payload-interior-dimensions" class="nav-link" data-scroll-target="#prototype-3-payload-interior-dimensions">Prototype 3: Payload Interior Dimensions</a></li>
+  <li><a href="#prototype-4-payload-structure" id="toc-prototype-4-payload-structure" class="nav-link" data-scroll-target="#prototype-4-payload-structure">Prototype 4: Payload Structure</a></li>
+  </ul></li>
   <li><a href="#checkpoint-prototype" id="toc-checkpoint-prototype" class="nav-link" data-scroll-target="#checkpoint-prototype">Checkpoint Prototype</a></li>
   <li><a href="#final-prototype" id="toc-final-prototype" class="nav-link" data-scroll-target="#final-prototype">Final Prototype</a></li>
   </ul></li>
   <li><a href="#final-product" id="toc-final-product" class="nav-link" data-scroll-target="#final-product">Final Product</a>
   <ul class="collapse">
+  <li><a href="#physical-deliverables" id="toc-physical-deliverables" class="nav-link" data-scroll-target="#physical-deliverables">Physical Deliverables</a></li>
+  <li><a href="#manufacturing-documentation" id="toc-manufacturing-documentation" class="nav-link" data-scroll-target="#manufacturing-documentation">Manufacturing Documentation</a>
+  <ul class="collapse">
   <li><a href="#solidworks-cad-files" id="toc-solidworks-cad-files" class="nav-link" data-scroll-target="#solidworks-cad-files">SolidWorks CAD Files</a></li>
   <li><a href="#technical-drawings" id="toc-technical-drawings" class="nav-link" data-scroll-target="#technical-drawings">Technical Drawings</a></li>
   <li><a href="#bill-of-materials" id="toc-bill-of-materials" class="nav-link" data-scroll-target="#bill-of-materials">Bill of Materials</a></li>
   <li><a href="#process-router" id="toc-process-router" class="nav-link" data-scroll-target="#process-router">Process Router</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -173,7 +189,7 @@ ul.task-list li input[type="checkbox"] {
 
 <div>
   <div class="description">
-    Designed and manufactured a system to raise and lower sensors through a 600ft radioactive mine shaft (shrinking to an unknown diameter) for data collection without direct human contact.
+    Designed and manufactured a system to raise and lower sensors through a ~600ft radioactive mine shaft (shrinking to an unknown diameter) for data collection without direct human contact.
   </div>
 </div>
 
@@ -204,10 +220,18 @@ ul.task-list li input[type="checkbox"] {
 <strong>Skills:</strong> SolidWorks, Mechanical Design, Prototyping, Manufacturing, Project Management, Technical Documentation
 </div>
 </div>
+<section id="heres-a-short-clip-of-our-design-in-action" class="level1">
+<h1>Here’s a short clip of our design in action!</h1>
+<div style="display: flex; justify-content: center;">
+<div style="width: 50%; max-width: 65%;">
+<div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-big-play-centered vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="videos/testing.mov"></video></div>
+</div>
+</div>
+</section>
 <section id="introduction-and-background" class="level1">
 <h1>Introduction and Background</h1>
 <p>Our client owned two mining claims in Utah, aiming to clean them up and protect them from federal land protection reversals. One of these mining claims (active from the 1950s to 1980s) was one of the largest uranium producers in the Red Canyon District.</p>
-<p>Since its closure, human exploration has been impossible due to low oxygen levels, high concentrations of radioactive materials, and the risk of structural collapse. Furthermore, at the time of this project, the mine interior was only accessible via two ventilation shafts. One shaft was only 4 inches in diameter, while the other shaft was 24 inches in diameter but narrowed to an unknown diameter further down. Both shafts had potential sudden narrows or shifts, and obstacles within them.</p>
+<p>Since its closure, human exploration has been impossible due to low oxygen levels, high concentrations of radioactive materials, and the risk of structural collapse. Furthermore, at the time of this project, the mine interior was only accessible via two ventilation shafts at least 532ft in depth. One shaft was only 4 inches in diameter, while the other shaft was 24 inches in diameter but narrowed to an unknown diameter further down. Both shafts had potential sudden narrows or shifts, and obstacles within them.</p>
 <p>Our client wanted a solution to safely explore the mine interior without sending humans into the hazardous environment. This project’s goal was to design a system to lower a payload filled with various sensors, cameras, and lights to the bottom of the mine, collect data, and return safely. The system needed to correctly report the depth of the payload at all times. It also needed to be lightweight and portable, as the client would be driving to the mine site in a 2019 Subaru Crosstrek with limited cargo space, and hiking up to the mine shaft with the system.</p>
 </section>
 <section id="problem-framing" class="level1">
@@ -233,22 +257,25 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="objectives">Objectives</h2>
 <p>An objective is a property of the design that has a preferred or target direction. The following are the objectives for the design:</p>
 <ul>
-<li>Minimize the horizontal area of the payload</li>
 <li>Minimize the weight of the device (payload and lowering mechanism)</li>
 <li>Minimize the device’s volumetric footprint while being transported</li>
+<li>Minimize the horizontal area of the payload</li>
 <li>Maximize precision of depth tracking</li>
-<li>Maximize the reusability of the device</li>
 <li>Minimize environmental contaminants sticking to the payload</li>
+<li>Maximize the reusability of the device</li>
 </ul>
 </section>
 <section id="constraints" class="level2">
 <h2 class="anchored" data-anchor-id="constraints">Constraints</h2>
 <p>A constraint is a requirement that the design must fully satisfy, or else it is unacceptable. The following are the constraints for the design:</p>
 <ul>
-<li>Must <strong>fit within half the space of a 2019 Subaru Crosstrek</strong> for transport and be light and compact enough to <strong>take only one trip to carry up to the shaft with at most two people</strong></li>
-<li>Must <strong>hold a sensor payload that fits within an 8-inch diameter</strong> and potentially hazardous environment</li>
-<li>Must <strong>descend to at least 600 ft</strong> down.</li>
-<li>Must have a <strong>vertical speed of at least 1 ft/s</strong> and provide control over ascent and descent at all times by being able to hold its position and resume movement at any point</li>
+<li>Must <strong>fit within half the space of a 2019 Subaru Crosstrek</strong> for transport</li>
+<li>Must be light and compact enough to <strong>take only one trip to carry up to the shaft with at most two people</strong></li>
+<li>Must <strong>hold a sensor payload that fits within an 8-inch diameter</strong></li>
+<li>Must <strong>protect the sensors in a potentially hazardous environment</strong> (humidity 70-90%, temperature 20-110°F, and being submerged in up to 3” of water) so that they can continue to record data after retrieval</li>
+<li>Must <strong>descend to at least 600 ft</strong> down</li>
+<li>Must have a <strong>vertical speed of at least 1 ft/s</strong></li>
+<li>Must provide control over ascent and descent at all times by being <strong>able to hold its position and resume movement at any point</strong></li>
 </ul>
 </section>
 </section>
@@ -294,18 +321,119 @@ ul.task-list li input[type="checkbox"] {
 <figcaption>Figure 3. Design Alternatives</figcaption>
 </figure>
 </div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/DA1.jpg" class="img-fluid figure-img"></p>
+<figcaption>Figure 4. Design Alternative 1</figcaption>
+</figure>
+</div>
+<p>For design alternative 1, the hand-cranked winch with a brake was selected to balance cost-effectiveness and space-saving capabilities. The collapsible quadropod would provide further stability for the lowering mechanism, as the client may not apply force evenly to the winch. It would also help fix the winch in place relative to the shaft opening. The collapsible element would help reduce the volumetric footprint of the overall device. The suspension system was chosen as a light method to distribute the weight of the payload evenly over the lowering mechanism and secure the payload to the cable by reducing sway. The cylinder with openings was paired with a shock-absorbing casing and waterproofing as this would allow relevant sensors to gather environmental data without obstruction, while protecting more sensitive electronics from impact and moisture. The hand-cranked winch is slightly expensive, so the markings on the rope were selected as a low-cost but reliable depth measurement method. The omniwheel would help navigate obstacles inside the shaft by allowing multidirectional movement, as the client pointed out that unrounded parts of the payload could get caught on parts of the shaft.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/DA2.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 5. Design Alternative 2</figcaption>
+</figure>
+</div>
+<p>Design alternative 2 followed most of the same logic as design alternative 1, except it utilized the table with four legs to provide a surface for the winch to rest on for additional stability in case the winch could not be fixed to the stand. The 4-point load spreader was selected with the box, as it would be easier to determine where the load spreader would be attached since the box has four distinct sides. The mechanical counter and rotary encoder were selected to provide a more accurate depth measurement compared to the rope markings at the expense of cost. Fiberglass cables were added since the box’s corners are more likely to catch on shaft inconsistencies compared to the cylinder. Since fiberglass cables are strong, they would be able to help the client push the payload through any obstacles.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/DA3.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 6. Design Alternative 3</figcaption>
+</figure>
+</div>
+<p>For design alternative 3, the electric winch was chosen to save the client effort when raising and lowering the payload at the expense of cost. The three-legged table was selected instead of the four-legged one since electric winches produce strong horizontal vibrations. If the four-legged table were used, it would shake horizontally, knocking the payload into the shaft, which could destroy the payload or make the lowering mechanism collapse. A modified 4-point load spreader that accommodated the cylinder was selected as it is more stable than the suspension system, and this was needed due to the possible additional speed or movement from the electric winch. The cylinder was still chosen to reduce the likelihood of the payload catching on an obstacle, as the client may not be able to stop the winch in time to prevent destruction of the payload. The logic for the last three means follows design alternative 1.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/DA4.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 7. Design Alternative 4</figcaption>
+</figure>
+</div>
+<p>For design alternative 4, the pulley system would not exert as much force as the winches, so having the client stand on a platform holding the pulley would be enough to keep it stable. Attaching all the components along the rope or cable would reduce the area footprint of the payload and ensure it can make it through the shaft. To ensure the components are protected, the individual components would be enclosed in a watertight container. As the components are fixed along the rope or cable, the payload would not have much structure, and the components are exposed, so a collapsible aluminum frame would act as a protective boundary with spikes pointing outward that would help clear small obstacles if needed along the shaft wall. The relatively low cost of these components allows for the use of an expensive radar or depth finder for maximum precision while remaining within the budget.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/DA5.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 8. Design Alternative 5</figcaption>
+</figure>
+</div>
+<p>Design alternative 5 followed the same logic as alternative 4 for the pulley system and stability for the lowering mechanism. The rigid frame would allow robust components to be mounted externally on the payload while fragile components that may or may not need to be exposed would be kept in a waterproof sphere with openings within the frame. The sphere was chosen and paired with sticky grippers to allow the payload to stick to and then roll around potential obstacles. The relatively low cost of these components allows for the use of an expensive mechanical counter and rotary encoder to improve precision while remaining within the budget.</p>
 </section>
 <section id="downselection-of-the-alternatives" class="level2">
 <h2 class="anchored" data-anchor-id="downselection-of-the-alternatives">Downselection of the Alternatives</h2>
+<p>The team used a best of class chart to evaluate and select the most promising design alternative.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/BestofClassChart.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 9. Best of Class Chart</figcaption>
+</figure>
+</div>
+<p>The “Hand-cranked Box” alternative failed constraint 3 as the sharp 90° edges and corners of the box could easily catch on obstacles within the shaft. This would cause a lot of jostling, putting stress on both the payload container and the lowering mechanisms, which could destroy both components and expose or damage the sensors. The alternatives “Spikey” and “Effort Pulley” failed constraint 4 as the pulley system does not have a brake system and would rely on the client holding the rope or cable in position, which the client specified he was unwilling to do.</p>
+<p>Both the “Omnicylinder” and “Robot x Ventilation Shaft &lt;3” alternatives received an equal ranking for fulfilling objectives 1 and 6 because they both utilized the mean “cylinder with openings”, so the area spanned by the payload and the environmental contaminants sticking to the surface of the payload would be the same for both alternatives. “Omnicylinder” fulfilled objective 2 better than “Robot x Ventilation Shaft &lt;3” because the suspension system used in “Omnicylinder” is made of straps and cords, whereas the 4-point load spreader is made of metal bars and cables, which would be heavier. Also, having a table like in “Robot x Ventilation Shaft &lt;3” would add to the weight of the design rather than just having the legs supporting the lowering mechanism like in “Onmicylinder”. “Omnicylinder” was also ranked higher for objective 3 because the table would add to the volumetric footprint, whereas the quadropod is fully collapsible and would take up the footprint of a small cylinder. Both alternatives fulfilled objective 4 equally, as they both used markings on the rope to track the depth of the payload, so the level of precision would be the same. “Robot x Ventilation Shaft &lt;3” outranked “Omnicylinder” for objective 5 because the suspension system components are more likely to fray (and possibly rip if used extensively) compared to the 4-point load spreader if they rub against the shaft wall during descent or ascent.</p>
+<p>Overall, because the “Omnicylinder” alternative satisfied all the constraints and fulfilled more high-ranking objectives better than the other alternatives, it was the chosen design alternative.</p>
 </section>
 </section>
 <section id="prototyping" class="level1">
 <h1>Prototyping</h1>
+<section id="design-review-and-changes-to-the-design-alternative" class="level2">
+<h2 class="anchored" data-anchor-id="design-review-and-changes-to-the-design-alternative">Design Review and Changes to the Design Alternative</h2>
+</section>
 <section id="low-resolution-prototyping" class="level2">
 <h2 class="anchored" data-anchor-id="low-resolution-prototyping">Low-resolution Prototyping</h2>
+<p>Four low-resolution prototypes were produced to clarify the requirements of the final design and feasibility of each component.</p>
+<section id="prototype-1-lowering-mechanism-base" class="level3">
+<h3 class="anchored" data-anchor-id="prototype-1-lowering-mechanism-base">Prototype 1: Lowering Mechanism Base</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lowres1.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Figure 10. Low-resolution Prototype 1</figcaption>
+</figure>
+</div>
+</section>
+<section id="prototype-2-payload-angle" class="level3">
+<h3 class="anchored" data-anchor-id="prototype-2-payload-angle">Prototype 2: Payload Angle</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lowres2.jpg" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Figure 11. Low-resolution Prototype 2</figcaption>
+</figure>
+</div>
+</section>
+<section id="prototype-3-payload-interior-dimensions" class="level3">
+<h3 class="anchored" data-anchor-id="prototype-3-payload-interior-dimensions">Prototype 3: Payload Interior Dimensions</h3>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lowres3-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Figure 12a. Low-resolution Prototype 3 Width</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lowres3-2.png" class="img-fluid figure-img" style="width:93.0%"></p>
+<figcaption>Figure 12b. Low-resolution Prototype 3 Height</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="prototype-4-payload-structure" class="level3">
+<h3 class="anchored" data-anchor-id="prototype-4-payload-structure">Prototype 4: Payload Structure</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lowres4.jpg" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption>Figure 13. Low-resolution Prototype 4</figcaption>
+</figure>
+</div>
+</section>
 </section>
 <section id="checkpoint-prototype" class="level2">
 <h2 class="anchored" data-anchor-id="checkpoint-prototype">Checkpoint Prototype</h2>
+<p>Can the payload be lowered 10 feet without the base shifting, shaking or warping?</p>
+<p>How many cable tangles or points where the cable warps over the spool flange occur when the payload is raised and lowered over 10ft with the cable pulled at 15°?</p>
 </section>
 <section id="final-prototype" class="level2">
 <h2 class="anchored" data-anchor-id="final-prototype">Final Prototype</h2>
@@ -313,19 +441,65 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="final-product" class="level1">
 <h1>Final Product</h1>
-<section id="solidworks-cad-files" class="level2">
-<h2 class="anchored" data-anchor-id="solidworks-cad-files">SolidWorks CAD Files</h2>
+<section id="physical-deliverables" class="level2">
+<h2 class="anchored" data-anchor-id="physical-deliverables">Physical Deliverables</h2>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/abyssExplorer.jpg" class="img-fluid figure-img"></p>
+<figcaption>Final Manufactured Product</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/CADAssembly.png" class="img-fluid figure-img"></p>
+<figcaption>Final CAD Assembly in SolidWorks</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/blank.png" class="img-fluid figure-img"></p>
+<figcaption>Figure x.</figcaption>
+</figure>
+</div>
 </section>
-<section id="technical-drawings" class="level2">
-<h2 class="anchored" data-anchor-id="technical-drawings">Technical Drawings</h2>
+<section id="manufacturing-documentation" class="level2">
+<h2 class="anchored" data-anchor-id="manufacturing-documentation">Manufacturing Documentation</h2>
+<p>The following documentation files were presented to the client as manufacturing process references.</p>
+<section id="solidworks-cad-files" class="level3">
+<h3 class="anchored" data-anchor-id="solidworks-cad-files">SolidWorks CAD Files</h3>
 </section>
-<section id="bill-of-materials" class="level2">
-<h2 class="anchored" data-anchor-id="bill-of-materials">Bill of Materials</h2>
+<section id="technical-drawings" class="level3">
+<h3 class="anchored" data-anchor-id="technical-drawings">Technical Drawings</h3>
+<p>This full assembly drawing shows how all the components fit together to make the full system.</p>
+<div class="embedpdf" data-src="docs/ABYSSEXPLORER_assemblydrawing.pdf" data-renderer="auto" data-width="100%" data-height="550"><a href="docs/ABYSSEXPLORER_assemblydrawing.pdf" download="">Download PDF file.</a></div>
+<p>The individual technical drawings show the relevant manufacturing specifications and 3D shape for each component.</p>
+<div class="embedpdf" data-src="docs/ABYSSEXPLORER_technicaldrawings.pdf" data-renderer="auto" data-width="100%" data-height="550"><a href="docs/ABYSSEXPLORER_technicaldrawings.pdf" download="">Download PDF file.</a></div>
 </section>
-<section id="process-router" class="level2">
-<h2 class="anchored" data-anchor-id="process-router">Process Router</h2>
+<section id="bill-of-materials" class="level3">
+<h3 class="anchored" data-anchor-id="bill-of-materials">Bill of Materials</h3>
+<p>The bill of materials outlines the necessary materials to produce the system and their cost. Throughout the project, the team successfully managed a $500 budget.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/BOM.png" class="img-fluid figure-img"></p>
+<figcaption>Figure x.</figcaption>
+</figure>
+</div>
+</section>
+<section id="process-router" class="level3">
+<h3 class="anchored" data-anchor-id="process-router">Process Router</h3>
+<p>The process router outlines all the manufacturing steps, equipment, and software used.</p>
+<div class="embedpdf" data-src="docs/ABYSSEXPLORER_processrouter.pdf" data-renderer="auto" data-width="100%" data-height="800"><a href="docs/ABYSSEXPLORER_processrouter.pdf" download="">Download PDF file.</a></div>
 
 
+</section>
 </section>
 </section>
 
@@ -749,8 +923,10 @@ ul.task-list li input[type="checkbox"] {
     </div>
   </div>
 </footer>
+<script>videojs(video_shortcode_videojs_video1);</script>
 
 
 
 
+<script src="../../site_libs/quarto-contrib/embedpdf-1.0.2/embedpdf-viewer.js" type="module"></script>
 </body></html>
