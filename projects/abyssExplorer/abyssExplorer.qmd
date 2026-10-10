@@ -2,11 +2,12 @@
 title: "Abyss Explorer"
 date: "2025-05-01"
 date-range: "Feb 2025 – May 2025"
-description: "Designed and manufactured a system to raise and lower sensors through a 600ft radioactive mine shaft (shrinking to an unknown diameter) for data collection without direct human contact."
+description: "Designed and manufactured a system to raise and lower sensors through a ~600ft radioactive mine shaft (shrinking to an unknown diameter) for data collection without direct human contact."
 subtitle : ""
 image: "abyssExplorer.jpg"
 resources:
   - projects/abyssExplorer/images/
+  - projects/abyssExplorer/docs/
 categories:
   - "Mechanical Design & FEA"
   - "Manufacturing"
@@ -18,10 +19,17 @@ skills: "SolidWorks, Mechanical Design, Prototyping, Manufacturing, Project Mana
   <div><strong>Skills:</strong> {{< meta skills >}}</div>
 </div>
 
+# Here's a short clip of our design in action!
+::: {style="display: flex; justify-content: center;"}
+::: {style="width: 50%; max-width: 65%;"}
+{{< video videos/testing.mov >}}
+:::
+:::
+
 # Introduction and Background
 Our client owned two mining claims in Utah, aiming to clean them up and protect them from federal land protection reversals. One of these mining claims (active from the 1950s to 1980s) was one of the largest uranium producers in the Red Canyon District. 
 
-Since its closure, human exploration has been impossible due to low oxygen levels, high concentrations of radioactive materials, and the risk of structural collapse. Furthermore, at the time of this project, the mine interior was only accessible via two ventilation shafts. One shaft was only 4 inches in diameter, while the other shaft was 24 inches in diameter but narrowed to an unknown diameter further down. Both shafts had potential sudden narrows or shifts, and obstacles within them.
+Since its closure, human exploration has been impossible due to low oxygen levels, high concentrations of radioactive materials, and the risk of structural collapse. Furthermore, at the time of this project, the mine interior was only accessible via two ventilation shafts at least 532ft in depth. One shaft was only 4 inches in diameter, while the other shaft was 24 inches in diameter but narrowed to an unknown diameter further down. Both shafts had potential sudden narrows or shifts, and obstacles within them.
 
 Our client wanted a solution to safely explore the mine interior without sending humans into the hazardous environment. This project's goal was to design a system to lower a payload filled with various sensors, cameras, and lights to the bottom of the mine, collect data, and return safely. The system needed to correctly report the depth of the payload at all times. It also needed to be lightweight and portable, as the client would be driving to the mine site in a 2019 Subaru Crosstrek with limited cargo space, and hiking up to the mine shaft with the system.
 
@@ -45,20 +53,23 @@ Functions are capabilities that the design must perform to meet the client's nee
 ## Objectives
 An objective is a property of the design that has a preferred or target direction. The following are the objectives for the design:
 
-- Minimize the horizontal area of the payload
 - Minimize the weight of the device (payload and lowering mechanism)
 - Minimize the device’s volumetric footprint while being transported
+- Minimize the horizontal area of the payload
 - Maximize precision of depth tracking
-- Maximize the reusability of the device
 - Minimize environmental contaminants sticking to the payload
+- Maximize the reusability of the device
 
 ## Constraints
 A constraint is a requirement that the design must fully satisfy, or else it is unacceptable. The following are the constraints for the design:
 
-- Must **fit within half the space of a 2019 Subaru Crosstrek** for transport and be light and compact enough to **take only one trip to carry up to the shaft with at most two people**
-- Must **hold a sensor payload that fits within an 8-inch diameter** and potentially hazardous environment
-- Must **descend to at least 600 ft** down.
-- Must have a **vertical speed of at least 1 ft/s** and provide control over ascent and descent at all times by being able to hold its position and resume movement at any point
+- Must **fit within half the space of a 2019 Subaru Crosstrek** for transport
+- Must be light and compact enough to **take only one trip to carry up to the shaft with at most two people**
+- Must **hold a sensor payload that fits within an 8-inch diameter** 
+- Must **protect the sensors in a potentially hazardous environment** (humidity 70-90%, temperature 20-110°F, and being submerged in up to 3" of water) so that they can continue to record data after retrieval
+- Must **descend to at least 600 ft** down
+- Must have a **vertical speed of at least 1 ft/s** 
+- Must provide control over ascent and descent at all times by being **able to hold its position and resume movement at any point**
 
 # Ideating and Selecting Alternative Solutions
 ## Prioritizing Objectives
@@ -90,22 +101,103 @@ From the morphological chart, five design alternatives were developed as outline
 
 ![Figure 3. Design Alternatives](images/DesignAlternatives.png)
 
-## Downselection of the Alternatives
+![Figure 4. Design Alternative 1](images/DA1.jpg)
 
+For design alternative 1, the hand-cranked winch with a brake was selected to balance cost-effectiveness and space-saving capabilities. The collapsible quadropod would provide further stability for the lowering mechanism, as the client may not apply force evenly to the winch. It would also help fix the winch in place relative to the shaft opening. The collapsible element would help reduce the volumetric footprint of the overall device. The suspension system was chosen as a light method to distribute the weight of the payload evenly over the lowering mechanism and secure the payload to the cable by reducing sway. The cylinder with openings was paired with a shock-absorbing casing and waterproofing as this would allow relevant sensors to gather environmental data without obstruction, while protecting more sensitive electronics from impact and moisture. The hand-cranked winch is slightly expensive, so the markings on the rope were selected as a low-cost but reliable depth measurement method. The omniwheel would help navigate obstacles inside the shaft by allowing multidirectional movement, as the client pointed out that unrounded parts of the payload could get caught on parts of the shaft.
+
+![Figure 5. Design Alternative 2](images/DA2.png)
+
+Design alternative 2 followed most of the same logic as design alternative 1, except it utilized the table with four legs to provide a surface for the winch to rest on for additional stability in case the winch could not be fixed to the stand. The 4-point load spreader was selected with the box, as it would be easier to determine where the load spreader would be attached since the box has four distinct sides. The mechanical counter and rotary encoder were selected to provide a more accurate depth measurement compared to the rope markings at the expense of cost. Fiberglass cables were added since the box’s corners are more likely to catch on shaft inconsistencies compared to the cylinder. Since fiberglass cables are strong, they would be able to help the client push the payload through any obstacles.
+
+![Figure 6. Design Alternative 3](images/DA3.png)
+
+For design alternative 3, the electric winch was chosen to save the client effort when raising and lowering the payload at the expense of cost. The three-legged table was selected instead of the four-legged one since electric winches produce strong horizontal vibrations. If the four-legged table were used, it would shake horizontally, knocking the payload into the shaft, which could destroy the payload or make the lowering mechanism collapse. A modified 4-point load spreader that accommodated the cylinder was selected as it is more stable than the suspension system, and this was needed due to the possible additional speed or movement from the electric winch. The cylinder was still chosen to reduce the likelihood of the payload catching on an obstacle, as the client may not be able to stop the winch in time to prevent destruction of the payload. The logic for the last three means follows design alternative 1.
+
+![Figure 7. Design Alternative 4](images/DA4.png)
+
+For design alternative 4, the pulley system would not exert as much force as the winches, so having the client stand on a platform holding the pulley would be enough to keep it stable. Attaching all the components along the rope or cable would reduce the area footprint of the payload and ensure it can make it through the shaft. To ensure the components are protected, the individual components would be enclosed in a watertight container. As the components are fixed along the rope or cable, the payload would not have much structure, and the components are exposed, so a collapsible aluminum frame would act as a protective boundary with spikes pointing outward that would help clear small obstacles if needed along the shaft wall. The relatively low cost of these components allows for the use of an expensive radar or depth finder for maximum precision while remaining within the budget.
+
+![Figure 8. Design Alternative 5](images/DA5.png)
+
+Design alternative 5 followed the same logic as alternative 4 for the pulley system and stability for the lowering mechanism. The rigid frame would allow robust components to be mounted externally on the payload while fragile components that may or may not need to be exposed would be kept in a waterproof sphere with openings within the frame. The sphere was chosen and paired with sticky grippers to allow the payload to stick to and then roll around potential obstacles. The relatively low cost of these components allows for the use of an expensive mechanical counter and rotary encoder to improve precision while remaining within the budget.
+
+## Downselection of the Alternatives
+The team used a best of class chart to evaluate and select the most promising design alternative.
+
+![Figure 9. Best of Class Chart](images/BestofClassChart.png)
+
+The “Hand-cranked Box” alternative failed constraint 3 as the sharp 90° edges and corners of the box could easily catch on obstacles within the shaft. This would cause a lot of jostling, putting stress on both the payload container and the lowering mechanisms, which could destroy both components and expose or damage the sensors. The alternatives “Spikey” and “Effort Pulley” failed constraint 4 as the pulley system does not have a brake system and would rely on the client holding the rope or cable in position, which the client specified he was unwilling to do.
+
+Both the “Omnicylinder” and “Robot x Ventilation Shaft <3” alternatives received an equal ranking for fulfilling objectives 1 and 6 because they both utilized the mean “cylinder with openings”, so the area spanned by the payload and the environmental contaminants sticking to the surface of the payload would be the same for both alternatives. “Omnicylinder” fulfilled objective 2 better than “Robot x Ventilation Shaft <3” because the suspension system used in “Omnicylinder” is made of straps and cords, whereas the 4-point load spreader is made of metal bars and cables, which would be heavier. Also, having a table like in “Robot x Ventilation Shaft <3” would add to the weight of the design rather than just having the legs supporting the lowering mechanism like in “Onmicylinder”. “Omnicylinder” was also ranked higher for objective 3 because the table would add to the volumetric footprint, whereas the quadropod is fully collapsible and would take up the footprint of a small cylinder. Both alternatives fulfilled objective 4 equally, as they both used markings on the rope to track the depth of the payload, so the level of precision would be the same. “Robot x Ventilation Shaft <3” outranked “Omnicylinder” for objective 5 because the suspension system components are more likely to fray (and possibly rip if used extensively) compared to the 4-point load spreader if they rub against the shaft wall during descent or ascent. 
+
+Overall, because the “Omnicylinder” alternative satisfied all the constraints and fulfilled more high-ranking objectives better than the other alternatives, it was the chosen design alternative.
 
 # Prototyping
+## Design Review and Changes to the Design Alternative
+
 ## Low-resolution Prototyping
+Four low-resolution prototypes were produced to clarify the requirements of the final design and feasibility of each component.
+
+### Prototype 1: Lowering Mechanism Base
+
+![Figure 10. Low-resolution Prototype 1](images/lowres1.jpg){width=80%}
+
+### Prototype 2: Payload Angle
+
+![Figure 11. Low-resolution Prototype 2](images/lowres2.jpg){width=60%}
+
+### Prototype 3: Payload Interior Dimensions
+
+::: {layout-ncol=2}
+![Figure 12a. Low-resolution Prototype 3 Width](images/lowres3-1.png){width=80%}
+
+![Figure 12b. Low-resolution Prototype 3 Height](images/lowres3-2.png){width=93%}
+:::
+
+### Prototype 4: Payload Structure
+
+![Figure 13. Low-resolution Prototype 4](images/lowres4.jpg){width=70%}
+
 
 ## Checkpoint Prototype
+
+Can the payload be lowered 10 feet without the base shifting, shaking or warping?
+
+How many cable tangles or points where the cable warps over the spool flange occur when the payload is raised and lowered over 10ft with the cable pulled at 15°? 
 
 ## Final Prototype
 
 # Final Product
+## Physical Deliverables
 
-## SolidWorks CAD Files
+::: {layout-ncol=2}
+![Final Manufactured Product](images/abyssExplorer.jpg)
 
-## Technical Drawings
+![Final CAD Assembly in SolidWorks](images/CADAssembly.png)
+:::
 
-## Bill of Materials
+![Figure x. ](images/blank.png)
 
-## Process Router
+## Manufacturing Documentation
+The following documentation files were presented to the client as manufacturing process references.
+
+### SolidWorks CAD Files
+
+### Technical Drawings
+This full assembly drawing shows how all the components fit together to make the full system.
+
+{{< pdf docs/ABYSSEXPLORER_assemblydrawing.pdf width=100% height=550 >}}
+
+The individual technical drawings show the relevant manufacturing specifications and 3D shape for each component.
+
+{{< pdf docs/ABYSSEXPLORER_technicaldrawings.pdf width=100% height=550 >}}
+
+### Bill of Materials
+The bill of materials outlines the necessary materials to produce the system and their cost. Throughout the project, the team successfully managed a $500 budget.
+
+![Figure x. ](images/BOM.png)
+
+### Process Router
+The process router outlines all the manufacturing steps, equipment, and software used.
+
+{{< pdf docs/ABYSSEXPLORER_processrouter.pdf width=100% height=800 >}}

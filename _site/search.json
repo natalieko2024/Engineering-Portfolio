@@ -25,7 +25,7 @@
     "href": "projects.html",
     "title": "Click to Learn About Each of My Projects!",
     "section": "",
-    "text": "Bionic Hand\n\n\n\nRobotics & Control Systems\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLeverging MCU Interrupts to Read Stepper Motor Encoders\n\n\n\nPCB Design & Electronics\n\nEmbedded Systems & Firmware\n\n\n\nUtilized MCU interrupts to acurrately determine stepper motor speed and direction.\n\n\n\n\n\n\n\n\n\n\n\n\nUsing MCU to Produce Digital Audio\n\n\n\nEmbedded Systems & Firmware\n\nPCB Design & Electronics\n\n\n\nProgrammed an MCU to write specific frequencies and durations to play music on a speaker.\n\n\n\n\n\n\n\n\n\n\n\n\nKeypad Scanner\n\n\n\nEmbedded Systems & Firmware\n\nPCB Design & Electronics\n\n\n\nProgrammed an FPGA to read a 4x4 matrix keypad and display the last two hexadecimal inputs on a dual seven-segment display. Accounted for key bounce, multi-press, and timing inconsistencies.\n\n\n\n\n\n\n\n\n\n\n\n\nCrystal Radio Experiments\n\n\n\nPCB Design & Electronics\n\n\n\nAnalysed RLC Circuits to debug Dunwoody, Pickard, and Armstrong crystal radios. Devised an innovative antenna for optimal signal receiving.\n\n\n\n\n\n\n\n\n\n\n\n\nOcean Debris-Detecting Autonomous Underwater Vehicle (AUV)\n\n\n\nRobotics & Control Systems\n\nPCB Design & Electronics\n\nEmbedded Systems & Firmware\n\nMechanical Design & FEA\n\n\n\nDeveloped and deployed an AUV to map metal debris distribution on the ocean floor and back-calculate debris drop locations.\n\n\n\n\n\n\n\n\n\n\n\n\nWind Tunnel Experiments and Fluid Dynamics Simulation\n\n\n\nMiscellaneous\n\n\n\nUsed the principle of similitude to characterize ROV behaviour in the water through wind tunnel simulations.\n\n\n\n\n\n\n\n\n\n\n\n\nTemperature and Position Detecting Remotely Operated Vehicle (ROV)\n\n\n\nRobotics & Control Systems\n\nPCB Design & Electronics\n\nMechanical Design & FEA\n\n\n\nDeveloped and deployed an PID-controlled ROV to collect temperature and depth measurements underwater.\n\n\n\n\n\n\n\n\n\n\n\n\nMulti-cycle RISC-V Processor\n\n\n\nEmbedded Systems & Firmware\n\n\n\nDesigned and simulated a 32-bit multi-cycle RISC-V processor, executed RISC-V integer instructions (R, I, S, B, U, and J-Type) given to memory as machine code.\n\n\n\n\n\n\n\n\n\n\n\n\nAnimatronic Eyes\n\n\n\nEmbedded Systems & Firmware\n\nMechanical Design & FEA\n\n\n\nDesigned and programmed a set of animatronic eyes controlled by servo motors and joysticks through Arduino.\n\n\n\n\n\n\n\n\n\n\n\n\nAbyss Explorer\n\n\n\nMechanical Design & FEA\n\nManufacturing\n\n\n\nDesigned and manufactured a system to raise and lower sensors through a 600ft radioactive mine shaft (shrinking to an unknown diameter) for data collection without direct human contact.\n\n\n\n\n\n\n\n\n\n\n\n\nHammer\n\n\n\nManufacturing\n\n\n\nManually machined a hammer using conventional manual machining tools to specifications following technical drawings.\n\n\n\n\n\n\n\n\n\n\n\n\nFood Delivery Robot\n\n\n\nManufacturing\n\n\n\nManually machined a hammer using conventional manual machining tools to specifications following technical drawings.\n\n\n\n\n\nNo matching items"
+    "text": "Bionic Hand\n\n\n\nRobotics & Control Systems\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLeverging MCU Interrupts to Read Stepper Motor Encoders\n\n\n\nPCB Design & Electronics\n\nEmbedded Systems & Firmware\n\n\n\nUtilized MCU interrupts to acurrately determine stepper motor speed and direction.\n\n\n\n\n\n\n\n\n\n\n\n\nUsing MCU to Produce Digital Audio\n\n\n\nEmbedded Systems & Firmware\n\nPCB Design & Electronics\n\n\n\nProgrammed an MCU to write specific frequencies and durations to play music on a speaker.\n\n\n\n\n\n\n\n\n\n\n\n\nKeypad Scanner\n\n\n\nEmbedded Systems & Firmware\n\nPCB Design & Electronics\n\n\n\nProgrammed an FPGA to read a 4x4 matrix keypad and display the last two hexadecimal inputs on a dual seven-segment display. Accounted for key bounce, multi-press, and timing inconsistencies.\n\n\n\n\n\n\n\n\n\n\n\n\nCrystal Radio Experiments\n\n\n\nPCB Design & Electronics\n\n\n\nAnalysed RLC Circuits to debug Dunwoody, Pickard, and Armstrong crystal radios. Devised an innovative antenna for optimal signal receiving.\n\n\n\n\n\n\n\n\n\n\n\n\nOcean Debris-Detecting Autonomous Underwater Vehicle (AUV)\n\n\n\nRobotics & Control Systems\n\nPCB Design & Electronics\n\nEmbedded Systems & Firmware\n\nMechanical Design & FEA\n\n\n\nDeveloped and deployed an AUV to map metal debris distribution on the ocean floor and back-calculate debris drop locations.\n\n\n\n\n\n\n\n\n\n\n\n\nWind Tunnel Experiments and Fluid Dynamics Simulation\n\n\n\nMiscellaneous\n\n\n\nUsed the principle of similitude to characterize ROV behaviour in the water through wind tunnel simulations.\n\n\n\n\n\n\n\n\n\n\n\n\nTemperature and Position Detecting Remotely Operated Vehicle (ROV)\n\n\n\nRobotics & Control Systems\n\nPCB Design & Electronics\n\nMechanical Design & FEA\n\n\n\nDeveloped and deployed an PID-controlled ROV to collect temperature and depth measurements underwater.\n\n\n\n\n\n\n\n\n\n\n\n\nMulti-cycle RISC-V Processor\n\n\n\nEmbedded Systems & Firmware\n\n\n\nDesigned and simulated a 32-bit multi-cycle RISC-V processor, executed RISC-V integer instructions (R, I, S, B, U, and J-Type) given to memory as machine code.\n\n\n\n\n\n\n\n\n\n\n\n\nAnimatronic Eyes\n\n\n\nEmbedded Systems & Firmware\n\nMechanical Design & FEA\n\n\n\nDesigned and programmed a set of animatronic eyes controlled by servo motors and joysticks through Arduino.\n\n\n\n\n\n\n\n\n\n\n\n\nAbyss Explorer\n\n\n\nMechanical Design & FEA\n\nManufacturing\n\n\n\nDesigned and manufactured a system to raise and lower sensors through a ~600ft radioactive mine shaft (shrinking to an unknown diameter) for data collection without direct human contact.\n\n\n\n\n\n\n\n\n\n\n\n\nHammer\n\n\n\nManufacturing\n\n\n\nManually machined a hammer using conventional manual machining tools to specifications following technical drawings.\n\n\n\n\n\n\n\n\n\n\n\n\nFood Delivery Robot\n\n\n\nManufacturing\n\n\n\nManually machined a hammer using conventional manual machining tools to specifications following technical drawings.\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "projects/abyssExplorer/abyssExplorer.html",
@@ -35,9 +35,121 @@
     "text": "Timeline: Feb 2025 – May 2025\n\n\nSkills: SolidWorks, Mechanical Design, Prototyping, Manufacturing, Project Management, Technical Documentation"
   },
   {
-    "objectID": "projects/abyssExplorer/abyssExplorer.html#yahoooo",
-    "href": "projects/abyssExplorer/abyssExplorer.html#yahoooo",
+    "objectID": "projects/abyssExplorer/abyssExplorer.html#problem-statement",
+    "href": "projects/abyssExplorer/abyssExplorer.html#problem-statement",
     "title": "Abyss Explorer",
+    "section": "Problem Statement",
+    "text": "Problem Statement\nThis revised problem statement concisely defines the project scope and eliminated errors, biases, and implied solutions.\n“The client is trying to explore an old mine site. However, the interior of the mine is hostile to human entry. The main section of the mine can only be accessed through a narrow ventilation shaft that gets smaller during descent from 24 inches to an unknown diameter. The client needs a way to lower a variety of sensors, cameras, and lights into the mine’s interior through the shaft to determine the inside nature of the cave and its environmental conditions while monitoring their depth in real time, as well as retrieve them without damage.”"
+  },
+  {
+    "objectID": "projects/abyssExplorer/abyssExplorer.html#functions",
+    "href": "projects/abyssExplorer/abyssExplorer.html#functions",
+    "title": "Abyss Explorer",
+    "section": "Functions",
+    "text": "Functions\nFunctions are capabilities that the design must perform to meet the client’s needs. The following are the constraints for the design:\n\nRaise and lower a platform\nSupport the lowering mechanism and payload\nProtect the client’s hardware\nNavigate potential obstacles\nConvey the depth of the payload"
+  },
+  {
+    "objectID": "projects/abyssExplorer/abyssExplorer.html#objectives",
+    "href": "projects/abyssExplorer/abyssExplorer.html#objectives",
+    "title": "Abyss Explorer",
+    "section": "Objectives",
+    "text": "Objectives\nAn objective is a property of the design that has a preferred or target direction. The following are the objectives for the design:\n\nMinimize the weight of the device (payload and lowering mechanism)\nMinimize the device’s volumetric footprint while being transported\nMinimize the horizontal area of the payload\nMaximize precision of depth tracking\nMinimize environmental contaminants sticking to the payload\nMaximize the reusability of the device"
+  },
+  {
+    "objectID": "projects/abyssExplorer/abyssExplorer.html#constraints",
+    "href": "projects/abyssExplorer/abyssExplorer.html#constraints",
+    "title": "Abyss Explorer",
+    "section": "Constraints",
+    "text": "Constraints\nA constraint is a requirement that the design must fully satisfy, or else it is unacceptable. The following are the constraints for the design:\n\nMust fit within half the space of a 2019 Subaru Crosstrek for transport\nMust be light and compact enough to take only one trip to carry up to the shaft with at most two people\nMust hold a sensor payload that fits within an 8-inch diameter\nMust protect the sensors in a potentially hazardous environment (humidity 70-90%, temperature 20-110°F, and being submerged in up to 3” of water) so that they can continue to record data after retrieval\nMust descend to at least 600 ft down\nMust have a vertical speed of at least 1 ft/s\nMust provide control over ascent and descent at all times by being able to hold its position and resume movement at any point"
+  },
+  {
+    "objectID": "projects/abyssExplorer/abyssExplorer.html#prioritizing-objectives",
+    "href": "projects/abyssExplorer/abyssExplorer.html#prioritizing-objectives",
+    "title": "Abyss Explorer",
+    "section": "Prioritizing Objectives",
+    "text": "Prioritizing Objectives\nThe team used a pairwise comparison chart to rank the priority of each objective.\n\n\n\nFigure 1. Pairwise Comparison Chart\n\n\nFrom Figure 1, the prioritized order of objectives is as follows:\n\nMinimize the horizontal area of the payload\nMinimize the weight of the device (payload and lowering mechanism)\nMinimize the device’s volumetric footprint while being transported\nMaximize precision of depth tracking\nMaximize the reusability of the device\nMinimize environmental contaminants sticking to the payload\n\nObjective 1 outranked the other objectives since a smaller top-down area footprint would increase the likelihood of the payload completely making it down the shaft, given the unknown smallest diameter and potential obstacles. Objective 2 ranked second, since the client is operating on a tight schedule of one day and needs to get the device up to the shaft in one trip to run it through the shaft multiple times. Objective 3 ranked third, because the client has limited space in his car to transport both teams’ devices, and the dimensions of the other team’s design are unknown, so minimizing the volumetric footprint would increase the client’s chances of getting the device to the site. Objective 4 ranked fourth, since the client specified he wanted to know the depth of the payload to an ideal, but not necessary, precision of 1ft. Objective 5 was placed above objective 6 as the client expects to lower and raise the payload through the full length of the shaft at least five times, and as long as the attempts are made on the same day, he will only remove contaminants once at the end of trials."
+  },
+  {
+    "objectID": "projects/abyssExplorer/abyssExplorer.html#possible-solutions-to-the-functions",
+    "href": "projects/abyssExplorer/abyssExplorer.html#possible-solutions-to-the-functions",
+    "title": "Abyss Explorer",
+    "section": "Possible Solutions to the Functions",
+    "text": "Possible Solutions to the Functions\nVarious means were generated as possibilities to fulfill each function. These means were organized through a morphological chart. Note: the functions listed in Figure 2 are slightly different from the functions listed earlier, as they were refined during later stages of the design process. The functions as described earlier combine and clarify some of the functions listed here.\n\n\n\nFigure 2. Morphological Chart\n\n\nIn Figure 2, Function 1 refers to what would allow the lowering mechanism to shorten or lengthen the rope attached to a platform. Function 2 refers to what would prevent the lowering mechanism from falling into the ventilation shaft or falling on its side, considering forces applied from the client and means for function 1. Function 3 refers to how the payload would be attached to the hypothetical rope. Function 4 refers to how the payload should be constructed to allow the sensors to operate, including the shape and structure of the payload. Function 5 refers to how the components could be shielded or cushioned from the harsh environment and obstacles. Function 6 refers to how the client will tell how deep the payload has gone into the shaft. Function 7 refers to how the payload would avoid, move around, or destroy obstacles within the shaft."
+  },
+  {
+    "objectID": "projects/abyssExplorer/abyssExplorer.html#design-alternatives",
+    "href": "projects/abyssExplorer/abyssExplorer.html#design-alternatives",
+    "title": "Abyss Explorer",
+    "section": "Design Alternatives",
+    "text": "Design Alternatives\nFrom the morphological chart, five design alternatives were developed as outlined in Figure 3.\n\n\n\nFigure 3. Design Alternatives\n\n\n\n\n\nFigure 4. Design Alternative 1\n\n\nFor design alternative 1, the hand-cranked winch with a brake was selected to balance cost-effectiveness and space-saving capabilities. The collapsible quadropod would provide further stability for the lowering mechanism, as the client may not apply force evenly to the winch. It would also help fix the winch in place relative to the shaft opening. The collapsible element would help reduce the volumetric footprint of the overall device. The suspension system was chosen as a light method to distribute the weight of the payload evenly over the lowering mechanism and secure the payload to the cable by reducing sway. The cylinder with openings was paired with a shock-absorbing casing and waterproofing as this would allow relevant sensors to gather environmental data without obstruction, while protecting more sensitive electronics from impact and moisture. The hand-cranked winch is slightly expensive, so the markings on the rope were selected as a low-cost but reliable depth measurement method. The omniwheel would help navigate obstacles inside the shaft by allowing multidirectional movement, as the client pointed out that unrounded parts of the payload could get caught on parts of the shaft.\n\n\n\nFigure 5. Design Alternative 2\n\n\nDesign alternative 2 followed most of the same logic as design alternative 1, except it utilized the table with four legs to provide a surface for the winch to rest on for additional stability in case the winch could not be fixed to the stand. The 4-point load spreader was selected with the box, as it would be easier to determine where the load spreader would be attached since the box has four distinct sides. The mechanical counter and rotary encoder were selected to provide a more accurate depth measurement compared to the rope markings at the expense of cost. Fiberglass cables were added since the box’s corners are more likely to catch on shaft inconsistencies compared to the cylinder. Since fiberglass cables are strong, they would be able to help the client push the payload through any obstacles.\n\n\n\nFigure 6. Design Alternative 3\n\n\nFor design alternative 3, the electric winch was chosen to save the client effort when raising and lowering the payload at the expense of cost. The three-legged table was selected instead of the four-legged one since electric winches produce strong horizontal vibrations. If the four-legged table were used, it would shake horizontally, knocking the payload into the shaft, which could destroy the payload or make the lowering mechanism collapse. A modified 4-point load spreader that accommodated the cylinder was selected as it is more stable than the suspension system, and this was needed due to the possible additional speed or movement from the electric winch. The cylinder was still chosen to reduce the likelihood of the payload catching on an obstacle, as the client may not be able to stop the winch in time to prevent destruction of the payload. The logic for the last three means follows design alternative 1.\n\n\n\nFigure 7. Design Alternative 4\n\n\nFor design alternative 4, the pulley system would not exert as much force as the winches, so having the client stand on a platform holding the pulley would be enough to keep it stable. Attaching all the components along the rope or cable would reduce the area footprint of the payload and ensure it can make it through the shaft. To ensure the components are protected, the individual components would be enclosed in a watertight container. As the components are fixed along the rope or cable, the payload would not have much structure, and the components are exposed, so a collapsible aluminum frame would act as a protective boundary with spikes pointing outward that would help clear small obstacles if needed along the shaft wall. The relatively low cost of these components allows for the use of an expensive radar or depth finder for maximum precision while remaining within the budget.\n\n\n\nFigure 8. Design Alternative 5\n\n\nDesign alternative 5 followed the same logic as alternative 4 for the pulley system and stability for the lowering mechanism. The rigid frame would allow robust components to be mounted externally on the payload while fragile components that may or may not need to be exposed would be kept in a waterproof sphere with openings within the frame. The sphere was chosen and paired with sticky grippers to allow the payload to stick to and then roll around potential obstacles. The relatively low cost of these components allows for the use of an expensive mechanical counter and rotary encoder to improve precision while remaining within the budget."
+  },
+  {
+    "objectID": "projects/abyssExplorer/abyssExplorer.html#downselection-of-the-alternatives",
+    "href": "projects/abyssExplorer/abyssExplorer.html#downselection-of-the-alternatives",
+    "title": "Abyss Explorer",
+    "section": "Downselection of the Alternatives",
+    "text": "Downselection of the Alternatives\nThe team used a best of class chart to evaluate and select the most promising design alternative.\n\n\n\nFigure 9. Best of Class Chart\n\n\nThe “Hand-cranked Box” alternative failed constraint 3 as the sharp 90° edges and corners of the box could easily catch on obstacles within the shaft. This would cause a lot of jostling, putting stress on both the payload container and the lowering mechanisms, which could destroy both components and expose or damage the sensors. The alternatives “Spikey” and “Effort Pulley” failed constraint 4 as the pulley system does not have a brake system and would rely on the client holding the rope or cable in position, which the client specified he was unwilling to do.\nBoth the “Omnicylinder” and “Robot x Ventilation Shaft &lt;3” alternatives received an equal ranking for fulfilling objectives 1 and 6 because they both utilized the mean “cylinder with openings”, so the area spanned by the payload and the environmental contaminants sticking to the surface of the payload would be the same for both alternatives. “Omnicylinder” fulfilled objective 2 better than “Robot x Ventilation Shaft &lt;3” because the suspension system used in “Omnicylinder” is made of straps and cords, whereas the 4-point load spreader is made of metal bars and cables, which would be heavier. Also, having a table like in “Robot x Ventilation Shaft &lt;3” would add to the weight of the design rather than just having the legs supporting the lowering mechanism like in “Onmicylinder”. “Omnicylinder” was also ranked higher for objective 3 because the table would add to the volumetric footprint, whereas the quadropod is fully collapsible and would take up the footprint of a small cylinder. Both alternatives fulfilled objective 4 equally, as they both used markings on the rope to track the depth of the payload, so the level of precision would be the same. “Robot x Ventilation Shaft &lt;3” outranked “Omnicylinder” for objective 5 because the suspension system components are more likely to fray (and possibly rip if used extensively) compared to the 4-point load spreader if they rub against the shaft wall during descent or ascent.\nOverall, because the “Omnicylinder” alternative satisfied all the constraints and fulfilled more high-ranking objectives better than the other alternatives, it was the chosen design alternative."
+  },
+  {
+    "objectID": "projects/abyssExplorer/abyssExplorer.html#low-resolution-prototyping",
+    "href": "projects/abyssExplorer/abyssExplorer.html#low-resolution-prototyping",
+    "title": "Abyss Explorer",
+    "section": "Low-resolution Prototyping",
+    "text": "Low-resolution Prototyping\nFour low-resolution prototypes were produced to clarify the requirements of the final design and feasibility of each component.\n\nPrototype 1: Lowering Mechanism Base\n\n\n\nFigure 10. Low-resolution Prototype 1\n\n\n\n\nPrototype 2: Payload Angle\n\n\n\nFigure 11. Low-resolution Prototype 2\n\n\n\n\nPrototype 3: Payload Interior Dimensions\n\n\n\n\n\n\nFigure 12a. Low-resolution Prototype 3 Width\n\n\n\n\n\n\n\nFigure 12b. Low-resolution Prototype 3 Height\n\n\n\n\n\n\n\nPrototype 4: Payload Structure\n\n\n\nFigure 13. Low-resolution Prototype 4"
+  },
+  {
+    "objectID": "projects/abyssExplorer/abyssExplorer.html#checkpoint-prototype",
+    "href": "projects/abyssExplorer/abyssExplorer.html#checkpoint-prototype",
+    "title": "Abyss Explorer",
+    "section": "Checkpoint Prototype",
+    "text": "Checkpoint Prototype\nCan the payload be lowered 10 feet without the base shifting, shaking or warping?\nHow many cable tangles or points where the cable warps over the spool flange occur when the payload is raised and lowered over 10ft with the cable pulled at 15°?"
+  },
+  {
+    "objectID": "projects/abyssExplorer/abyssExplorer.html#final-prototype",
+    "href": "projects/abyssExplorer/abyssExplorer.html#final-prototype",
+    "title": "Abyss Explorer",
+    "section": "Final Prototype",
+    "text": "Final Prototype"
+  },
+  {
+    "objectID": "projects/abyssExplorer/abyssExplorer.html#solidworks-cad-files",
+    "href": "projects/abyssExplorer/abyssExplorer.html#solidworks-cad-files",
+    "title": "Abyss Explorer",
+    "section": "SolidWorks CAD Files",
+    "text": "SolidWorks CAD Files"
+  },
+  {
+    "objectID": "projects/abyssExplorer/abyssExplorer.html#technical-drawings",
+    "href": "projects/abyssExplorer/abyssExplorer.html#technical-drawings",
+    "title": "Abyss Explorer",
+    "section": "Technical Drawings",
+    "text": "Technical Drawings\nDownload PDF file.\nDownload PDF file."
+  },
+  {
+    "objectID": "projects/abyssExplorer/abyssExplorer.html#bill-of-materials",
+    "href": "projects/abyssExplorer/abyssExplorer.html#bill-of-materials",
+    "title": "Abyss Explorer",
+    "section": "Bill of Materials",
+    "text": "Bill of Materials"
+  },
+  {
+    "objectID": "projects/abyssExplorer/abyssExplorer.html#process-router",
+    "href": "projects/abyssExplorer/abyssExplorer.html#process-router",
+    "title": "Abyss Explorer",
+    "section": "Process Router",
+    "text": "Process Router\nDownload PDF file."
+  },
+  {
+    "objectID": "projects/digitalAudio/digitalAudio.html",
+    "href": "projects/digitalAudio/digitalAudio.html",
+    "title": "Using MCU to Produce Digital Audio",
+    "section": "",
+    "text": "Timeline: Sept 2026 – Sept 2026\n\n\nSkills: C, MCU, Circuit Design, Segger Embedded Studio"
+  },
+  {
+    "objectID": "projects/digitalAudio/digitalAudio.html#yahoooo",
+    "href": "projects/digitalAudio/digitalAudio.html#yahoooo",
+    "title": "Using MCU to Produce Digital Audio",
     "section": "YAHOOOO",
     "text": "YAHOOOO"
   },
@@ -140,41 +252,6 @@
     "text": "Timeline: Aug 2026 – Sep 2026\n\n\nSkills: SystemVerilog, FPGA, Circuit Design, Lattice Radiant, Waveform Simulation, Testbench"
   },
   {
-    "objectID": "projects/keypadScanner/keypadScanner.html#yahoooo",
-    "href": "projects/keypadScanner/keypadScanner.html#yahoooo",
-    "title": "Keypad Scanner",
-    "section": "YAHOOOO",
-    "text": "YAHOOOO"
-  },
-  {
-    "objectID": "projects/animatronicEyes/animatronicEyes.html",
-    "href": "projects/animatronicEyes/animatronicEyes.html",
-    "title": "Animatronic Eyes",
-    "section": "",
-    "text": "Timeline: Jul 2025 – Oct 2025\n\n\nSkills: SolidWorks, 3D Printing, C++, Arduino"
-  },
-  {
-    "objectID": "projects/animatronicEyes/animatronicEyes.html#yahoooo",
-    "href": "projects/animatronicEyes/animatronicEyes.html#yahoooo",
-    "title": "Animatronic Eyes",
-    "section": "YAHOOOO",
-    "text": "YAHOOOO"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Natalie Ko's Engineering Portfolio",
-    "section": "",
-    "text": "Engineering a More Accessible World\n\n\nI thrive on the challenge of translating complex human needs into functional, reliable engineering solutions. I am passionate about applying my skills to solve complex problems through intentional mechatronic design.\n\n\n\n\nI’m a Junior Engineering student at Harvey Mudd College specializing in mechatronics. My academic work focuses on mechanics, digital and electronic systems, controls, and human-centred design.\n\n\nBeyond the classroom, you can always find me tinkering with my personal projects - whether it’s building a new electromechanical device or improving upon my previous designs, I’m always on the move to build highly reliable, real-world products.\n\n\nView My Projects View Digital CV →\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMechanical Design & FEA\n\nManufacturing\n\n\n\nDesigned and manufactured a system to raise and lower sensors through a 600ft radioactive mine shaft (shrinking to an unknown diameter) for data collection without direct human contact.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEmbedded Systems & Firmware\n\nPCB Design & Electronics\n\n\n\nProgrammed an FPGA to read a 4x4 matrix keypad and display the last two hexadecimal inputs on a dual seven-segment display. Accounted for key bounce, multi-press, and timing inconsistencies.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRobotics & Control Systems\n\nPCB Design & Electronics\n\nEmbedded Systems & Firmware\n\nMechanical Design & FEA\n\n\n\nDeveloped and deployed an AUV to map metal debris distribution on the ocean floor and back-calculate debris drop locations.\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "index.html#some-highlighted-projects",
-    "href": "index.html#some-highlighted-projects",
-    "title": "Natalie Ko's Engineering Portfolio",
-    "section": "",
-    "text": "Mechanical Design & FEA\n\nManufacturing\n\n\n\nDesigned and manufactured a system to raise and lower sensors through a 600ft radioactive mine shaft (shrinking to an unknown diameter) for data collection without direct human contact.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEmbedded Systems & Firmware\n\nPCB Design & Electronics\n\n\n\nProgrammed an FPGA to read a 4x4 matrix keypad and display the last two hexadecimal inputs on a dual seven-segment display. Accounted for key bounce, multi-press, and timing inconsistencies.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRobotics & Control Systems\n\nPCB Design & Electronics\n\nEmbedded Systems & Firmware\n\nMechanical Design & FEA\n\n\n\nDeveloped and deployed an AUV to map metal debris distribution on the ocean floor and back-calculate debris drop locations.\n\n\n\n\n\nNo matching items"
-  },
-  {
     "objectID": "projects/keypadScanner/keypadScanner.html#design-and-testing-methodology",
     "href": "projects/keypadScanner/keypadScanner.html#design-and-testing-methodology",
     "title": "Keypad Scanner",
@@ -259,16 +336,16 @@
     "text": "Results and Discussion\n\nTestbench Simulation\n\n\nHardware Deployment\n\n\nOscilloscope Testing"
   },
   {
-    "objectID": "projects/digitalAudio/digitalAudio.html",
-    "href": "projects/digitalAudio/digitalAudio.html",
-    "title": "Using MCU to Produce Digital Audio",
+    "objectID": "projects/animatronicEyes/animatronicEyes.html",
+    "href": "projects/animatronicEyes/animatronicEyes.html",
+    "title": "Animatronic Eyes",
     "section": "",
-    "text": "Timeline: Sept 2026 – Sept 2026\n\n\nSkills: C, MCU, Circuit Design, Segger Embedded Studio"
+    "text": "Timeline: Jul 2025 – Oct 2025\n\n\nSkills: SolidWorks, 3D Printing, C++, Arduino"
   },
   {
-    "objectID": "projects/digitalAudio/digitalAudio.html#yahoooo",
-    "href": "projects/digitalAudio/digitalAudio.html#yahoooo",
-    "title": "Using MCU to Produce Digital Audio",
+    "objectID": "projects/animatronicEyes/animatronicEyes.html#yahoooo",
+    "href": "projects/animatronicEyes/animatronicEyes.html#yahoooo",
+    "title": "Animatronic Eyes",
     "section": "YAHOOOO",
     "text": "YAHOOOO"
   },
@@ -287,157 +364,59 @@
     "text": "YAHOOOO"
   },
   {
-    "objectID": "projects/bionicHand/bionicHand.html",
-    "href": "projects/bionicHand/bionicHand.html",
-    "title": "Bionic Hand",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Natalie Ko's Engineering Portfolio",
     "section": "",
-    "text": "Timeline:\n\n\nSkills: Precision Manual Machining, Geometric Dimensioning & Tolerancing (GD&T), Process Planning & Documentation, Metallurgy"
+    "text": "Engineering a More Accessible World\n\n\nI thrive on the challenge of translating complex human needs into functional, reliable engineering solutions. I am passionate about applying my skills to solve complex problems through intentional mechatronic design.\n\n\n\n\nI’m a Junior Engineering student at Harvey Mudd College specializing in mechatronics. My academic work focuses on mechanics, digital and electronic systems, controls, and human-centred design.\n\n\nBeyond the classroom, you can always find me tinkering with my personal projects - whether it’s building a new electromechanical device or improving upon my previous designs, I’m always on the move to build highly reliable, real-world products.\n\n\nView My Projects View Digital CV →\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMechanical Design & FEA\n\nManufacturing\n\n\n\nDesigned and manufactured a system to raise and lower sensors through a ~600ft radioactive mine shaft (shrinking to an unknown diameter) for data collection without direct human contact.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEmbedded Systems & Firmware\n\nPCB Design & Electronics\n\n\n\nProgrammed an FPGA to read a 4x4 matrix keypad and display the last two hexadecimal inputs on a dual seven-segment display. Accounted for key bounce, multi-press, and timing inconsistencies.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRobotics & Control Systems\n\nPCB Design & Electronics\n\nEmbedded Systems & Firmware\n\nMechanical Design & FEA\n\n\n\nDeveloped and deployed an AUV to map metal debris distribution on the ocean floor and back-calculate debris drop locations.\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "projects/bionicHand/bionicHand.html#yahoooo",
-    "href": "projects/bionicHand/bionicHand.html#yahoooo",
-    "title": "Bionic Hand",
-    "section": "YAHOOOO",
-    "text": "YAHOOOO"
+    "objectID": "index.html#some-highlighted-projects",
+    "href": "index.html#some-highlighted-projects",
+    "title": "Natalie Ko's Engineering Portfolio",
+    "section": "",
+    "text": "Mechanical Design & FEA\n\nManufacturing\n\n\n\nDesigned and manufactured a system to raise and lower sensors through a ~600ft radioactive mine shaft (shrinking to an unknown diameter) for data collection without direct human contact.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEmbedded Systems & Firmware\n\nPCB Design & Electronics\n\n\n\nProgrammed an FPGA to read a 4x4 matrix keypad and display the last two hexadecimal inputs on a dual seven-segment display. Accounted for key bounce, multi-press, and timing inconsistencies.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRobotics & Control Systems\n\nPCB Design & Electronics\n\nEmbedded Systems & Firmware\n\nMechanical Design & FEA\n\n\n\nDeveloped and deployed an AUV to map metal debris distribution on the ocean floor and back-calculate debris drop locations.\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "projects/abyssExplorer/abyssExplorer.html#problem-statement",
-    "href": "projects/abyssExplorer/abyssExplorer.html#problem-statement",
+    "objectID": "projects/abyssExplorer/abyssExplorer.html#section",
+    "href": "projects/abyssExplorer/abyssExplorer.html#section",
     "title": "Abyss Explorer",
-    "section": "Problem Statement",
-    "text": "Problem Statement\nThis revised problem statement concisely defines the project scope and eliminated errors, biases, and implied solutions.\n“The client is trying to explore an old mine site. However, the interior of the mine is hostile to human entry. The main section of the mine can only be accessed through a narrow ventilation shaft that gets smaller during descent from 24 inches to an unknown diameter. The client needs a way to lower a variety of sensors, cameras, and lights into the mine’s interior through the shaft to determine the inside nature of the cave and its environmental conditions while monitoring their depth in real time, as well as retrieve them without damage.”"
-  },
-  {
-    "objectID": "projects/abyssExplorer/abyssExplorer.html#functions",
-    "href": "projects/abyssExplorer/abyssExplorer.html#functions",
-    "title": "Abyss Explorer",
-    "section": "Functions",
-    "text": "Functions\nFunctions are capabilities that the design must perform to meet the client’s needs. The following are the constraints for the design:\n\nRaise and lower a platform\nSupport the lowering mechanism and payload\nProtect the client’s hardware\nNavigate potential obstacles\nConvey the depth of the payload"
-  },
-  {
-    "objectID": "projects/abyssExplorer/abyssExplorer.html#objectives",
-    "href": "projects/abyssExplorer/abyssExplorer.html#objectives",
-    "title": "Abyss Explorer",
-    "section": "Objectives",
-    "text": "Objectives\nAn objective is a property of the design that has a preferred or target direction. The following are the objectives for the design:\n\nMinimize the horizontal area of the payload\nMinimize the weight of the device (payload and lowering mechanism)\nMinimize the device’s volumetric footprint while being transported\nMaximize precision of depth tracking\nMaximize the reusability of the device\nMinimize environmental contaminants sticking to the payload"
-  },
-  {
-    "objectID": "projects/abyssExplorer/abyssExplorer.html#constraints",
-    "href": "projects/abyssExplorer/abyssExplorer.html#constraints",
-    "title": "Abyss Explorer",
-    "section": "Constraints",
-    "text": "Constraints\nA constraint is a requirement that the design must fully satisfy, or else it is unacceptable. The following are the constraints for the design:\n\nMust fit within half the space of a 2019 Subaru Crosstrek for transport and be light and compact enough to take only one trip to carry up to the shaft with at most two people\nMust hold a sensor payload that fits within an 8-inch diameter and potentially hazardous environment\nMust descend to at least 600 ft down.\nMust have a vertical speed of at least 1 ft/s and provide control over ascent and descent at all times by being able to hold its position and resume movement at any point"
-  },
-  {
-    "objectID": "projects/abyssExplorer/abyssExplorer.html#prioritizing-objectives",
-    "href": "projects/abyssExplorer/abyssExplorer.html#prioritizing-objectives",
-    "title": "Abyss Explorer",
-    "section": "Prioritizing Objectives",
-    "text": "Prioritizing Objectives\nThe team used a pairwise comparison chart to rank the priority of each objective.\n\n\n\nFigure 1. Pairwise Comparison Chart\n\n\nFrom Figure 1, the prioritized order of objectives is as follows:\n\nMinimize the horizontal area of the payload\nMinimize the weight of the device (payload and lowering mechanism)\nMinimize the device’s volumetric footprint while being transported\nMaximize precision of depth tracking\nMaximize the reusability of the device\nMinimize environmental contaminants sticking to the payload\n\nObjective 1 outranked the other objectives since a smaller top-down area footprint would increase the likelihood of the payload completely making it down the shaft, given the unknown smallest diameter and potential obstacles. Objective 2 ranked second, since the client is operating on a tight schedule of one day and needs to get the device up to the shaft in one trip to run it through the shaft multiple times. Objective 3 ranked third, because the client has limited space in his car to transport both teams’ devices, and the dimensions of the other team’s design are unknown, so minimizing the volumetric footprint would increase the client’s chances of getting the device to the site. Objective 4 ranked fourth, since the client specified he wanted to know the depth of the payload to an ideal, but not necessary, precision of 1ft. Objective 5 was placed above objective 6 as the client expects to lower and raise the payload through the full length of the shaft at least five times, and as long as the attempts are made on the same day, he will only remove contaminants once at the end of trials."
-  },
-  {
-    "objectID": "projects/abyssExplorer/abyssExplorer.html#design-alternatives",
-    "href": "projects/abyssExplorer/abyssExplorer.html#design-alternatives",
-    "title": "Abyss Explorer",
-    "section": "Design Alternatives",
-    "text": "Design Alternatives\nFrom the morphological chart, five design alternatives were developed as outlined in Figure 3.\n\n\n\nFigure 3. Design Alternatives"
-  },
-  {
-    "objectID": "projects/abyssExplorer/abyssExplorer.html#possible",
-    "href": "projects/abyssExplorer/abyssExplorer.html#possible",
-    "title": "Abyss Explorer",
-    "section": "Possible",
-    "text": "Possible"
-  },
-  {
-    "objectID": "projects/abyssExplorer/abyssExplorer.html#possible-solutions-to-the-functions",
-    "href": "projects/abyssExplorer/abyssExplorer.html#possible-solutions-to-the-functions",
-    "title": "Abyss Explorer",
-    "section": "Possible Solutions to the Functions",
-    "text": "Possible Solutions to the Functions\nVarious means were generated as possibilities to fulfill each function. These means were organized through a morphological chart. Note: the functions listed in Figure 2 are slightly different from the functions listed earlier, as they were refined during later stages of the design process. The functions as described earlier combine and clarify some of the functions listed here.\n\n\n\nFigure 2. Morphological Chart\n\n\nIn Figure 2, Function 1 refers to what would allow the lowering mechanism to shorten or lengthen the rope attached to a platform. Function 2 refers to what would prevent the lowering mechanism from falling into the ventilation shaft or falling on its side, considering forces applied from the client and means for function 1. Function 3 refers to how the payload would be attached to the hypothetical rope. Function 4 refers to how the payload should be constructed to allow the sensors to operate, including the shape and structure of the payload. Function 5 refers to how the components could be shielded or cushioned from the harsh environment and obstacles. Function 6 refers to how the client will tell how deep the payload has gone into the shaft. Function 7 refers to how the payload would avoid, move around, or destroy obstacles within the shaft."
-  },
-  {
-    "objectID": "projects/abyssExplorer/abyssExplorer.html#downselecting",
-    "href": "projects/abyssExplorer/abyssExplorer.html#downselecting",
-    "title": "Abyss Explorer",
-    "section": "Downselecting",
-    "text": "Downselecting"
-  },
-  {
-    "objectID": "projects/abyssExplorer/abyssExplorer.html#downselecting-alternatives",
-    "href": "projects/abyssExplorer/abyssExplorer.html#downselecting-alternatives",
-    "title": "Abyss Explorer",
-    "section": "Downselecting Alternatives",
-    "text": "Downselecting Alternatives"
-  },
-  {
-    "objectID": "projects/abyssExplorer/abyssExplorer.html#downselection-of-the-alternatives",
-    "href": "projects/abyssExplorer/abyssExplorer.html#downselection-of-the-alternatives",
-    "title": "Abyss Explorer",
-    "section": "Downselection of the Alternatives",
-    "text": "Downselection of the Alternatives"
-  },
-  {
-    "objectID": "projects/abyssExplorer/abyssExplorer.html#low-resolution-prototyping",
-    "href": "projects/abyssExplorer/abyssExplorer.html#low-resolution-prototyping",
-    "title": "Abyss Explorer",
-    "section": "Low-resolution Prototyping",
-    "text": "Low-resolution Prototyping"
-  },
-  {
-    "objectID": "projects/abyssExplorer/abyssExplorer.html#checkpoint-prototype",
-    "href": "projects/abyssExplorer/abyssExplorer.html#checkpoint-prototype",
-    "title": "Abyss Explorer",
-    "section": "Checkpoint Prototype",
-    "text": "Checkpoint Prototype"
-  },
-  {
-    "objectID": "projects/abyssExplorer/abyssExplorer.html#final-prototype",
-    "href": "projects/abyssExplorer/abyssExplorer.html#final-prototype",
-    "title": "Abyss Explorer",
-    "section": "Final Prototype",
-    "text": "Final Prototype"
-  },
-  {
-    "objectID": "projects/abyssExplorer/abyssExplorer.html#solidworks-cad-files",
-    "href": "projects/abyssExplorer/abyssExplorer.html#solidworks-cad-files",
-    "title": "Abyss Explorer",
-    "section": "SolidWorks CAD Files",
+    "section": "",
     "text": "SolidWorks CAD Files"
   },
   {
-    "objectID": "projects/abyssExplorer/abyssExplorer.html#drawings",
-    "href": "projects/abyssExplorer/abyssExplorer.html#drawings",
+    "objectID": "projects/abyssExplorer/abyssExplorer.html#manufacturing-documentation",
+    "href": "projects/abyssExplorer/abyssExplorer.html#manufacturing-documentation",
     "title": "Abyss Explorer",
-    "section": "Drawings",
-    "text": "Drawings"
+    "section": "Manufacturing Documentation",
+    "text": "Manufacturing Documentation\nThe following documentation files were presented to the client as manufacturing process references.\n\nSolidWorks CAD Files\n\n\nTechnical Drawings\nThis full assembly drawing shows how all the components fit together to make the full system.\nDownload PDF file.\nThe individual technical drawings show the relevant manufacturing specifications and 3D shape for each component.\nDownload PDF file.\n\n\nBill of Materials\nThe bill of materials outlines the necessary materials to produce the system and their cost. Throughout the project, the team successfully managed a $500 budget.\n\n\n\nFigure x.\n\n\n\n\nProcess Router\nThe process router outlines all the manufacturing steps, equipment, and software used.\nDownload PDF file."
   },
   {
-    "objectID": "projects/abyssExplorer/abyssExplorer.html#bill-of-materials",
-    "href": "projects/abyssExplorer/abyssExplorer.html#bill-of-materials",
+    "objectID": "projects/abyssExplorer/abyssExplorer.html#design-review",
+    "href": "projects/abyssExplorer/abyssExplorer.html#design-review",
     "title": "Abyss Explorer",
-    "section": "Bill of Materials",
-    "text": "Bill of Materials"
+    "section": "Design Review",
+    "text": "Design Review"
   },
   {
-    "objectID": "projects/abyssExplorer/abyssExplorer.html#technical-drawings",
-    "href": "projects/abyssExplorer/abyssExplorer.html#technical-drawings",
+    "objectID": "projects/abyssExplorer/abyssExplorer.html#physical-deliverables",
+    "href": "projects/abyssExplorer/abyssExplorer.html#physical-deliverables",
     "title": "Abyss Explorer",
-    "section": "Technical Drawings",
-    "text": "Technical Drawings"
+    "section": "Physical Deliverables",
+    "text": "Physical Deliverables\n\n\n\n\n\n\nFinal Manufactured Product\n\n\n\n\n\n\n\nFinal CAD Assembly in SolidWorks\n\n\n\n\n\n\n\n\nFigure x."
   },
   {
-    "objectID": "projects/abyssExplorer/abyssExplorer.html#process-router",
-    "href": "projects/abyssExplorer/abyssExplorer.html#process-router",
+    "objectID": "projects/abyssExplorer/abyssExplorer.html#design-review-and-changes-to-the",
+    "href": "projects/abyssExplorer/abyssExplorer.html#design-review-and-changes-to-the",
     "title": "Abyss Explorer",
-    "section": "Process Router",
-    "text": "Process Router"
+    "section": "Design Review and Changes to the",
+    "text": "Design Review and Changes to the"
   },
   {
-    "objectID": "projects/abyssExplorer/abyssExplorer.html#process-routerf",
-    "href": "projects/abyssExplorer/abyssExplorer.html#process-routerf",
+    "objectID": "projects/abyssExplorer/abyssExplorer.html#design-review-and-changes-to-the-design-alternative",
+    "href": "projects/abyssExplorer/abyssExplorer.html#design-review-and-changes-to-the-design-alternative",
     "title": "Abyss Explorer",
-    "section": "Process Routerf",
-    "text": "Process Routerf"
+    "section": "Design Review and Changes to the Design Alternative",
+    "text": "Design Review and Changes to the Design Alternative"
   }
 ]

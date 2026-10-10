@@ -18,6 +18,7 @@ listing:
 ::: {.grid .hero-section}
 
 ::: {.g-col-12 .g-col-md-6}
+<!-- <p class="main-heading"><span id="grabbedWord">Engineering</span> a More Accessible World</p> -->
 <p class="main-heading">Engineering a More Accessible World</p>
 
 <p class="hero-subtitle">I thrive on the challenge of translating complex human needs into functional, reliable engineering solutions. I am passionate about applying my skills to solve complex problems through intentional mechatronic design.</p>
@@ -42,3 +43,105 @@ listing:
 :::
 
 :::
+
+
+
+<!-- LEFT COLUMN: ROBOT ARM -->
+<!-- ::: {.g-col-12 .g-col-md-3 .hero-arm-stage} -->
+```{=html}
+  <!-- <div id="armStageWrapper" class="robot-arm-wrapper">
+    <svg id="robotSvg" viewBox="120 80 340 1200" class="w-full h-auto" xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)">
+      <!-- Ground Baseline -->
+      <line x1="60" y1="440" x2="440" y2="440" stroke="#cbd5e1" stroke-width="4" stroke-dasharray="8 8"/>
+
+      <!-- Base Mount -->
+      <g id="baseMount" transform="translate(250, 410)">
+        <path d="M -130 0 L 130 0 C 145 0, 145 28, 130 28 L -130 28 C -145 28, -145 0, -130 0 Z" fill="#F08024" class="arm-stroke"/>
+        <path d="M -45 0 L -25 -60 L 25 -60 L 45 0 Z" fill="#98C5D3" class="arm-stroke"/>
+        <path d="M 0 -60 L 25 -60 L 38 0 L 10 0 Z" fill="#7FAEC0" opacity="0.6"/>
+      </g>
+
+      <!-- Joint 1: Shoulder -->
+      <g id="shoulderGroup" class="smooth-arm" transform="translate(250, 350) rotate(0)">
+        <path d="M -32 22 L -135 -120 C -150 -135, -125 -160, -90 -145 L 32 -10 Z" fill="#98C5D3" class="arm-stroke"/>
+        <path d="M -125 -125 L -20 18 L 22 -2 L -100 -138 Z" fill="#7FAEC0" opacity="0.5"/>
+        <circle cx="0" cy="0" r="38" fill="#F08024" class="arm-stroke"/>
+        <circle cx="0" cy="0" r="18" fill="#E2F1F5" class="arm-stroke"/>
+
+        <!-- Joint 2: Elbow -->
+        <g id="elbowGroup" class="smooth-arm" transform="translate(-110, -140) rotate(0)">
+          <path d="M -18 -15 L 85 -92 C 105 -105, 120 -75, 95 -60 L -5 18 Z" fill="#98C5D3" class="arm-stroke"/>
+          <path d="M -5 -8 L 88 -82 L 95 -68 L -2 8 Z" fill="#BDDCED" opacity="0.8"/>
+          <circle cx="0" cy="0" r="28" fill="#98C5D3" class="arm-stroke"/>
+          <circle cx="0" cy="0" r="12" fill="#E2F1F5" class="arm-stroke"/>
+
+          <!-- Joint 3: Wrist -->
+          <g id="wristGroup" class="smooth-arm" transform="translate(95, -80) rotate(0)">
+            <g id="wristCollar">
+              <path d="M -8 -22 L 18 -32 L 28 8 L 2 18 Z" fill="#F08024" class="arm-stroke"/>
+            </g>
+
+            <!-- Claws -->
+            <g id="clawTopGroup" class="smooth-arm" transform="translate(12, -18) rotate(0)">
+              <path d="M 0 0 L 16 -16 L 38 -16 L 38 4" class="claw-stroke"/>
+            </g>
+
+            <g id="clawBottomGroup" class="smooth-arm" transform="translate(12, 0) rotate(0)">
+              <path d="M 0 0 L 16 16 L 38 16 L 38 -4" class="claw-stroke"/>
+            </g>
+          </g>
+        </g>
+      </g>
+    </svg>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const shoulderGroup = document.getElementById('shoulderGroup');
+      const elbowGroup = document.getElementById('elbowGroup');
+      const wristGroup = document.getElementById('wristGroup');
+      const clawTopGroup = document.getElementById('clawTopGroup');
+      const clawBottomGroup = document.getElementById('clawBottomGroup');
+      const grabbedWord = document.getElementById('grabbedWord');
+      const armStageWrapper = document.getElementById('armStageWrapper');
+
+      let currentStep = 0;
+
+      const sequence = [
+        { shoulder: 0, elbow: 0, wrist: 0, claw: 0, armX: 0, textX: 0, textY: 0, delay: 1200 },
+        { shoulder: 58, elbow: -48, wrist: -32, claw: 18, armX: 40, textX: 0, textY: 0, delay: 1000 },
+        { shoulder: 64, elbow: -56, wrist: -38, claw: -8, armX: 55, textX: 0, textY: 0, delay: 600 },
+        { shoulder: 20, elbow: -10, wrist: -5, claw: -8, armX: 10, textX: -40, textY: -25, delay: 1100 },
+        { shoulder: 64, elbow: -56, wrist: -38, claw: -8, armX: 55, textX: 0, textY: 0, delay: 1100 },
+        { shoulder: 58, elbow: -48, wrist: -32, claw: 18, armX: 40, textX: 0, textY: 0, delay: 600 },
+        { shoulder: 0, elbow: 0, wrist: 0, claw: 0, armX: 0, textX: 0, textY: 0, delay: 1600 }
+      ];
+
+      function executeStep() {
+        const step = sequence[currentStep];
+
+        shoulderGroup.setAttribute('transform', `translate(250, 350) rotate(${step.shoulder})`);
+        elbowGroup.setAttribute('transform', `translate(-110, -140) rotate(${step.elbow})`);
+        wristGroup.setAttribute('transform', `translate(95, -80) rotate(${step.wrist})`);
+        clawTopGroup.setAttribute('transform', `translate(12, -18) rotate(${-step.claw})`);
+        clawBottomGroup.setAttribute('transform', `translate(12, 0) rotate(${step.claw})`);
+
+        if (armStageWrapper) {
+          armStageWrapper.style.transition = `transform ${step.delay}ms cubic-bezier(0.25, 1, 0.5, 1)`;
+          armStageWrapper.style.transform = `translateX(${step.armX}px)`;
+        }
+
+        if (grabbedWord) {
+          grabbedWord.style.transition = `transform ${step.delay}ms cubic-bezier(0.25, 1, 0.5, 1)`;
+          grabbedWord.style.transform = `translate(${step.textX}px, ${step.textY}px)`;
+        }
+
+        currentStep = (currentStep + 1) % sequence.length;
+        setTimeout(executeStep, step.delay);
+      }
+
+      executeStep();
+    });
+  </script>
+```
+<!-- ::: -->
