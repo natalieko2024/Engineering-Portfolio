@@ -16,6 +16,10 @@
     ]
   },
   {
+    "listing": "/work.html",
+    "items": []
+  },
+  {
     "listing": "/index.html",
     "items": [
       "/projects/abyssExplorer/abyssExplorer.html",
