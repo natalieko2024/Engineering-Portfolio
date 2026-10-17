@@ -491,6 +491,11 @@ h1.title {
   color: #334155;
 }
 
+.navbar-logo {
+  max-height: 50px; /* Change this value to your preferred size */
+  height: auto;
+}
+
 /* ==========================================================================
    INLINE ROBOT ARM & TITLE ALIGNMENT
    ========================================================================== */

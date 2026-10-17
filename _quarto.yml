@@ -5,6 +5,7 @@ project:
 website:
   title: "Natalie Ko's Engineering Portfolio"
   navbar:
+    logo: nko-logo-light.gif
     background: "#ffffff"          # Disable standard background
     search: false              # Hide search icon if not needed
     right:
@@ -12,6 +13,8 @@ website:
         href: index.qmd
       - text: "Projects"
         href: projects.qmd
+      - text: "Work Experiences"
+        href: work.qmd
       - text: "CV"
         href: resume.qmd
       - text: "About Me"
