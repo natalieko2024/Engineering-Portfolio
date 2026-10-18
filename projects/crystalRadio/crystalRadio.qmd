@@ -20,25 +20,25 @@ roles: "Electrical Debugging and Analysis Lead (Team of 4)"
 # Introduction and Background
 This started out as a history project analyzing the evolution of different sources of sound and how they affect our perception of the information conveyed. As part of this, my team chose to analyze various radios from the WWI/WWII era, and borrowed the relevant materials from Pomona College's music department to experiment with, even though the professor who owned them claimed students in previous years couldn't get them to work. I was fascinated by how these radios did not need any external power source to work. Seeing an opportunity to apply my skills from my Engineering Systems course, I decided to attempt to debug the radios so we could hear real signals out of them. I didn't have any experience with any kind of radios before, and minimal experience solving for the transient response of RLC circuits only theoretically, so this was a great hands-on experience getting to know analog circuits!
 
-# The Circuit
+# The Circuits
 
 ## Pickard Crystal Radio
 
 I started with the Pickard Crystal Radio, because it looked the simplest. It only had a variable inductor, a capacitor, resistor and diode. Because I knew radios could be tuned to different frequencies, I assumed the variable inductor would be used for tuning. My knowledge of RLC circuits helped me understand that this circuit would resonate at a specific frequency, based on the component values. Since the inductor was variable, I could adjust the resonant frequency to match the desired broadcast frequency. I also knew the basics of diodes, so I assumed it would have to go in a specific direction in order to hear any sound. It turns out this specifically needed to be a germanium diode, as opposed to the more common silicone diodes, because of their lower forward voltage drop. This prevents the diode from absorbing too much of the signal (since the power output of the crystal radio is tiny), which would make most AM signals inaudible. Figure 1. shows the schematic I ended up using.
 
-![](images/pickard.png)
+![Figure 1. Pickard Crystal Radio Schematic](images/pickard.png)
 
 ## Dunwoody Crystal Radio
 
 The Dunwoody Crystal Radio was similar to the Pickard Crystal Radio in that it used similar components. However, it had two tuning capacitors in addition to the variable inductor. This would allow for more fine-tuning of the selected frequency. Instead of the variable inductor being adjustable by a simple conductive slider, the inductor had various coil taps that I first adjusted to select the broad operational frequency. I then adjusted the tuning capacitors to fine-tune the selected signal. Figure 2. shows the schematic of the circuit.
 
-![](images/dunwoody.png)
+![Figure 2. Dunwoody Crystal Radio Schematic](images/dunwoody.png)
 
 ## Armstrong Regenerative Circuit Radio
 
 This circuit was very different. It used a combination of inductors with a tickler coil to feed the output signal back into the circuit. It also used a triode vacuum tube to amplify the signal, which meant it needed two external power sources to work. Figure 3. shows the schematic of the circuit.
 
-![](images/armstrong.png)
+![Figure 3. Armstrong Regenerative Circuit Radio Schematic](images/armstrong.png)
 
 I was not able to get this circuit to work, even after replacing all components apart from the vacuum tube, which I could not find a replacement for. This led me to believe the vacuum tube was faulty.
 

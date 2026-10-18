@@ -18,7 +18,47 @@ skills: "P-Control, Circuit Design, Mechanical Design, C++, MATLAB, Data Analysi
   <div><strong>Skills:</strong> {{< meta skills >}}</div>
 </div>
 
-# TEst heading
-## YAHOOOO
+# Introduction and Background
 
-# wee woo
+# Initial Setup
+## Frame and Motor Assembly
+
+## Motherboard Setup
+
+### Assembly
+
+### Validation, Calibration, and Error Measurement
+
+## Open-Loop Control Navigation
+
+# Sensor Development
+
+The team developed several sensor circuits while determining the project scope. We ultimately decided on using the thermistor, pressure sensor, and a magnetometer to achieve our goals. However, this section outlines all sensor circuits prototyped.
+
+## Turbidity Meter
+
+## Underwater Acoustics
+
+## Temperature Sensors
+### Solid-state Linear Temperature Sensor
+### Thermistor
+### Thermocouple
+
+## Depth Sensor
+
+## Magnetometer
+
+# P-Control
+## Depth Control
+
+## Surface Navigation Control
+
+# Mechanical Design
+## Buoyancy
+## Waterproofing
+
+# Deployment
+
+# Results and Conclusion
+
+# Final Paper
