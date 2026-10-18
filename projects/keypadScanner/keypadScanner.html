@@ -77,6 +77,35 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -153,13 +182,13 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#oscilloscope-testing" id="toc-oscilloscope-testing" class="nav-link" data-scroll-target="#oscilloscope-testing">Oscilloscope Testing</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#phase-2---time-multiplexed-dual-7-segment-display" id="toc-phase-2---time-multiplexed-dual-7-segment-display" class="nav-link" data-scroll-target="#phase-2---time-multiplexed-dual-7-segment-display">Phase 2 - Time-Multiplexed Dual 7-Segment Display</a>
+  <li><a href="#phase-2---time-multiplexed-dual-7-segment-display-and-keypad-scanning" id="toc-phase-2---time-multiplexed-dual-7-segment-display-and-keypad-scanning" class="nav-link" data-scroll-target="#phase-2---time-multiplexed-dual-7-segment-display-and-keypad-scanning">Phase 2 - Time-Multiplexed Dual 7-Segment Display and Keypad Scanning</a>
   <ul class="collapse">
   <li><a href="#design-and-testing-methodology-1" id="toc-design-and-testing-methodology-1" class="nav-link" data-scroll-target="#design-and-testing-methodology-1">Design and Testing Methodology</a></li>
   <li><a href="#technical-documentation-1" id="toc-technical-documentation-1" class="nav-link" data-scroll-target="#technical-documentation-1">Technical Documentation</a>
   <ul class="collapse">
   <li><a href="#block-diagram-1" id="toc-block-diagram-1" class="nav-link" data-scroll-target="#block-diagram-1">Block Diagram</a></li>
-  <li><a href="#circuit-schematic-1" id="toc-circuit-schematic-1" class="nav-link" data-scroll-target="#circuit-schematic-1">Circuit Schematic</a></li>
+  <li><a href="#schematic" id="toc-schematic" class="nav-link" data-scroll-target="#schematic">Schematic</a></li>
   </ul></li>
   <li><a href="#results-and-discussion-1" id="toc-results-and-discussion-1" class="nav-link" data-scroll-target="#results-and-discussion-1">Results and Discussion</a>
   <ul class="collapse">
@@ -168,34 +197,18 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#oscilloscope-testing-1" id="toc-oscilloscope-testing-1" class="nav-link" data-scroll-target="#oscilloscope-testing-1">Oscilloscope Testing</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#phase-3---keypad-reader" id="toc-phase-3---keypad-reader" class="nav-link" data-scroll-target="#phase-3---keypad-reader">Phase 3 - Keypad Reader</a>
+  <li><a href="#phase-3---integrated-keypad-scanner-and-7-segment-output" id="toc-phase-3---integrated-keypad-scanner-and-7-segment-output" class="nav-link" data-scroll-target="#phase-3---integrated-keypad-scanner-and-7-segment-output">Phase 3 - Integrated Keypad Scanner and 7-Segment Output</a>
   <ul class="collapse">
-  <li><a href="#design-and-testing-methodology-2" id="toc-design-and-testing-methodology-2" class="nav-link" data-scroll-target="#design-and-testing-methodology-2">Design and Testing Methodology</a></li>
-  <li><a href="#technical-documentation-2" id="toc-technical-documentation-2" class="nav-link" data-scroll-target="#technical-documentation-2">Technical Documentation</a>
+  <li><a href="#design-and-testing-methodology-2" id="toc-design-and-testing-methodology-2" class="nav-link" data-scroll-target="#design-and-testing-methodology-2">Design and Testing Methodology</a>
   <ul class="collapse">
   <li><a href="#block-diagram-2" id="toc-block-diagram-2" class="nav-link" data-scroll-target="#block-diagram-2">Block Diagram</a></li>
-  <li><a href="#circuit-schematic-2" id="toc-circuit-schematic-2" class="nav-link" data-scroll-target="#circuit-schematic-2">Circuit Schematic</a></li>
+  <li><a href="#schematic-1" id="toc-schematic-1" class="nav-link" data-scroll-target="#schematic-1">Schematic</a></li>
   </ul></li>
   <li><a href="#results-and-discussion-2" id="toc-results-and-discussion-2" class="nav-link" data-scroll-target="#results-and-discussion-2">Results and Discussion</a>
   <ul class="collapse">
+  <li><a href="#synthesizer-warnings" id="toc-synthesizer-warnings" class="nav-link" data-scroll-target="#synthesizer-warnings">Synthesizer Warnings</a></li>
   <li><a href="#testbench-simulation-2" id="toc-testbench-simulation-2" class="nav-link" data-scroll-target="#testbench-simulation-2">Testbench Simulation</a></li>
   <li><a href="#hardware-deployment-2" id="toc-hardware-deployment-2" class="nav-link" data-scroll-target="#hardware-deployment-2">Hardware Deployment</a></li>
-  <li><a href="#oscilloscope-testing-2" id="toc-oscilloscope-testing-2" class="nav-link" data-scroll-target="#oscilloscope-testing-2">Oscilloscope Testing</a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#phase-4---integrated-keypad-scanner-and-7-segment-output" id="toc-phase-4---integrated-keypad-scanner-and-7-segment-output" class="nav-link" data-scroll-target="#phase-4---integrated-keypad-scanner-and-7-segment-output">Phase 4 - Integrated Keypad Scanner and 7-Segment Output</a>
-  <ul class="collapse">
-  <li><a href="#design-and-testing-methodology-3" id="toc-design-and-testing-methodology-3" class="nav-link" data-scroll-target="#design-and-testing-methodology-3">Design and Testing Methodology</a></li>
-  <li><a href="#technical-documentation-3" id="toc-technical-documentation-3" class="nav-link" data-scroll-target="#technical-documentation-3">Technical Documentation</a>
-  <ul class="collapse">
-  <li><a href="#block-diagram-3" id="toc-block-diagram-3" class="nav-link" data-scroll-target="#block-diagram-3">Block Diagram</a></li>
-  <li><a href="#circuit-schematic-3" id="toc-circuit-schematic-3" class="nav-link" data-scroll-target="#circuit-schematic-3">Circuit Schematic</a></li>
-  </ul></li>
-  <li><a href="#results-and-discussion-3" id="toc-results-and-discussion-3" class="nav-link" data-scroll-target="#results-and-discussion-3">Results and Discussion</a>
-  <ul class="collapse">
-  <li><a href="#testbench-simulation-3" id="toc-testbench-simulation-3" class="nav-link" data-scroll-target="#testbench-simulation-3">Testbench Simulation</a></li>
-  <li><a href="#hardware-deployment-3" id="toc-hardware-deployment-3" class="nav-link" data-scroll-target="#hardware-deployment-3">Hardware Deployment</a></li>
-  <li><a href="#oscilloscope-testing-3" id="toc-oscilloscope-testing-3" class="nav-link" data-scroll-target="#oscilloscope-testing-3">Oscilloscope Testing</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
@@ -249,119 +262,965 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>In this project, I designed an FPGA implementation to read a 4x4 matrix keypad input</p>
+<p>In this project, I designed an FPGA implementation to read a 4x4 matrix keypad input and display the last two hexadecimal digits on a dual seven-segment display with the most recent entry always appearing on the right. The design made it so each key press was recorded only once independent of the press length. If multiple keys were held at the same time, only the last key held would be displayed.</p>
 <p>Watch this video below to see the final deployment! </p><div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/qhZsKVxzVlM" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div><p></p>
+<p>The materials I had were - motherboard UPduino v3.1 (Lattice UltraPlus iCE40UP5K) FPGA - dual 7-seg display 4x4 matrix keypad input</p>
 </section>
 <section id="phase-1---single-7-segment-display" class="level1">
 <h1>Phase 1 - Single 7-Segment Display</h1>
+<p>The first step in building this implementation was to figure out how to use the FPGA’s on-board high-speed oscillator (HSOSC), as well as control an external 7-segment display using combinational logic of four switch inputs. To do this, I controlled an on-board LED with the high-speed oscillator, and controlled two additional on-board LEDs and an external 7-segment display using combinational logic of four switch inputs.</p>
 <section id="design-and-testing-methodology" class="level2">
 <h2 class="anchored" data-anchor-id="design-and-testing-methodology">Design and Testing Methodology</h2>
+<p>To do this, I created two submodules that were linked by a top-level module. The top-level module included combinational logic to convert the four switch inputs to LED on/off states, and called the two submodules and HSOSC to control the oscillating LED and 7-segment display.</p>
+<p>One submodule controlled a counter that would “step down” the 24MHz HSOSC clock to a 2.4Hz clock. It did this by counting HSOSC rising edges until some maximum value, then inverting whatever output it generated previously. Since I set up the HSOSC to have an output frequency of 24MHz and the target frequency was 2.4Hz, I divided these to get the delay count (how many clock ticks of the 24MHz clock needed to count up to to equal one 2.4Hz clock tick).</p>
+<p><span class="math inline">\(\frac{24MHz}{2.4Hz} = \frac{24 \times 10^7 Hz}{2.4 Hz} = 10^7\)</span></p>
+<p>Each clock cycle has a high and low state that are equal in length, and the oscillating LED should turn on when the clock is high. This means the LED should toggle twice each cycle.</p>
+<p>So the LED would toggle every <span class="math inline">\(\frac{10^7}{2} = 5 \times 10^6\)</span> 24MHz clock ticks.</p>
+<p>The counter was also given a reset and enable input for additional functionality in case the submodule needs to be used in a future design. The reset, tied to a button input, resets the counter to 0 when pressed. The enable input, tied to a constant high signal from the top-level module, allows the counter to run as expected when high and hold its current value when low. When the counter reached the maximum count value, it reset to 0 and inverted the output signal. This would act as the on-board LED toggle.</p>
+<p>The other submodule implemented the combinational logic to control the 7-segment display based on the 4 switch inputs. Because of the large number of output signals, the combinational logic was implemented using a case statement instead of a series of implied logic gates.</p>
+<p>The design was tested using waveform simulation of the top-level module and each submodule in QuestaSim through automatic testbenches to confirm the desired behaviour.</p>
+<p>The counter submodule testbench instantiated the submodule freqconverter (with parameters WIDTH and MAX set to 4 and 10 respectively) under a test and generated a clock signal with a cycle time of 2ns. To start testing, enable and reset were first toggled so they were high. Then, the output signal was checked at every MAX number of clock signals to confirm the desired ON/OFF frequency. The reset was then toggled after a small delay and the output signal was checked again with the same intervals to confirm the reset put the counter value back at 0. The enable was then set to low and the same tests were performed to confirm the counter stopped running when enable was low.</p>
+<p>The 7-segment display submodule testbench instantiated the submodule switch_7seg under a test, then went through each combination of four switch inputs while checking the seven segments were outputting the correct values.</p>
+<p>The top-level module was tested in three separate testbenches. First was a testbench to test the clock generated by the HSOSC. The top-level output clk signal was checked at the time it takes to complete half a 24MHz clock cycle twice to confirm the signal is oscillating high/low at the 24MHz.</p>
+<p>Another testbench was written to test the combinational logic of the on-board LEDs and the connection to the 7-segment submodule. Similar to the 7-segment display submodule testbench, this testbench instantiated the top-level module lab1_nk under a test, then went through each combination of four switch inputs while checking the on-board LEDs were outputting the correct values and the seven segments were being mapped to the top-level seven segment outputs.</p>
+<p>The final top-level testbench tested the connection to the counter submodule. After instantiating the top-level module lab1_nk under a test, the reset signal was toggled high, and the oscillating LED signal was checked every half stepped-down clock signal to confirm the submodule output signal was oscillated at the right frequency and being mapped to the LED. The reset signal was toggled after a small delay and the oscillating LED signal was checked at the same interval to confirm the reset put the counter back at 0 and did not affect the signal mapping.</p>
+<p>Finally, the 7-segment display circuit was built and connected to the FPGA GPIO pins, and the full design was uploaded to the FPGA and deployed on the hardware. The design was tested by toggling the switches to account for all cases and observing the LED and 7-segment display outputs to confirm functionality, as well as probing the output oscillating signal with an oscilloscope to confirm its frequency is 2.4Hz.</p>
+<p>To implement this design on hardware, the GPIO pins needed to be connected to current-limiting resistors before the 7-segment display diodes. The common anode of the 7-segment display was connected to 3.3V and the forward voltage of each diode within the display is 2V. I provided 5-20mA to each diode to ensure proper operation. Using Ohm’s Law,</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><span class="math display">\[
+\begin{aligned}
+V&amp;=IR\\
+V_s-V_{fw}&amp;=I_{min}R_{max}\\
+3.3-2&amp;=0.005R_{max}\\
+R_{max}&amp;=260\Omega
+\end{aligned}
+\]</span></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><span class="math display">\[
+\begin{aligned}
+V&amp;=IR\\
+V_s-V_{fw}&amp;=I_{max}R_{min}\\
+3.3-2&amp;=0.005R_{min}\\
+R_{min}&amp;=65\Omega
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+</div>
+<p>Picking a value in between 65Ω and 260Ω would yield 5-20mA, so using what was available I chose 150Ω resistors.</p>
 </section>
 <section id="technical-documentation" class="level2">
 <h2 class="anchored" data-anchor-id="technical-documentation">Technical Documentation</h2>
+<p>The source code for the part of the project can be found in the associated <a href="https://github.com/natalieko2024/E155-Labs/tree/main/E155-Lab1">GitHub repository</a>.</p>
 <section id="block-diagram" class="level3">
 <h3 class="anchored" data-anchor-id="block-diagram">Block Diagram</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab1blockdiagram.jpg" class="img-fluid figure-img"></p>
+<figcaption>Figure 1. Block Diagram of the Top-Level Module</figcaption>
+</figure>
+</div>
+<p>The block diagram in Figure 3 shows the overall architecture of the design. The top-level module lab1_nk includes three submodules: the high-speed oscillator (HSOSC), the counter module (freqconverter), and the 7-segment display module (switch_7seg). The top-level module also contains an XOR gate and an AND gate which determine the combinational logic of the two on-board LEDs.</p>
 </section>
 <section id="circuit-schematic" class="level3">
 <h3 class="anchored" data-anchor-id="circuit-schematic">Circuit Schematic</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab1schematic.jpg" class="img-fluid figure-img"></p>
+<figcaption>Figure 2. Schematic of All Circuit Components Outside the PCB</figcaption>
+</figure>
+</div>
+<p>The schematic in Figure 4 shows the physical circuit connections outside the PCB. The specified GPIO pins were connected to current-limiting resistors before the 7-segment display diodes. The common anode of the 7-segment display was connected to the 3.3V supply of the FPGA.</p>
 </section>
 </section>
 <section id="results-and-discussion" class="level2">
 <h2 class="anchored" data-anchor-id="results-and-discussion">Results and Discussion</h2>
+<p>The design met all intended design objectives.</p>
 <section id="testbench-simulation" class="level3">
 <h3 class="anchored" data-anchor-id="testbench-simulation">Testbench Simulation</h3>
+<p>Figure 3 shows a screenshot of the QuestaSim simulation waveforms for my 7-segment submodule testbench. It behaved correctly because for each switch combination, the 7-segment output was correct (looking at both the individual waveforms and the output of my automatic testbench).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view 7-segment submodule simulation waveforms
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab1waveforms-7seg.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 3. 7-segment submodule simulation waveforms</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view 7-segment submodule testbench outputs
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab1testbench-7seg.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 4. 7-segment submodule testbench outputs</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Figure 5 shows a screenshot of the QuestaSim simulation waveforms for my counter submodule testbench. Note that since in my testbench I updated the MAX parameter to 10, so the clock signal conversion does not line up with 24MHz stepped down to 2.4Hz but instead 24MHz to 2.4MHz. The stepped-down output clock signal was high and low for the correct interval of time, even after a reset at an irregular time interval. When enable was pulled high, it functioned regularly as a counter (see first 2.5 clock signals), but when it was pulled low, the counter kept its currrent value of high until the reset was toggled again, resetting the counter to 0. This behaviour was also confirmed by my automatic testbench.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view counter submodule simulation waveforms
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab1waveforms-freqconverter.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 5. Counter submodule simulation waveforms</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view counter submodule testbench outputs
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab1testbench-freqconverter.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 6. Counter submodule testbench outputs</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Figure 7 shows a screenshot of the QuestaSim simulation waveforms for the clock generated by the HSOSC in the top-level module. The expected clock cycle was about 41.67ns (from the 24MHz generated), and the waveforms show the clock signal toggling every ~21ns, which is correct. This behaviour was also confirmed by my automatic testbench.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view top-level module clock simulation waveforms
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab1waveforms-topclk.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 7. Simulation waveforms testing the clock output from the HSOSC in the top-level module</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view top-level module clock simulation outputs
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab1testbench-topclk.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 8. Top-level module clock testbench outputs</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Figure 9 shows a screenshot of the QuestaSim simulation waveforms for the combinational logic LED behaviour and 7-segment submodule connection at the top-level. It behaved correctly because for each switch combination, the LED and 7-segment output at the top-level were correct (looking at both the individual waveforms and the output of my automatic testbench).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view top-level module LED and 7-segment logic testbench simulation waveforms
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab1waveforms-topdiodes.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 9. Simulation waveforms for all combinational logic outputs in the top-level</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view top-level module combinational logic simulation outputs
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab1testbench-topdiodes.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 10. Top-level module combinational logic testbench outputs</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Figure 11 shows a screenshot of the QuestaSim simulation waveforms testing the counter-submodule connection to the top-level. The top-level oscillating LED output was correctly read at half the 2.4Hz clock cycle twice and again after a reset was held to confirm the oscillation was 2.4Hz.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view top-level module freqconverter testbench simulation waveforms
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab1waveforms-topfreq.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 11. Simulation waveforms for the counter submodule connection at the top-level</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view top-level module 2.4Hz simulation outputs
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab1testbench-topfreq.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 12. Top-level module 2.4Hz signal testbench outputs</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="hardware-deployment" class="level3">
 <h3 class="anchored" data-anchor-id="hardware-deployment">Hardware Deployment</h3>
+<p>This video showcases the design running on the completed PCB, with one on-board LED continuously blinking at 2.4Hz, and the other two on-board LEDs and the 7-segment display going through all 16 combinations of four switch inputs.</p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/Kqw6JT7Sy94" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 </section>
 <section id="oscilloscope-testing" class="level3">
 <h3 class="anchored" data-anchor-id="oscilloscope-testing">Oscilloscope Testing</h3>
+<p>The 2.4Hz LED toggle was confirmed using an oscilloscope. When the oscilloscope was connected to the LED output pin and ground, the signal was observed as shown in Figure 13.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab1oscope-blink.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 13. Oscilloscope trace observing 2.4Hz LED toggle</figcaption>
+</figure>
+</div>
+<p>Using the internal oscilloscope frequency measurement tool, the frequency was measured to be ~2.407Hz, which is almost exactly the intended 2.4Hz frequency. The small discrepancy could be due to variations in the clock frequency provided by the HSOSC, oscilloscope measurement errors etc.</p>
 </section>
 </section>
 </section>
-<section id="phase-2---time-multiplexed-dual-7-segment-display" class="level1">
-<h1>Phase 2 - Time-Multiplexed Dual 7-Segment Display</h1>
+<section id="phase-2---time-multiplexed-dual-7-segment-display-and-keypad-scanning" class="level1">
+<h1>Phase 2 - Time-Multiplexed Dual 7-Segment Display and Keypad Scanning</h1>
+<p>The second step in building this implementation was to figure out how to control a dual 7-segment display, and read in 4x4 matrix keypad inputs. In anticipation of the limited number of accessible GPIO pins in the complete design, the LEDs for each 7-segment had to be controlled by the same pin. To do this, I used the idea of time-multiplexing: turning on the common anode of only one half of the dual 7-segment display at a time and writing the digit displayed on that side to the LEDs. The displayed digits would be set using 8 switches. In addition, the 4x4 matrix keypad had 8 pins: one for each row and column. This means I could not use pure combinational logic to read in the keypad inputs. I would have to use some kind of scanning system to assert signals on each row and read in the column values to decode the key pressed. I drove 4 LEDs with the row outputs/column inputs such that pressing keys on different columns would drive different LEDs at 2Hz.</p>
 <section id="design-and-testing-methodology-1" class="level2">
 <h2 class="anchored" data-anchor-id="design-and-testing-methodology-1">Design and Testing Methodology</h2>
+<p>I created two submodules and linked them by a top-level module.</p>
+<p>The first submodule called the counter module from before to step down a 24MHz HSOSC clock to a 120Hz clock. Based on the positive edge of the new clock signal, it would change which anode output (left vs right side) would be tied high, which determines which 7-segment side to write to. 120Hz was chosen because based on trial and error, this frequency allowed both segments to be perceived as on at the same time without any flickering or bleeding.</p>
+<p>The second submodule called the counter module from before to step down a 24MHz HSOSC clock to a 1Hz clock. It then used assign statements to change each bit of the keypad row scanning output, so that only 1 bit out of 4 would be high at a time and they would oscillate at a rate of 2Hz.</p>
+<p>The top-level module called on the two submodules and HSOSC. The anode output was connected as the select of a 2:1 mux, so that it’s value determined which set of switches would be fed into the 7-segment submodule and the correct 7-segment pattern can be written. The column inputs were inverted and written to LEDs the LEDs blink at 2Hz when the corresponding row is scanned and column is pressed.</p>
+<p>The design was tested using waveform simulation of the top-level module and the scanning submodule in QuestaSim through automatic testbenches to confirm the desired behaviour.</p>
+<p>The scanning submodule testbench instantiated the submodule scan under a test. Reset and enable were pulled high. The row outputs were then checked every 0.006s as this is how long it should take for them to toggle. The reset was then pulled low and high and the row outputs were checked to reset to 4’b1000 and start rotating. Then, enable was set to low to confirm the row outputs would stop rotating, and reset was pulled high again to check the row outputs reset and did not continue changing.</p>
+<p>The top-level submodule testbench instantiated the module lab_nk under a test. Reset was set high, switch inputs were set and the segments were checked after 8333334ns to confirm that the left/right segments were only written at the corresponding anode values. Then, different column inputs were written and the led outputs were checked to confirm the led bits were inverted column bits.</p>
+<p>The dual 7-segment display circuit and keypad scanner circuit were built and connected separately to the FPGA GPIO pins because there were not enough pins to connect all the inputs and outputs at the same time. The design was tested by toggling all 8 switch inputs and observing the 7-segment display outputs, and then pressing keypad buttons individually and multiple in the same row/column and observing the LED outputs.</p>
+<p>To implement this in hardware, PNP transistors need to be wired to the anodes of the dual 7-segment display because the required current is greater than what the FPGA GPIO pins can drive and NPN transistors need to be wired to the rows of the 4x4 keypad to prevent shorting multiple row drivers when multiple keys are pressed (functioning as an open-drain/collector output).</p>
+<p>PNP transistors have a base-emitter saturation voltage of about 0.7V. Since I supplied the emitter with 3.3V, the voltage at the base would be <span class="math inline">\(V_B=3.3V-0.7V=2.6V\)</span>. The transistor is active when the base is low, so current will flow when the GPIO pin is low (0V). Also, the collector-emitter saturation voltage is about 0.25V, so the voltage at the collector would be <span class="math inline">\(V_C=3.3V-0.25V=3.05V\)</span>. Additionally, the forward voltage of an LED is around 2V. The maximum current the GPIO pins can handle is 8mA, so using Ohm’s law,</p>
+<div class="quarto-layout-panel" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<p><span class="math display">\[
+\begin{aligned}
+V&amp;=IR\\
+V_B-V_{GPIO}&amp;=I_{B}R_{B}\\
+2.6-0&amp;=0.008R_{B}\\
+R_{B}&amp;=325\Omega
+\end{aligned}
+\]</span></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<p><span class="math display">\[
+\begin{aligned}
+V&amp;=IR\\
+V_C-V_{LED}&amp;=I_{pin}R_{C}\\
+3.05-2&amp;=0.008R_{C}\\
+R_{C}&amp;=131.25\Omega
+\end{aligned}
+\]</span></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/pnp.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption>Figure 13. PNP Transistor Circuit</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>From these calculations, I used a 330Ω resistor for the base because it is slightly higher than the calculated value, which would prevent drawing too much current from the FPGA. I used a 150Ω resistor for the collector using this same logic.</p>
+<p>Similarly, NPN transistors have a base-emitter voltage of around 0.7V. Since I supplied the emitter with 0V, the voltage at the base would be <span class="math inline">\(V_B=0.7V-0V=0.7V\)</span>. The transistor is active when the base is high, so current will flow when the GPIO pin is low (3.3V). The maximum current the GPIO pins can handle is 8mA, so using Ohm’s law,</p>
+<div class="quarto-layout-panel" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<p><span class="math display">\[
+\begin{aligned}
+V&amp;=IR\\
+V_GPIO-V_{B}&amp;=I_{B}R_{B}\\
+3.3-0.7&amp;=0.008R_{B}\\
+R_{B}&amp;=325\Omega
+\end{aligned}
+\]</span></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<p><span class="math display">\[
+\]</span></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/npn.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption>Figure 14. NPN Transistor Circuit</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>With this I chose a 330Ω resistor for the base because it is slightly higher than the calculated value, which would prevent drawing too much current from the FPGA.</p>
+<p>The keypad-driven LEDs also needed current-limiting resistors since the maximum current the LEDs could handle was 20mA. They also had a forward voltage of about 2.2V, so using Ohm’s law,</p>
+<p><span class="math display">\[
+\begin{aligned}
+V&amp;=IR\\
+3.3-2.2&amp;=0.02R\\
+R&amp;=55\Omega
+\end{aligned}
+\]</span></p>
+<p>This was the minimum current-limiting resistor needed, so I chose a 330Ω resistor.</p>
 </section>
 <section id="technical-documentation-1" class="level2">
 <h2 class="anchored" data-anchor-id="technical-documentation-1">Technical Documentation</h2>
+<p>The source code for the part of the project can be found in the associated <a href="https://github.com/natalieko2024/E155-Labs/tree/main/E155-Lab2">GitHub repository</a>.</p>
 <section id="block-diagram-1" class="level3">
 <h3 class="anchored" data-anchor-id="block-diagram-1">Block Diagram</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab2BlockDiagram.jpg" class="img-fluid figure-img"></p>
+<figcaption><strong>Figure 15. Block diagram of the top-level module</strong></figcaption>
+</figure>
+</div>
+<p>The block diagram in Figure 15 shows the overall architecture of the design. The top-level module lab2_nk includes four submodules: the high-speed oscillator (HSOSC), the multiplexing counter module (muxCounter), the 7-segment display module (switch_7seg), and the scanner module (scan). The top-level module also contains a MUX and a NOT gate to write the correct segments and LEDs.</p>
 </section>
-<section id="circuit-schematic-1" class="level3">
-<h3 class="anchored" data-anchor-id="circuit-schematic-1">Circuit Schematic</h3>
+<section id="schematic" class="level3">
+<h3 class="anchored" data-anchor-id="schematic">Schematic</h3>
+<p>The schematic in Figure 16 shows the physical circuit connections outside the PCB for the dual 7-segment portion of the design. The specified GPIO pins were connected to current limiting resistors before the 7-segment display cathodes. The common anodes of the 7-segment display were connected to the 3.3V supply and GPIO pins of the FPGA through the 2N3906 transistors.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab2SevenSegSchematic.jpg" class="img-fluid figure-img"></p>
+<figcaption><strong>Figure 16. Schematic of all circuit components outside the PCB for the dual 7-segment</strong></figcaption>
+</figure>
+</div>
+<p>The schematic in Figure 17 shows the physical circuit connections outside the PCB for the keypad scanner portion of the design. The specified GPIO pins were connected to current limiting resistors and diodes for the LED outputs, and 2N3904 transistors connected to the 4x4 keypad to write rows. Pins were also connected to the keypad columns to collect as inputs.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab2KeypadSchematic.png" class="img-fluid figure-img"></p>
+<figcaption><strong>Figure 17. Schematic of all circuit components outside the PCB for the keypad scanner</strong></figcaption>
+</figure>
+</div>
 </section>
 </section>
 <section id="results-and-discussion-1" class="level2">
 <h2 class="anchored" data-anchor-id="results-and-discussion-1">Results and Discussion</h2>
+<p>The design met all intended design objectives.</p>
 <section id="testbench-simulation-1" class="level3">
 <h3 class="anchored" data-anchor-id="testbench-simulation-1">Testbench Simulation</h3>
+<p>Figure 18 shows a screenshot of the QuestaSim simulation waveforms for my scanning submodule testbench. It behaved correctly because after each 1/8 stepped-down clock cycle, the output rows were correct, including after a reset and after setting enable to low and then resetting again. This is also demonstrated by the automatic testbench outputs (see Figure 19).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view scanning submodule simulation waveforms
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab2waves-scanner.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 18. Scanning submodule simulation waveforms</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view scanning submodule testbench outputs
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab2testbench-scanner.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 19. Scanning submodule testbench outputs</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Figure 20 shows a screenshot of the QuestaSim siimulation waveforms for my top module. It behaved correctly because after waiting for the anodes to invert, the segments were written correctly (demonstrating mux behaviour), and the LED outputs were always inverted signals compared to the column inputs. This is also demonstrated by the automatic testbench outputs (see Figure 21).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view top-level module simulation waveforms
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab2waves-top.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 20. Top-level module simulation waveforms</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view top-level module testbench outputs
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab2testbench-top.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 21. Top-level module testbench outputs</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="hardware-deployment-1" class="level3">
 <h3 class="anchored" data-anchor-id="hardware-deployment-1">Hardware Deployment</h3>
+<p>These two videos showcases the design running on each circuit. </p><div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/ctef7_nsyAw" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div> <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/jYaRoXLDaM8" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div><p></p>
 </section>
 <section id="oscilloscope-testing-1" class="level3">
 <h3 class="anchored" data-anchor-id="oscilloscope-testing-1">Oscilloscope Testing</h3>
+<p>The keypad scanning LED frequency was confirmed using an oscilloscope. When the oscilloscope was connected on each end of the LED the signal was observed as in Figures 22a-c.</p>
+<div class="quarto-layout-panel" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/scope_9.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 22a. Oscilloscope Trace for LED Outputs When 1 Button in the Column is Pressed</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/scope_6.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 22b. Oscilloscope Trace for LED Outputs When 2 Adjacent Buttons in the Same Column are Pressed</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/scope_7.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 22c. Oscilloscope Trace for LED Outputs When 3 Adjacent Buttons in the Same Column are Pressed</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>When the oscilloscope was connected to each row output, the signals were observed as in Figure 23.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/scope_8.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 23. Oscilloscope Trace for Row Outputs</figcaption>
+</figure>
+</div>
+<p>All signals oscillate at 2Hz as expected. For the LED outputs, the width of the high signal increases as more adjacent buttons are added, because the LED is on whenever the column is pressed and the row signal is on. As the row signal moves from row 1 to row 2 while the switch is still pressed, the column output will remain for the duration of both rows “ON”s.</p>
 </section>
 </section>
 </section>
-<section id="phase-3---keypad-reader" class="level1">
-<h1>Phase 3 - Keypad Reader</h1>
+<section id="phase-3---integrated-keypad-scanner-and-7-segment-output" class="level1">
+<h1>Phase 3 - Integrated Keypad Scanner and 7-Segment Output</h1>
+<p>To make the full implementation, all the previous work had to be combined and integrated with a finite state machine.</p>
 <section id="design-and-testing-methodology-2" class="level2">
 <h2 class="anchored" data-anchor-id="design-and-testing-methodology-2">Design and Testing Methodology</h2>
-</section>
-<section id="technical-documentation-2" class="level2">
-<h2 class="anchored" data-anchor-id="technical-documentation-2">Technical Documentation</h2>
+<p>The source code for this part of the project can be found in the associated <a href="https://github.com/natalieko2024/E155-Labs/tree/main/E155-Lab3">GitHub repository</a>.</p>
 <section id="block-diagram-2" class="level3">
 <h3 class="anchored" data-anchor-id="block-diagram-2">Block Diagram</h3>
+<p><img src="images/blockdiagram.jpg" class="img-fluid" alt="Figure 24. Block diagram of the top-level module"> <img src="images/subblockdiagram.jpg" class="img-fluid" alt="Figure 25. Block diagram of the submodules"></p>
+<p>The block diagram in Figures 24 and 25 shows the overall architecture of the design.</p>
 </section>
-<section id="circuit-schematic-2" class="level3">
-<h3 class="anchored" data-anchor-id="circuit-schematic-2">Circuit Schematic</h3>
+<section id="schematic-1" class="level3">
+<h3 class="anchored" data-anchor-id="schematic-1">Schematic</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/schamatic.jpg" class="img-fluid figure-img"></p>
+<figcaption><strong>Figure 26. Schematic of all circuit components outside the PCB</strong></figcaption>
+</figure>
+</div>
+<p>The schematic in Figure 26 shows the physical circuit connections outside the PCB. The only peripheral used on the PCB was the reset button.</p>
 </section>
 </section>
 <section id="results-and-discussion-2" class="level2">
 <h2 class="anchored" data-anchor-id="results-and-discussion-2">Results and Discussion</h2>
+<p>The design met all intended design objectives.</p>
+<section id="synthesizer-warnings" class="level3">
+<h3 class="anchored" data-anchor-id="synthesizer-warnings">Synthesizer Warnings</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/newSynthesize.png" class="img-fluid figure-img"></p>
+<figcaption><strong>Figure 27. Image of Radiant Synthesizer Outputs</strong></figcaption>
+</figure>
+</div>
+<p>Radiant didn’t give me any errors, warnings of latches or tristate buffers etc. The only warning I got was that my ports were rejected, but these do not affect deployment.</p>
+</section>
 <section id="testbench-simulation-2" class="level3">
 <h3 class="anchored" data-anchor-id="testbench-simulation-2">Testbench Simulation</h3>
+<p>Figure 28 shows a screenshot of the QuestaSim simulation waveforms for my flip flop submodule. It behaved correctly because the output is always 1 clock rising edge behind the input when enabled. When disabled the output stops flowing, and when reset the output is set to 0. This was also confirmed by my automatic testbench (figure 29).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view flip flop submodule simulation waveforms
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/flopWaves.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 28. Flip flop submodule simulation waveforms</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view flip flop submodule testbench outputs
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/flopTestbench.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 29. Flip flop submodule testbench outputs</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Figure 30 shows a screenshot of the QuestaSim simulation waveforms for my synchronizer submodule. It behaved correctly because the output is always 2 clock rising edges behind the input. This was also confirmed by my automatic testbench (figure 31).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view synchronizer submodule simulation waveforms
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/syncWaves.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 30. Synchronizer submodule simulation waveforms</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view synchronizer submodule testbench outputs
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/syncTestbench.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 31. Synchronizer submodule testbench outputs</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>The scanning submodule was retested because it was slightly modified so it could be parametrized instead of only having a fixed scanning frequency. As shown in Figure 32, after each 1/8 clock cycle, the output rows were correct, including after a reset and after setting enable to low and then resetting again. This is also demonstrated by the automatic testbench outputs (see Figure 32).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view scanning submodule simulation waveforms
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/scanWaves.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 32. Scanning submodule simulation waveforms</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view scanning submodule testbench outputs
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/scanTestbench.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 33. Scanning submodule testbench outputs</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Figure 34 shows a screenshot of the QuestaSim simulation waveforms for my keymap submodule. When each of the rows were high, the column inputs were mapped to the keymap correctly with both single presses and multi presses. When reset was enabled, the keymap reset to all 0s. This was also confirmed by my automatic testbench (figure 35).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view keymap submodule simulation waveforms
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/keyMapWaves.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 34. Keymap submodule simulation waveforms</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view keymap submodule testbench outputs
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/keyMapTestbench.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 35. Keymap submodule testbench outputs</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Figure 36 shows the QuestaSim simulation waveforms for the debounce submodule. It behaved correctly because after oscillating the keymap bits repeatedly, the output was only changed value after the input was constant. After toggling the reset, the output would not change. This was also confirmed by the automatic testbench (figure 37).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view debounce submodule simulation waveforms
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/debouncerWaves.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 36. Debounce submodule simulation waveforms</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view debounce submodule testbench outputs
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-24" class="callout-24-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/debouncerTestbench.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 37. Debounce submodule testbench outputs</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Figure 38 shows the QuestaSim simulation waveforms for the FSM. All state transitions (including the reset) and outputs were tested to work. This was also confirmed by the automatic testbench (figure 39).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view FSM submodule simulation waveforms
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/FSMWaves.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 38. FSM submodule simulation waveforms</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view FSM submodule testbench outputs
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-26" class="callout-26-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/FSMTestbench.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 39. FSM submodule testbench outputs</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Figures 40 and 41 show the QuestaSim simulation waveforms and testbench output for the keymap to switch input converter. Each keymap combination was converted to the correct switch combination.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view map to switch converter submodule simulation waveforms
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-27" class="callout-27-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/switchesWaves.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 40. Map to switch converter submodule simulation waveforms</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view map to switch converter submodule testbench outputs
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-28" class="callout-28-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/switchesTestbench.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 41. Map to switch converter submodule testbench outputs</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Figures 42 and 43 show the QuestaSim simulation waveforms and testbench output for the top level module. The column inputs were bounced for 10ms, then were held high, only when that particular row was high. The anodes changed at the right time, and the segment outputs matched the column inputs after they were held high. The segments were reset to 0 and the anode reset to 2’b10 when the reset was toggled.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-29-contents" aria-controls="callout-29" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view top level module simulation waveforms
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-29" class="callout-29-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/topWaves.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 42. Top level module simulation waveforms</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-30-contents" aria-controls="callout-30" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view top level module testbench outputs
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-30" class="callout-30-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/topTestbench.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 43. Top level module testbench outputs</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="hardware-deployment-2" class="level3">
 <h3 class="anchored" data-anchor-id="hardware-deployment-2">Hardware Deployment</h3>
-</section>
-<section id="oscilloscope-testing-2" class="level3">
-<h3 class="anchored" data-anchor-id="oscilloscope-testing-2">Oscilloscope Testing</h3>
-</section>
-</section>
-</section>
-<section id="phase-4---integrated-keypad-scanner-and-7-segment-output" class="level1">
-<h1>Phase 4 - Integrated Keypad Scanner and 7-Segment Output</h1>
-<section id="design-and-testing-methodology-3" class="level2">
-<h2 class="anchored" data-anchor-id="design-and-testing-methodology-3">Design and Testing Methodology</h2>
-</section>
-<section id="technical-documentation-3" class="level2">
-<h2 class="anchored" data-anchor-id="technical-documentation-3">Technical Documentation</h2>
-<section id="block-diagram-3" class="level3">
-<h3 class="anchored" data-anchor-id="block-diagram-3">Block Diagram</h3>
-</section>
-<section id="circuit-schematic-3" class="level3">
-<h3 class="anchored" data-anchor-id="circuit-schematic-3">Circuit Schematic</h3>
-</section>
-</section>
-<section id="results-and-discussion-3" class="level2">
-<h2 class="anchored" data-anchor-id="results-and-discussion-3">Results and Discussion</h2>
-<section id="testbench-simulation-3" class="level3">
-<h3 class="anchored" data-anchor-id="testbench-simulation-3">Testbench Simulation</h3>
-</section>
-<section id="hardware-deployment-3" class="level3">
-<h3 class="anchored" data-anchor-id="hardware-deployment-3">Hardware Deployment</h3>
-</section>
-<section id="oscilloscope-testing-3" class="level3">
-<h3 class="anchored" data-anchor-id="oscilloscope-testing-3">Oscilloscope Testing</h3>
+<p>Here is a video showcasing the design running on hardware. </p><div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/qhZsKVxzVlM" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div><p></p>
 </section>
 </section>
 </section>
 <section id="conclusion" class="level1">
 <h1>Conclusion</h1>
+<p>The design successfully scanned a 4x4 matrix keypad and mapped the last two inputs to a dual 7-segment display, accounting for single and multi-key presses!</p>
 
 
 </section>
