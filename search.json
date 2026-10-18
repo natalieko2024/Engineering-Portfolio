@@ -151,14 +151,28 @@
     "href": "projects/crystalRadio/crystalRadio.html",
     "title": "Crystal Radio Experiments",
     "section": "",
-    "text": "Timeline: Feb 2025 – Mar 2026\n\n\nSkills: Radio Frequency Engineering, Software Defined Radio, Circuit Analysis"
+    "text": "Timeline: Feb 2025 – Mar 2026\n\n\nSkills: Radio Frequency Engineering, Software Defined Radio, Circuit Analysis\n\n\nRoles: Electrical Debugging and Analysis Lead (Team of 4)"
   },
   {
-    "objectID": "projects/crystalRadio/crystalRadio.html#yahoooo",
-    "href": "projects/crystalRadio/crystalRadio.html#yahoooo",
+    "objectID": "projects/crystalRadio/crystalRadio.html#pickard-crystal-radio",
+    "href": "projects/crystalRadio/crystalRadio.html#pickard-crystal-radio",
     "title": "Crystal Radio Experiments",
-    "section": "YAHOOOO",
-    "text": "YAHOOOO"
+    "section": "Pickard Crystal Radio",
+    "text": "Pickard Crystal Radio\nI started with the Pickard Crystal Radio, because it looked the simplest. It only had a variable inductor, a capacitor, resistor and diode. Because I knew radios could be tuned to different frequencies, I assumed the variable inductor would be used for tuning. My knowledge of RLC circuits helped me understand that this circuit would resonate at a specific frequency, based on the component values. Since the inductor was variable, I could adjust the resonant frequency to match the desired broadcast frequency. I also knew the basics of diodes, so I assumed it would have to go in a specific direction in order to hear any sound. It turns out this specifically needed to be a germanium diode, as opposed to the more common silicone diodes, because of their lower forward voltage drop. This prevents the diode from absorbing too much of the signal (since the power output of the crystal radio is tiny), which would make most AM signals inaudible. Figure 1. shows the schematic I ended up using."
+  },
+  {
+    "objectID": "projects/crystalRadio/crystalRadio.html#dunwoody-crystal-radio",
+    "href": "projects/crystalRadio/crystalRadio.html#dunwoody-crystal-radio",
+    "title": "Crystal Radio Experiments",
+    "section": "Dunwoody Crystal Radio",
+    "text": "Dunwoody Crystal Radio\nThe Dunwoody Crystal Radio was similar to the Pickard Crystal Radio in that it used similar components. However, it had two tuning capacitors in addition to the variable inductor. This would allow for more fine-tuning of the selected frequency. Instead of the variable inductor being adjustable by a simple conductive slider, the inductor had various coil taps that I first adjusted to select the broad operational frequency. I then adjusted the tuning capacitors to fine-tune the selected signal. Figure 2. shows the schematic of the circuit."
+  },
+  {
+    "objectID": "projects/crystalRadio/crystalRadio.html#armstrong-regenerative-circuit-radio",
+    "href": "projects/crystalRadio/crystalRadio.html#armstrong-regenerative-circuit-radio",
+    "title": "Crystal Radio Experiments",
+    "section": "Armstrong Regenerative Circuit Radio",
+    "text": "Armstrong Regenerative Circuit Radio\nThis circuit was very different. It used a combination of inductors with a tickler coil to feed the output signal back into the circuit. It also used a triode vacuum tube to amplify the signal, which meant it needed two external power sources to work. Figure 3. shows the schematic of the circuit.\n\nI was not able to get this circuit to work, even after replacing all components apart from the vacuum tube, which I could not find a replacement for. This led me to believe the vacuum tube was faulty.\nFrom my research, I believe replacing the vacuum tube with a JFET (Junction Field-Effect Transistor) would be a viable next step for debugging. The vacuum tube works as an electron valve, controlling a current with a tiny input voltage. When the radio signal fluctuates slightly, the current output of the vacuum tube has large fluctuations, which is how the signal gets amplified. JFETs similarly change current flow based on input voltage.\nI also think this would be a good substitution to do in general since the vacuum tube needed a really large voltage supply (45V+ battery) to run, while a JFET could function in the same way using a 9V battery. This would make the radio more accessible and cheaper to run as the setup I was using chained five 9V batteries together in series."
   },
   {
     "objectID": "projects/E79Bot/E79Bot.html",
@@ -168,11 +182,74 @@
     "text": "Timeline: Aug 2025 – Dec 2025\n\n\nSkills: PID-Control, Circuit Design, Mechanical Design, Data Analysis, LabView, Soldering, Breadboarding, Mathematical Modeling"
   },
   {
-    "objectID": "projects/E79Bot/E79Bot.html#yahooo",
-    "href": "projects/E79Bot/E79Bot.html#yahooo",
+    "objectID": "projects/E79Bot/E79Bot.html#assembly-and-initial-deployment",
+    "href": "projects/E79Bot/E79Bot.html#assembly-and-initial-deployment",
     "title": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)",
-    "section": "YAHOOO",
-    "text": "YAHOOO"
+    "section": "Assembly and Initial Deployment",
+    "text": "Assembly and Initial Deployment\n\nRobot Frame Assembly\n\n\nWaterproofing the Motors\n\n\nPhysical Testing"
+  },
+  {
+    "objectID": "projects/E79Bot/E79Bot.html#simulation-of-rov-motion",
+    "href": "projects/E79Bot/E79Bot.html#simulation-of-rov-motion",
+    "title": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)",
+    "section": "Simulation of ROV Motion",
+    "text": "Simulation of ROV Motion"
+  },
+  {
+    "objectID": "projects/E79Bot/E79Bot.html#mathematical-modelling",
+    "href": "projects/E79Bot/E79Bot.html#mathematical-modelling",
+    "title": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)",
+    "section": "Mathematical Modelling",
+    "text": "Mathematical Modelling"
+  },
+  {
+    "objectID": "projects/E79Bot/E79Bot.html#pressure-sensing-circuit",
+    "href": "projects/E79Bot/E79Bot.html#pressure-sensing-circuit",
+    "title": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)",
+    "section": "Pressure Sensing Circuit",
+    "text": "Pressure Sensing Circuit"
+  },
+  {
+    "objectID": "projects/E79Bot/E79Bot.html#temperature-sensing-circuit",
+    "href": "projects/E79Bot/E79Bot.html#temperature-sensing-circuit",
+    "title": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)",
+    "section": "Temperature Sensing Circuit",
+    "text": "Temperature Sensing Circuit"
+  },
+  {
+    "objectID": "projects/E79Bot/E79Bot.html#visualizing-the-first-order-transient-response",
+    "href": "projects/E79Bot/E79Bot.html#visualizing-the-first-order-transient-response",
+    "title": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)",
+    "section": "Visualizing the First-Order Transient Response",
+    "text": "Visualizing the First-Order Transient Response"
+  },
+  {
+    "objectID": "projects/E79Bot/E79Bot.html#test-deployment-and-second-order-transient-response",
+    "href": "projects/E79Bot/E79Bot.html#test-deployment-and-second-order-transient-response",
+    "title": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)",
+    "section": "Test Deployment and Second-Order Transient Response",
+    "text": "Test Deployment and Second-Order Transient Response"
+  },
+  {
+    "objectID": "projects/E79Bot/E79Bot.html#constructing-bode-plots",
+    "href": "projects/E79Bot/E79Bot.html#constructing-bode-plots",
+    "title": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)",
+    "section": "Constructing Bode Plots",
+    "text": "Constructing Bode Plots"
+  },
+  {
+    "objectID": "projects/E79Bot/E79Bot.html#pulse-width-modulation-and-time-scale-separation",
+    "href": "projects/E79Bot/E79Bot.html#pulse-width-modulation-and-time-scale-separation",
+    "title": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)",
+    "section": "Pulse Width Modulation and Time Scale Separation",
+    "text": "Pulse Width Modulation and Time Scale Separation"
+  },
+  {
+    "objectID": "projects/E79Bot/E79Bot.html#p-control-design",
+    "href": "projects/E79Bot/E79Bot.html#p-control-design",
+    "title": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)",
+    "section": "P-Control Design",
+    "text": "P-Control Design"
   },
   {
     "objectID": "resume.html",
@@ -256,7 +333,7 @@
     "href": "projects/abyssExplorer/abyssExplorer.html",
     "title": "Abyss Explorer",
     "section": "",
-    "text": "Timeline: Feb 2025 – May 2025\n\n\nSkills: SolidWorks, Mechanical Design, Prototyping, Manufacturing, Project Management, Technical Documentation"
+    "text": "Timeline: Feb 2025 – May 2025\n\n\nSkills: SolidWorks, Mechanical Design, Prototyping, Manufacturing, Project Management, Technical Documentation\n\n\nRoles: Payload Design Lead, Test Engineering Lead (Team of 5)"
   },
   {
     "objectID": "projects/abyssExplorer/abyssExplorer.html#problem-statement",
