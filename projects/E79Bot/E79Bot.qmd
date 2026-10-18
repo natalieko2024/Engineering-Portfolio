@@ -17,7 +17,42 @@ skills: "PID-Control, Circuit Design, Mechanical Design, Data Analysis, LabView,
   <div><strong>Skills:</strong> {{< meta skills >}}</div>
 </div>
 
-# TEst heading
-## YAHOOO
+# Introduction and Background
 
-# wee woo
+
+# Mechanical Design
+
+## Assembly and Initial Deployment 
+
+### Robot Frame Assembly
+
+### Waterproofing the Motors
+
+### Physical Testing
+
+## Simulation of ROV Motion
+
+## Mathematical Modelling
+
+
+# Electrical Design
+
+## Pressure Sensing Circuit 
+
+## Temperature Sensing Circuit
+
+
+# System Analysis and Closed-Loop Control Design
+
+## Visualizing the First-Order Transient Response
+
+## Test Deployment and Second-Order Transient Response
+
+## Constructing Bode Plots
+
+## Pulse Width Modulation and Time Scale Separation
+
+## P-Control Design
+
+
+# Deployment in Phake Lake

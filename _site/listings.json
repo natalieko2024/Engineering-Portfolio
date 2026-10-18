@@ -18,15 +18,15 @@
     ]
   },
   {
+    "listing": "/work.html",
+    "items": []
+  },
+  {
     "listing": "/index.html",
     "items": [
       "/projects/abyssExplorer/abyssExplorer.html",
       "/projects/keypadScanner/keypadScanner.html",
       "/projects/E80Bot/E80Bot.html"
     ]
-  },
-  {
-    "listing": "/work.html",
-    "items": []
   }
 ]
