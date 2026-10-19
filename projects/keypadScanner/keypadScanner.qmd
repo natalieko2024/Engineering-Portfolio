@@ -339,122 +339,146 @@ All signals oscillate at 2Hz as expected. For the LED outputs, the width of the 
 To make the full implementation, all the previous work had to be combined and integrated with a finite state machine.
 
 ## Design and Testing Methodology
+
+This design was achieved using a finite state machine (see Figures 24 and 25), where the state would change depending on the collected key inputs. The variable keyMap is the current key inputs, while initialKeyMap is a snapshot of the key inputs during the display state. In the display state, displayEN is set high, which allows writing to the 7 segment display through flip-flops in the top-level module.
+
+![Figure 24. State transition diagram for the finite state machine](images/statetransitiondiagram.jpg)
+
+![Figure 25. State transition table for the finite state machine](images/statetransitiontable.jpg)
+
+Like in the previous phase, key inputs were determined by "scanning" each row (sending a high bit to one row at a time) and collecting the column inputs. The column inputs were sent through a synchronizer to prevent reading metastable values. Besides the scan module, a keyMap module was developed to convert the corresponding row/column combination to a 16-bit key map.
+
+The keypad switches were prone to switch bounce (the switch makes and breaks its connection repeatedly for up to ~10ms). To mitigate this issue and ensure each key was only registered once, a debouncer submodule was created, which used a shift register to compare the keymap at different intervals and only register the keys when all registers had the same value.
+
+This debounced key map was an input to the FSM, a submodule converting the keys to equivalent switch inputs (which were sent into the 7-segment decoder).
+
+The top level module wired all these submodules together, and had assign statements to compare counter values to provide the switching frequency for the 7-segment anodes, as well as a mux to determine which value to write to the left and right segments.
+
+These modules were all tested using automatic testbenches, waveform simulation, and hardware deployment.
+
+I think my debouncing strategy is more accurate and time efficient than other strategies. One other strategy I can think of is just waiting 10ms (maximum bouncing time) after the first button press before using the keyMap. However, this doesn't guarantee that after you wait, the button is actually debounced - it could slightly fluctuate, or if your count is off by a little bit you would read and use the bounce. Adding a strategy of storing the initial read and comparing at the end of the wait time to confirm debouncing could work. However, if another button happens to activate during the 10ms wait time, that button could still bounce after the first button is done, so then you would have to wait again. Using the shift register method means you don't have to have logic determining the first key press, or wait a specified amount of time. You always read until all registers log the same value.
+
+However, the other strategies are probably more hardware efficient as I do use 9 flip-flops (probably could've used less, I was just being cautious), whereas the waiting strategy would just rely on a counter output that uses 1 flip-flop.
+
+My design technically includes 2 communicating FSMs that evaluates the current debounced keyMap against the saved keyMap. I think another way to do achieve the end goal (with the alternative debouncing strategies described above) is to have a canonical FSM managing the display/scanning states communicate with another canonical FSM to control whether debouncing is active or not, or communicate with a non-canonical FSM which is a counter to keep track of how long to wait for. However, I think this is more complicated and could make the overal FSM structure less reliable since switching or keeping states depend on more conditions that could be unexpected values right when the clock edge occurs, meaning you have to wait for the next cycle to actually transition correctly.
+
+## Technical Documentation
 The source code for this part of the project can be found in the associated [GitHub repository](https://github.com/natalieko2024/E155-Labs/tree/main/E155-Lab3).
 
 ### Block Diagram
-![**Figure 24. Block diagram of the top-level module**](images/blockdiagram.jpg)
-![**Figure 25. Block diagram of the submodules**](images/subblockdiagram.jpg)
+![**Figure 26. Block diagram of the top-level module**](images/blockdiagram.jpg)
+![**Figure 27. Block diagram of the submodules**](images/subblockdiagram.jpg)
 
-The block diagram in Figures 24 and 25 shows the overall architecture of the design.
+The block diagram in Figures 26 and 27 shows the overall architecture of the design.
 
 ### Schematic
-![**Figure 26. Schematic of all circuit components outside the PCB**](images/schamatic.jpg)
+![**Figure 28. Schematic of all circuit components outside the PCB**](images/schematic.jpg)
 
-The schematic in Figure 26 shows the physical circuit connections outside the PCB. The only peripheral used on the PCB was the reset button.
+The schematic in Figure 28 shows the physical circuit connections outside the PCB. The only peripheral used on the PCB was the reset button.
 
 ## Results and Discussion
 The design met all intended design objectives.
 
 ### Synthesizer Warnings
-![**Figure 27. Image of Radiant Synthesizer Outputs**](images/newSynthesize.png)
+![**Figure 29. Image of Radiant Synthesizer Outputs**](images/newSynthesize.png)
 
 Radiant didn't give me any errors, warnings of latches or tristate buffers etc. The only warning I got was that my ports were rejected, but these do not affect deployment.
 
 ### Testbench Simulation
-Figure 28 shows a screenshot of the QuestaSim simulation waveforms for my flip flop submodule. It behaved correctly because the output is always 1 clock rising edge behind the input when enabled. When disabled the output stops flowing, and when reset the output is set to 0. This was also confirmed by my automatic testbench (figure 29).
+Figure 30 shows a screenshot of the QuestaSim simulation waveforms for my flip flop submodule. It behaved correctly because the output is always 1 clock rising edge behind the input when enabled. When disabled the output stops flowing, and when reset the output is set to 0. This was also confirmed by my automatic testbench (figure 31).
 
 :::{.callout-note collapse="true"}
 ## Click to view flip flop submodule simulation waveforms
-![Figure 28. Flip flop submodule simulation waveforms](images/flopWaves.png)
+![Figure 30. Flip flop submodule simulation waveforms](images/flopWaves.png)
 :::
 
 :::{.callout-note collapse="true"}
 ## Click to view flip flop submodule testbench outputs
-![Figure 29. Flip flop submodule testbench outputs](images/flopTestbench.png)
+![Figure 31. Flip flop submodule testbench outputs](images/flopTestbench.png)
 :::
 
-Figure 30 shows a screenshot of the QuestaSim simulation waveforms for my synchronizer submodule. It behaved correctly because the output is always 2 clock rising edges behind the input. This was also confirmed by my automatic testbench (figure 31).
+Figure 32 shows a screenshot of the QuestaSim simulation waveforms for my synchronizer submodule. It behaved correctly because the output is always 2 clock rising edges behind the input. This was also confirmed by my automatic testbench (figure 33).
 
 :::{.callout-note collapse="true"}
 ## Click to view synchronizer submodule simulation waveforms
-![Figure 30. Synchronizer submodule simulation waveforms](images/syncWaves.png)
+![Figure 32. Synchronizer submodule simulation waveforms](images/syncWaves.png)
 :::
 
 :::{.callout-note collapse="true"}
 ## Click to view synchronizer submodule testbench outputs
-![Figure 31. Synchronizer submodule testbench outputs](images/syncTestbench.png)
+![Figure 33. Synchronizer submodule testbench outputs](images/syncTestbench.png)
 :::
 
-The scanning submodule was retested because it was slightly modified so it could be parametrized instead of only having a fixed scanning frequency. As shown in Figure 32, after each 1/8 clock cycle, the output rows were correct, including after a reset and after setting enable to low and then resetting again. This is also demonstrated by the automatic testbench outputs (see Figure 32).
+The scanning submodule was retested because it was slightly modified so it could be parametrized instead of only having a fixed scanning frequency. As shown in Figure 34, after each 1/8 clock cycle, the output rows were correct, including after a reset and after setting enable to low and then resetting again. This is also demonstrated by the automatic testbench outputs (see Figure 35).
 
 :::{.callout-note collapse="true"}
 ## Click to view scanning submodule simulation waveforms
-![Figure 32. Scanning submodule simulation waveforms](images/scanWaves.png)
+![Figure 34. Scanning submodule simulation waveforms](images/scanWaves.png)
 :::
 
 :::{.callout-note collapse="true"}
 ## Click to view scanning submodule testbench outputs
-![Figure 33. Scanning submodule testbench outputs](images/scanTestbench.png)
+![Figure 35. Scanning submodule testbench outputs](images/scanTestbench.png)
 :::
 
-Figure 34 shows a screenshot of the QuestaSim simulation waveforms for my keymap submodule. When each of the rows were high, the column inputs were mapped to the keymap correctly with both single presses and multi presses. When reset was enabled, the keymap reset to all 0s. This was also confirmed by my automatic testbench (figure 35).
+Figure 36 shows a screenshot of the QuestaSim simulation waveforms for my keymap submodule. When each of the rows were high, the column inputs were mapped to the keymap correctly with both single presses and multi presses. When reset was enabled, the keymap reset to all 0s. This was also confirmed by my automatic testbench (figure 37).
 
 :::{.callout-note collapse="true"}
 ## Click to view keymap submodule simulation waveforms
-![Figure 34. Keymap submodule simulation waveforms](images/keyMapWaves.png)
+![Figure 36. Keymap submodule simulation waveforms](images/keyMapWaves.png)
 :::
 
 :::{.callout-note collapse="true"}
 ## Click to view keymap submodule testbench outputs
-![Figure 35. Keymap submodule testbench outputs](images/keyMapTestbench.png)
+![Figure 37. Keymap submodule testbench outputs](images/keyMapTestbench.png)
 :::
 
-Figure 36 shows the QuestaSim simulation waveforms for the debounce submodule. It behaved correctly because after oscillating the keymap bits repeatedly, the output was only changed value after the input was constant. After toggling the reset, the output would not change. This was also confirmed by the automatic testbench (figure 37).
+Figure 38 shows the QuestaSim simulation waveforms for the debounce submodule. It behaved correctly because after oscillating the keymap bits repeatedly, the output was only changed value after the input was constant. After toggling the reset, the output would not change. This was also confirmed by the automatic testbench (figure 39).
 
 :::{.callout-note collapse="true"}
 ## Click to view debounce submodule simulation waveforms
-![Figure 36. Debounce submodule simulation waveforms](images/debouncerWaves.png)
+![Figure 38. Debounce submodule simulation waveforms](images/debouncerWaves.png)
 :::
 
 :::{.callout-note collapse="true"}
 ## Click to view debounce submodule testbench outputs
-![Figure 37. Debounce submodule testbench outputs](images/debouncerTestbench.png)
+![Figure 39. Debounce submodule testbench outputs](images/debouncerTestbench.png)
 :::
 
-Figure 38 shows the QuestaSim simulation waveforms for the FSM. All state transitions (including the reset) and outputs were tested to work. This was also confirmed by the automatic testbench (figure 39).
+Figure 40 shows the QuestaSim simulation waveforms for the FSM. All state transitions (including the reset) and outputs were tested to work. This was also confirmed by the automatic testbench (figure 41).
 
 :::{.callout-note collapse="true"}
 ## Click to view FSM submodule simulation waveforms
-![Figure 38. FSM submodule simulation waveforms](images/FSMWaves.png)
+![Figure 40. FSM submodule simulation waveforms](images/FSMWaves.png)
 :::
 
 :::{.callout-note collapse="true"}
 ## Click to view FSM submodule testbench outputs
-![Figure 39. FSM submodule testbench outputs](images/FSMTestbench.png)
+![Figure 41. FSM submodule testbench outputs](images/FSMTestbench.png)
 :::
 
-Figures 40 and 41 show the QuestaSim simulation waveforms and testbench output for the keymap to switch input converter. Each keymap combination was converted to the correct switch combination.
+Figures 42 and 43 show the QuestaSim simulation waveforms and testbench output for the keymap to switch input converter. Each keymap combination was converted to the correct switch combination.
 
 :::{.callout-note collapse="true"}
 ## Click to view map to switch converter submodule simulation waveforms
-![Figure 40. Map to switch converter submodule simulation waveforms](images/switchesWaves.png)
+![Figure 42. Map to switch converter submodule simulation waveforms](images/switchesWaves.png)
 :::
 
 :::{.callout-note collapse="true"}
 ## Click to view map to switch converter submodule testbench outputs
-![Figure 41. Map to switch converter submodule testbench outputs](images/switchesTestbench.png)
+![Figure 43. Map to switch converter submodule testbench outputs](images/switchesTestbench.png)
 :::
 
-Figures 42 and 43 show the QuestaSim simulation waveforms and testbench output for the top level module. The column inputs were bounced for 10ms, then were held high, only when that particular row was high. The anodes changed at the right time, and the segment outputs matched the column inputs after they were held high. The segments were reset to 0 and the anode reset to 2'b10 when the reset was toggled.
+Figures 44 and 45 show the QuestaSim simulation waveforms and testbench output for the top level module. The column inputs were bounced for 10ms, then were held high, only when that particular row was high. The anodes changed at the right time, and the segment outputs matched the column inputs after they were held high. The segments were reset to 0 and the anode reset to 2'b10 when the reset was toggled.
 
 :::{.callout-note collapse="true"}
 ## Click to view top level module simulation waveforms
-![Figure 42. Top level module simulation waveforms](images/topWaves.png)
+![Figure 44. Top level module simulation waveforms](images/topWaves.png)
 :::
 
 :::{.callout-note collapse="true"}
 ## Click to view top level module testbench outputs
-![Figure 43. Top level module testbench outputs](images/topTestbench.png)
+![Figure 45. Top level module testbench outputs](images/topTestbench.png)
 :::
 
 ### Hardware Deployment

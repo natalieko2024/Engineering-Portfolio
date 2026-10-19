@@ -2,7 +2,6 @@
   {
     "listing": "/projects.html",
     "items": [
-      "/projects/bionicHand/bionicHand.html",
       "/projects/motorControl/motorControl.html",
       "/projects/digitalAudio/digitalAudio.html",
       "/projects/keypadScanner/keypadScanner.html",
@@ -13,8 +12,7 @@
       "/projects/multiCycleProcessor/multiCycleProcessor.html",
       "/projects/animatronicEyes/animatronicEyes.html",
       "/projects/abyssExplorer/abyssExplorer.html",
-      "/projects/hammer/hammer.html",
-      "/projects/nomnom/nomnom.html"
+      "/projects/hammer/hammer.html"
     ]
   },
   {

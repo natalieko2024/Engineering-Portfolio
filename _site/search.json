@@ -25,7 +25,7 @@
     "href": "projects.html",
     "title": "Click to Learn About Each of My Projects!",
     "section": "",
-    "text": "Bionic Hand\n\n\n\nRobotics & Control Systems\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLeverging MCU Interrupts to Read Stepper Motor Encoders\n\n\n\nPCB Design & Electronics\n\nEmbedded Systems & Firmware\n\n\n\nUtilized MCU interrupts to acurrately determine stepper motor speed and direction.\n\n\n\n\n\n\n\n\n\n\n\n\nUsing MCU to Produce Digital Audio\n\n\n\nEmbedded Systems & Firmware\n\nPCB Design & Electronics\n\n\n\nProgrammed an MCU to write specific frequencies and durations to play music on a speaker.\n\n\n\n\n\n\n\n\n\n\n\n\nKeypad Scanner\n\n\n\nEmbedded Systems & Firmware\n\nPCB Design & Electronics\n\n\n\nProgrammed an FPGA to read a 4x4 matrix keypad and display the last two hexadecimal inputs on a dual seven-segment display. Accounted for key bounce, multi-press, and timing inconsistencies.\n\n\n\n\n\n\n\n\n\n\n\n\nCrystal Radio Experiments\n\n\n\nPCB Design & Electronics\n\n\n\nAnalysed RLC Circuits to debug Dunwoody, Pickard, and Armstrong crystal radios. Devised an innovative antenna for optimal signal receiving.\n\n\n\n\n\n\n\n\n\n\n\n\nOcean Debris-Detecting Autonomous Underwater Vehicle (AUV)\n\n\n\nRobotics & Control Systems\n\nPCB Design & Electronics\n\nEmbedded Systems & Firmware\n\nMechanical Design & FEA\n\n\n\nDeveloped and deployed an AUV to map metal debris distribution on the ocean floor and back-calculate debris drop locations.\n\n\n\n\n\n\n\n\n\n\n\n\nWind Tunnel Experiments and Fluid Dynamics Simulation\n\n\n\nMiscellaneous\n\n\n\nUsed the principle of similitude to characterize ROV behaviour in the water through wind tunnel simulations.\n\n\n\n\n\n\n\n\n\n\n\n\nTemperature and Position Detecting Remotely Operated Vehicle (ROV)\n\n\n\nRobotics & Control Systems\n\nPCB Design & Electronics\n\nMechanical Design & FEA\n\n\n\nDeveloped and deployed an PID-controlled ROV to collect temperature and depth measurements underwater.\n\n\n\n\n\n\n\n\n\n\n\n\nMulti-cycle RISC-V Processor\n\n\n\nEmbedded Systems & Firmware\n\n\n\nDesigned and simulated a 32-bit multi-cycle RISC-V processor, executed RISC-V integer instructions (R, I, S, B, U, and J-Type) given to memory as machine code.\n\n\n\n\n\n\n\n\n\n\n\n\nAnimatronic Eyes\n\n\n\nEmbedded Systems & Firmware\n\nMechanical Design & FEA\n\n\n\nDesigned and programmed a set of animatronic eyes controlled by servo motors and joysticks through Arduino.\n\n\n\n\n\n\n\n\n\n\n\n\nAbyss Explorer\n\n\n\nMechanical Design & FEA\n\nManufacturing\n\n\n\nDesigned and manufactured a system to raise and lower sensors through a ~600ft radioactive mine shaft (shrinking to an unknown diameter) for data collection without direct human contact.\n\n\n\n\n\n\n\n\n\n\n\n\nHammer\n\n\n\nManufacturing\n\n\n\nManually machined a hammer using conventional manual machining tools to specifications following technical drawings.\n\n\n\n\n\n\n\n\n\n\n\n\nFood Delivery Robot\n\n\n\nManufacturing\n\n\n\nManually machined a hammer using conventional manual machining tools to specifications following technical drawings.\n\n\n\n\n\nNo matching items"
+    "text": "Leverging MCU Interrupts to Read Stepper Motor Encoders\n\n\n\nPCB Design & Electronics\n\nEmbedded Systems & Firmware\n\n\n\nUtilized MCU interrupts to acurrately determine stepper motor speed and direction.\n\n\n\n\n\n\n\n\n\n\n\n\nUsing MCU to Produce Digital Audio\n\n\n\nEmbedded Systems & Firmware\n\nPCB Design & Electronics\n\n\n\nProgrammed an MCU to write specific frequencies and durations to play music on a speaker.\n\n\n\n\n\n\n\n\n\n\n\n\nKeypad Scanner\n\n\n\nEmbedded Systems & Firmware\n\nPCB Design & Electronics\n\n\n\nProgrammed an FPGA to read a 4x4 matrix keypad and display the last two hexadecimal inputs on a dual seven-segment display. Accounted for key bounce, multi-press, and timing inconsistencies.\n\n\n\n\n\n\n\n\n\n\n\n\nCrystal Radio Experiments\n\n\n\nPCB Design & Electronics\n\n\n\nAnalysed RLC Circuits to debug Dunwoody, Pickard, and Armstrong crystal radios. Devised an innovative antenna for optimal signal receiving.\n\n\n\n\n\n\n\n\n\n\n\n\nOcean Debris-Detecting Autonomous Underwater Vehicle (AUV)\n\n\n\nRobotics & Control Systems\n\nPCB Design & Electronics\n\nEmbedded Systems & Firmware\n\nMechanical Design & FEA\n\n\n\nDeveloped and deployed an AUV to map metal debris distribution on the ocean floor and back-calculate debris drop locations.\n\n\n\n\n\n\n\n\n\n\n\n\nWind Tunnel Experiments and Fluid Dynamics Simulation\n\n\n\nMiscellaneous\n\n\n\nUsed the principle of similitude to characterize ROV behaviour in the water through wind tunnel simulations.\n\n\n\n\n\n\n\n\n\n\n\n\nTemperature and Position Detecting Remotely Operated Vehicle (ROV)\n\n\n\nRobotics & Control Systems\n\nPCB Design & Electronics\n\nMechanical Design & FEA\n\n\n\nDeveloped and deployed an PID-controlled ROV to collect temperature and depth measurements underwater.\n\n\n\n\n\n\n\n\n\n\n\n\nMulti-cycle RISC-V Processor\n\n\n\nEmbedded Systems & Firmware\n\n\n\nDesigned and simulated a 32-bit multi-cycle RISC-V processor, executed RISC-V integer instructions (R, I, S, B, U, and J-Type) given to memory as machine code.\n\n\n\n\n\n\n\n\n\n\n\n\nAnimatronic Eyes\n\n\n\nEmbedded Systems & Firmware\n\nMechanical Design & FEA\n\n\n\nDesigned and programmed a set of animatronic eyes controlled by servo motors and joysticks through Arduino.\n\n\n\n\n\n\n\n\n\n\n\n\nAbyss Explorer\n\n\n\nMechanical Design & FEA\n\nManufacturing\n\n\n\nDesigned and manufactured a system to raise and lower sensors through a ~600ft radioactive mine shaft (shrinking to an unknown diameter) for data collection without direct human contact.\n\n\n\n\n\n\n\n\n\n\n\n\nHammer\n\n\n\nManufacturing\n\n\n\nManually machined a hammer using conventional manual machining tools to specifications following technical drawings.\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "projects/motorControl/motorControl.html",
@@ -109,42 +109,21 @@
     "href": "projects/keypadScanner/keypadScanner.html#design-and-testing-methodology-2",
     "title": "Keypad Scanner",
     "section": "Design and Testing Methodology",
-    "text": "Design and Testing Methodology\nThe source code for this part of the project can be found in the associated GitHub repository.\n\nBlock Diagram\n \nThe block diagram in Figures 24 and 25 shows the overall architecture of the design.\n\n\nSchematic\n\n\n\nFigure 26. Schematic of all circuit components outside the PCB\n\n\nThe schematic in Figure 26 shows the physical circuit connections outside the PCB. The only peripheral used on the PCB was the reset button."
+    "text": "Design and Testing Methodology\nThis design was achieved using a finite state machine (see Figures 24 and 25), where the state would change depending on the collected key inputs. The variable keyMap is the current key inputs, while initialKeyMap is a snapshot of the key inputs during the display state. In the display state, displayEN is set high, which allows writing to the 7 segment display through flip-flops in the top-level module.\n\n\n\nFigure 24. State transition diagram for the finite state machine\n\n\n\n\n\nFigure 25. State transition table for the finite state machine\n\n\nLike in the previous phase, key inputs were determined by “scanning” each row (sending a high bit to one row at a time) and collecting the column inputs. The column inputs were sent through a synchronizer to prevent reading metastable values. Besides the scan module, a keyMap module was developed to convert the corresponding row/column combination to a 16-bit key map.\nThe keypad switches were prone to switch bounce (the switch makes and breaks its connection repeatedly for up to ~10ms). To mitigate this issue and ensure each key was only registered once, a debouncer submodule was created, which used a shift register to compare the keymap at different intervals and only register the keys when all registers had the same value.\nThis debounced key map was an input to the FSM, a submodule converting the keys to equivalent switch inputs (which were sent into the 7-segment decoder).\nThe top level module wired all these submodules together, and had assign statements to compare counter values to provide the switching frequency for the 7-segment anodes, as well as a mux to determine which value to write to the left and right segments.\nThese modules were all tested using automatic testbenches, waveform simulation, and hardware deployment.\nI think my debouncing strategy is more accurate and time efficient than other strategies. One other strategy I can think of is just waiting 10ms (maximum bouncing time) after the first button press before using the keyMap. However, this doesn’t guarantee that after you wait, the button is actually debounced - it could slightly fluctuate, or if your count is off by a little bit you would read and use the bounce. Adding a strategy of storing the initial read and comparing at the end of the wait time to confirm debouncing could work. However, if another button happens to activate during the 10ms wait time, that button could still bounce after the first button is done, so then you would have to wait again. Using the shift register method means you don’t have to have logic determining the first key press, or wait a specified amount of time. You always read until all registers log the same value.\nHowever, the other strategies are probably more hardware efficient as I do use 9 flip-flops (probably could’ve used less, I was just being cautious), whereas the waiting strategy would just rely on a counter output that uses 1 flip-flop.\nMy design technically includes 2 communicating FSMs that evaluates the current debounced keyMap against the saved keyMap. I think another way to do achieve the end goal (with the alternative debouncing strategies described above) is to have a canonical FSM managing the display/scanning states communicate with another canonical FSM to control whether debouncing is active or not, or communicate with a non-canonical FSM which is a counter to keep track of how long to wait for. However, I think this is more complicated and could make the overal FSM structure less reliable since switching or keeping states depend on more conditions that could be unexpected values right when the clock edge occurs, meaning you have to wait for the next cycle to actually transition correctly."
   },
   {
     "objectID": "projects/keypadScanner/keypadScanner.html#technical-documentation-2",
     "href": "projects/keypadScanner/keypadScanner.html#technical-documentation-2",
     "title": "Keypad Scanner",
     "section": "Technical Documentation",
-    "text": "Technical Documentation\n\nBlock Diagram\n\n\nCircuit Schematic"
+    "text": "Technical Documentation\nThe source code for this part of the project can be found in the associated GitHub repository.\n\nBlock Diagram\n \nThe block diagram in Figures 26 and 27 shows the overall architecture of the design.\n\n\nSchematic\n\n\n\nFigure 28. Schematic of all circuit components outside the PCB\n\n\nThe schematic in Figure 28 shows the physical circuit connections outside the PCB. The only peripheral used on the PCB was the reset button."
   },
   {
     "objectID": "projects/keypadScanner/keypadScanner.html#results-and-discussion-2",
     "href": "projects/keypadScanner/keypadScanner.html#results-and-discussion-2",
     "title": "Keypad Scanner",
     "section": "Results and Discussion",
-    "text": "Results and Discussion\nThe design met all intended design objectives.\n\nSynthesizer Warnings\n\n\n\nFigure 27. Image of Radiant Synthesizer Outputs\n\n\nRadiant didn’t give me any errors, warnings of latches or tristate buffers etc. The only warning I got was that my ports were rejected, but these do not affect deployment.\n\n\nTestbench Simulation\nFigure 28 shows a screenshot of the QuestaSim simulation waveforms for my flip flop submodule. It behaved correctly because the output is always 1 clock rising edge behind the input when enabled. When disabled the output stops flowing, and when reset the output is set to 0. This was also confirmed by my automatic testbench (figure 29).\n\n\n\n\n\n\nNoteClick to view flip flop submodule simulation waveforms\n\n\n\n\n\n\n\n\nFigure 28. Flip flop submodule simulation waveforms\n\n\n\n\n\n\n\n\n\n\n\nNoteClick to view flip flop submodule testbench outputs\n\n\n\n\n\n\n\n\nFigure 29. Flip flop submodule testbench outputs\n\n\n\n\n\nFigure 30 shows a screenshot of the QuestaSim simulation waveforms for my synchronizer submodule. It behaved correctly because the output is always 2 clock rising edges behind the input. This was also confirmed by my automatic testbench (figure 31).\n\n\n\n\n\n\nNoteClick to view synchronizer submodule simulation waveforms\n\n\n\n\n\n\n\n\nFigure 30. Synchronizer submodule simulation waveforms\n\n\n\n\n\n\n\n\n\n\n\nNoteClick to view synchronizer submodule testbench outputs\n\n\n\n\n\n\n\n\nFigure 31. Synchronizer submodule testbench outputs\n\n\n\n\n\nThe scanning submodule was retested because it was slightly modified so it could be parametrized instead of only having a fixed scanning frequency. As shown in Figure 32, after each 1/8 clock cycle, the output rows were correct, including after a reset and after setting enable to low and then resetting again. This is also demonstrated by the automatic testbench outputs (see Figure 32).\n\n\n\n\n\n\nNoteClick to view scanning submodule simulation waveforms\n\n\n\n\n\n\n\n\nFigure 32. Scanning submodule simulation waveforms\n\n\n\n\n\n\n\n\n\n\n\nNoteClick to view scanning submodule testbench outputs\n\n\n\n\n\n\n\n\nFigure 33. Scanning submodule testbench outputs\n\n\n\n\n\nFigure 34 shows a screenshot of the QuestaSim simulation waveforms for my keymap submodule. When each of the rows were high, the column inputs were mapped to the keymap correctly with both single presses and multi presses. When reset was enabled, the keymap reset to all 0s. This was also confirmed by my automatic testbench (figure 35).\n\n\n\n\n\n\nNoteClick to view keymap submodule simulation waveforms\n\n\n\n\n\n\n\n\nFigure 34. Keymap submodule simulation waveforms\n\n\n\n\n\n\n\n\n\n\n\nNoteClick to view keymap submodule testbench outputs\n\n\n\n\n\n\n\n\nFigure 35. Keymap submodule testbench outputs\n\n\n\n\n\nFigure 36 shows the QuestaSim simulation waveforms for the debounce submodule. It behaved correctly because after oscillating the keymap bits repeatedly, the output was only changed value after the input was constant. After toggling the reset, the output would not change. This was also confirmed by the automatic testbench (figure 37).\n\n\n\n\n\n\nNoteClick to view debounce submodule simulation waveforms\n\n\n\n\n\n\n\n\nFigure 36. Debounce submodule simulation waveforms\n\n\n\n\n\n\n\n\n\n\n\nNoteClick to view debounce submodule testbench outputs\n\n\n\n\n\n\n\n\nFigure 37. Debounce submodule testbench outputs\n\n\n\n\n\nFigure 38 shows the QuestaSim simulation waveforms for the FSM. All state transitions (including the reset) and outputs were tested to work. This was also confirmed by the automatic testbench (figure 39).\n\n\n\n\n\n\nNoteClick to view FSM submodule simulation waveforms\n\n\n\n\n\n\n\n\nFigure 38. FSM submodule simulation waveforms\n\n\n\n\n\n\n\n\n\n\n\nNoteClick to view FSM submodule testbench outputs\n\n\n\n\n\n\n\n\nFigure 39. FSM submodule testbench outputs\n\n\n\n\n\nFigures 40 and 41 show the QuestaSim simulation waveforms and testbench output for the keymap to switch input converter. Each keymap combination was converted to the correct switch combination.\n\n\n\n\n\n\nNoteClick to view map to switch converter submodule simulation waveforms\n\n\n\n\n\n\n\n\nFigure 40. Map to switch converter submodule simulation waveforms\n\n\n\n\n\n\n\n\n\n\n\nNoteClick to view map to switch converter submodule testbench outputs\n\n\n\n\n\n\n\n\nFigure 41. Map to switch converter submodule testbench outputs\n\n\n\n\n\nFigures 42 and 43 show the QuestaSim simulation waveforms and testbench output for the top level module. The column inputs were bounced for 10ms, then were held high, only when that particular row was high. The anodes changed at the right time, and the segment outputs matched the column inputs after they were held high. The segments were reset to 0 and the anode reset to 2’b10 when the reset was toggled.\n\n\n\n\n\n\nNoteClick to view top level module simulation waveforms\n\n\n\n\n\n\n\n\nFigure 42. Top level module simulation waveforms\n\n\n\n\n\n\n\n\n\n\n\nNoteClick to view top level module testbench outputs\n\n\n\n\n\n\n\n\nFigure 43. Top level module testbench outputs\n\n\n\n\n\n\n\nHardware Deployment\nHere is a video showcasing the design running on hardware."
-  },
-  {
-    "objectID": "projects/keypadScanner/keypadScanner.html#design-and-testing-methodology-3",
-    "href": "projects/keypadScanner/keypadScanner.html#design-and-testing-methodology-3",
-    "title": "Keypad Scanner",
-    "section": "Design and Testing Methodology",
-    "text": "Design and Testing Methodology"
-  },
-  {
-    "objectID": "projects/keypadScanner/keypadScanner.html#technical-documentation-3",
-    "href": "projects/keypadScanner/keypadScanner.html#technical-documentation-3",
-    "title": "Keypad Scanner",
-    "section": "Technical Documentation",
-    "text": "Technical Documentation\n\nBlock Diagram\n\n\nCircuit Schematic"
-  },
-  {
-    "objectID": "projects/keypadScanner/keypadScanner.html#results-and-discussion-3",
-    "href": "projects/keypadScanner/keypadScanner.html#results-and-discussion-3",
-    "title": "Keypad Scanner",
-    "section": "Results and Discussion",
-    "text": "Results and Discussion\n\nTestbench Simulation\n\n\nHardware Deployment\n\n\nOscilloscope Testing"
+    "text": "Results and Discussion\nThe design met all intended design objectives.\n\nSynthesizer Warnings\n\n\n\nFigure 29. Image of Radiant Synthesizer Outputs\n\n\nRadiant didn’t give me any errors, warnings of latches or tristate buffers etc. The only warning I got was that my ports were rejected, but these do not affect deployment.\n\n\nTestbench Simulation\nFigure 30 shows a screenshot of the QuestaSim simulation waveforms for my flip flop submodule. It behaved correctly because the output is always 1 clock rising edge behind the input when enabled. When disabled the output stops flowing, and when reset the output is set to 0. This was also confirmed by my automatic testbench (figure 31).\n\n\n\n\n\n\nNoteClick to view flip flop submodule simulation waveforms\n\n\n\n\n\n\n\n\nFigure 30. Flip flop submodule simulation waveforms\n\n\n\n\n\n\n\n\n\n\n\nNoteClick to view flip flop submodule testbench outputs\n\n\n\n\n\n\n\n\nFigure 31. Flip flop submodule testbench outputs\n\n\n\n\n\nFigure 32 shows a screenshot of the QuestaSim simulation waveforms for my synchronizer submodule. It behaved correctly because the output is always 2 clock rising edges behind the input. This was also confirmed by my automatic testbench (figure 33).\n\n\n\n\n\n\nNoteClick to view synchronizer submodule simulation waveforms\n\n\n\n\n\n\n\n\nFigure 32. Synchronizer submodule simulation waveforms\n\n\n\n\n\n\n\n\n\n\n\nNoteClick to view synchronizer submodule testbench outputs\n\n\n\n\n\n\n\n\nFigure 33. Synchronizer submodule testbench outputs\n\n\n\n\n\nThe scanning submodule was retested because it was slightly modified so it could be parametrized instead of only having a fixed scanning frequency. As shown in Figure 34, after each 1/8 clock cycle, the output rows were correct, including after a reset and after setting enable to low and then resetting again. This is also demonstrated by the automatic testbench outputs (see Figure 35).\n\n\n\n\n\n\nNoteClick to view scanning submodule simulation waveforms\n\n\n\n\n\n\n\n\nFigure 34. Scanning submodule simulation waveforms\n\n\n\n\n\n\n\n\n\n\n\nNoteClick to view scanning submodule testbench outputs\n\n\n\n\n\n\n\n\nFigure 35. Scanning submodule testbench outputs\n\n\n\n\n\nFigure 36 shows a screenshot of the QuestaSim simulation waveforms for my keymap submodule. When each of the rows were high, the column inputs were mapped to the keymap correctly with both single presses and multi presses. When reset was enabled, the keymap reset to all 0s. This was also confirmed by my automatic testbench (figure 37).\n\n\n\n\n\n\nNoteClick to view keymap submodule simulation waveforms\n\n\n\n\n\n\n\n\nFigure 36. Keymap submodule simulation waveforms\n\n\n\n\n\n\n\n\n\n\n\nNoteClick to view keymap submodule testbench outputs\n\n\n\n\n\n\n\n\nFigure 37. Keymap submodule testbench outputs\n\n\n\n\n\nFigure 38 shows the QuestaSim simulation waveforms for the debounce submodule. It behaved correctly because after oscillating the keymap bits repeatedly, the output was only changed value after the input was constant. After toggling the reset, the output would not change. This was also confirmed by the automatic testbench (figure 39).\n\n\n\n\n\n\nNoteClick to view debounce submodule simulation waveforms\n\n\n\n\n\n\n\n\nFigure 38. Debounce submodule simulation waveforms\n\n\n\n\n\n\n\n\n\n\n\nNoteClick to view debounce submodule testbench outputs\n\n\n\n\n\n\n\n\nFigure 39. Debounce submodule testbench outputs\n\n\n\n\n\nFigure 40 shows the QuestaSim simulation waveforms for the FSM. All state transitions (including the reset) and outputs were tested to work. This was also confirmed by the automatic testbench (figure 41).\n\n\n\n\n\n\nNoteClick to view FSM submodule simulation waveforms\n\n\n\n\n\n\n\n\nFigure 40. FSM submodule simulation waveforms\n\n\n\n\n\n\n\n\n\n\n\nNoteClick to view FSM submodule testbench outputs\n\n\n\n\n\n\n\n\nFigure 41. FSM submodule testbench outputs\n\n\n\n\n\nFigures 42 and 43 show the QuestaSim simulation waveforms and testbench output for the keymap to switch input converter. Each keymap combination was converted to the correct switch combination.\n\n\n\n\n\n\nNoteClick to view map to switch converter submodule simulation waveforms\n\n\n\n\n\n\n\n\nFigure 42. Map to switch converter submodule simulation waveforms\n\n\n\n\n\n\n\n\n\n\n\nNoteClick to view map to switch converter submodule testbench outputs\n\n\n\n\n\n\n\n\nFigure 43. Map to switch converter submodule testbench outputs\n\n\n\n\n\nFigures 44 and 45 show the QuestaSim simulation waveforms and testbench output for the top level module. The column inputs were bounced for 10ms, then were held high, only when that particular row was high. The anodes changed at the right time, and the segment outputs matched the column inputs after they were held high. The segments were reset to 0 and the anode reset to 2’b10 when the reset was toggled.\n\n\n\n\n\n\nNoteClick to view top level module simulation waveforms\n\n\n\n\n\n\n\n\nFigure 44. Top level module simulation waveforms\n\n\n\n\n\n\n\n\n\n\n\nNoteClick to view top level module testbench outputs\n\n\n\n\n\n\n\n\nFigure 45. Top level module testbench outputs\n\n\n\n\n\n\n\nHardware Deployment\nHere is a video showcasing the design running on hardware."
   },
   {
     "objectID": "projects/crystalRadio/crystalRadio.html",
@@ -277,14 +256,91 @@
     "href": "projects/E80Bot/E80Bot.html",
     "title": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)",
     "section": "",
-    "text": "Timeline: Mar 2026 – May 2026\n\n\nSkills: P-Control, Circuit Design, Mechanical Design, C++, MATLAB, Data Analysis, Troubleshooting, Technical Documentation"
+    "text": "Timeline: Mar 2026 – May 2026\n\n\nSkills: P-Control, Circuit Design, Mechanical Design, C++, MATLAB, I2C Communication, Data Analysis, Troubleshooting, Technical Documentation"
   },
   {
-    "objectID": "projects/E80Bot/E80Bot.html#yahoooo",
-    "href": "projects/E80Bot/E80Bot.html#yahoooo",
+    "objectID": "projects/E80Bot/E80Bot.html#frame-and-motor-assembly",
+    "href": "projects/E80Bot/E80Bot.html#frame-and-motor-assembly",
     "title": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)",
-    "section": "YAHOOOO",
-    "text": "YAHOOOO"
+    "section": "Frame and Motor Assembly",
+    "text": "Frame and Motor Assembly"
+  },
+  {
+    "objectID": "projects/E80Bot/E80Bot.html#motherboard-setup",
+    "href": "projects/E80Bot/E80Bot.html#motherboard-setup",
+    "title": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)",
+    "section": "Motherboard Setup",
+    "text": "Motherboard Setup\n\nAssembly\n\n\nValidation, Calibration, and Error Measurement"
+  },
+  {
+    "objectID": "projects/E80Bot/E80Bot.html#open-loop-control-navigation",
+    "href": "projects/E80Bot/E80Bot.html#open-loop-control-navigation",
+    "title": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)",
+    "section": "Open-Loop Control Navigation",
+    "text": "Open-Loop Control Navigation"
+  },
+  {
+    "objectID": "projects/E80Bot/E80Bot.html#turbidity-meter",
+    "href": "projects/E80Bot/E80Bot.html#turbidity-meter",
+    "title": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)",
+    "section": "Turbidity Meter",
+    "text": "Turbidity Meter\n\nGetting Familiar with Operational Amplifiers\nI had no prior experience with operational amplifiers, so to get familiar with them (as they would be needed to scale the sensor outputs to get a better resolution when read by the Teensy 4.0 ADC), I first built a single rail, non-inverting amplifier with a gain of 2. I applied a 100mV amplitude sine wave with a 1V offset, then with an offset of 0V, catching each input and output on an oscilloscope.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIn both traces, the desired gain of 2 was achieved, as seen by the input voltage being scaled by 2 in the output voltage (100mV to around 200mV in the 1V offset one, 100mV to 100mV in the 0V offset one due to clipping). When the signal was sent into the op-amp with a 0V offset, only the positive voltages of the original sine wave show up on the output, with the negative voltages being output as 0V.\nThe output signal in the 0V offset trace does not obey the equation that describes non-inverting amplifier outputs because I used a MCP601 which is a single supply op-amp, which means it only has +V and GND, so Vout can only be positive. Since the input has a 0V offset, half of the input signal is out of the range of the op-amp (it goes below the minimum possible output), making it look like the op-amp is producing a constant output instead of the ideal sine wave. I learned that this was how op-amps could be used to scale signals, but that I would need to be careful of “railing out”.\nNext, I build an offset amplifier that could take the same 100mV amplitude sine wave with a 0V offset and output the full signal. I did this by using a gaim of -2 and a 200mV offset.\nAssuming an ideal op-amp (infinitely large input impedance, and \\(V_+=V_-\\) in negative feedback), \\(V_{out} = (1+\\frac{R_f}{R_n1})V_+-\\frac{R_f}{R_n1}V_in\\) where the gain factor is \\(-\\frac{R_f}{R_n1}\\) and the offset factor is \\(1+\\frac{R_f}{R_n1}\\).\nIf the gain factor is -2, then \\(-\\frac{R_f}{R_n1}=-2\\), so \\(R_f=2R_{n1}\\). I used \\(R_f=20k\\Omega\\) and \\(R_{n1}=10k\\Omega\\) based on resistor availability.\nSince the minimum input voltage would be -100mV, and at this point we want an output voltage of 0V, I substituted these values in to solve for \\(V_+\\).\n\\[\n\\begin{aligned}\nV_{out}&=(1+2)V_+2V_{in}\\\\\n0&=3V_-0.2\\\\\nV_+&=0.67 (rounded up so V_{out} doesn't rail)\\\\\n\\end{aligned}\n\\]\nUsing \\(\\frac{R_g}{R_{p1}+R_g}V_{p1}=V_+\\), where \\(V_{p1}=5V\\) supplied from the 5V power supply into the op-amp to reduce the need for multiple power sources,\n\\[\n\\begin{aligned}\n\\frac{R_g}{R_{p1}+R_g}5&=0.067\\\\\nR_g&=\\frac{0.067}{5}R_{p1}+\\frac{0.067}{5}R_g\\\\\n74R_g&=R_{p1}\\\\\n\\end{aligned}\n\\]\nI used \\(R_g=2k\\Omega\\) and \\(R_{p1}=148k\\Omega\\) based on resistor availability. The schematic is shown in Figure x.\n\nFrom the oscilloscope trace, compared to the input signal, the output signal has a -2 gain and 200mV offset, which matches the theoretical design.\nThis design did not have the non-idealities that the non-inverting amplifier has because it included a 200mV offset with -2 gain, so the -100mV input peak can be output as 0V. Since the op-amp is single-rail and cannot handle negative voltages, this prevents the op-amp from resorting to failure mode as seen in the non-inverting amplifier, and the full output sine wave was visible.\n\n\n\n555 Timer LED Driver and Transimpedance Amplifier Circuits\nTurbidity meters depend on illuminating a water sample and measuring the ratio of light that passes directly through the sample to light that is scattered 90°. We used an IR LED to illuminate the samples and an IR photodiode to measure the transmitted and scattered light. The photodiode was connected to a transimpedance amplifier circuit to convert the diode current into an output voltage. Figure x shows the schematic of the transimpedance amplifier. Note that since the MCP6004 op-amp contains four op-amps, the unused op-amps were connected as unity gain buffers with inputs and outputs grounded to prevent noise from floating inputs.\n\n\n\nFigure x. Transimpedance Amplifier Schematic\n\n\nA 555 timer was used to drive the IR LEDs. This was done instead of permanently turning the LEDs high because any ambient light in the water sample would produce an offset voltage in the transimpedance amplifier output. The switching LED would produce oscillatory behaviour so we could measure the peak-to-peak output voltage and thus isolate the voltage caused by the LEDs from ambient light.\nWe wanted a 500Hz-1kHz square wave with an output waveform duty cycle of about 60% to ensure the LEDs fully illuminated the water sample. From the SE555 datasheet, the output waveform duty cycle was \\(\\frac{R_A+R_B}{R_A+2R_B}\\). This was equated to solve for \\(R_A\\) and \\(R_B\\).\n\\[\n\\begin{aligned}\n\\frac{R_A+R_B}{R_A+2R_B}&=0.6\\\\\nR_A+R_B&=0.6R_A+1.2R_B\\\\\n0.4R_A&=0.2R_B\\\\\nR_A&=0.5R_B\n\\end{aligned}\n\\]\nSo the ratio of \\(R_A\\) to \\(R_B\\) is 1:2. Based on the available resistors, and to use an available and suitable capacitor (as shown below), we chose \\(R_A=5k\\Omega\\) and \\(R_B=10k\\Omega\\).\nThe datasheet also stated the operating frequency was given by \\(\\frac{1.44}{(R_A+2R_B)C}\\). This was equated to 500Hz and 1kHz to solve for the minimum and maximum values of the capacitor.\n\\[\n\\begin{aligned}\nf&=\\frac{1.44}{(R_A+2R_B)C}\\\\\nf&=\\frac{1.44}{(5000+20000)C}\\\\\nf&=\\frac{1.44}{25000C}\\\\\n\\end{aligned}\n\\]\n\n\n\n\\(500=\\frac{1.44}{25000C} gives C_{max} = 115nF\\)\n\n\n\\(1000=\\frac{1.44}{25000C} gives C_{min} = 57.6nF\\)\n\n\n\nBased on the available capacitors, we chose \\(C=100nF\\) to produce a frequency of 576Hz.\nFrom the IR1503 datasheet, it has a 1.2V forward voltage drop when driving a 20mA current. Since the 555 timer input voltage is 5V, the voltage drop across the current limiting resistor between the LED and ground would be \\(5V-1.2V=3.8V\\). Using Ohm’s law, an appropriate resistor value was calculated to produce a 20-40mA current through the LED.\n$$\n\\[\\begin{aligned}\nV_{cc}-V_F&=I_FR_{Fmax}\\\\\n3.8V&=0.02A*R_{Fmax}\\\\\nR_{Fmax}&=190\\Omega\n\n\\begin{aligned}\nV_{cc}-V_F&=I_FR_{Fmin}\\\\\n3.8V&=0.04A*R_{Fmin}\\\\\nR_{Fmin}&=95\\Omega\n\\end{aligned}\\]\n$$\nBased on these calculations we chose 100Ω as the current limiting resistor. Figure x shows the 555 timer circuit.\n\n\n\nFigure x. 555 Timer Circuit\n\n\n\n\nCircuit Testing and Calibration\nTo test the circuits were functioning, we first captured an oscilloscope trace of the 555 timer output to ensure the frequency and duty cycle were correct. In Figure x, the three traces show the 555 timer output, the 555 capacitor node, and the voltage in the middle of the diode resistor string.\n\nWe then captured an oscilloscope trace of the transimpedance amplifier output when the photodiode was illuminated by the switching IR LED to ensure the circuit could be correctly driven (shown in Figure x).\n\nTo finalize the turbidity meter, 5 solutions of various turbidities were prepared using milk and water, and checked using the TU-2016 turbidity meter. The solution cuvettes were then placed in a 3D-printed fixture that held one IR LED and two photodiodes in the correct orientation.\n\n\n\n\n\n\n\n\n\n\nThe peak-to-peak voltage of the 90° and 0° transimpedance amplifier outputs were recorded for each solution. The ratio of these voltages were plotted against the calibrated turbidity data to get a calibration curve. The results were plotted in MATLAB and are shown in Figure x."
+  },
+  {
+    "objectID": "projects/E80Bot/E80Bot.html#depth-sensor",
+    "href": "projects/E80Bot/E80Bot.html#depth-sensor",
+    "title": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)",
+    "section": "Depth Sensor",
+    "text": "Depth Sensor"
+  },
+  {
+    "objectID": "projects/E80Bot/E80Bot.html#temperature-sensors",
+    "href": "projects/E80Bot/E80Bot.html#temperature-sensors",
+    "title": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)",
+    "section": "Temperature Sensors",
+    "text": "Temperature Sensors\nThere are three core temperature sensors, each with advantages and disadvantages. Each sensor was prototyped and tested to determine which would be the best fit for the project.\n\nSemiconductor-based IC Sensor\n\n\nThermistor\n\n\nThermocouple"
+  },
+  {
+    "objectID": "projects/E80Bot/E80Bot.html#underwater-acoustics",
+    "href": "projects/E80Bot/E80Bot.html#underwater-acoustics",
+    "title": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)",
+    "section": "Underwater Acoustics",
+    "text": "Underwater Acoustics"
+  },
+  {
+    "objectID": "projects/E80Bot/E80Bot.html#magnetometer",
+    "href": "projects/E80Bot/E80Bot.html#magnetometer",
+    "title": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)",
+    "section": "Magnetometer",
+    "text": "Magnetometer"
+  },
+  {
+    "objectID": "projects/E80Bot/E80Bot.html#depth-control",
+    "href": "projects/E80Bot/E80Bot.html#depth-control",
+    "title": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)",
+    "section": "Depth Control",
+    "text": "Depth Control"
+  },
+  {
+    "objectID": "projects/E80Bot/E80Bot.html#surface-navigation-control",
+    "href": "projects/E80Bot/E80Bot.html#surface-navigation-control",
+    "title": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)",
+    "section": "Surface Navigation Control",
+    "text": "Surface Navigation Control"
+  },
+  {
+    "objectID": "projects/E80Bot/E80Bot.html#buoyancy",
+    "href": "projects/E80Bot/E80Bot.html#buoyancy",
+    "title": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)",
+    "section": "Buoyancy",
+    "text": "Buoyancy"
+  },
+  {
+    "objectID": "projects/E80Bot/E80Bot.html#waterproofing",
+    "href": "projects/E80Bot/E80Bot.html#waterproofing",
+    "title": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)",
+    "section": "Waterproofing",
+    "text": "Waterproofing"
   },
   {
     "objectID": "projects/multiCycleProcessor/multiCycleProcessor.html",
@@ -453,89 +509,5 @@
     "title": "Natalie Ko's Engineering Portfolio",
     "section": "",
     "text": "Mechanical Design & FEA\n\nManufacturing\n\n\n\nDesigned and manufactured a system to raise and lower sensors through a ~600ft radioactive mine shaft (shrinking to an unknown diameter) for data collection without direct human contact.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEmbedded Systems & Firmware\n\nPCB Design & Electronics\n\n\n\nProgrammed an FPGA to read a 4x4 matrix keypad and display the last two hexadecimal inputs on a dual seven-segment display. Accounted for key bounce, multi-press, and timing inconsistencies.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRobotics & Control Systems\n\nPCB Design & Electronics\n\nEmbedded Systems & Firmware\n\nMechanical Design & FEA\n\n\n\nDeveloped and deployed an AUV to map metal debris distribution on the ocean floor and back-calculate debris drop locations.\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "projects/E80Bot/E80Bot.html#frame-and-motor-assembly",
-    "href": "projects/E80Bot/E80Bot.html#frame-and-motor-assembly",
-    "title": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)",
-    "section": "Frame and Motor Assembly",
-    "text": "Frame and Motor Assembly"
-  },
-  {
-    "objectID": "projects/E80Bot/E80Bot.html#motherboard-setup",
-    "href": "projects/E80Bot/E80Bot.html#motherboard-setup",
-    "title": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)",
-    "section": "Motherboard Setup",
-    "text": "Motherboard Setup\n\nAssembly\n\n\nValidation, Calibration, and Error Measurement"
-  },
-  {
-    "objectID": "projects/E80Bot/E80Bot.html#open-loop-control-navigation",
-    "href": "projects/E80Bot/E80Bot.html#open-loop-control-navigation",
-    "title": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)",
-    "section": "Open-Loop Control Navigation",
-    "text": "Open-Loop Control Navigation"
-  },
-  {
-    "objectID": "projects/E80Bot/E80Bot.html#turbidity-meter",
-    "href": "projects/E80Bot/E80Bot.html#turbidity-meter",
-    "title": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)",
-    "section": "Turbidity Meter",
-    "text": "Turbidity Meter"
-  },
-  {
-    "objectID": "projects/E80Bot/E80Bot.html#underwater-acoustics",
-    "href": "projects/E80Bot/E80Bot.html#underwater-acoustics",
-    "title": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)",
-    "section": "Underwater Acoustics",
-    "text": "Underwater Acoustics"
-  },
-  {
-    "objectID": "projects/E80Bot/E80Bot.html#temperature-sensors",
-    "href": "projects/E80Bot/E80Bot.html#temperature-sensors",
-    "title": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)",
-    "section": "Temperature Sensors",
-    "text": "Temperature Sensors\n\nSolid-state Linear Temperature Sensor\n\n\nThermistor\n\n\nThermocouple"
-  },
-  {
-    "objectID": "projects/E80Bot/E80Bot.html#depth-sensor",
-    "href": "projects/E80Bot/E80Bot.html#depth-sensor",
-    "title": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)",
-    "section": "Depth Sensor",
-    "text": "Depth Sensor"
-  },
-  {
-    "objectID": "projects/E80Bot/E80Bot.html#magnetometer",
-    "href": "projects/E80Bot/E80Bot.html#magnetometer",
-    "title": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)",
-    "section": "Magnetometer",
-    "text": "Magnetometer"
-  },
-  {
-    "objectID": "projects/E80Bot/E80Bot.html#depth-control",
-    "href": "projects/E80Bot/E80Bot.html#depth-control",
-    "title": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)",
-    "section": "Depth Control",
-    "text": "Depth Control"
-  },
-  {
-    "objectID": "projects/E80Bot/E80Bot.html#surface-navigation-control",
-    "href": "projects/E80Bot/E80Bot.html#surface-navigation-control",
-    "title": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)",
-    "section": "Surface Navigation Control",
-    "text": "Surface Navigation Control"
-  },
-  {
-    "objectID": "projects/E80Bot/E80Bot.html#buoyancy",
-    "href": "projects/E80Bot/E80Bot.html#buoyancy",
-    "title": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)",
-    "section": "Buoyancy",
-    "text": "Buoyancy"
-  },
-  {
-    "objectID": "projects/E80Bot/E80Bot.html#waterproofing",
-    "href": "projects/E80Bot/E80Bot.html#waterproofing",
-    "title": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)",
-    "section": "Waterproofing",
-    "text": "Waterproofing"
   }
 ]
