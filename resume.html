@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>resume – Natalie Ko's Engineering Portfolio</title>
+<title>Résumé – YN/MECH</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -42,10 +42,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-98c7eacc04dc8a1fe11fe799e0cd156c.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-5c63aebb649818f6f5321b45920f1531.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-98c7eacc04dc8a1fe11fe799e0cd156c.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-c5e35b1cbbda7aca693bdec97cf96fcb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-30791d33a638bff470c098c45da64e7c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-0b321fec9620eeee13feb84e0ed91b59.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-30791d33a638bff470c098c45da64e7c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -73,27 +77,195 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>html{ scroll-behavior: smooth; }</style>
 
 
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./nko-logo-light.gif" alt="" class="navbar-logo light-content">
-    <img src="./nko-logo-light.gif" alt="" class="navbar-logo dark-content">
-    </a>
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Natalie Ko’s Engineering Portfolio</span>
+    <span class="navbar-title">YN/MECH</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
@@ -108,20 +280,17 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./work.html"> 
-<span class="menu-text">Work Experiences</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link active" href="./resume.html" aria-current="page"> 
-<span class="menu-text">CV</span></a>
+<span class="menu-text">Résumé</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./about.html"> 
-<span class="menu-text">About Me</span></a>
+<span class="menu-text">About</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -130,161 +299,118 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
-    </div>
+    
 <!-- main -->
 <main class="content column-page" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
 
-<div class="main-container">
-<div class="resume-card">
-<div class="resume-header-flex">
-<p><a href="resume.pdf" class="btn-blue-download" target="_blank">Download PDF Resume</a></p>
-</div>
-<div class="resume-section-title">
-<p>EDUCATION</p>
-</div>
-<div class="resume-row">
-<p><span class="resume-bold-title">B.S., Engineering (Mechatronics Specialization)</span></p>
-<p><span class="resume-date">Expected May 2028</span></p>
-</div>
-<div class="resume-subtext">
-<p>Harvey Mudd College — Claremont, California, USA</p>
-</div>
-<p><strong>Major GPA:</strong> 4.0 / 4.0 | <strong>Cumulative GPA:</strong> 3.918 / 4.0 | <strong>Dean’s List</strong> (all graded semesters)</p>
-<div class="resume-general-text">
-<p><strong>Relevant Coursework:</strong> Microprocessor Systems: Design &amp; Application; Digital Electronics &amp; Computer Engineering; Continuum Mechanics; Electrical &amp; Magnetic Circuits/Devices; Advanced Systems Engineering; Experimental Engineering; Engineering Systems; Intro to Engineering Design/Manufacturing; Applied Math for Engineering; Probability/Stats for Engineers; Intro to Computer Science</p>
-</div>
-<div class="resume-section-title">
-<p>AWARDS AND ACHIEVEMENTS</p>
-</div>
-<div class="resume-row">
-<p><span class="resume-bold-title">Tau Beta Pi Member (United States Engineering Honours Society, Top 12.5% of Junior Class)</span></p>
-<p><span class="resume-date">2026 – Present</span></p>
-</div>
-<div class="resume-row">
-<p><span class="resume-bold-title">Harvey Mudd Merit Scholarship (Top 15% of Entering Class)</span></p>
-<p><span class="resume-date">2024 – Present</span></p>
-</div>
-<div class="resume-section-title">
-<p>WORK EXPERIENCE</p>
-</div>
-<div class="resume-row">
-<p><span class="resume-bold-title">R&amp;D Manufacturing Engineering Contractor</span></p>
-<p><span class="resume-date">Aug 2026 – Present</span></p>
-</div>
-<div class="resume-subtext">
-<p>Medtronic MiniMed (Through Harvey Mudd College Clinic Program)</p>
-</div>
-<ul>
-<li>Optimized Continuous Glucose Monitor sensor manufacturing process, reduced cycle time from __ to __ hrs</li>
-<li>Prototyped &amp; tested a sensor clamping fixture, prevented sensor damage &amp; improved operator ergonomics</li>
-<li>Performed materials analysis &amp; testing, met ISO 7 classifications &amp; withstood corrosive baths during 24/5 use</li>
-</ul>
-<div class="resume-row">
-<p><span class="resume-bold-title">Paid Aerospace Engineering Intern</span></p>
-<p><span class="resume-date">Jul 2026 – Aug 2026</span></p>
-</div>
-<div class="resume-subtext">
-<p>Cathay Pacific, Hong Kong</p>
-</div>
-<ul>
-<li>Developed a cross-company maintenance Power App; cut daily task time from 1hr+ to 24min (100% adoption)</li>
-<li>Built a Power BI automated predictive model, optimized servicing for 13 cabin layouts under operational limits</li>
-<li>Improved aircraft regulatory compliance by analyzing Acceptable Deferred Defects in Ultramain &amp; Skywise</li>
-<li>Co-developed an Ultralytics YOLO computer vision model to detect cabin defects &amp; automate inspections</li>
-</ul>
-<div class="resume-row">
-<p><span class="resume-bold-title">Undergraduate Student Researcher</span></p>
-<p><span class="resume-date">Jan 2026 – Present</span></p>
-</div>
-<div class="resume-subtext">
-<p>Flow Imaging Lab at Mudd, Dept. of Engineering, Harvey Mudd College</p>
-</div>
-<ul>
-<li>Designed &amp; manufactured a mechanical 3-axis calibrator for a live class-4 laser for Particle Image Velocimetry</li>
-<li>Processed 6-axis load cell data using MATLAB to quantify thrust generated by a biomimetic fish fin</li>
-<li>Programmed a PI-controlled rotational degree of freedom for the fin; troubleshot load cell/motor interference</li>
-<li>Managed waterjet safety &amp; maintenance; advised team of 5 on machining processes to eliminate fin defects</li>
-</ul>
-<div class="resume-row">
-<p><span class="resume-bold-title">Lab Teaching Assistant / Lab Improver</span></p>
-<p><span class="resume-date">Aug 2025 – Present</span></p>
-</div>
-<div class="resume-subtext">
-<p>Intro to Engineering Design/Manufacturing, Harvey Mudd College</p>
-</div>
-<ul>
-<li>Taught 20+ students SolidWorks, CAD, motion studies, finite element analysis, prototyping, material selection</li>
-<li>Reviewed technical drawings for manufacturing; final products used in research labs, courses, school services</li>
-<li>Authored 5 SolidWorks tutorials teaching feature logic and software troubleshooting, used by 60+ students</li>
-<li>Pioneered new student role, eliminated continuity errors between teachings &amp; deliverable expectations</li>
-</ul>
-<div class="resume-row">
-<p><span class="resume-bold-title">Repair Steward</span></p>
-<p><span class="resume-date">Jan 2025 – Present</span></p>
-</div>
-<div class="resume-subtext">
-<p>Makerspace, Harvey Mudd College</p>
-</div>
-<ul>
-<li>Maintained, repaired &amp; troubleshot fabrication equipment failures; minimized downtime for 2500+ users</li>
-<li>Coordinated with 5 undergraduates to write/update user, safety &amp; repair manuals &amp; SOPs for all equipment</li>
-<li>Optimized services; provided remote technical support, analyzed maintenance logs, reported inconsistencies</li>
-</ul>
-<div class="resume-row">
-<p><span class="resume-bold-title">Undergraduate Student Researcher</span></p>
-<p><span class="resume-date">Jan 2025 – Dec 2025</span></p>
-</div>
-<div class="resume-subtext">
-<p>HMC Biophotonics Lab, Dept. of Engineering, Harvey Mudd College</p>
-</div>
-<ul>
-<li>Co-developed an open-source in vivo imaging system, reduced production cost to &lt;1% of commercial price</li>
-<li>Improved speckle contrast &amp; bioluminescence imaging capabilities; device used @ Claremont McKenna College</li>
-<li>Devised experimental optics setups; troubleshot modules with oscilloscopes; processed images with Python</li>
-</ul>
-<div class="resume-row">
-<p><span class="resume-bold-title">Paid Student Intern</span></p>
-<p><span class="resume-date">Jul 2023 - Jul 2023</span></p>
-</div>
-<div class="resume-subtext">
-<p>MéridaLabs, Dept. of Mechanical Engineering, University of British Columbia</p>
-</div>
-<ul>
-<li>Collaborated with two co-op students to build a JavaScript/Svelte Smart Hydrogen Energy District website</li>
-<li>Reworked 3D models, produced renders and animations in AutoCAD for a national technology conference</li>
-</ul>
-<div class="resume-section-title">
-<p>PUBLICATIONS AND PRESENTATIONS</p>
-</div>
-<p><strong>Poster/Presenter:</strong> “Integrating Laser Speckle Contrast Imaging with OpenIVIS,” <strong>Ko, N.</strong>, Tran, M., Brake, J. Southern California Conference for Undergraduate Research, Nov 2025</p>
-<p><strong>Poster/Presenter:</strong> “Open-source bioluminescence imaging for low-light biological applications using the OpenIVIS platform,” Tran, M., <strong>Ko, N.</strong>, Brake, J. Southern California Conference for Undergraduate Research, Nov 2025</p>
-<p><strong>Publication:</strong> <strong>Ko, N. M. T.</strong> (2024). An evaluation of the adhesive capabilities of dry adhesive gecko tapes produced using diffraction gratings. STEM Fellowship Journal, e-First. https://doi.org/10.17975/sfj-2024-002</p>
-<div class="resume-section-title">
-<p>VOLUNTEERING</p>
-</div>
-<div class="resume-row">
-<p><span class="resume-bold-title">Unpaid Engineering Tutor</span></p>
-<p><span class="resume-date">Aug 2026 - Present</span></p>
-</div>
-<div class="resume-subtext">
-<p>Tau Beta Pi (California Omega Chapter), Harvey Mudd College</p>
-</div>
-<ul>
-<li>Provided free tutoring services for students in core Engineering courses for 1 hour per week</li>
-</ul>
-</div>
+
+<section id="résumé" class="level2 sec">
+<h2 class="sec anchored" data-anchor-id="résumé">Résumé</h2>
+<div class="cv">
+<div class="cv-head"><a class="btn-pill" href="resume.pdf" target="_blank">Download PDF ↓</a> <small>(drop your resume.pdf next to this file)</small></div>
+
+<div class="cv-title">Education</div>
+<div class="cv-row"><span class="cv-bold">B.S. Mechatronics Engineering</span><span class="cv-date">2024 – 2028 (expected)</span></div>
+<div class="cv-sub">[Your University]</div>
+<p class="cv-text">GPA [X] · Coursework: Control Systems, Embedded Systems, Dynamics, Circuits, Machine Design.</p>
+
+<div class="cv-title">Experience</div>
+<div class="cv-row"><span><span class="cv-bold">Controls Intern</span><a class="cv-more" href="experience/controls-intern.html">Read more →</a></span><span class="cv-date">Jun – Aug 2026</span></div>
+<div class="cv-sub">[Company A]</div>
+<ul class="cv-list"><li>Tuned PID loops for a servo test rig, cutting settling time by [X]%.</li></ul>
+<div class="cv-row"><span><span class="cv-bold">Mechatronics Co-op</span><a class="cv-more" href="experience/mechatronics-coop.html">Read more →</a></span><span class="cv-date">Jan – May 2026</span></div>
+<div class="cv-sub">[Company B]</div>
+<ul class="cv-list"><li>Designed a sensor bracket and wrote the firmware that logs its data.</li></ul>
+<div class="cv-row"><span><span class="cv-bold">Robotics Club Lead</span><a class="cv-more" href="experience/robotics-club-lead.html">Read more →</a></span><span class="cv-date">2024 – now</span></div>
+<div class="cv-sub">[Club / Team]</div>
+<ul class="cv-list"><li>Lead 12 students building an autonomous competition robot.</li></ul>
+<div class="cv-row"><span><span class="cv-bold">Lab Assistant</span><a class="cv-more" href="experience/lab-assistant.html">Read more →</a></span><span class="cv-date">2025</span></div>
+<div class="cv-sub">[University Lab]</div>
+<ul class="cv-list"><li>Supported PCB assembly and embedded systems coursework.</li></ul>
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
+<script>
+/* ===== PROJECT CARDS: edit here (newest first). Each slug matches projects/<slug>/index.qmd.
+   featured = true to show on the home page (first 3 flagged are used).
+   img = path inside that project's folder, e.g. "images/cover.jpg" (leave "" for the placeholder) ===== */
+const PROJECTS=[
+ {"featured":true,"img":"","slug": "scara-arm", "t": "SCARA Pick-and-Place Arm", "d": "Mar 2026", "cats": ["Robotics", "Controls"], "b": "4-DOF arm with closed-loop steppers and a custom inverse-kinematics solver.", "tech": ["C++", "SolidWorks", "Stepper drivers"]},
+ {"featured":true,"img":"","slug": "qdd-actuator", "t": "Quasi-Direct-Drive Actuator", "d": "Dec 2025", "cats": ["Motors", "Mechanical"], "b": "3D-printed cycloidal gearbox on a BLDC motor, characterized for torque and backlash.", "tech": ["SolidWorks", "FDM printing", "FOC"]},
+ {"featured":true,"img":"","slug": "balancing-robot", "t": "Self-Balancing Robot", "d": "Oct 2025", "cats": ["Controls", "Embedded"], "b": "IMU sensor fusion and cascaded PID on an STM32 to hold balance under disturbance.", "tech": ["C", "STM32", "IMU"]},
+ {"featured":false,"img":"","slug": "rover-pcb", "t": "Line-Following Rover PCB", "d": "May 2025", "cats": ["Embedded", "Electronics"], "b": "Custom 4-layer board with motor drivers, reflectance array, and Bluetooth telemetry.", "tech": ["KiCad", "C++", "Bluetooth"]},
+ {"featured":false,"img":"","slug": "vision-sorter", "t": "Vision-Guided Sorter", "d": "Feb 2025", "cats": ["Robotics", "Software"], "b": "OpenCV color detection feeding a conveyor and servo sorter via a Raspberry Pi.", "tech": ["Python", "OpenCV", "Raspberry Pi"]},
+ {"featured":false,"img":"","slug": "lora-weather-node", "t": "Weather Node (LoRa)", "d": "Nov 2024", "cats": ["Embedded", "Electronics"], "b": "Solar-powered sensor node with deep-sleep firmware lasting [X] months on a cell.", "tech": ["C", "LoRa", "Low-power design"]}];
+/* ================================================================================ */
+/* Site-wide behavior: hero arm (IK), stat counters, experience marquee, tech chips. Each part no-ops if its elements are absent. */
+(function(){
+ const css=n=>getComputedStyle(document.body).getPropertyValue(n).trim();
+ // seamless marquee: duplicate cards once
+ const trk=document.getElementById("jobs");if(trk)trk.innerHTML+=trk.innerHTML;
+ // stat counters
+ const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;io.unobserve(e.target);const n=+e.target.dataset.n,dec=n%1?1:0;let s=0;const id=setInterval(()=>{s+=n/30;if(s>=n){s=n;clearInterval(id)}e.target.textContent=s.toFixed(dec)},30)}));
+ document.querySelectorAll("[data-n]").forEach(el=>io.observe(el));
+ // brand: orange slash
+ document.querySelectorAll(".navbar-title").forEach(el=>{el.innerHTML=el.textContent.replace("/",'<span style="color:var(--or)">/</span>')});
+ // skills text -> bubbles on project / experience pages
+ document.querySelectorAll(".skills-val").forEach(el=>{el.innerHTML=el.textContent.split(",").map(s=>s.trim()).filter(Boolean).map(s=>`<span>${s}</span>`).join("")});
+ // project cards (home: newest 3; projects page: all, with category filters)
+ const card=p=>`<article class="pcard" data-cats="${p.cats.join("|")}"><a class="pcard-link" href="projects/${p.slug}/index.html">${p.img?`<img class="pcard-img" src="projects/${p.slug}/${p.img}" alt="${p.t}">`:`<div class="pcard-img ph-img mono">project image</div>`}<div class="pcard-body"><small class="mono">${p.d}</small><h3>${p.t}</h3><p>${p.b}</p><div class="chips">${p.tech.map(t=>`<span>${t}</span>`).join("")}</div></div></a></article>`;
+ const feat=document.getElementById("featured");if(feat)feat.innerHTML=PROJECTS.filter(p=>p.featured).slice(0,3).map(card).join("");
+ const grid=document.getElementById("grid");if(grid)grid.innerHTML=PROJECTS.map(card).join("");
+ const fb=document.getElementById("filters"),cards=[...document.querySelectorAll("#grid .pcard")];
+ if(fb&&cards.length){const cats=["All",...new Set(PROJECTS.flatMap(p=>p.cats))];
+  fb.innerHTML=cats.map(c=>`<button type="button" class="${c==="All"?"on":""}">${c}</button>`).join("");
+  fb.onclick=e=>{const b=e.target.closest("button");if(!b)return;fb.querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));
+   cards.forEach(c=>c.hidden=!(b.textContent==="All"||c.dataset.cats.split("|").includes(b.textContent)))}}
+ // hero arm
+ const cv=document.getElementById("c");if(!cv)return;
+ const cx=cv.getContext("2d"),W=700,L1=230,L2=200,bx=W/2,by=W*0.82;
+ let tx=bx-120,ty=by-300,cur={x:tx,y:ty},idle=true,tm=0;
+ function pos(e){const r=cv.getBoundingClientRect(),p=e.touches?e.touches[0]:e;if(!r.width)return;tx=(p.clientX-r.left)*W/r.width;ty=(p.clientY-r.top)*W/r.height;idle=false}
+ addEventListener("mousemove",pos);cv.addEventListener("touchmove",pos,{passive:true});
+ function frame(t){
+  if(idle){tx=bx+Math.cos(t/1500)*170;ty=by-260+Math.sin(t/1100)*90}
+  cur.x+=(tx-cur.x)*.12;cur.y+=(ty-cur.y)*.12;
+  let dx=cur.x-bx,dy=cur.y-by,d=Math.hypot(dx,dy);const R=L1+L2-2,r=Math.min(d,R),mn=Math.abs(L1-L2)+4;
+  const rr=Math.max(r,mn),a=Math.atan2(dy,dx),
+  c2=Math.min(1,Math.max(-1,(rr*rr-L1*L1-L2*L2)/(2*L1*L2))),q2=-Math.acos(c2),
+  q1=a-Math.atan2(L2*Math.sin(q2),L1+L2*Math.cos(q2));
+  const jx=bx+L1*Math.cos(q1),jy=by+L1*Math.sin(q1),ex=jx+L2*Math.cos(q1+q2),ey=jy+L2*Math.sin(q1+q2);
+  cx.clearRect(0,0,W,W);
+  cx.setLineDash([6,8]);cx.strokeStyle=css("--line");cx.lineWidth=2;cx.beginPath();cx.arc(bx,by,L1+L2,Math.PI,2*Math.PI);cx.stroke();cx.setLineDash([]);
+  cx.strokeStyle=css("--bl");cx.lineWidth=1.5;cx.beginPath();cx.arc(tx,ty,10,0,7);cx.moveTo(tx-16,ty);cx.lineTo(tx+16,ty);cx.moveTo(tx,ty-16);cx.lineTo(tx,ty+16);cx.stroke();
+  cx.lineCap="round";
+  [[bx,by,jx,jy,26,"--txt"],[jx,jy,ex,ey,20,"--or"]].forEach(l=>{cx.strokeStyle=css(l[5]);cx.lineWidth=l[4];cx.beginPath();cx.moveTo(l[0],l[1]);cx.lineTo(l[2],l[3]);cx.stroke()});
+  [[bx,by,22],[jx,jy,18],[ex,ey,11]].forEach(j=>{cx.fillStyle=css("--bg");cx.strokeStyle=css("--bl");cx.lineWidth=4;cx.beginPath();cx.arc(j[0],j[1],j[2],0,7);cx.fill();cx.stroke()});
+  cx.fillStyle=css("--line");cx.fillRect(bx-60,by+22,120,14);
+  if(t-tm>80){tm=t;const D=180/Math.PI,s=(i,v)=>document.getElementById(i).textContent=v;
+   s("t1",(-q1*D).toFixed(0));s("t2",(-q2*D).toFixed(0));s("px",((ex-bx)*.5).toFixed(0));s("py",((by-ey)*.5).toFixed(0))}
+  requestAnimationFrame(frame)}
+ requestAnimationFrame(frame);
+})();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
     const anchorJS = new window.AnchorJS();
     anchorJS.options = {
@@ -690,12 +816,10 @@ ul.task-list li input[type="checkbox"] {
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-<div class="custom-footer">
-<a href="https://www.linkedin.com/in/ko12nat/" target="_blank">LinkedIn</a> • <a href="https://github.com/natalieko2024" target="_blank">GitHub</a>
-<p>
-© 2026 Natalie Ko. All rights reserved.
+<p class="footer-cta">
+Let’s build something.
 </p>
-</div>
+<p><a href="mailto:you@university.edu">Email</a> · <a href="https://linkedin.com/in/yourname">LinkedIn</a> · <a href="https://github.com/yourname">GitHub</a><br> <small>© 2026 Your Name</small></p>
 </div>
     <div class="nav-footer-right">
       &nbsp;
@@ -706,4 +830,5 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
