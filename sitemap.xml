@@ -2,23 +2,39 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://natalieko2024.github.io/Engineering-Portfolio/about.html</loc>
-    <lastmod>2026-10-19T12:41:55.000Z</lastmod>
+    <lastmod>2026-10-19T12:46:11.243Z</lastmod>
   </url>
   <url>
     <loc>https://natalieko2024.github.io/Engineering-Portfolio/projects.html</loc>
     <lastmod>2026-10-19T10:36:49.000Z</lastmod>
   </url>
   <url>
-    <loc>https://natalieko2024.github.io/Engineering-Portfolio/projects/lora-weather-node/index.html</loc>
-    <lastmod>2026-10-19T10:50:45.000Z</lastmod>
+    <loc>https://natalieko2024.github.io/Engineering-Portfolio/projects/abyssExplorer/index.html</loc>
+    <lastmod>2026-10-19T12:00:10.608Z</lastmod>
   </url>
   <url>
-    <loc>https://natalieko2024.github.io/Engineering-Portfolio/projects/vision-sorter/index.html</loc>
-    <lastmod>2026-10-19T10:50:45.000Z</lastmod>
+    <loc>https://natalieko2024.github.io/Engineering-Portfolio/projects/digitalAudio/index.html</loc>
+    <lastmod>2026-10-19T12:12:36.364Z</lastmod>
   </url>
   <url>
-    <loc>https://natalieko2024.github.io/Engineering-Portfolio/projects/scara-arm/index.html</loc>
-    <lastmod>2026-10-19T10:50:45.000Z</lastmod>
+    <loc>https://natalieko2024.github.io/Engineering-Portfolio/projects/E80Fluids/index.html</loc>
+    <lastmod>2026-10-19T12:18:32.291Z</lastmod>
+  </url>
+  <url>
+    <loc>https://natalieko2024.github.io/Engineering-Portfolio/projects/multiCycleProcessor/index.html</loc>
+    <lastmod>2026-10-19T12:26:12.733Z</lastmod>
+  </url>
+  <url>
+    <loc>https://natalieko2024.github.io/Engineering-Portfolio/projects/E80Bot/index.html</loc>
+    <lastmod>2026-10-19T12:18:02.477Z</lastmod>
+  </url>
+  <url>
+    <loc>https://natalieko2024.github.io/Engineering-Portfolio/projects/hammer/index.html</loc>
+    <lastmod>2026-10-19T12:21:24.709Z</lastmod>
+  </url>
+  <url>
+    <loc>https://natalieko2024.github.io/Engineering-Portfolio/resume.html</loc>
+    <lastmod>2026-10-19T13:06:33.706Z</lastmod>
   </url>
   <url>
     <loc>https://natalieko2024.github.io/Engineering-Portfolio/experience/robotics-club-lead.html</loc>
@@ -37,23 +53,27 @@
     <lastmod>2026-10-19T10:30:58.000Z</lastmod>
   </url>
   <url>
-    <loc>https://natalieko2024.github.io/Engineering-Portfolio/resume.html</loc>
-    <lastmod>2026-10-19T10:50:45.000Z</lastmod>
+    <loc>https://natalieko2024.github.io/Engineering-Portfolio/projects/E79Bot/index.html</loc>
+    <lastmod>2026-10-19T12:13:26.607Z</lastmod>
   </url>
   <url>
-    <loc>https://natalieko2024.github.io/Engineering-Portfolio/projects/balancing-robot/index.html</loc>
-    <lastmod>2026-10-19T10:50:45.000Z</lastmod>
+    <loc>https://natalieko2024.github.io/Engineering-Portfolio/projects/crystalRadio/index.html</loc>
+    <lastmod>2026-10-19T12:07:25.235Z</lastmod>
   </url>
   <url>
-    <loc>https://natalieko2024.github.io/Engineering-Portfolio/projects/rover-pcb/index.html</loc>
-    <lastmod>2026-10-19T10:50:45.000Z</lastmod>
+    <loc>https://natalieko2024.github.io/Engineering-Portfolio/projects/keypadScanner/index.html</loc>
+    <lastmod>2026-10-19T13:14:00.104Z</lastmod>
   </url>
   <url>
-    <loc>https://natalieko2024.github.io/Engineering-Portfolio/projects/qdd-actuator/index.html</loc>
-    <lastmod>2026-10-19T10:50:45.000Z</lastmod>
+    <loc>https://natalieko2024.github.io/Engineering-Portfolio/projects/animatronicEyes/index.html</loc>
+    <lastmod>2026-10-19T12:04:01.539Z</lastmod>
+  </url>
+  <url>
+    <loc>https://natalieko2024.github.io/Engineering-Portfolio/projects/motorControl/index.html</loc>
+    <lastmod>2026-10-19T12:26:06.252Z</lastmod>
   </url>
   <url>
     <loc>https://natalieko2024.github.io/Engineering-Portfolio/index.html</loc>
-    <lastmod>2026-10-19T10:50:45.000Z</lastmod>
+    <lastmod>2026-10-19T13:15:40.839Z</lastmod>
   </url>
 </urlset>
