@@ -1,0 +1,25 @@
+---
+title: "Robotics Club Lead"
+subtitle: "[Club / Team]"
+date-range: "2024 – now"
+description: "Lead 12 students building an autonomous competition robot."
+skills: "ROS 2, Fusion 360, Git"
+search: false
+---
+
+<div class="project-metadata-bar">
+  <div><strong>Timeline:</strong> {{< meta date-range >}}</div>
+  <div><strong>Skills:</strong> <span class="skills-val">{{< meta skills >}}</span></div>
+</div>
+
+[← Back to résumé](../resume.qmd){.btn-pill}
+
+Lead 12 students building an autonomous competition robot.
+
+- Lead [N] students across mechanical, electrical, and software subteams
+- Shipped the robot for [competition], placing [X]
+- Introduced design reviews and a shared CAD workflow
+
+::: {.chips}
+[ROS 2]{.chip} [Fusion 360]{.chip} [Git]{.chip}
+:::

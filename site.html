@@ -1,0 +1,60 @@
+<script>
+/* ===== PROJECT CARDS: edit here (newest first). Each slug matches projects/<slug>/index.qmd.
+   featured = true to show on the home page (first 3 flagged are used).
+   img = path inside that project's folder, e.g. "images/cover.jpg" (leave "" for the placeholder) ===== */
+const PROJECTS=[
+ {"featured":true,"img":"","slug": "scara-arm", "t": "SCARA Pick-and-Place Arm", "d": "Mar 2026", "cats": ["Robotics", "Controls"], "b": "4-DOF arm with closed-loop steppers and a custom inverse-kinematics solver.", "tech": ["C++", "SolidWorks", "Stepper drivers"]},
+ {"featured":true,"img":"","slug": "qdd-actuator", "t": "Quasi-Direct-Drive Actuator", "d": "Dec 2025", "cats": ["Motors", "Mechanical"], "b": "3D-printed cycloidal gearbox on a BLDC motor, characterized for torque and backlash.", "tech": ["SolidWorks", "FDM printing", "FOC"]},
+ {"featured":true,"img":"","slug": "balancing-robot", "t": "Self-Balancing Robot", "d": "Oct 2025", "cats": ["Controls", "Embedded"], "b": "IMU sensor fusion and cascaded PID on an STM32 to hold balance under disturbance.", "tech": ["C", "STM32", "IMU"]},
+ {"featured":false,"img":"","slug": "rover-pcb", "t": "Line-Following Rover PCB", "d": "May 2025", "cats": ["Embedded", "Electronics"], "b": "Custom 4-layer board with motor drivers, reflectance array, and Bluetooth telemetry.", "tech": ["KiCad", "C++", "Bluetooth"]},
+ {"featured":false,"img":"","slug": "vision-sorter", "t": "Vision-Guided Sorter", "d": "Feb 2025", "cats": ["Robotics", "Software"], "b": "OpenCV color detection feeding a conveyor and servo sorter via a Raspberry Pi.", "tech": ["Python", "OpenCV", "Raspberry Pi"]},
+ {"featured":false,"img":"","slug": "lora-weather-node", "t": "Weather Node (LoRa)", "d": "Nov 2024", "cats": ["Embedded", "Electronics"], "b": "Solar-powered sensor node with deep-sleep firmware lasting [X] months on a cell.", "tech": ["C", "LoRa", "Low-power design"]}];
+/* ================================================================================ */
+/* Site-wide behavior: hero arm (IK), stat counters, experience marquee, tech chips. Each part no-ops if its elements are absent. */
+(function(){
+ const css=n=>getComputedStyle(document.body).getPropertyValue(n).trim();
+ // seamless marquee: duplicate cards once
+ const trk=document.getElementById("jobs");if(trk)trk.innerHTML+=trk.innerHTML;
+ // stat counters
+ const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;io.unobserve(e.target);const n=+e.target.dataset.n,dec=n%1?1:0;let s=0;const id=setInterval(()=>{s+=n/30;if(s>=n){s=n;clearInterval(id)}e.target.textContent=s.toFixed(dec)},30)}));
+ document.querySelectorAll("[data-n]").forEach(el=>io.observe(el));
+ // brand: orange slash
+ document.querySelectorAll(".navbar-title").forEach(el=>{el.innerHTML=el.textContent.replace("/",'<span style="color:var(--or)">/</span>')});
+ // skills text -> bubbles on project / experience pages
+ document.querySelectorAll(".skills-val").forEach(el=>{el.innerHTML=el.textContent.split(",").map(s=>s.trim()).filter(Boolean).map(s=>`<span>${s}</span>`).join("")});
+ // project cards (home: newest 3; projects page: all, with category filters)
+ const card=p=>`<article class="pcard" data-cats="${p.cats.join("|")}"><a class="pcard-link" href="projects/${p.slug}/index.html">${p.img?`<img class="pcard-img" src="projects/${p.slug}/${p.img}" alt="${p.t}">`:`<div class="pcard-img ph-img mono">project image</div>`}<div class="pcard-body"><small class="mono">${p.d}</small><h3>${p.t}</h3><p>${p.b}</p><div class="chips">${p.tech.map(t=>`<span>${t}</span>`).join("")}</div></div></a></article>`;
+ const feat=document.getElementById("featured");if(feat)feat.innerHTML=PROJECTS.filter(p=>p.featured).slice(0,3).map(card).join("");
+ const grid=document.getElementById("grid");if(grid)grid.innerHTML=PROJECTS.map(card).join("");
+ const fb=document.getElementById("filters"),cards=[...document.querySelectorAll("#grid .pcard")];
+ if(fb&&cards.length){const cats=["All",...new Set(PROJECTS.flatMap(p=>p.cats))];
+  fb.innerHTML=cats.map(c=>`<button type="button" class="${c==="All"?"on":""}">${c}</button>`).join("");
+  fb.onclick=e=>{const b=e.target.closest("button");if(!b)return;fb.querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));
+   cards.forEach(c=>c.hidden=!(b.textContent==="All"||c.dataset.cats.split("|").includes(b.textContent)))}}
+ // hero arm
+ const cv=document.getElementById("c");if(!cv)return;
+ const cx=cv.getContext("2d"),W=700,L1=230,L2=200,bx=W/2,by=W*0.82;
+ let tx=bx-120,ty=by-300,cur={x:tx,y:ty},idle=true,tm=0;
+ function pos(e){const r=cv.getBoundingClientRect(),p=e.touches?e.touches[0]:e;if(!r.width)return;tx=(p.clientX-r.left)*W/r.width;ty=(p.clientY-r.top)*W/r.height;idle=false}
+ addEventListener("mousemove",pos);cv.addEventListener("touchmove",pos,{passive:true});
+ function frame(t){
+  if(idle){tx=bx+Math.cos(t/1500)*170;ty=by-260+Math.sin(t/1100)*90}
+  cur.x+=(tx-cur.x)*.12;cur.y+=(ty-cur.y)*.12;
+  let dx=cur.x-bx,dy=cur.y-by,d=Math.hypot(dx,dy);const R=L1+L2-2,r=Math.min(d,R),mn=Math.abs(L1-L2)+4;
+  const rr=Math.max(r,mn),a=Math.atan2(dy,dx),
+  c2=Math.min(1,Math.max(-1,(rr*rr-L1*L1-L2*L2)/(2*L1*L2))),q2=-Math.acos(c2),
+  q1=a-Math.atan2(L2*Math.sin(q2),L1+L2*Math.cos(q2));
+  const jx=bx+L1*Math.cos(q1),jy=by+L1*Math.sin(q1),ex=jx+L2*Math.cos(q1+q2),ey=jy+L2*Math.sin(q1+q2);
+  cx.clearRect(0,0,W,W);
+  cx.setLineDash([6,8]);cx.strokeStyle=css("--line");cx.lineWidth=2;cx.beginPath();cx.arc(bx,by,L1+L2,Math.PI,2*Math.PI);cx.stroke();cx.setLineDash([]);
+  cx.strokeStyle=css("--bl");cx.lineWidth=1.5;cx.beginPath();cx.arc(tx,ty,10,0,7);cx.moveTo(tx-16,ty);cx.lineTo(tx+16,ty);cx.moveTo(tx,ty-16);cx.lineTo(tx,ty+16);cx.stroke();
+  cx.lineCap="round";
+  [[bx,by,jx,jy,26,"--txt"],[jx,jy,ex,ey,20,"--or"]].forEach(l=>{cx.strokeStyle=css(l[5]);cx.lineWidth=l[4];cx.beginPath();cx.moveTo(l[0],l[1]);cx.lineTo(l[2],l[3]);cx.stroke()});
+  [[bx,by,22],[jx,jy,18],[ex,ey,11]].forEach(j=>{cx.fillStyle=css("--bg");cx.strokeStyle=css("--bl");cx.lineWidth=4;cx.beginPath();cx.arc(j[0],j[1],j[2],0,7);cx.fill();cx.stroke()});
+  cx.fillStyle=css("--line");cx.fillRect(bx-60,by+22,120,14);
+  if(t-tm>80){tm=t;const D=180/Math.PI,s=(i,v)=>document.getElementById(i).textContent=v;
+   s("t1",(-q1*D).toFixed(0));s("t2",(-q2*D).toFixed(0));s("px",((ex-bx)*.5).toFixed(0));s("py",((by-ey)*.5).toFixed(0))}
+  requestAnimationFrame(frame)}
+ requestAnimationFrame(frame);
+})();
+</script>

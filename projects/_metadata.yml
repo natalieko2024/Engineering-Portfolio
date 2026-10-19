@@ -1,0 +1,7 @@
+# Applies to every project page
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    toc-title: "Outline"
+    toc-location: right

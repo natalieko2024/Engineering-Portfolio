@@ -1,39 +1,32 @@
 project:
   type: website
-  output-dir: _site
+  output-dir: docs   # GitHub Pages can serve /docs; or use the included gh-pages workflow
+  resources:         # copy project assets that only site.html (not a .qmd) references
+    - "projects/*/images/*"
+    - "projects/*/videos/*"
+    - "projects/*/docs/*"
 
 website:
-  title: "Natalie Ko's Engineering Portfolio"
+  title: "YN/MECH"
   navbar:
-    logo: nko-logo-light.gif
-    background: "#ffffff"          # Disable standard background
-    search: false              # Hide search icon if not needed
     right:
-      - text: "Home"
-        href: index.qmd
-      - text: "Projects"
-        href: projects.qmd
-      - text: "Work Experiences"
-        href: work.qmd
-      - text: "CV"
-        href: resume.qmd
-      - text: "About Me"
-        href: about.qmd
-    draft-mode: gone
+      - {href: index.qmd, text: Home}
+      - {href: projects.qmd, text: Projects}
+      - {href: resume.qmd, text: "Résumé"}
+      - {href: about.qmd, text: About}
   page-footer:
-    background: "#1e293b"
     center: |
-      <div class="custom-footer">
-        <a href="https://www.linkedin.com/in/ko12nat/" target="_blank">LinkedIn</a> • 
-        <a href="https://github.com/natalieko2024" target="_blank">GitHub</a>
-        <p>© 2026 Natalie Ko. All rights reserved.</p>
-      </div>
+      <p class="footer-cta">Let’s build something.</p>
+      <a href="mailto:you@university.edu">Email</a> · <a href="https://linkedin.com/in/yourname">LinkedIn</a> · <a href="https://github.com/yourname">GitHub</a><br>
+      <small>© 2026 Your Name</small>
 
 format:
   html:
-    theme: default
+    theme:
+      light: [default, custom-light.scss]
+      dark: [default, custom-dark.scss]
+    respect-user-color-scheme: true
     css: styles.css
-    toc: true
-    page-layout: full          # Allows page to use full screen width
-    include-in-header:
-      text: <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    include-after-body: site.html
+    toc: false
+    smooth-scroll: true

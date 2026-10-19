@@ -1,147 +1,55 @@
 ---
-format: html
-listing:
-  id: homepage-projects
-  contents: 
-   - projects/abyssExplorer/abyssExplorer.qmd
-   - projects/keypadScanner/keypadScanner.qmd
-   - projects/E80Bot/E80Bot.qmd
-  type: grid
-  grid-columns: 3
-  max-items: 3
-  max-description-length: 1000
-  fields: [image, title, description, categories]
+pagetitle: "Your Name · Mechatronics Engineering"
+page-layout: full
+title-block-banner: false
 ---
 
-::: {.main-container}
-
-::: {.grid .hero-section}
-
-::: {.g-col-12 .g-col-md-6}
-<!-- <p class="main-heading"><span id="grabbedWord">Engineering</span> a More Accessible World</p> -->
-<p class="main-heading">Engineering a More Accessible World</p>
-
-<p class="hero-subtitle">I thrive on the challenge of translating complex human needs into functional, reliable engineering solutions. I am passionate about applying my skills to solve complex problems through intentional mechatronic design.</p>
-:::
-
-::: {.g-col-12 .g-col-md-6 .hero-right-content}
-<p class="hero-first-p">I'm a Junior Engineering student at Harvey Mudd College specializing in mechatronics. My academic work focuses on mechanics, digital and electronic systems, controls, and human-centred design. </p>
-
-<p>Beyond the classroom, you can always find me tinkering with my personal projects - whether it's building a new electromechanical device or improving upon my previous designs, I'm always on the move to build highly reliable, real-world products.</p>
-
-<div class="hero-buttons">
-  <a href="projects.qmd" class="btn-dark">View My Projects</a>
-  <a href="resume.qmd" class="btn-link-custom">View Digital CV &rarr;</a>
-</div>
-:::
-
-:::
-
-## Some Highlighted Projects
-
-::: {#homepage-projects}
-:::
-
-:::
-
-
-
-<!-- LEFT COLUMN: ROBOT ARM -->
-<!-- ::: {.g-col-12 .g-col-md-3 .hero-arm-stage} -->
 ```{=html}
-  <!-- <div id="armStageWrapper" class="robot-arm-wrapper">
-    <svg id="robotSvg" viewBox="120 80 340 1200" class="w-full h-auto" xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)">
-      <!-- Ground Baseline -->
-      <line x1="60" y1="440" x2="440" y2="440" stroke="#cbd5e1" stroke-width="4" stroke-dasharray="8 8"/>
+<section class="hero">
+ <div>
+  <div class="tag mono">// mechatronics engineering · class of 2028</div>
+  <h1>Your Name,<br>I build things that <em>move</em>.</h1>
+  <p>Undergraduate mechatronics student at [Your University], working where mechanical design, embedded electronics, and control software meet. Below you’ll find my robots, motors, and the lessons that came with them.</p>
+  <div class="cta"><a class="p" href="projects.html">See projects</a><a href="about.html">About me</a><a href="resume.html">Résumé</a></div>
+ </div>
+ <div class="stage"><canvas id="c" width="700" height="700"></canvas>
+  <div class="hud mono">θ₁ <i id="t1">0</i>° · θ₂ <i id="t2">0</i>°<br>x <i id="px">0</i> · y <i id="py">0</i> mm</div>
+  <div class="hint mono">move cursor · inverse kinematics live</div></div>
+</section>
 
-      <!-- Base Mount -->
-      <g id="baseMount" transform="translate(250, 410)">
-        <path d="M -130 0 L 130 0 C 145 0, 145 28, 130 28 L -130 28 C -145 28, -145 0, -130 0 Z" fill="#F08024" class="arm-stroke"/>
-        <path d="M -45 0 L -25 -60 L 25 -60 L 45 0 Z" fill="#98C5D3" class="arm-stroke"/>
-        <path d="M 0 -60 L 25 -60 L 38 0 L 10 0 Z" fill="#7FAEC0" opacity="0.6"/>
-      </g>
+<section class="band"><div class="stats">
+ <div class="stat"><b data-n="12">0</b><span>projects shipped</span></div>
+ <div class="stat"><b data-n="3">0</b><span>internships / co-ops</span></div>
+ <div class="stat"><b data-n="4">0</b><span>robots built from scratch</span></div>
+ <div class="stat"><b data-n="3.8">0</b><span>GPA (edit me)</span></div>
+</div></section>
 
-      <!-- Joint 1: Shoulder -->
-      <g id="shoulderGroup" class="smooth-arm" transform="translate(250, 350) rotate(0)">
-        <path d="M -32 22 L -135 -120 C -150 -135, -125 -160, -90 -145 L 32 -10 Z" fill="#98C5D3" class="arm-stroke"/>
-        <path d="M -125 -125 L -20 18 L 22 -2 L -100 -138 Z" fill="#7FAEC0" opacity="0.5"/>
-        <circle cx="0" cy="0" r="38" fill="#F08024" class="arm-stroke"/>
-        <circle cx="0" cy="0" r="18" fill="#E2F1F5" class="arm-stroke"/>
-
-        <!-- Joint 2: Elbow -->
-        <g id="elbowGroup" class="smooth-arm" transform="translate(-110, -140) rotate(0)">
-          <path d="M -18 -15 L 85 -92 C 105 -105, 120 -75, 95 -60 L -5 18 Z" fill="#98C5D3" class="arm-stroke"/>
-          <path d="M -5 -8 L 88 -82 L 95 -68 L -2 8 Z" fill="#BDDCED" opacity="0.8"/>
-          <circle cx="0" cy="0" r="28" fill="#98C5D3" class="arm-stroke"/>
-          <circle cx="0" cy="0" r="12" fill="#E2F1F5" class="arm-stroke"/>
-
-          <!-- Joint 3: Wrist -->
-          <g id="wristGroup" class="smooth-arm" transform="translate(95, -80) rotate(0)">
-            <g id="wristCollar">
-              <path d="M -8 -22 L 18 -32 L 28 8 L 2 18 Z" fill="#F08024" class="arm-stroke"/>
-            </g>
-
-            <!-- Claws -->
-            <g id="clawTopGroup" class="smooth-arm" transform="translate(12, -18) rotate(0)">
-              <path d="M 0 0 L 16 -16 L 38 -16 L 38 4" class="claw-stroke"/>
-            </g>
-
-            <g id="clawBottomGroup" class="smooth-arm" transform="translate(12, 0) rotate(0)">
-              <path d="M 0 0 L 16 16 L 38 16 L 38 -4" class="claw-stroke"/>
-            </g>
-          </g>
-        </g>
-      </g>
-    </svg>
-  </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const shoulderGroup = document.getElementById('shoulderGroup');
-      const elbowGroup = document.getElementById('elbowGroup');
-      const wristGroup = document.getElementById('wristGroup');
-      const clawTopGroup = document.getElementById('clawTopGroup');
-      const clawBottomGroup = document.getElementById('clawBottomGroup');
-      const grabbedWord = document.getElementById('grabbedWord');
-      const armStageWrapper = document.getElementById('armStageWrapper');
-
-      let currentStep = 0;
-
-      const sequence = [
-        { shoulder: 0, elbow: 0, wrist: 0, claw: 0, armX: 0, textX: 0, textY: 0, delay: 1200 },
-        { shoulder: 58, elbow: -48, wrist: -32, claw: 18, armX: 40, textX: 0, textY: 0, delay: 1000 },
-        { shoulder: 64, elbow: -56, wrist: -38, claw: -8, armX: 55, textX: 0, textY: 0, delay: 600 },
-        { shoulder: 20, elbow: -10, wrist: -5, claw: -8, armX: 10, textX: -40, textY: -25, delay: 1100 },
-        { shoulder: 64, elbow: -56, wrist: -38, claw: -8, armX: 55, textX: 0, textY: 0, delay: 1100 },
-        { shoulder: 58, elbow: -48, wrist: -32, claw: 18, armX: 40, textX: 0, textY: 0, delay: 600 },
-        { shoulder: 0, elbow: 0, wrist: 0, claw: 0, armX: 0, textX: 0, textY: 0, delay: 1600 }
-      ];
-
-      function executeStep() {
-        const step = sequence[currentStep];
-
-        shoulderGroup.setAttribute('transform', `translate(250, 350) rotate(${step.shoulder})`);
-        elbowGroup.setAttribute('transform', `translate(-110, -140) rotate(${step.elbow})`);
-        wristGroup.setAttribute('transform', `translate(95, -80) rotate(${step.wrist})`);
-        clawTopGroup.setAttribute('transform', `translate(12, -18) rotate(${-step.claw})`);
-        clawBottomGroup.setAttribute('transform', `translate(12, 0) rotate(${step.claw})`);
-
-        if (armStageWrapper) {
-          armStageWrapper.style.transition = `transform ${step.delay}ms cubic-bezier(0.25, 1, 0.5, 1)`;
-          armStageWrapper.style.transform = `translateX(${step.armX}px)`;
-        }
-
-        if (grabbedWord) {
-          grabbedWord.style.transition = `transform ${step.delay}ms cubic-bezier(0.25, 1, 0.5, 1)`;
-          grabbedWord.style.transform = `translate(${step.textX}px, ${step.textY}px)`;
-        }
-
-        currentStep = (currentStep + 1) % sequence.length;
-        setTimeout(executeStep, step.delay);
-      }
-
-      executeStep();
-    });
-  </script>
+<section class="band"><h2 class="sec">Experience</h2>
+<div class="marq"><div class="track" id="jobs">
+<a class="job" href="experience/controls-intern.html"><small class="mono">Jun – Aug 2026</small><h3>Controls Intern</h3><div class="co">[Company A]</div><p>Tuned PID loops for a servo test rig, cutting settling time by [X]%.</p><span class="more">Read more →</span></a>
+<a class="job" href="experience/mechatronics-coop.html"><small class="mono">Jan – May 2026</small><h3>Mechatronics Co-op</h3><div class="co">[Company B]</div><p>Designed a sensor bracket and wrote the firmware that logs its data.</p><span class="more">Read more →</span></a>
+<a class="job" href="experience/robotics-club-lead.html"><small class="mono">2024 – now</small><h3>Robotics Club Lead</h3><div class="co">[Club / Team]</div><p>Lead 12 students building an autonomous competition robot.</p><span class="more">Read more →</span></a>
+<a class="job" href="experience/lab-assistant.html"><small class="mono">2025</small><h3>Lab Assistant</h3><div class="co">[University Lab]</div><p>Supported PCB assembly and embedded systems coursework.</p><span class="more">Read more →</span></a>
+</div></div></section>
 ```
-<!-- ::: -->
+
+## Featured projects {.sec}
+
+```{=html}
+<div id="featured" class="pgrid"></div>
+```
+
+```{=html}
+<div class="more-wrap"><a class="btn-pill" href="projects.html">View all projects →</a></div>
+```
+
+## Toolbox {.sec}
+
+```{=html}
+<div class="skills">
+<div><h3 class="mono">Mechanical</h3><div class="chips"><span>SolidWorks</span><span>Fusion 360</span><span>GD&T</span><span>3D printing / FDM</span><span>Machining basics</span></div></div>
+<div><h3 class="mono">Electronics</h3><div class="chips"><span>KiCad / Altium</span><span>Schematic design</span><span>Motor drivers</span><span>Oscilloscope & DMM</span><span>Soldering</span></div></div>
+<div><h3 class="mono">Software</h3><div class="chips"><span>C / C++</span><span>Python</span><span>MATLAB / Simulink</span><span>ROS 2</span><span>Git</span></div></div>
+<div><h3 class="mono">Controls</h3><div class="chips"><span>PID tuning</span><span>State-space</span><span>Sensor fusion</span><span>Kinematics</span><span>System ID</span></div></div>
+</div>
+```
