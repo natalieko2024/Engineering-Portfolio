@@ -1,24 +1,24 @@
 project:
   type: website
   output-dir: docs   # GitHub Pages can serve /docs; or use the included gh-pages workflow
-  resources:         # copy project assets that only site.html (not a .qmd) references
+  resources:
     - "projects/*/images/*"
     - "projects/*/videos/*"
     - "projects/*/docs/*"
 
 website:
-  title: "YN/MECH"
+  title: "NK/MECH"
   navbar:
     right:
       - {href: index.qmd, text: Home}
       - {href: projects.qmd, text: Projects}
-      - {href: resume.qmd, text: "Résumé"}
+      - {href: resume.qmd, text: "CV"}
       - {href: about.qmd, text: About}
   page-footer:
     center: |
-      <p class="footer-cta">Let’s build something.</p>
-      <a href="mailto:you@university.edu">Email</a> · <a href="https://linkedin.com/in/yourname">LinkedIn</a> · <a href="https://github.com/yourname">GitHub</a><br>
-      <small>© 2026 Your Name</small>
+      <p class="footer-cta">Let's build something.</p>
+      <a href="https://www.linkedin.com/in/ko12nat/" target="_blank">LinkedIn</a> · <a href="https://github.com/natalieko2024" target="_blank">GitHub</a><br>
+      <small>© 2026 Natalie Ko. All rights reserved.</small>
 
 format:
   html:

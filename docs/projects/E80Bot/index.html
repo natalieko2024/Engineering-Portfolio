@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2026-05-08">
+<meta name="description" content="Developed and deployed an AUV to map metal debris distribution on the ocean floor and back-calculate debris drop locations.">
+
+<title>Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV) – NK/MECH</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-98c7eacc04dc8a1fe11fe799e0cd156c.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-5c63aebb649818f6f5321b45920f1531.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-98c7eacc04dc8a1fe11fe799e0cd156c.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-30791d33a638bff470c098c45da64e7c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-0b321fec9620eeee13feb84e0ed91b59.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-30791d33a638bff470c098c45da64e7c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">NK/MECH</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../resume.html"> 
+<span class="menu-text">CV</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Outline</h2>
+   
+  <ul>
+  <li><a href="#introduction-and-background" id="toc-introduction-and-background" class="nav-link active" data-scroll-target="#introduction-and-background">Introduction and Background</a></li>
+  <li><a href="#initial-setup" id="toc-initial-setup" class="nav-link" data-scroll-target="#initial-setup">Initial Setup</a>
+  <ul class="collapse">
+  <li><a href="#frame-and-motor-assembly" id="toc-frame-and-motor-assembly" class="nav-link" data-scroll-target="#frame-and-motor-assembly">Frame and Motor Assembly</a></li>
+  <li><a href="#motherboard-setup" id="toc-motherboard-setup" class="nav-link" data-scroll-target="#motherboard-setup">Motherboard Setup</a>
+  <ul class="collapse">
+  <li><a href="#assembly" id="toc-assembly" class="nav-link" data-scroll-target="#assembly">Assembly</a></li>
+  <li><a href="#validation-calibration-and-error-measurement" id="toc-validation-calibration-and-error-measurement" class="nav-link" data-scroll-target="#validation-calibration-and-error-measurement">Validation, Calibration, and Error Measurement</a></li>
+  </ul></li>
+  <li><a href="#open-loop-control-navigation" id="toc-open-loop-control-navigation" class="nav-link" data-scroll-target="#open-loop-control-navigation">Open-Loop Control Navigation</a></li>
+  </ul></li>
+  <li><a href="#sensor-development" id="toc-sensor-development" class="nav-link" data-scroll-target="#sensor-development">Sensor Development</a>
+  <ul class="collapse">
+  <li><a href="#turbidity-meter" id="toc-turbidity-meter" class="nav-link" data-scroll-target="#turbidity-meter">Turbidity Meter</a>
+  <ul class="collapse">
+  <li><a href="#getting-familiar-with-operational-amplifiers" id="toc-getting-familiar-with-operational-amplifiers" class="nav-link" data-scroll-target="#getting-familiar-with-operational-amplifiers">Getting Familiar with Operational Amplifiers</a></li>
+  <li><a href="#timer-led-driver-and-transimpedance-amplifier-circuits" id="toc-timer-led-driver-and-transimpedance-amplifier-circuits" class="nav-link" data-scroll-target="#timer-led-driver-and-transimpedance-amplifier-circuits">555 Timer LED Driver and Transimpedance Amplifier Circuits</a></li>
+  <li><a href="#circuit-testing-and-calibration" id="toc-circuit-testing-and-calibration" class="nav-link" data-scroll-target="#circuit-testing-and-calibration">Circuit Testing and Calibration</a></li>
+  </ul></li>
+  <li><a href="#depth-sensor" id="toc-depth-sensor" class="nav-link" data-scroll-target="#depth-sensor">Depth Sensor</a></li>
+  <li><a href="#temperature-sensors" id="toc-temperature-sensors" class="nav-link" data-scroll-target="#temperature-sensors">Temperature Sensors</a>
+  <ul class="collapse">
+  <li><a href="#semiconductor-based-ic-sensor" id="toc-semiconductor-based-ic-sensor" class="nav-link" data-scroll-target="#semiconductor-based-ic-sensor">Semiconductor-based IC Sensor</a></li>
+  <li><a href="#thermistor" id="toc-thermistor" class="nav-link" data-scroll-target="#thermistor">Thermistor</a></li>
+  <li><a href="#thermocouple" id="toc-thermocouple" class="nav-link" data-scroll-target="#thermocouple">Thermocouple</a></li>
+  </ul></li>
+  <li><a href="#underwater-acoustics" id="toc-underwater-acoustics" class="nav-link" data-scroll-target="#underwater-acoustics">Underwater Acoustics</a></li>
+  <li><a href="#magnetometer" id="toc-magnetometer" class="nav-link" data-scroll-target="#magnetometer">Magnetometer</a></li>
+  </ul></li>
+  <li><a href="#p-control" id="toc-p-control" class="nav-link" data-scroll-target="#p-control">P-Control</a>
+  <ul class="collapse">
+  <li><a href="#depth-control" id="toc-depth-control" class="nav-link" data-scroll-target="#depth-control">Depth Control</a></li>
+  <li><a href="#surface-navigation-control" id="toc-surface-navigation-control" class="nav-link" data-scroll-target="#surface-navigation-control">Surface Navigation Control</a></li>
+  </ul></li>
+  <li><a href="#mechanical-design" id="toc-mechanical-design" class="nav-link" data-scroll-target="#mechanical-design">Mechanical Design</a>
+  <ul class="collapse">
+  <li><a href="#buoyancy" id="toc-buoyancy" class="nav-link" data-scroll-target="#buoyancy">Buoyancy</a></li>
+  <li><a href="#waterproofing" id="toc-waterproofing" class="nav-link" data-scroll-target="#waterproofing">Waterproofing</a></li>
+  </ul></li>
+  <li><a href="#deployment" id="toc-deployment" class="nav-link" data-scroll-target="#deployment">Deployment</a></li>
+  <li><a href="#results-and-conclusion" id="toc-results-and-conclusion" class="nav-link" data-scroll-target="#results-and-conclusion">Results and Conclusion</a></li>
+  <li><a href="#final-paper" id="toc-final-paper" class="nav-link" data-scroll-target="#final-paper">Final Paper</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Robotics &amp; Control Systems</div>
+    <div class="quarto-category">PCB Design &amp; Electronics</div>
+    <div class="quarto-category">Embedded Systems &amp; Firmware</div>
+    <div class="quarto-category">Mechanical Design &amp; FEA</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Developed and deployed an AUV to map metal debris distribution on the ocean floor and back-calculate debris drop locations.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 8, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="project-metadata-bar">
+<div>
+<strong>Timeline:</strong> Mar 2026 – May 2026
+</div>
+<div>
+<strong>Skills:</strong> P-Control, Circuit Design, Mechanical Design, C++, MATLAB, I2C Communication, Data Analysis, Troubleshooting, Technical Documentation
+</div>
+</div>
+<section id="introduction-and-background" class="level1">
+<h1>Introduction and Background</h1>
+</section>
+<section id="initial-setup" class="level1">
+<h1>Initial Setup</h1>
+<section id="frame-and-motor-assembly" class="level2">
+<h2 class="anchored" data-anchor-id="frame-and-motor-assembly">Frame and Motor Assembly</h2>
+</section>
+<section id="motherboard-setup" class="level2">
+<h2 class="anchored" data-anchor-id="motherboard-setup">Motherboard Setup</h2>
+<section id="assembly" class="level3">
+<h3 class="anchored" data-anchor-id="assembly">Assembly</h3>
+</section>
+<section id="validation-calibration-and-error-measurement" class="level3">
+<h3 class="anchored" data-anchor-id="validation-calibration-and-error-measurement">Validation, Calibration, and Error Measurement</h3>
+</section>
+</section>
+<section id="open-loop-control-navigation" class="level2">
+<h2 class="anchored" data-anchor-id="open-loop-control-navigation">Open-Loop Control Navigation</h2>
+</section>
+</section>
+<section id="sensor-development" class="level1">
+<h1>Sensor Development</h1>
+<p>The team developed several sensor circuits while determining the project scope. We ultimately decided on using the thermistor, pressure sensor, and a magnetometer to achieve our goals. However, this section outlines all sensor circuits prototyped.</p>
+<section id="turbidity-meter" class="level2">
+<h2 class="anchored" data-anchor-id="turbidity-meter">Turbidity Meter</h2>
+<section id="getting-familiar-with-operational-amplifiers" class="level3">
+<h3 class="anchored" data-anchor-id="getting-familiar-with-operational-amplifiers">Getting Familiar with Operational Amplifiers</h3>
+<p>I had no prior experience with operational amplifiers, so to get familiar with them (as they would be needed to scale the sensor outputs to get a better resolution when read by the Teensy 4.0 ADC), I first built a single rail, non-inverting amplifier with a gain of 2. I applied a 100mV amplitude sine wave with a 1V offset, then with an offset of 0V, catching each input and output on an oscilloscope.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/noninvertingschematic1.png" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/noninvertingschematic0.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/noninvertingoscope1.png" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/noninvertingoscope0.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<p>In both traces, the desired gain of 2 was achieved, as seen by the input voltage being scaled by 2 in the output voltage (100mV to around 200mV in the 1V offset one, 100mV to 100mV in the 0V offset one due to clipping). When the signal was sent into the op-amp with a 0V offset, only the positive voltages of the original sine wave show up on the output, with the negative voltages being output as 0V.</p>
+<p>The output signal in the 0V offset trace does not obey the equation that describes non-inverting amplifier outputs because I used a MCP601 which is a single supply op-amp, which means it only has +V and GND, so Vout can only be positive. Since the input has a 0V offset, half of the input signal is out of the range of the op-amp (it goes below the minimum possible output), making it look like the op-amp is producing a constant output instead of the ideal sine wave. I learned that this was how op-amps could be used to scale signals, but that I would need to be careful of “railing out”.</p>
+<p>Next, I build an offset amplifier that could take the same 100mV amplitude sine wave with a 0V offset and output the full signal. I did this by using a gaim of -2 and a 200mV offset.</p>
+<p>Assuming an ideal op-amp (infinitely large input impedance, and <span class="math inline">\(V_+=V_-\)</span> in negative feedback), <span class="math inline">\(V_{out} = (1+\frac{R_f}{R_n1})V_+-\frac{R_f}{R_n1}V_in\)</span> where the gain factor is <span class="math inline">\(-\frac{R_f}{R_n1}\)</span> and the offset factor is <span class="math inline">\(1+\frac{R_f}{R_n1}\)</span>.</p>
+<p>If the gain factor is -2, then <span class="math inline">\(-\frac{R_f}{R_n1}=-2\)</span>, so <span class="math inline">\(R_f=2R_{n1}\)</span>. I used <span class="math inline">\(R_f=20k\Omega\)</span> and <span class="math inline">\(R_{n1}=10k\Omega\)</span> based on resistor availability.</p>
+<p>Since the minimum input voltage would be -100mV, and at this point we want an output voltage of 0V, I substituted these values in to solve for <span class="math inline">\(V_+\)</span>.</p>
+<p><span class="math display">\[
+\begin{aligned}
+V_{out}&amp;=(1+2)V_+2V_{in}\\
+0&amp;=3V_-0.2\\
+V_+&amp;=0.67 (rounded up so V_{out} doesn't rail)\\
+\end{aligned}
+\]</span></p>
+<p>Using <span class="math inline">\(\frac{R_g}{R_{p1}+R_g}V_{p1}=V_+\)</span>, where <span class="math inline">\(V_{p1}=5V\)</span> supplied from the 5V power supply into the op-amp to reduce the need for multiple power sources,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{R_g}{R_{p1}+R_g}5&amp;=0.067\\
+R_g&amp;=\frac{0.067}{5}R_{p1}+\frac{0.067}{5}R_g\\
+74R_g&amp;=R_{p1}\\
+\end{aligned}
+\]</span></p>
+<p>I used <span class="math inline">\(R_g=2k\Omega\)</span> and <span class="math inline">\(R_{p1}=148k\Omega\)</span> based on resistor availability. The schematic is shown in Figure x.</p>
+<p><img src="images/invertingschematic.png" class="img-fluid"></p>
+<p>From the oscilloscope trace, compared to the input signal, the output signal has a -2 gain and 200mV offset, which matches the theoretical design.</p>
+<p>This design did not have the non-idealities that the non-inverting amplifier has because it included a 200mV offset with -2 gain, so the -100mV input peak can be output as 0V. Since the op-amp is single-rail and cannot handle negative voltages, this prevents the op-amp from resorting to failure mode as seen in the non-inverting amplifier, and the full output sine wave was visible.</p>
+<p><img src="images/invertingoscope.png" class="img-fluid"></p>
+</section>
+<section id="timer-led-driver-and-transimpedance-amplifier-circuits" class="level3">
+<h3 class="anchored" data-anchor-id="timer-led-driver-and-transimpedance-amplifier-circuits">555 Timer LED Driver and Transimpedance Amplifier Circuits</h3>
+<p>Turbidity meters depend on illuminating a water sample and measuring the ratio of light that passes directly through the sample to light that is scattered 90°. We used an IR LED to illuminate the samples and an IR photodiode to measure the transmitted and scattered light. The photodiode was connected to a transimpedance amplifier circuit to convert the diode current into an output voltage. Figure x shows the schematic of the transimpedance amplifier. Note that since the MCP6004 op-amp contains four op-amps, the unused op-amps were connected as unity gain buffers with inputs and outputs grounded to prevent noise from floating inputs.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/transimpedanceampschematic.png" class="img-fluid figure-img"></p>
+<figcaption>Figure x. Transimpedance Amplifier Schematic</figcaption>
+</figure>
+</div>
+<p>A 555 timer was used to drive the IR LEDs. This was done instead of permanently turning the LEDs high because any ambient light in the water sample would produce an offset voltage in the transimpedance amplifier output. The switching LED would produce oscillatory behaviour so we could measure the peak-to-peak output voltage and thus isolate the voltage caused by the LEDs from ambient light.</p>
+<p>We wanted a 500Hz-1kHz square wave with an output waveform duty cycle of about 60% to ensure the LEDs fully illuminated the water sample. From the SE555 datasheet, the output waveform duty cycle was <span class="math inline">\(\frac{R_A+R_B}{R_A+2R_B}\)</span>. This was equated to solve for <span class="math inline">\(R_A\)</span> and <span class="math inline">\(R_B\)</span>.</p>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{R_A+R_B}{R_A+2R_B}&amp;=0.6\\
+R_A+R_B&amp;=0.6R_A+1.2R_B\\
+0.4R_A&amp;=0.2R_B\\
+R_A&amp;=0.5R_B
+\end{aligned}
+\]</span></p>
+<p>So the ratio of <span class="math inline">\(R_A\)</span> to <span class="math inline">\(R_B\)</span> is 1:2. Based on the available resistors, and to use an available and suitable capacitor (as shown below), we chose <span class="math inline">\(R_A=5k\Omega\)</span> and <span class="math inline">\(R_B=10k\Omega\)</span>.</p>
+<p>The datasheet also stated the operating frequency was given by <span class="math inline">\(\frac{1.44}{(R_A+2R_B)C}\)</span>. This was equated to 500Hz and 1kHz to solve for the minimum and maximum values of the capacitor.</p>
+<p><span class="math display">\[
+\begin{aligned}
+f&amp;=\frac{1.44}{(R_A+2R_B)C}\\
+f&amp;=\frac{1.44}{(5000+20000)C}\\
+f&amp;=\frac{1.44}{25000C}\\
+\end{aligned}
+\]</span></p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><span class="math inline">\(500=\frac{1.44}{25000C} gives C_{max} = 115nF\)</span></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><span class="math inline">\(1000=\frac{1.44}{25000C} gives C_{min} = 57.6nF\)</span></p>
+</div>
+</div>
+</div>
+<p>Based on the available capacitors, we chose <span class="math inline">\(C=100nF\)</span> to produce a frequency of 576Hz.</p>
+<p>From the IR1503 datasheet, it has a 1.2V forward voltage drop when driving a 20mA current. Since the 555 timer input voltage is 5V, the voltage drop across the current limiting resistor between the LED and ground would be <span class="math inline">\(5V-1.2V=3.8V\)</span>. Using Ohm’s law, an appropriate resistor value was calculated to produce a 20-40mA current through the LED.</p>
+$$
+<span class="math display">\[\begin{aligned}
+V_{cc}-V_F&amp;=I_FR_{Fmax}\\
+3.8V&amp;=0.02A*R_{Fmax}\\
+R_{Fmax}&amp;=190\Omega
+
+\begin{aligned}
+V_{cc}-V_F&amp;=I_FR_{Fmin}\\
+3.8V&amp;=0.04A*R_{Fmin}\\
+R_{Fmin}&amp;=95\Omega
+\end{aligned}\]</span>
+<p>$$</p>
+<p>Based on these calculations we chose 100Ω as the current limiting resistor. Figure x shows the 555 timer circuit.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/555timercircuit.png" class="img-fluid figure-img"></p>
+<figcaption>Figure x. 555 Timer Circuit</figcaption>
+</figure>
+</div>
+</section>
+<section id="circuit-testing-and-calibration" class="level3">
+<h3 class="anchored" data-anchor-id="circuit-testing-and-calibration">Circuit Testing and Calibration</h3>
+<p>To test the circuits were functioning, we first captured an oscilloscope trace of the 555 timer output to ensure the frequency and duty cycle were correct. In Figure x, the three traces show the 555 timer output, the 555 capacitor node, and the voltage in the middle of the diode resistor string.</p>
+<p><img src="images/555timeroscope.png" class="img-fluid"></p>
+<p>We then captured an oscilloscope trace of the transimpedance amplifier output when the photodiode was illuminated by the switching IR LED to ensure the circuit could be correctly driven (shown in Figure x).</p>
+<p><img src="images/transimpedanceoscope.png" class="img-fluid"></p>
+<p>To finalize the turbidity meter, 5 solutions of various turbidities were prepared using milk and water, and checked using the TU-2016 turbidity meter. The solution cuvettes were then placed in a 3D-printed fixture that held one IR LED and two photodiodes in the correct orientation.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/turbidsolutions.png" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/turbiditysetup.jpg" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<p>The peak-to-peak voltage of the 90° and 0° transimpedance amplifier outputs were recorded for each solution. The ratio of these voltages were plotted against the calibrated turbidity data to get a calibration curve. The results were plotted in MATLAB and are shown in Figure x.</p>
+<p><img src="images/turbidityplot.png" class="img-fluid"></p>
+</section>
+</section>
+<section id="depth-sensor" class="level2">
+<h2 class="anchored" data-anchor-id="depth-sensor">Depth Sensor</h2>
+</section>
+<section id="temperature-sensors" class="level2">
+<h2 class="anchored" data-anchor-id="temperature-sensors">Temperature Sensors</h2>
+<p>There are three core temperature sensors, each with advantages and disadvantages. Each sensor was prototyped and tested to determine which would be the best fit for the project.</p>
+<section id="semiconductor-based-ic-sensor" class="level3">
+<h3 class="anchored" data-anchor-id="semiconductor-based-ic-sensor">Semiconductor-based IC Sensor</h3>
+</section>
+<section id="thermistor" class="level3">
+<h3 class="anchored" data-anchor-id="thermistor">Thermistor</h3>
+</section>
+<section id="thermocouple" class="level3">
+<h3 class="anchored" data-anchor-id="thermocouple">Thermocouple</h3>
+</section>
+</section>
+<section id="underwater-acoustics" class="level2">
+<h2 class="anchored" data-anchor-id="underwater-acoustics">Underwater Acoustics</h2>
+</section>
+<section id="magnetometer" class="level2">
+<h2 class="anchored" data-anchor-id="magnetometer">Magnetometer</h2>
+</section>
+</section>
+<section id="p-control" class="level1">
+<h1>P-Control</h1>
+<section id="depth-control" class="level2">
+<h2 class="anchored" data-anchor-id="depth-control">Depth Control</h2>
+</section>
+<section id="surface-navigation-control" class="level2">
+<h2 class="anchored" data-anchor-id="surface-navigation-control">Surface Navigation Control</h2>
+</section>
+</section>
+<section id="mechanical-design" class="level1">
+<h1>Mechanical Design</h1>
+<section id="buoyancy" class="level2">
+<h2 class="anchored" data-anchor-id="buoyancy">Buoyancy</h2>
+</section>
+<section id="waterproofing" class="level2">
+<h2 class="anchored" data-anchor-id="waterproofing">Waterproofing</h2>
+</section>
+</section>
+<section id="deployment" class="level1">
+<h1>Deployment</h1>
+</section>
+<section id="results-and-conclusion" class="level1">
+<h1>Results and Conclusion</h1>
+</section>
+<section id="final-paper" class="level1">
+<h1>Final Paper</h1>
+
+
+</section>
+
+</main> <!-- /main -->
+<script>
+/* ===== PROJECT CARDS: edit here (newest first). Each slug matches projects/<slug>/index.qmd.
+   featured = true to show on the home page (first 3 flagged are used).
+   img = path inside that project's folder, e.g. "images/cover.jpg" (leave "" for the placeholder) ===== */
+const PROJECTS=[
+ {"featured":false,"img":"images/motorControl.png","slug": "motorControl", "t": "Leverging MCU Interrupts to Read Stepper Motor Encoders", "d": "Oct 2026 – Oct 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Utilized MCU interrupts to acurrately determine stepper motor speed and direction.", "tech": ["C, MCU, Circuit Design, SEGGER Embedded Studio"]},  
+ {"featured":false,"img":"images/digitalAudio.png","slug": "digitalAudio", "t": "Using a MCU to Produce Write Music", "d": "Sept 2026 – Sept 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Programmed an MCU to write specific frequencies and durations to play music on a speaker.", "tech": ["C", "STM32", "Circuit Design", "SEGGER Embedded Studio"]},
+ {"featured":true,"img":"images/keypadScanner.jpeg","slug": "keypadScanner", "t": "Keypad Scanner", "d": "Aug 2026 – Sep 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Programmed an FPGA to read a 4x4 matrix keypad and display the last two hexadecimal inputs on a dual seven-segment display. Accounted for key bounce, multi-press, and timing inconsistencies.", "tech": ["SystemVerilog", "FPGA", "Circuit Design", "Lattice Radiant", "Waveform Simulation", "Testbench"]},  
+ {"featured":true,"img":"images/E80Bot.png","slug": "E80Bot", "t": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)", "d": "Mar 2026 – May 2026", "cats": ["Robotics & Control Systems", "PCB Design & Electronics", "Embedded Systems & Firmware", "Mechanical Design & FEA"], "b": "Developed and deployed an AUV to map metal debris distribution on the ocean floor and back-calculate debris drop locations.", "tech": ["P-Control", "Circuit Design", "Mechanical Design", "C++", "MATLAB", "I2C Communication", "Data Analysis", "Troubleshooting", "Technical Documentation"]},
+ {"featured":false,"img":"images/radio.jpeg","slug": "crystalRadio", "t": "Crystal Radio Experiments", "d": "Feb 2026 – Mar 2026", "cats": ["PCB Design & Electronics"], "b": "Analysed RLC Circuits to debug Dunwoody, Pickard, and Armstrong crystal radios. Devised an innovative antenna for optimal signal receiving.", "tech": ["Radio Frequency Engineering", "Software Defined Radio", "Circuit Analysis"]},
+ {"featured":false,"img":"images/windTunnel.png","slug": "E80Fluids", "t": "Wind Tunnel Experiments and Fluid Dynamics Simulation", "d": "Feb 2026 – Mar 2026", "cats": ["Miscellaneous"], "b": "Used the principle of similitude to characterize ROV behaviour in the water through wind tunnel simulations.", "tech": ["COMSOL", "Technical Documentation"]}, 
+ {"featured":false,"img":"images/riscV.jpeg","slug": "multiCycleProcessor", "t": "Multi-cycle RISC-V Processor", "d": "Nov 2025 – Dec 2025", "cats": ["Embedded Systems & Firmware"], "b": "Designed and simulated a 32-bit multi-cycle RISC-V processor, executed RISC-V integer instructions (R, I, S, B, U, and J-Type) given to memory as machine code.", "tech": ["SystemVerilog", "Waveform Simulation", "RISC-V Architecture"]},  
+ {"featured":false,"img":"images/79bot.jpg","slug": "E79Bot", "t": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)", "d": "Aug 2025 – Dec 2025", "cats": ["Robotics & Control Systems", "PCB Design & Electronics", "Mechanical Design & FEA"], "b": "Developed and deployed an PID-controlled ROV to collect temperature and depth measurements underwater.", "tech": ["PID-Control", "Circuit Design", "Mechanical Design", "Data Analysis", "LabView", "Soldering", "Breadboarding", "Mathematical Modeling"]},
+ {"featured":false,"img":"images/eyes.jpg","slug": "animatronicEyes", "t": "Animatronic Eyes", "d": "Jul 2025 – Oct 2025", "cats": ["Embedded Systems & Firmware", "Mechanical Design & FEA"],"b": "Designed and programmed a set of animatronic eyes controlled by servo motors and joysticks through Arduino.", "tech": ["SolidWorks", "3D Printing", "C++", "Arduino","Servo Control"]},
+ {"featured":true,"img":"images/abyssExplorer.jpg","slug": "abyssExplorer", "t": "Abyss Explorer", "d": "Feb 2025 – May 2025", "cats": ["Mechanical Design & FEA", "Manufacturing"], "b": "Designed and manufactured a system to raise and lower sensors through a ~600ft radioactive mine shaft (shrinking to an unknown diameter) for data collection without direct human contact.", "tech": ["SolidWorks", "Mechanical Design", "Prototyping", "Manufacturing", "Project Management", "Technical Documentation"]},
+ {"featured":false,"img":"images/hammer.jpg","slug": "hammer", "t": "Precision Manually Machined Hammer", "d": "Jan 2025 – Apr 2025", "cats": ["Manufacturing"], "b": "Manually machined a hammer using conventional manual machining tools to specifications following technical drawings.", "tech": ["Precision Manual Machining", "Geometric Dimensioning & Tolerancing (GD&T)", "Process Planning & Documentation", "Metallurgy"]}];
+/* ================================================================================ */
+/* Site-wide behavior: hero arm (IK), stat counters, experience marquee, tech chips. Each part no-ops if its elements are absent. */
+(function(){
+ const css=n=>getComputedStyle(document.body).getPropertyValue(n).trim();
+ // seamless marquee: duplicate cards once
+ const trk=document.getElementById("jobs");if(trk)trk.innerHTML+=trk.innerHTML;
+ // stat counters
+ const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;io.unobserve(e.target);const n=+e.target.dataset.n,dec=n%1?1:0;let s=0;const id=setInterval(()=>{s+=n/30;if(s>=n){s=n;clearInterval(id)}e.target.textContent=s.toFixed(dec)},30)}));
+ document.querySelectorAll("[data-n]").forEach(el=>io.observe(el));
+ // brand: orange slash
+ document.querySelectorAll(".navbar-title").forEach(el=>{el.innerHTML=el.textContent.replace("/",'<span style="color:var(--or)">/</span>')});
+ // skills text -> bubbles on project / experience pages
+ document.querySelectorAll(".skills-val").forEach(el=>{el.innerHTML=el.textContent.split(",").map(s=>s.trim()).filter(Boolean).map(s=>`<span>${s}</span>`).join("")});
+ // project cards (home: newest 3; projects page: all, with category filters)
+ const card=p=>`<article class="pcard" data-cats="${p.cats.join("|")}"><a class="pcard-link" href="projects/${p.slug}/index.html">${p.img?`<img class="pcard-img" src="projects/${p.slug}/${p.img}" alt="${p.t}">`:`<div class="pcard-img ph-img mono">project image</div>`}<div class="pcard-body"><small class="mono">${p.d}</small><h3>${p.t}</h3><p>${p.b}</p><div class="chips">${p.tech.map(t=>`<span>${t}</span>`).join("")}</div></div></a></article>`;
+ const feat=document.getElementById("featured");if(feat)feat.innerHTML=PROJECTS.filter(p=>p.featured).slice(0,3).map(card).join("");
+ const grid=document.getElementById("grid");if(grid)grid.innerHTML=PROJECTS.map(card).join("");
+ const fb=document.getElementById("filters"),cards=[...document.querySelectorAll("#grid .pcard")];
+ if(fb&&cards.length){const cats=["All",...new Set(PROJECTS.flatMap(p=>p.cats))];
+  fb.innerHTML=cats.map(c=>`<button type="button" class="${c==="All"?"on":""}">${c}</button>`).join("");
+  fb.onclick=e=>{const b=e.target.closest("button");if(!b)return;fb.querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));
+   cards.forEach(c=>c.hidden=!(b.textContent==="All"||c.dataset.cats.split("|").includes(b.textContent)))}}
+ // hero arm
+ const cv=document.getElementById("c");if(!cv)return;
+ const cx=cv.getContext("2d"),W=700,L1=230,L2=200,bx=W/2,by=W*0.82;
+ let tx=bx-120,ty=by-300,cur={x:tx,y:ty},idle=true,tm=0;
+ function pos(e){const r=cv.getBoundingClientRect(),p=e.touches?e.touches[0]:e;if(!r.width)return;tx=(p.clientX-r.left)*W/r.width;ty=(p.clientY-r.top)*W/r.height;idle=false}
+ addEventListener("mousemove",pos);cv.addEventListener("touchmove",pos,{passive:true});
+ function frame(t){
+  if(idle){tx=bx+Math.cos(t/1500)*170;ty=by-260+Math.sin(t/1100)*90}
+  cur.x+=(tx-cur.x)*.12;cur.y+=(ty-cur.y)*.12;
+  let dx=cur.x-bx,dy=cur.y-by,d=Math.hypot(dx,dy);const R=L1+L2-2,r=Math.min(d,R),mn=Math.abs(L1-L2)+4;
+  const rr=Math.max(r,mn),a=Math.atan2(dy,dx),
+  c2=Math.min(1,Math.max(-1,(rr*rr-L1*L1-L2*L2)/(2*L1*L2))),q2=-Math.acos(c2),
+  q1=a-Math.atan2(L2*Math.sin(q2),L1+L2*Math.cos(q2));
+  const jx=bx+L1*Math.cos(q1),jy=by+L1*Math.sin(q1),ex=jx+L2*Math.cos(q1+q2),ey=jy+L2*Math.sin(q1+q2);
+  cx.clearRect(0,0,W,W);
+  cx.setLineDash([6,8]);cx.strokeStyle=css("--line");cx.lineWidth=2;cx.beginPath();cx.arc(bx,by,L1+L2,Math.PI,2*Math.PI);cx.stroke();cx.setLineDash([]);
+  cx.strokeStyle=css("--bl");cx.lineWidth=1.5;cx.beginPath();cx.arc(tx,ty,10,0,7);cx.moveTo(tx-16,ty);cx.lineTo(tx+16,ty);cx.moveTo(tx,ty-16);cx.lineTo(tx,ty+16);cx.stroke();
+  cx.lineCap="round";
+  [[bx,by,jx,jy,26,"--txt"],[jx,jy,ex,ey,20,"--or"]].forEach(l=>{cx.strokeStyle=css(l[5]);cx.lineWidth=l[4];cx.beginPath();cx.moveTo(l[0],l[1]);cx.lineTo(l[2],l[3]);cx.stroke()});
+  [[bx,by,22],[jx,jy,18],[ex,ey,11]].forEach(j=>{cx.fillStyle=css("--bg");cx.strokeStyle=css("--bl");cx.lineWidth=4;cx.beginPath();cx.arc(j[0],j[1],j[2],0,7);cx.fill();cx.stroke()});
+  cx.fillStyle=css("--line");cx.fillRect(bx-60,by+22,120,14);
+  if(t-tm>80){tm=t;const D=180/Math.PI,s=(i,v)=>document.getElementById(i).textContent=v;
+   s("t1",(-q1*D).toFixed(0));s("t2",(-q2*D).toFixed(0));s("px",((ex-bx)*.5).toFixed(0));s("py",((by-ey)*.5).toFixed(0))}
+  requestAnimationFrame(frame)}
+ requestAnimationFrame(frame);
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p class="footer-cta">
+Let’s build something.
+</p>
+<p><a href="https://www.linkedin.com/in/ko12nat/" target="_blank">LinkedIn</a> · <a href="https://github.com/natalieko2024" target="_blank">GitHub</a><br> <small>© 2026 Natalie Ko. All rights reserved.</small></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

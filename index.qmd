@@ -1,5 +1,5 @@
 ---
-pagetitle: "Your Name · Mechatronics Engineering"
+pagetitle: "Natalie Ko · Mechatronics Engineering"
 page-layout: full
 title-block-banner: false
 ---
@@ -7,29 +7,36 @@ title-block-banner: false
 ```{=html}
 <section class="hero">
  <div>
-  <div class="tag mono">// mechatronics engineering · class of 2028</div>
-  <h1>Your Name,<br>I build things that <em>move</em>.</h1>
-  <p>Undergraduate mechatronics student at [Your University], working where mechanical design, embedded electronics, and control software meet. Below you’ll find my robots, motors, and the lessons that came with them.</p>
-  <div class="cta"><a class="p" href="projects.html">See projects</a><a href="about.html">About me</a><a href="resume.html">Résumé</a></div>
+  <div class="tag mono">// mechatronics engineering · HMC class of 2028</div>
+  <h1>Hi there!<br>I build things that <em>move</em>.</h1>
+  <p>Hi I'm Nat! I thrive on the challenge of translating complex human needs into functional, reliable engineering solutions. I'm always tinkering with personal projects; intersecting mechanics, digital and electronic systems, controls, and human-centred design. Whether it's building something new or iterating, I'm always moving to build highly reliable, real-world products!</p>
+  <div class="cta"><a class="p" href="projects.html">See projects</a><a href="about.html">About me</a><a href="resume.html">Digital CV</a></div>
  </div>
  <div class="stage"><canvas id="c" width="700" height="700"></canvas>
   <div class="hud mono">θ₁ <i id="t1">0</i>° · θ₂ <i id="t2">0</i>°<br>x <i id="px">0</i> · y <i id="py">0</i> mm</div>
   <div class="hint mono">move cursor · inverse kinematics live</div></div>
 </section>
 
-<section class="band"><div class="stats">
+<!-- <section class="band"><div class="stats">
  <div class="stat"><b data-n="12">0</b><span>projects shipped</span></div>
  <div class="stat"><b data-n="3">0</b><span>internships / co-ops</span></div>
  <div class="stat"><b data-n="4">0</b><span>robots built from scratch</span></div>
  <div class="stat"><b data-n="3.8">0</b><span>GPA (edit me)</span></div>
-</div></section>
+</div></section> -->
 
 <section class="band"><h2 class="sec">Experience</h2>
 <div class="marq"><div class="track" id="jobs">
-<a class="job" href="experience/controls-intern.html"><small class="mono">Jun – Aug 2026</small><h3>Controls Intern</h3><div class="co">[Company A]</div><p>Tuned PID loops for a servo test rig, cutting settling time by [X]%.</p><span class="more">Read more →</span></a>
-<a class="job" href="experience/mechatronics-coop.html"><small class="mono">Jan – May 2026</small><h3>Mechatronics Co-op</h3><div class="co">[Company B]</div><p>Designed a sensor bracket and wrote the firmware that logs its data.</p><span class="more">Read more →</span></a>
-<a class="job" href="experience/robotics-club-lead.html"><small class="mono">2024 – now</small><h3>Robotics Club Lead</h3><div class="co">[Club / Team]</div><p>Lead 12 students building an autonomous competition robot.</p><span class="more">Read more →</span></a>
-<a class="job" href="experience/lab-assistant.html"><small class="mono">2025</small><h3>Lab Assistant</h3><div class="co">[University Lab]</div><p>Supported PCB assembly and embedded systems coursework.</p><span class="more">Read more →</span></a>
+
+<a class="job" href="experience/minimed-clinic.html"><small class="mono">Aug 2026 - Present</small><h3>R&D Manufacturing Engineering Contractor</h3><div class="co">Medtronic MiniMed</div><p>Optimized Continuous Glucose Monitor sensor manufacturing process, reduced cycle time & improved operator ergonomics.</p><span class="more">Read more →</span></a>
+
+<a class="job" href="experience/film-lab.html"><small class="mono">Jan 2026 - Present</small><h3>Undergraduate Student Researcher</h3><div class="co">Flow Imaging Lab at Mudd, Dept. of Engineering, Harvey Mudd College</div><p>Designed a calibrator for a live class-4 laser, developed a PI-control rotational degree of freedom for a fish fin.</p><span class="more">Read more →</span></a>
+
+<a class="job" href="experience/e4-work.html"><small class="mono">Aug 2025 - Present</small><h3>Lab Teaching Assistant / Lab Improver</h3><div class="co">Intro to Engineering Design/Manufacturing, Harvey Mudd College</div><p>Taught 20+ students SolidWorks, pioneered a new student role and authored 5 CAD/Design tutorials.</p><span class="more">Read more →</span></a>
+
+<a class="job" href="experience/repair-work.html"><small class="mono">Jan 2025 - Present</small><h3>Repair Steward</h3><div class="co">Makerspace, Harvey Mudd College</div><p>Maintained, repaired & troubleshot fabrication equipment failures used by 2500+ users; wrote user, safety & repair manuals/SOPs for equipment in a team of 5.</p><span class="more">Read more →</span></a>
+
+<a class="job" href="experience/biophotonics-lab.html"><small class="mono">Jan 2025 - Dec 2025</small><h3>Undergraduate Student Researcher</h3><div class="co">HMC Biophotonics Lab, Dept. of Engineering, Harvey Mudd College</div><p>Co-developed an open-source in vivo imaging system, reduced production cost to &lt;1% of commercial price.</p><span class="more">Read more →</span></a>
+
 </div></div></section>
 ```
 
@@ -47,9 +54,12 @@ title-block-banner: false
 
 ```{=html}
 <div class="skills">
-<div><h3 class="mono">Mechanical</h3><div class="chips"><span>SolidWorks</span><span>Fusion 360</span><span>GD&T</span><span>3D printing / FDM</span><span>Machining basics</span></div></div>
-<div><h3 class="mono">Electronics</h3><div class="chips"><span>KiCad / Altium</span><span>Schematic design</span><span>Motor drivers</span><span>Oscilloscope & DMM</span><span>Soldering</span></div></div>
-<div><h3 class="mono">Software</h3><div class="chips"><span>C / C++</span><span>Python</span><span>MATLAB / Simulink</span><span>ROS 2</span><span>Git</span></div></div>
-<div><h3 class="mono">Controls</h3><div class="chips"><span>PID tuning</span><span>State-space</span><span>Sensor fusion</span><span>Kinematics</span><span>System ID</span></div></div>
+<div><h3 class="mono">Mechanical</h3><div class="chips"><span>SolidWorks</span><span>Fusion360</span><span>AutoCAD</span><span>FEA</span><span>GD&T</span><span>Fabrication Equipment</span><span>Manual Machining</span></div></div>
+
+<div><h3 class="mono">Electronics</h3><div class="chips"><span>KiCad</span><span>Circuit Design</span><span>Motor Drivers</span><span>Oscilloscope</span><span>Multimeter</span><span>Power Supplies</span><span>Soldering</span></div></div>
+
+<div><h3 class="mono">Software</h3><div class="chips"><span>C / C++</span><span>MATLAB / Simulink</span><span>SystemVerilog</span><span>Python</span><span>ArduinoIDE</span><span>Java</span><span>Git (Version Control)</span></div></div>
+
+<div><h3 class="mono">Controls</h3><div class="chips"><span>PID Tuning</span><span>Stability Analysis</span><span>Sensor Fusion</span><span>System Modeling</span><span>Signal Processing</span></div></div>
 </div>
 ```

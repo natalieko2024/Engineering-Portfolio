@@ -1,0 +1,22 @@
+---
+title: "Animatronic Eyes"
+date: "2025-10-31"
+date-range: "Jul 2025 – Oct 2025"
+description: "Designed and programmed a set of animatronic eyes controlled by servo motors and joysticks through Arduino."
+subtitle : ""
+image: "eyes.jpg"
+categories:
+  - "Embedded Systems & Firmware"
+  - "Mechanical Design & FEA"
+skills: "SolidWorks, 3D Printing, C++, Arduino"
+---
+
+<div class="project-metadata-bar">
+  <div><strong>Timeline:</strong> {{< meta date-range >}}</div>
+  <div><strong>Skills:</strong> {{< meta skills >}}</div>
+</div>
+
+# TEst heading
+## YAHOOOO
+
+# wee woo

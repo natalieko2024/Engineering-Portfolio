@@ -8,7 +8,7 @@ page-layout: full
 
 ::: {.about}
 ::: {.about-col}
-<div class="ph mono">Add your photo<br>(swap this box for your photo)</div>
+<div class="ph mono"><img src="profilepic.png"></div>
 
 ::: {.cbox}
 <b class="mono">CONTACT</b>
@@ -28,8 +28,23 @@ page-layout: full
 :::
 
 ::: {.about-col}
-I’m a mechatronics undergrad who got hooked on engineering by taking things apart and then needing to put them back together better. [Write 2–3 sentences about what drives you, the clubs you’re in, and what you’re looking for: internships, research, or a co-op.]
+I'm an junior Engineering student at **Harvey Mudd College** specializing in mechatronics, with a Humanities, Social Sciences, and Arts concentration in Science, Technology, and Society. My work focuses on building reliable engineering solutions that prioritize the end user. My goal is to make Engineering solutions more accessible to everyone.
 
-Outside the lab: [hobbies, e.g. rock climbing, 3D printing, FPV drones].
+I thrive on solving physical problems through dynamic mechanical, electrical, and computer design, analytical modeling, rapid prototyping, and live troubleshooting.
+
+### Interests 
+
+* **Mechatronics:** Integrating electronic sensors and actuators with mechanical design, and controlling them through embedded systems and firmware.
+* **Control Systems:** Utilizing feedback loops, characterizing system behaviour, predicting system outputs.
+* **Human Centered Design:** Prioritizing human needs through empathizing with users and understanding their problems.
+* **Manufacturing:** Optimizing manufacturing and maintenance processes, ensuring efficiency, quality, and safety.
+
+### Hobbies & Outside the Lab
+
+To be honest, I consider all of the projects on this page as well as my on-campus jobs part of my hobbies (they're fun!), but outside of that...
+
+* **Music:** Composing and arranging music, playing in bands or solo (mainly trumpet and drum kit).
+
+* **Physical Activity:** Competitive ball hockey (ice hockey but you run instead of skate), biking, axe-throwing, hiking.
 :::
 :::

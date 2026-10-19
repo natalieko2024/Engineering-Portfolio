@@ -1,0 +1,1910 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2026-09-23">
+<meta name="description" content="Programmed an FPGA to read a 4x4 matrix keypad and display the last two hexadecimal inputs on a dual seven-segment display. Accounted for key bounce, multi-press, and timing inconsistencies.">
+
+<title>Keypad Scanner – NK/MECH</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-98c7eacc04dc8a1fe11fe799e0cd156c.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-5c63aebb649818f6f5321b45920f1531.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-98c7eacc04dc8a1fe11fe799e0cd156c.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-30791d33a638bff470c098c45da64e7c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-0b321fec9620eeee13feb84e0ed91b59.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-30791d33a638bff470c098c45da64e7c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">NK/MECH</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../resume.html"> 
+<span class="menu-text">CV</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Outline</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#phase-1---single-7-segment-display" id="toc-phase-1---single-7-segment-display" class="nav-link" data-scroll-target="#phase-1---single-7-segment-display">Phase 1 - Single 7-Segment Display</a>
+  <ul class="collapse">
+  <li><a href="#design-and-testing-methodology" id="toc-design-and-testing-methodology" class="nav-link" data-scroll-target="#design-and-testing-methodology">Design and Testing Methodology</a></li>
+  <li><a href="#technical-documentation" id="toc-technical-documentation" class="nav-link" data-scroll-target="#technical-documentation">Technical Documentation</a>
+  <ul class="collapse">
+  <li><a href="#block-diagram" id="toc-block-diagram" class="nav-link" data-scroll-target="#block-diagram">Block Diagram</a></li>
+  <li><a href="#circuit-schematic" id="toc-circuit-schematic" class="nav-link" data-scroll-target="#circuit-schematic">Circuit Schematic</a></li>
+  </ul></li>
+  <li><a href="#results-and-discussion" id="toc-results-and-discussion" class="nav-link" data-scroll-target="#results-and-discussion">Results and Discussion</a>
+  <ul class="collapse">
+  <li><a href="#testbench-simulation" id="toc-testbench-simulation" class="nav-link" data-scroll-target="#testbench-simulation">Testbench Simulation</a></li>
+  <li><a href="#hardware-deployment" id="toc-hardware-deployment" class="nav-link" data-scroll-target="#hardware-deployment">Hardware Deployment</a></li>
+  <li><a href="#oscilloscope-testing" id="toc-oscilloscope-testing" class="nav-link" data-scroll-target="#oscilloscope-testing">Oscilloscope Testing</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#phase-2---time-multiplexed-dual-7-segment-display-and-keypad-scanning" id="toc-phase-2---time-multiplexed-dual-7-segment-display-and-keypad-scanning" class="nav-link" data-scroll-target="#phase-2---time-multiplexed-dual-7-segment-display-and-keypad-scanning">Phase 2 - Time-Multiplexed Dual 7-Segment Display and Keypad Scanning</a>
+  <ul class="collapse">
+  <li><a href="#design-and-testing-methodology-1" id="toc-design-and-testing-methodology-1" class="nav-link" data-scroll-target="#design-and-testing-methodology-1">Design and Testing Methodology</a></li>
+  <li><a href="#technical-documentation-1" id="toc-technical-documentation-1" class="nav-link" data-scroll-target="#technical-documentation-1">Technical Documentation</a>
+  <ul class="collapse">
+  <li><a href="#block-diagram-1" id="toc-block-diagram-1" class="nav-link" data-scroll-target="#block-diagram-1">Block Diagram</a></li>
+  <li><a href="#schematic" id="toc-schematic" class="nav-link" data-scroll-target="#schematic">Schematic</a></li>
+  </ul></li>
+  <li><a href="#results-and-discussion-1" id="toc-results-and-discussion-1" class="nav-link" data-scroll-target="#results-and-discussion-1">Results and Discussion</a>
+  <ul class="collapse">
+  <li><a href="#testbench-simulation-1" id="toc-testbench-simulation-1" class="nav-link" data-scroll-target="#testbench-simulation-1">Testbench Simulation</a></li>
+  <li><a href="#hardware-deployment-1" id="toc-hardware-deployment-1" class="nav-link" data-scroll-target="#hardware-deployment-1">Hardware Deployment</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Keypad Scanner</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Embedded Systems &amp; Firmware</div>
+    <div class="quarto-category">PCB Design &amp; Electronics</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Programmed an FPGA to read a 4x4 matrix keypad and display the last two hexadecimal inputs on a dual seven-segment display. Accounted for key bounce, multi-press, and timing inconsistencies.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 23, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="project-metadata-bar">
+<div>
+<strong>Timeline:</strong> Aug 2026 – Sep 2026
+</div>
+<div>
+<strong>Skills:</strong> SystemVerilog, FPGA, Circuit Design, Lattice Radiant, Waveform Simulation, Testbench
+</div>
+</div>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>In this project, I designed an FPGA implementation to read a 4x4 matrix keypad input and display the last two hexadecimal digits on a dual seven-segment display with the most recent entry always appearing on the right. The design made it so each key press was recorded only once independent of the press length. If multiple keys were held at the same time, only the last key held would be displayed.</p>
+<p>Watch this video below to see the final deployment! </p><div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/qhZsKVxzVlM" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div><p></p>
+<p>The materials I had were - motherboard UPduino v3.1 (Lattice UltraPlus iCE40UP5K) FPGA - dual 7-seg display 4x4 matrix keypad input</p>
+</section>
+<section id="phase-1---single-7-segment-display" class="level1">
+<h1>Phase 1 - Single 7-Segment Display</h1>
+<p>The first step in building this implementation was to figure out how to use the FPGA’s on-board high-speed oscillator (HSOSC), as well as control an external 7-segment display using combinational logic of four switch inputs. To do this, I controlled an on-board LED with the high-speed oscillator, and controlled two additional on-board LEDs and an external 7-segment display using combinational logic of four switch inputs.</p>
+<section id="design-and-testing-methodology" class="level2">
+<h2 class="anchored" data-anchor-id="design-and-testing-methodology">Design and Testing Methodology</h2>
+<p>To do this, I created two submodules that were linked by a top-level module. The top-level module included combinational logic to convert the four switch inputs to LED on/off states, and called the two submodules and HSOSC to control the oscillating LED and 7-segment display.</p>
+<p>One submodule controlled a counter that would “step down” the 24MHz HSOSC clock to a 2.4Hz clock. It did this by counting HSOSC rising edges until some maximum value, then inverting whatever output it generated previously. Since I set up the HSOSC to have an output frequency of 24MHz and the target frequency was 2.4Hz, I divided these to get the delay count (how many clock ticks of the 24MHz clock needed to count up to to equal one 2.4Hz clock tick).</p>
+<p><span class="math inline">\(\frac{24MHz}{2.4Hz} = \frac{24 \times 10^7 Hz}{2.4 Hz} = 10^7\)</span></p>
+<p>Each clock cycle has a high and low state that are equal in length, and the oscillating LED should turn on when the clock is high. This means the LED should toggle twice each cycle.</p>
+<p>So the LED would toggle every <span class="math inline">\(\frac{10^7}{2} = 5 \times 10^6\)</span> 24MHz clock ticks.</p>
+<p>The counter was also given a reset and enable input for additional functionality in case the submodule needs to be used in a future design. The reset, tied to a button input, resets the counter to 0 when pressed. The enable input, tied to a constant high signal from the top-level module, allows the counter to run as expected when high and hold its current value when low. When the counter reached the maximum count value, it reset to 0 and inverted the output signal. This would act as the on-board LED toggle.</p>
+<p>The other submodule implemented the combinational logic to control the 7-segment display based on the 4 switch inputs. Because of the large number of output signals, the combinational logic was implemented using a case statement instead of a series of implied logic gates.</p>
+<p>The design was tested using waveform simulation of the top-level module and each submodule in QuestaSim through automatic testbenches to confirm the desired behaviour.</p>
+<p>The counter submodule testbench instantiated the submodule freqconverter (with parameters WIDTH and MAX set to 4 and 10 respectively) under a test and generated a clock signal with a cycle time of 2ns. To start testing, enable and reset were first toggled so they were high. Then, the output signal was checked at every MAX number of clock signals to confirm the desired ON/OFF frequency. The reset was then toggled after a small delay and the output signal was checked again with the same intervals to confirm the reset put the counter value back at 0. The enable was then set to low and the same tests were performed to confirm the counter stopped running when enable was low.</p>
+<p>The 7-segment display submodule testbench instantiated the submodule switch_7seg under a test, then went through each combination of four switch inputs while checking the seven segments were outputting the correct values.</p>
+<p>The top-level module was tested in three separate testbenches. First was a testbench to test the clock generated by the HSOSC. The top-level output clk signal was checked at the time it takes to complete half a 24MHz clock cycle twice to confirm the signal is oscillating high/low at the 24MHz.</p>
+<p>Another testbench was written to test the combinational logic of the on-board LEDs and the connection to the 7-segment submodule. Similar to the 7-segment display submodule testbench, this testbench instantiated the top-level module lab1_nk under a test, then went through each combination of four switch inputs while checking the on-board LEDs were outputting the correct values and the seven segments were being mapped to the top-level seven segment outputs.</p>
+<p>The final top-level testbench tested the connection to the counter submodule. After instantiating the top-level module lab1_nk under a test, the reset signal was toggled high, and the oscillating LED signal was checked every half stepped-down clock signal to confirm the submodule output signal was oscillated at the right frequency and being mapped to the LED. The reset signal was toggled after a small delay and the oscillating LED signal was checked at the same interval to confirm the reset put the counter back at 0 and did not affect the signal mapping.</p>
+<p>Finally, the 7-segment display circuit was built and connected to the FPGA GPIO pins, and the full design was uploaded to the FPGA and deployed on the hardware. The design was tested by toggling the switches to account for all cases and observing the LED and 7-segment display outputs to confirm functionality, as well as probing the output oscillating signal with an oscilloscope to confirm its frequency is 2.4Hz.</p>
+<p>To implement this design on hardware, the GPIO pins needed to be connected to current-limiting resistors before the 7-segment display diodes. The common anode of the 7-segment display was connected to 3.3V and the forward voltage of each diode within the display is 2V. I provided 5-20mA to each diode to ensure proper operation. Using Ohm’s Law,</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><span class="math display">\[
+\begin{aligned}
+V&amp;=IR\\
+V_s-V_{fw}&amp;=I_{min}R_{max}\\
+3.3-2&amp;=0.005R_{max}\\
+R_{max}&amp;=260\Omega
+\end{aligned}
+\]</span></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><span class="math display">\[
+\begin{aligned}
+V&amp;=IR\\
+V_s-V_{fw}&amp;=I_{max}R_{min}\\
+3.3-2&amp;=0.005R_{min}\\
+R_{min}&amp;=65\Omega
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+</div>
+<p>Picking a value in between 65Ω and 260Ω would yield 5-20mA, so using what was available I chose 150Ω resistors.</p>
+</section>
+<section id="technical-documentation" class="level2">
+<h2 class="anchored" data-anchor-id="technical-documentation">Technical Documentation</h2>
+<p>The source code for the part of the project can be found in the associated <a href="https://github.com/natalieko2024/E155-Labs/tree/main/E155-Lab1">GitHub repository</a>.</p>
+<section id="block-diagram" class="level3">
+<h3 class="anchored" data-anchor-id="block-diagram">Block Diagram</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab1blockdiagram.jpg" class="img-fluid figure-img"></p>
+<figcaption>Figure 1. Block Diagram of the Top-Level Module</figcaption>
+</figure>
+</div>
+<p>The block diagram in Figure 3 shows the overall architecture of the design. The top-level module lab1_nk includes three submodules: the high-speed oscillator (HSOSC), the counter module (freqconverter), and the 7-segment display module (switch_7seg). The top-level module also contains an XOR gate and an AND gate which determine the combinational logic of the two on-board LEDs.</p>
+</section>
+<section id="circuit-schematic" class="level3">
+<h3 class="anchored" data-anchor-id="circuit-schematic">Circuit Schematic</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab1schematic.jpg" class="img-fluid figure-img"></p>
+<figcaption>Figure 2. Schematic of All Circuit Components Outside the PCB</figcaption>
+</figure>
+</div>
+<p>The schematic in Figure 4 shows the physical circuit connections outside the PCB. The specified GPIO pins were connected to current-limiting resistors before the 7-segment display diodes. The common anode of the 7-segment display was connected to the 3.3V supply of the FPGA.</p>
+</section>
+</section>
+<section id="results-and-discussion" class="level2">
+<h2 class="anchored" data-anchor-id="results-and-discussion">Results and Discussion</h2>
+<p>The design met all intended design objectives.</p>
+<section id="testbench-simulation" class="level3">
+<h3 class="anchored" data-anchor-id="testbench-simulation">Testbench Simulation</h3>
+<p>Figure 3 shows a screenshot of the QuestaSim simulation waveforms for my 7-segment submodule testbench. It behaved correctly because for each switch combination, the 7-segment output was correct (looking at both the individual waveforms and the output of my automatic testbench).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view 7-segment submodule simulation waveforms
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab1waveforms-7seg.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 3. 7-segment submodule simulation waveforms</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view 7-segment submodule testbench outputs
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab1testbench-7seg.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 4. 7-segment submodule testbench outputs</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Figure 5 shows a screenshot of the QuestaSim simulation waveforms for my counter submodule testbench. Note that since in my testbench I updated the MAX parameter to 10, so the clock signal conversion does not line up with 24MHz stepped down to 2.4Hz but instead 24MHz to 2.4MHz. The stepped-down output clock signal was high and low for the correct interval of time, even after a reset at an irregular time interval. When enable was pulled high, it functioned regularly as a counter (see first 2.5 clock signals), but when it was pulled low, the counter kept its currrent value of high until the reset was toggled again, resetting the counter to 0. This behaviour was also confirmed by my automatic testbench.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view counter submodule simulation waveforms
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab1waveforms-freqconverter.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 5. Counter submodule simulation waveforms</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view counter submodule testbench outputs
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab1testbench-freqconverter.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 6. Counter submodule testbench outputs</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Figure 7 shows a screenshot of the QuestaSim simulation waveforms for the clock generated by the HSOSC in the top-level module. The expected clock cycle was about 41.67ns (from the 24MHz generated), and the waveforms show the clock signal toggling every ~21ns, which is correct. This behaviour was also confirmed by my automatic testbench.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view top-level module clock simulation waveforms
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab1waveforms-topclk.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 7. Simulation waveforms testing the clock output from the HSOSC in the top-level module</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view top-level module clock simulation outputs
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab1testbench-topclk.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 8. Top-level module clock testbench outputs</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Figure 9 shows a screenshot of the QuestaSim simulation waveforms for the combinational logic LED behaviour and 7-segment submodule connection at the top-level. It behaved correctly because for each switch combination, the LED and 7-segment output at the top-level were correct (looking at both the individual waveforms and the output of my automatic testbench).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view top-level module LED and 7-segment logic testbench simulation waveforms
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab1waveforms-topdiodes.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 9. Simulation waveforms for all combinational logic outputs in the top-level</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view top-level module combinational logic simulation outputs
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab1testbench-topdiodes.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 10. Top-level module combinational logic testbench outputs</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Figure 11 shows a screenshot of the QuestaSim simulation waveforms testing the counter-submodule connection to the top-level. The top-level oscillating LED output was correctly read at half the 2.4Hz clock cycle twice and again after a reset was held to confirm the oscillation was 2.4Hz.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view top-level module freqconverter testbench simulation waveforms
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab1waveforms-topfreq.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 11. Simulation waveforms for the counter submodule connection at the top-level</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view top-level module 2.4Hz simulation outputs
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab1testbench-topfreq.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 12. Top-level module 2.4Hz signal testbench outputs</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="hardware-deployment" class="level3">
+<h3 class="anchored" data-anchor-id="hardware-deployment">Hardware Deployment</h3>
+<p>This video showcases the design running on the completed PCB, with one on-board LED continuously blinking at 2.4Hz, and the other two on-board LEDs and the 7-segment display going through all 16 combinations of four switch inputs.</p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/Kqw6JT7Sy94" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+</section>
+<section id="oscilloscope-testing" class="level3">
+<h3 class="anchored" data-anchor-id="oscilloscope-testing">Oscilloscope Testing</h3>
+<p>The 2.4Hz LED toggle was confirmed using an oscilloscope. When the oscilloscope was connected to the LED output pin and ground, the signal was observed as shown in Figure 13.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab1oscope-blink.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 13. Oscilloscope trace observing 2.4Hz LED toggle</figcaption>
+</figure>
+</div>
+<p>Using the internal oscilloscope frequency measurement tool, the frequency was measured to be ~2.407Hz, which is almost exactly the intended 2.4Hz frequency. The small discrepancy could be due to variations in the clock frequency provided by the HSOSC, oscilloscope measurement errors etc.</p>
+</section>
+</section>
+</section>
+<section id="phase-2---time-multiplexed-dual-7-segment-display-and-keypad-scanning" class="level1">
+<h1>Phase 2 - Time-Multiplexed Dual 7-Segment Display and Keypad Scanning</h1>
+<p>The second step in building this implementation was to figure out how to control a dual 7-segment display, and read in 4x4 matrix keypad inputs. In anticipation of the limited number of accessible GPIO pins in the complete design, the LEDs for each 7-segment had to be controlled by the same pin. To do this, I used the idea of time-multiplexing: turning on the common anode of only one half of the dual 7-segment display at a time and writing the digit displayed on that side to the LEDs. The displayed digits would be set using 8 switches. In addition, the 4x4 matrix keypad had 8 pins: one for each row and column. This means I could not use pure combinational logic to read in the keypad inputs. I would have to use some kind of scanning system to assert signals on each row and read in the column values to decode the key pressed. I drove 4 LEDs with the row outputs/column inputs such that pressing keys on different columns would drive different LEDs at 2Hz.</p>
+<section id="design-and-testing-methodology-1" class="level2">
+<h2 class="anchored" data-anchor-id="design-and-testing-methodology-1">Design and Testing Methodology</h2>
+<p>I created two submodules and linked them by a top-level module.</p>
+<p>The first submodule called the counter module from before to step down a 24MHz HSOSC clock to a 120Hz clock. Based on the positive edge of the new clock signal, it would change which anode output (left vs right side) would be tied high, which determines which 7-segment side to write to. 120Hz was chosen because based on trial and error, this frequency allowed both segments to be perceived as on at the same time without any flickering or bleeding.</p>
+<p>The second submodule called the counter module from before to step down a 24MHz HSOSC clock to a 1Hz clock. It then used assign statements to change each bit of the keypad row scanning output, so that only 1 bit out of 4 would be high at a time and they would oscillate at a rate of 2Hz.</p>
+<p>The top-level module called on the two submodules and HSOSC. The anode output was connected as the select of a 2:1 mux, so that it’s value determined which set of switches would be fed into the 7-segment submodule and the correct 7-segment pattern can be written. The column inputs were inverted and written to LEDs the LEDs blink at 2Hz when the corresponding row is scanned and column is pressed.</p>
+<p>The design was tested using waveform simulation of the top-level module and the scanning submodule in QuestaSim through automatic testbenches to confirm the desired behaviour.</p>
+<p>The scanning submodule testbench instantiated the submodule scan under a test. Reset and enable were pulled high. The row outputs were then checked every 0.006s as this is how long it should take for them to toggle. The reset was then pulled low and high and the row outputs were checked to reset to 4’b1000 and start rotating. Then, enable was set to low to confirm the row outputs would stop rotating, and reset was pulled high again to check the row outputs reset and did not continue changing.</p>
+<p>The top-level submodule testbench instantiated the module lab_nk under a test. Reset was set high, switch inputs were set and the segments were checked after 8333334ns to confirm that the left/right segments were only written at the corresponding anode values. Then, different column inputs were written and the led outputs were checked to confirm the led bits were inverted column bits.</p>
+<p>The dual 7-segment display circuit and keypad scanner circuit were built and connected separately to the FPGA GPIO pins because there were not enough pins to connect all the inputs and outputs at the same time. The design was tested by toggling all 8 switch inputs and observing the 7-segment display outputs, and then pressing keypad buttons individually and multiple in the same row/column and observing the LED outputs.</p>
+<p>To implement this in hardware, PNP transistors need to be wired to the anodes of the dual 7-segment display because the required current is greater than what the FPGA GPIO pins can drive and NPN transistors need to be wired to the rows of the 4x4 keypad to prevent shorting multiple row drivers when multiple keys are pressed (functioning as an open-drain/collector output).</p>
+<p>PNP transistors have a base-emitter saturation voltage of about 0.7V. Since I supplied the emitter with 3.3V, the voltage at the base would be <span class="math inline">\(V_B=3.3V-0.7V=2.6V\)</span>. The transistor is active when the base is low, so current will flow when the GPIO pin is low (0V). Also, the collector-emitter saturation voltage is about 0.25V, so the voltage at the collector would be <span class="math inline">\(V_C=3.3V-0.25V=3.05V\)</span>. Additionally, the forward voltage of an LED is around 2V. The maximum current the GPIO pins can handle is 8mA, so using Ohm’s law,</p>
+<div class="quarto-layout-panel" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<p><span class="math display">\[
+\begin{aligned}
+V&amp;=IR\\
+V_B-V_{GPIO}&amp;=I_{B}R_{B}\\
+2.6-0&amp;=0.008R_{B}\\
+R_{B}&amp;=325\Omega
+\end{aligned}
+\]</span></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<p><span class="math display">\[
+\begin{aligned}
+V&amp;=IR\\
+V_C-V_{LED}&amp;=I_{pin}R_{C}\\
+3.05-2&amp;=0.008R_{C}\\
+R_{C}&amp;=131.25\Omega
+\end{aligned}
+\]</span></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/pnp.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption>Figure 13. PNP Transistor Circuit</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>From these calculations, I used a 330Ω resistor for the base because it is slightly higher than the calculated value, which would prevent drawing too much current from the FPGA. I used a 150Ω resistor for the collector using this same logic.</p>
+<p>Similarly, NPN transistors have a base-emitter voltage of around 0.7V. Since I supplied the emitter with 0V, the voltage at the base would be <span class="math inline">\(V_B=0.7V-0V=0.7V\)</span>. The transistor is active when the base is high, so current will flow when the GPIO pin is low (3.3V). The maximum current the GPIO pins can handle is 8mA, so using Ohm’s law,</p>
+<div class="quarto-layout-panel" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<p><span class="math display">\[
+\begin{aligned}
+V&amp;=IR\\
+V_GPIO-V_{B}&amp;=I_{B}R_{B}\\
+3.3-0.7&amp;=0.008R_{B}\\
+R_{B}&amp;=325\Omega
+\end{aligned}
+\]</span></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<p><span class="math display">\[
+\]</span></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/npn.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption>Figure 14. NPN Transistor Circuit</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>With this I chose a 330Ω resistor for the base because it is slightly higher than the calculated value, which would prevent drawing too much current from the FPGA.</p>
+<p>The keypad-driven LEDs also needed current-limiting resistors since the maximum current the LEDs could handle was 20mA. They also had a forward voltage of about 2.2V, so using Ohm’s law,</p>
+<p><span class="math display">\[
+\begin{aligned}
+V&amp;=IR\\
+3.3-2.2&amp;=0.02R\\
+R&amp;=55\Omega
+\end{aligned}
+\]</span></p>
+<p>This was the minimum current-limiting resistor needed, so I chose a 330Ω resistor.</p>
+</section>
+<section id="technical-documentation-1" class="level2">
+<h2 class="anchored" data-anchor-id="technical-documentation-1">Technical Documentation</h2>
+<p>The source code for the part of the project can be found in the associated <a href="https://github.com/natalieko2024/E155-Labs/tree/main/E155-Lab2">GitHub repository</a>.</p>
+<section id="block-diagram-1" class="level3">
+<h3 class="anchored" data-anchor-id="block-diagram-1">Block Diagram</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab2BlockDiagram.jpg" class="img-fluid figure-img"></p>
+<figcaption><strong>Figure 15. Block diagram of the top-level module</strong></figcaption>
+</figure>
+</div>
+<p>The block diagram in Figure 15 shows the overall architecture of the design. The top-level module lab2_nk includes four submodules: the high-speed oscillator (HSOSC), the multiplexing counter module (muxCounter), the 7-segment display module (switch_7seg), and the scanner module (scan). The top-level module also contains a MUX and a NOT gate to write the correct segments and LEDs.</p>
+</section>
+<section id="schematic" class="level3">
+<h3 class="anchored" data-anchor-id="schematic">Schematic</h3>
+<p>The schematic in Figure 16 shows the physical circuit connections outside the PCB for the dual 7-segment portion of the design. The specified GPIO pins were connected to current limiting resistors before the 7-segment display cathodes. The common anodes of the 7-segment display were connected to the 3.3V supply and GPIO pins of the FPGA through the 2N3906 transistors.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab2SevenSegSchematic.jpg" class="img-fluid figure-img"></p>
+<figcaption><strong>Figure 16. Schematic of all circuit components outside the PCB for the dual 7-segment</strong></figcaption>
+</figure>
+</div>
+<p>The schematic in Figure 17 shows the physical circuit connections outside the PCB for the keypad scanner portion of the design. The specified GPIO pins were connected to current limiting resistors and diodes for the LED outputs, and 2N3904 transistors connected to the 4x4 keypad to write rows. Pins were also connected to the keypad columns to collect as inputs.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab2KeypadSchematic.png" class="img-fluid figure-img"></p>
+<figcaption><strong>Figure 17. Schematic of all circuit components outside the PCB for the keypad scanner</strong></figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="results-and-discussion-1" class="level2">
+<h2 class="anchored" data-anchor-id="results-and-discussion-1">Results and Discussion</h2>
+<p>The design met all intended design objectives.</p>
+<section id="testbench-simulation-1" class="level3">
+<h3 class="anchored" data-anchor-id="testbench-simulation-1">Testbench Simulation</h3>
+<p>Figure 18 shows a screenshot of the QuestaSim simulation waveforms for my scanning submodule testbench. It behaved correctly because after each 1/8 stepped-down clock cycle, the output rows were correct, including after a reset and after setting enable to low and then resetting again. This is also demonstrated by the automatic testbench outputs (see Figure 19).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view scanning submodule simulation waveforms
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab2waves-scanner.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 18. Scanning submodule simulation waveforms</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view scanning submodule testbench outputs
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab2testbench-scanner.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 19. Scanning submodule testbench outputs</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Figure 20 shows a screenshot of the QuestaSim siimulation waveforms for my top module. It behaved correctly because after waiting for the anodes to invert, the segments were written correctly (demonstrating mux behaviour), and the LED outputs were always inverted signals compared to the column inputs. This is also demonstrated by the automatic testbench outputs (see Figure 21).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view top-level module simulation waveforms
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab2waves-top.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 20. Top-level module simulation waveforms</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view top-level module testbench outputs
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab2testbench-top.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 21. Top-level module testbench outputs</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="hardware-deployment-1" class="level3">
+<h3 class="anchored">Hardware Deployment</h3>
+<p>These two videos showcases the design running on each circuit.</p>
+<div data-layout-ncol="2">
+<p></p><div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/ctef7_nsyAw" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div> <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/jYaRoXLDaM8" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div><p></p>
+<section id="oscilloscope-testing-1" class="level3">
+<h3 class="anchored" data-anchor-id="oscilloscope-testing-1">Oscilloscope Testing</h3>
+<p>The keypad scanning LED frequency was confirmed using an oscilloscope. When the oscilloscope was connected on each end of the LED the signal was observed as in Figures 22a-c.</p>
+<div class="quarto-layout-panel" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/scope_9.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 22a. Oscilloscope Trace for LED Outputs When 1 Button in the Column is Pressed</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/scope_6.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 22b. Oscilloscope Trace for LED Outputs When 2 Adjacent Buttons in the Same Column are Pressed</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/scope_7.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 22c. Oscilloscope Trace for LED Outputs When 3 Adjacent Buttons in the Same Column are Pressed</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>When the oscilloscope was connected to each row output, the signals were observed as in Figure 23.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/scope_8.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 23. Oscilloscope Trace for Row Outputs</figcaption>
+</figure>
+</div>
+<p>All signals oscillate at 2Hz as expected. For the LED outputs, the width of the high signal increases as more adjacent buttons are added, because the LED is on whenever the column is pressed and the row signal is on. As the row signal moves from row 1 to row 2 while the switch is still pressed, the column output will remain for the duration of both rows “ON”s.</p>
+</section>
+<section id="phase-3---integrated-keypad-scanner-and-7-segment-output" class="level1">
+<h1>Phase 3 - Integrated Keypad Scanner and 7-Segment Output</h1>
+<p>To make the full implementation, all the previous work had to be combined and integrated with a finite state machine.</p>
+<section id="design-and-testing-methodology-2" class="level2">
+<h2 class="anchored" data-anchor-id="design-and-testing-methodology-2">Design and Testing Methodology</h2>
+<p>This design was achieved using a finite state machine (see Figures 24 and 25), where the state would change depending on the collected key inputs. The variable keyMap is the current key inputs, while initialKeyMap is a snapshot of the key inputs during the display state. In the display state, displayEN is set high, which allows writing to the 7 segment display through flip-flops in the top-level module.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/statetransitiondiagram.jpg" class="img-fluid figure-img"></p>
+<figcaption>Figure 24. State transition diagram for the finite state machine</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/statetransitiontable.jpg" class="img-fluid figure-img"></p>
+<figcaption>Figure 25. State transition table for the finite state machine</figcaption>
+</figure>
+</div>
+<p>Like in the previous phase, key inputs were determined by “scanning” each row (sending a high bit to one row at a time) and collecting the column inputs. The column inputs were sent through a synchronizer to prevent reading metastable values. Besides the scan module, a keyMap module was developed to convert the corresponding row/column combination to a 16-bit key map.</p>
+<p>The keypad switches were prone to switch bounce (the switch makes and breaks its connection repeatedly for up to ~10ms). To mitigate this issue and ensure each key was only registered once, a debouncer submodule was created, which used a shift register to compare the keymap at different intervals and only register the keys when all registers had the same value.</p>
+<p>This debounced key map was an input to the FSM, a submodule converting the keys to equivalent switch inputs (which were sent into the 7-segment decoder).</p>
+<p>The top level module wired all these submodules together, and had assign statements to compare counter values to provide the switching frequency for the 7-segment anodes, as well as a mux to determine which value to write to the left and right segments.</p>
+<p>These modules were all tested using automatic testbenches, waveform simulation, and hardware deployment.</p>
+<p>I think my debouncing strategy is more accurate and time efficient than other strategies. One other strategy I can think of is just waiting 10ms (maximum bouncing time) after the first button press before using the keyMap. However, this doesn’t guarantee that after you wait, the button is actually debounced - it could slightly fluctuate, or if your count is off by a little bit you would read and use the bounce. Adding a strategy of storing the initial read and comparing at the end of the wait time to confirm debouncing could work. However, if another button happens to activate during the 10ms wait time, that button could still bounce after the first button is done, so then you would have to wait again. Using the shift register method means you don’t have to have logic determining the first key press, or wait a specified amount of time. You always read until all registers log the same value.</p>
+<p>However, the other strategies are probably more hardware efficient as I do use 9 flip-flops (probably could’ve used less, I was just being cautious), whereas the waiting strategy would just rely on a counter output that uses 1 flip-flop.</p>
+<p>My design technically includes 2 communicating FSMs that evaluates the current debounced keyMap against the saved keyMap. I think another way to do achieve the end goal (with the alternative debouncing strategies described above) is to have a canonical FSM managing the display/scanning states communicate with another canonical FSM to control whether debouncing is active or not, or communicate with a non-canonical FSM which is a counter to keep track of how long to wait for. However, I think this is more complicated and could make the overal FSM structure less reliable since switching or keeping states depend on more conditions that could be unexpected values right when the clock edge occurs, meaning you have to wait for the next cycle to actually transition correctly.</p>
+</section>
+<section id="technical-documentation-2" class="level2">
+<h2 class="anchored" data-anchor-id="technical-documentation-2">Technical Documentation</h2>
+<p>The source code for this part of the project can be found in the associated <a href="https://github.com/natalieko2024/E155-Labs/tree/main/E155-Lab3">GitHub repository</a>.</p>
+<section id="block-diagram-2" class="level3">
+<h3 class="anchored" data-anchor-id="block-diagram-2">Block Diagram</h3>
+<p><img src="images/blockdiagram.jpg" class="img-fluid" alt="Figure 26. Block diagram of the top-level module"> <img src="images/subblockdiagram.jpg" class="img-fluid" alt="Figure 27. Block diagram of the submodules"></p>
+<p>The block diagram in Figures 26 and 27 shows the overall architecture of the design.</p>
+</section>
+<section id="schematic-1" class="level3">
+<h3 class="anchored" data-anchor-id="schematic-1">Schematic</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/schematic.jpg" class="img-fluid figure-img"></p>
+<figcaption><strong>Figure 28. Schematic of all circuit components outside the PCB</strong></figcaption>
+</figure>
+</div>
+<p>The schematic in Figure 28 shows the physical circuit connections outside the PCB. The only peripheral used on the PCB was the reset button.</p>
+</section>
+</section>
+<section id="results-and-discussion-2" class="level2">
+<h2 class="anchored" data-anchor-id="results-and-discussion-2">Results and Discussion</h2>
+<p>The design met all intended design objectives.</p>
+<section id="synthesizer-warnings" class="level3">
+<h3 class="anchored" data-anchor-id="synthesizer-warnings">Synthesizer Warnings</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/newSynthesize.png" class="img-fluid figure-img"></p>
+<figcaption><strong>Figure 29. Image of Radiant Synthesizer Outputs</strong></figcaption>
+</figure>
+</div>
+<p>Radiant didn’t give me any errors, warnings of latches or tristate buffers etc. The only warning I got was that my ports were rejected, but these do not affect deployment.</p>
+</section>
+<section id="testbench-simulation-2" class="level3">
+<h3 class="anchored" data-anchor-id="testbench-simulation-2">Testbench Simulation</h3>
+<p>Figure 30 shows a screenshot of the QuestaSim simulation waveforms for my flip flop submodule. It behaved correctly because the output is always 1 clock rising edge behind the input when enabled. When disabled the output stops flowing, and when reset the output is set to 0. This was also confirmed by my automatic testbench (figure 31).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view flip flop submodule simulation waveforms
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/flopWaves.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 30. Flip flop submodule simulation waveforms</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view flip flop submodule testbench outputs
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/flopTestbench.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 31. Flip flop submodule testbench outputs</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Figure 32 shows a screenshot of the QuestaSim simulation waveforms for my synchronizer submodule. It behaved correctly because the output is always 2 clock rising edges behind the input. This was also confirmed by my automatic testbench (figure 33).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view synchronizer submodule simulation waveforms
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/syncWaves.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 32. Synchronizer submodule simulation waveforms</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view synchronizer submodule testbench outputs
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/syncTestbench.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 33. Synchronizer submodule testbench outputs</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>The scanning submodule was retested because it was slightly modified so it could be parametrized instead of only having a fixed scanning frequency. As shown in Figure 34, after each 1/8 clock cycle, the output rows were correct, including after a reset and after setting enable to low and then resetting again. This is also demonstrated by the automatic testbench outputs (see Figure 35).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view scanning submodule simulation waveforms
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/scanWaves.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 34. Scanning submodule simulation waveforms</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view scanning submodule testbench outputs
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/scanTestbench.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 35. Scanning submodule testbench outputs</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Figure 36 shows a screenshot of the QuestaSim simulation waveforms for my keymap submodule. When each of the rows were high, the column inputs were mapped to the keymap correctly with both single presses and multi presses. When reset was enabled, the keymap reset to all 0s. This was also confirmed by my automatic testbench (figure 37).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view keymap submodule simulation waveforms
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/keyMapWaves.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 36. Keymap submodule simulation waveforms</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view keymap submodule testbench outputs
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/keyMapTestbench.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 37. Keymap submodule testbench outputs</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Figure 38 shows the QuestaSim simulation waveforms for the debounce submodule. It behaved correctly because after oscillating the keymap bits repeatedly, the output was only changed value after the input was constant. After toggling the reset, the output would not change. This was also confirmed by the automatic testbench (figure 39).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view debounce submodule simulation waveforms
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/debouncerWaves.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 38. Debounce submodule simulation waveforms</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view debounce submodule testbench outputs
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-24" class="callout-24-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/debouncerTestbench.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 39. Debounce submodule testbench outputs</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Figure 40 shows the QuestaSim simulation waveforms for the FSM. All state transitions (including the reset) and outputs were tested to work. This was also confirmed by the automatic testbench (figure 41).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view FSM submodule simulation waveforms
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/FSMWaves.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 40. FSM submodule simulation waveforms</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view FSM submodule testbench outputs
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-26" class="callout-26-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/FSMTestbench.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 41. FSM submodule testbench outputs</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Figures 42 and 43 show the QuestaSim simulation waveforms and testbench output for the keymap to switch input converter. Each keymap combination was converted to the correct switch combination.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view map to switch converter submodule simulation waveforms
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-27" class="callout-27-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/switchesWaves.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 42. Map to switch converter submodule simulation waveforms</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view map to switch converter submodule testbench outputs
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-28" class="callout-28-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/switchesTestbench.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 43. Map to switch converter submodule testbench outputs</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Figures 44 and 45 show the QuestaSim simulation waveforms and testbench output for the top level module. The column inputs were bounced for 10ms, then were held high, only when that particular row was high. The anodes changed at the right time, and the segment outputs matched the column inputs after they were held high. The segments were reset to 0 and the anode reset to 2’b10 when the reset was toggled.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-29-contents" aria-controls="callout-29" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view top level module simulation waveforms
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-29" class="callout-29-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/topWaves.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 44. Top level module simulation waveforms</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-30-contents" aria-controls="callout-30" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view top level module testbench outputs
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-30" class="callout-30-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/topTestbench.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 45. Top level module testbench outputs</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="hardware-deployment-2" class="level3">
+<h3 class="anchored" data-anchor-id="hardware-deployment-2">Hardware Deployment</h3>
+<p>Here is a video showcasing the design running on hardware. </p><div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/qhZsKVxzVlM" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div><p></p>
+</section>
+</section>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>The design successfully scanned a 4x4 matrix keypad and mapped the last two inputs to a dual 7-segment display, accounting for single and multi-key presses!</p>
+
+
+</section>
+</div>
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script>
+/* ===== PROJECT CARDS: edit here (newest first). Each slug matches projects/<slug>/index.qmd.
+   featured = true to show on the home page (first 3 flagged are used).
+   img = path inside that project's folder, e.g. "images/cover.jpg" (leave "" for the placeholder) ===== */
+const PROJECTS=[
+ {"featured":false,"img":"images/motorControl.png","slug": "motorControl", "t": "Leverging MCU Interrupts to Read Stepper Motor Encoders", "d": "Oct 2026 – Oct 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Utilized MCU interrupts to acurrately determine stepper motor speed and direction.", "tech": ["C, MCU, Circuit Design, SEGGER Embedded Studio"]},  
+ {"featured":false,"img":"images/digitalAudio.png","slug": "digitalAudio", "t": "Using a MCU to Produce Write Music", "d": "Sept 2026 – Sept 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Programmed an MCU to write specific frequencies and durations to play music on a speaker.", "tech": ["C", "STM32", "Circuit Design", "SEGGER Embedded Studio"]},
+ {"featured":true,"img":"images/keypadScanner.jpeg","slug": "keypadScanner", "t": "Keypad Scanner", "d": "Aug 2026 – Sep 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Programmed an FPGA to read a 4x4 matrix keypad and display the last two hexadecimal inputs on a dual seven-segment display. Accounted for key bounce, multi-press, and timing inconsistencies.", "tech": ["SystemVerilog", "FPGA", "Circuit Design", "Lattice Radiant", "Waveform Simulation", "Testbench"]},  
+ {"featured":true,"img":"images/E80Bot.png","slug": "E80Bot", "t": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)", "d": "Mar 2026 – May 2026", "cats": ["Robotics & Control Systems", "PCB Design & Electronics", "Embedded Systems & Firmware", "Mechanical Design & FEA"], "b": "Developed and deployed an AUV to map metal debris distribution on the ocean floor and back-calculate debris drop locations.", "tech": ["P-Control", "Circuit Design", "Mechanical Design", "C++", "MATLAB", "I2C Communication", "Data Analysis", "Troubleshooting", "Technical Documentation"]},
+ {"featured":false,"img":"images/radio.jpeg","slug": "crystalRadio", "t": "Crystal Radio Experiments", "d": "Feb 2026 – Mar 2026", "cats": ["PCB Design & Electronics"], "b": "Analysed RLC Circuits to debug Dunwoody, Pickard, and Armstrong crystal radios. Devised an innovative antenna for optimal signal receiving.", "tech": ["Radio Frequency Engineering", "Software Defined Radio", "Circuit Analysis"]},
+ {"featured":false,"img":"images/windTunnel.png","slug": "E80Fluids", "t": "Wind Tunnel Experiments and Fluid Dynamics Simulation", "d": "Feb 2026 – Mar 2026", "cats": ["Miscellaneous"], "b": "Used the principle of similitude to characterize ROV behaviour in the water through wind tunnel simulations.", "tech": ["COMSOL", "Technical Documentation"]}, 
+ {"featured":false,"img":"images/riscV.jpeg","slug": "multiCycleProcessor", "t": "Multi-cycle RISC-V Processor", "d": "Nov 2025 – Dec 2025", "cats": ["Embedded Systems & Firmware"], "b": "Designed and simulated a 32-bit multi-cycle RISC-V processor, executed RISC-V integer instructions (R, I, S, B, U, and J-Type) given to memory as machine code.", "tech": ["SystemVerilog", "Waveform Simulation", "RISC-V Architecture"]},  
+ {"featured":false,"img":"images/79bot.jpg","slug": "E79Bot", "t": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)", "d": "Aug 2025 – Dec 2025", "cats": ["Robotics & Control Systems", "PCB Design & Electronics", "Mechanical Design & FEA"], "b": "Developed and deployed an PID-controlled ROV to collect temperature and depth measurements underwater.", "tech": ["PID-Control", "Circuit Design", "Mechanical Design", "Data Analysis", "LabView", "Soldering", "Breadboarding", "Mathematical Modeling"]},
+ {"featured":false,"img":"images/eyes.jpg","slug": "animatronicEyes", "t": "Animatronic Eyes", "d": "Jul 2025 – Oct 2025", "cats": ["Embedded Systems & Firmware", "Mechanical Design & FEA"],"b": "Designed and programmed a set of animatronic eyes controlled by servo motors and joysticks through Arduino.", "tech": ["SolidWorks", "3D Printing", "C++", "Arduino","Servo Control"]},
+ {"featured":true,"img":"images/abyssExplorer.jpg","slug": "abyssExplorer", "t": "Abyss Explorer", "d": "Feb 2025 – May 2025", "cats": ["Mechanical Design & FEA", "Manufacturing"], "b": "Designed and manufactured a system to raise and lower sensors through a ~600ft radioactive mine shaft (shrinking to an unknown diameter) for data collection without direct human contact.", "tech": ["SolidWorks", "Mechanical Design", "Prototyping", "Manufacturing", "Project Management", "Technical Documentation"]},
+ {"featured":false,"img":"images/hammer.jpg","slug": "hammer", "t": "Precision Manually Machined Hammer", "d": "Jan 2025 – Apr 2025", "cats": ["Manufacturing"], "b": "Manually machined a hammer using conventional manual machining tools to specifications following technical drawings.", "tech": ["Precision Manual Machining", "Geometric Dimensioning & Tolerancing (GD&T)", "Process Planning & Documentation", "Metallurgy"]}];
+/* ================================================================================ */
+/* Site-wide behavior: hero arm (IK), stat counters, experience marquee, tech chips. Each part no-ops if its elements are absent. */
+(function(){
+ const css=n=>getComputedStyle(document.body).getPropertyValue(n).trim();
+ // seamless marquee: duplicate cards once
+ const trk=document.getElementById("jobs");if(trk)trk.innerHTML+=trk.innerHTML;
+ // stat counters
+ const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;io.unobserve(e.target);const n=+e.target.dataset.n,dec=n%1?1:0;let s=0;const id=setInterval(()=>{s+=n/30;if(s>=n){s=n;clearInterval(id)}e.target.textContent=s.toFixed(dec)},30)}));
+ document.querySelectorAll("[data-n]").forEach(el=>io.observe(el));
+ // brand: orange slash
+ document.querySelectorAll(".navbar-title").forEach(el=>{el.innerHTML=el.textContent.replace("/",'<span style="color:var(--or)">/</span>')});
+ // skills text -> bubbles on project / experience pages
+ document.querySelectorAll(".skills-val").forEach(el=>{el.innerHTML=el.textContent.split(",").map(s=>s.trim()).filter(Boolean).map(s=>`<span>${s}</span>`).join("")});
+ // project cards (home: newest 3; projects page: all, with category filters)
+ const card=p=>`<article class="pcard" data-cats="${p.cats.join("|")}"><a class="pcard-link" href="projects/${p.slug}/index.html">${p.img?`<img class="pcard-img" src="projects/${p.slug}/${p.img}" alt="${p.t}">`:`<div class="pcard-img ph-img mono">project image</div>`}<div class="pcard-body"><small class="mono">${p.d}</small><h3>${p.t}</h3><p>${p.b}</p><div class="chips">${p.tech.map(t=>`<span>${t}</span>`).join("")}</div></div></a></article>`;
+ const feat=document.getElementById("featured");if(feat)feat.innerHTML=PROJECTS.filter(p=>p.featured).slice(0,3).map(card).join("");
+ const grid=document.getElementById("grid");if(grid)grid.innerHTML=PROJECTS.map(card).join("");
+ const fb=document.getElementById("filters"),cards=[...document.querySelectorAll("#grid .pcard")];
+ if(fb&&cards.length){const cats=["All",...new Set(PROJECTS.flatMap(p=>p.cats))];
+  fb.innerHTML=cats.map(c=>`<button type="button" class="${c==="All"?"on":""}">${c}</button>`).join("");
+  fb.onclick=e=>{const b=e.target.closest("button");if(!b)return;fb.querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));
+   cards.forEach(c=>c.hidden=!(b.textContent==="All"||c.dataset.cats.split("|").includes(b.textContent)))}}
+ // hero arm
+ const cv=document.getElementById("c");if(!cv)return;
+ const cx=cv.getContext("2d"),W=700,L1=230,L2=200,bx=W/2,by=W*0.82;
+ let tx=bx-120,ty=by-300,cur={x:tx,y:ty},idle=true,tm=0;
+ function pos(e){const r=cv.getBoundingClientRect(),p=e.touches?e.touches[0]:e;if(!r.width)return;tx=(p.clientX-r.left)*W/r.width;ty=(p.clientY-r.top)*W/r.height;idle=false}
+ addEventListener("mousemove",pos);cv.addEventListener("touchmove",pos,{passive:true});
+ function frame(t){
+  if(idle){tx=bx+Math.cos(t/1500)*170;ty=by-260+Math.sin(t/1100)*90}
+  cur.x+=(tx-cur.x)*.12;cur.y+=(ty-cur.y)*.12;
+  let dx=cur.x-bx,dy=cur.y-by,d=Math.hypot(dx,dy);const R=L1+L2-2,r=Math.min(d,R),mn=Math.abs(L1-L2)+4;
+  const rr=Math.max(r,mn),a=Math.atan2(dy,dx),
+  c2=Math.min(1,Math.max(-1,(rr*rr-L1*L1-L2*L2)/(2*L1*L2))),q2=-Math.acos(c2),
+  q1=a-Math.atan2(L2*Math.sin(q2),L1+L2*Math.cos(q2));
+  const jx=bx+L1*Math.cos(q1),jy=by+L1*Math.sin(q1),ex=jx+L2*Math.cos(q1+q2),ey=jy+L2*Math.sin(q1+q2);
+  cx.clearRect(0,0,W,W);
+  cx.setLineDash([6,8]);cx.strokeStyle=css("--line");cx.lineWidth=2;cx.beginPath();cx.arc(bx,by,L1+L2,Math.PI,2*Math.PI);cx.stroke();cx.setLineDash([]);
+  cx.strokeStyle=css("--bl");cx.lineWidth=1.5;cx.beginPath();cx.arc(tx,ty,10,0,7);cx.moveTo(tx-16,ty);cx.lineTo(tx+16,ty);cx.moveTo(tx,ty-16);cx.lineTo(tx,ty+16);cx.stroke();
+  cx.lineCap="round";
+  [[bx,by,jx,jy,26,"--txt"],[jx,jy,ex,ey,20,"--or"]].forEach(l=>{cx.strokeStyle=css(l[5]);cx.lineWidth=l[4];cx.beginPath();cx.moveTo(l[0],l[1]);cx.lineTo(l[2],l[3]);cx.stroke()});
+  [[bx,by,22],[jx,jy,18],[ex,ey,11]].forEach(j=>{cx.fillStyle=css("--bg");cx.strokeStyle=css("--bl");cx.lineWidth=4;cx.beginPath();cx.arc(j[0],j[1],j[2],0,7);cx.fill();cx.stroke()});
+  cx.fillStyle=css("--line");cx.fillRect(bx-60,by+22,120,14);
+  if(t-tm>80){tm=t;const D=180/Math.PI,s=(i,v)=>document.getElementById(i).textContent=v;
+   s("t1",(-q1*D).toFixed(0));s("t2",(-q2*D).toFixed(0));s("px",((ex-bx)*.5).toFixed(0));s("py",((by-ey)*.5).toFixed(0))}
+  requestAnimationFrame(frame)}
+ requestAnimationFrame(frame);
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p class="footer-cta">
+Let’s build something.
+</p>
+<p><a href="https://www.linkedin.com/in/ko12nat/" target="_blank">LinkedIn</a> · <a href="https://github.com/natalieko2024" target="_blank">GitHub</a><br> <small>© 2026 Natalie Ko. All rights reserved.</small></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

@@ -1,32 +1,84 @@
 ---
-pagetitle: "Résumé"
+pagetitle: "CV"
 title: ""
 page-layout: full
 ---
 
-## Résumé {.sec}
+## CV · Natalie Ko {.sec}
 
 ```{=html}
 <div class="cv">
-<div class="cv-head"><a class="btn-pill" href="resume.pdf" target="_blank">Download PDF ↓</a> <small>(drop your resume.pdf next to this file)</small></div>
+<div class="cv-head"><a class="btn-pill" href="resume.pdf" target="_blank">Download PDF Resume ↓</a></div>
 
 <div class="cv-title">Education</div>
-<div class="cv-row"><span class="cv-bold">B.S. Mechatronics Engineering</span><span class="cv-date">2024 – 2028 (expected)</span></div>
-<div class="cv-sub">[Your University]</div>
-<p class="cv-text">GPA [X] · Coursework: Control Systems, Embedded Systems, Dynamics, Circuits, Machine Design.</p>
+<div class="cv-row"><span class="cv-bold">B.S., Engineering (Mechatronics Specialization)</span><span class="cv-date">Expected May 2028</span></div>
+<div class="cv-sub">Harvey Mudd College - Claremont, California, USA</div>
+<p class="cv-text">Major GPA 4.0/4.0 · Cumulative GPA 3.918/4.0 · Dean's List (all graded semesters)</p>
+<p class="cv-text">Relevant Coursework: Microprocessor Systems: Design & Application; Digital Electronics & Computer Engineering; Continuum Mechanics; Electrical & Magnetic Circuits/Devices; Advanced Systems Engineering; Experimental Engineering; Engineering Systems; Intro to Engineering Design/Manufacturing; Applied Math for Engineering; Probability/Stats for Engineers; Intro to Computer Science</p>
+
+<div class="cv-title">Awards and Achievements</div>
+
+<div class="cv-row"><span class="cv-bold">Tau Beta Pi Member (United States Engineering Honor Society, Top 12.5% of Junior Class)</span><span class="cv-date">2026 - Present</span></div>
+<div class="cv-sub">Harvey Mudd College</div>
+
+<div class="cv-row"><span class="cv-bold">Harvey Mudd Merit Scholarship (Top 15% of Entering Class)</span><span class="cv-date">2024 - Present</span></div>
+<div class="cv-sub">Harvey Mudd College</div>
+
 
 <div class="cv-title">Experience</div>
-<div class="cv-row"><span><span class="cv-bold">Controls Intern</span><a class="cv-more" href="experience/controls-intern.html">Read more →</a></span><span class="cv-date">Jun – Aug 2026</span></div>
-<div class="cv-sub">[Company A]</div>
-<ul class="cv-list"><li>Tuned PID loops for a servo test rig, cutting settling time by [X]%.</li></ul>
-<div class="cv-row"><span><span class="cv-bold">Mechatronics Co-op</span><a class="cv-more" href="experience/mechatronics-coop.html">Read more →</a></span><span class="cv-date">Jan – May 2026</span></div>
-<div class="cv-sub">[Company B]</div>
-<ul class="cv-list"><li>Designed a sensor bracket and wrote the firmware that logs its data.</li></ul>
-<div class="cv-row"><span><span class="cv-bold">Robotics Club Lead</span><a class="cv-more" href="experience/robotics-club-lead.html">Read more →</a></span><span class="cv-date">2024 – now</span></div>
-<div class="cv-sub">[Club / Team]</div>
-<ul class="cv-list"><li>Lead 12 students building an autonomous competition robot.</li></ul>
-<div class="cv-row"><span><span class="cv-bold">Lab Assistant</span><a class="cv-more" href="experience/lab-assistant.html">Read more →</a></span><span class="cv-date">2025</span></div>
-<div class="cv-sub">[University Lab]</div>
-<ul class="cv-list"><li>Supported PCB assembly and embedded systems coursework.</li></ul>
+
+<div class="cv-row"><span><span class="cv-bold">R&D Manufacturing Engineering Contractor</span><a class="cv-more" href="experience/minimed-clinic.html">Read more →</a></span><span class="cv-date">Aug 2026 - Present</span></div>
+<div class="cv-sub">Medtronic MiniMed (Through Harvey Mudd College Clinic Program), Claremont, California, USA</div>
+<ul class="cv-list"><li>Optimized Continuous Glucose Monitor sensor manufacturing process, reduced cycle time from __ to __ hrs</li></ul>
+<ul class="cv-list"><li>Prototyped & tested a sensor clamping fixture, prevented sensor damage & improved operator ergonomics</li></ul>
+<ul class="cv-list"><li>Performed materials analysis & testing, met ISO 7 classifications & withstood corrosive baths during 24/5 use</li></ul>
+
+<div class="cv-row"><span><span class="cv-bold">Paid Aerospace Engineering Intern</span><a class="cv-more" href="experience/cathay-intern.html">Read more →</a></span><span class="cv-date">Jul 2026 - Aug 2026</span></div>
+<div class="cv-sub">Cathay Pacific, Hong Kong SAR</div>
+<ul class="cv-list"><li>Developed a cross-company maintenance Power App; cut daily task time from 1hr+ to 24min (100% adoption)</li></ul>
+<ul class="cv-list"><li>Built a Power BI automated predictive model, optimized servicing for 13 cabin layouts under operational limits</li></ul>
+<ul class="cv-list"><li>Improved aircraft regulatory compliance by analyzing Acceptable Deferred Defects in Ultramain & Skywise</li></ul>
+<ul class="cv-list"><li>Co-developed an Ultralytics YOLO computer vision model to detect cabin defects & automate inspections</li></ul>
+
+<div class="cv-row"><span><span class="cv-bold">Undergraduate Student Researcher</span><a class="cv-more" href="experience/film-lab.html">Read more →</a></span><span class="cv-date">Jan 2026 - Present</span></div>
+<div class="cv-sub">Flow Imaging Lab at Mudd, Dept. of Engineering, Harvey Mudd College</div>
+<ul class="cv-list"><li>Designed & manufactured a mechanical 3-axis calibrator for a live class-4 laser for Particle Image Velocimetry</li></ul>
+<ul class="cv-list"><li>Processed 6-axis load cell data using MATLAB to quantify thrust generated by a biomimetic fish fin</li></ul>
+<ul class="cv-list"><li>Programmed a PI-controlled rotational degree of freedom for the fin; troubleshot load cell/motor interference</li></ul>
+<ul class="cv-list"><li>Managed waterjet safety & maintenance; advised team of 5 on machining processes to eliminate fin defects</li></ul>
+
+<div class="cv-row"><span><span class="cv-bold">Lab Teaching Assistant / Lab Improver</span><a class="cv-more" href="experience/e4-work.html">Read more →</a></span><span class="cv-date">Aug 2025 - Present</span></div>
+<div class="cv-sub">Intro to Engineering Design/Manufacturing, Harvey Mudd College</div>
+<ul class="cv-list"><li>Taught 20+ students SolidWorks, CAD, motion studies, finite element analysis, prototyping, material selection</li></ul>
+<ul class="cv-list"><li>Reviewed technical drawings for manufacturing; final products used in research labs, courses, school services</li></ul>
+<ul class="cv-list"><li>Authored 5 SolidWorks tutorials teaching feature logic and software troubleshooting, used by 60+ students</li></ul>
+<ul class="cv-list"><li>Pioneered new student role, eliminated continuity errors between teachings & deliverable expectations</li></ul>
+
+<div class="cv-row"><span><span class="cv-bold">Repair Steward</span><a class="cv-more" href="experience/repair-work.html">Read more →</a></span><span class="cv-date">Jan 2025 - Present</span></div>
+<div class="cv-sub">Makerspace, Harvey Mudd College</div>
+<ul class="cv-list"><li>Maintained, repaired & troubleshot fabrication equipment failures; minimized downtime for 2500+ users</li></ul>
+<ul class="cv-list"><li>Coordinated with 5 undergraduates to write/update user, safety & repair manuals & SOPs for all equipment</li></ul>
+<ul class="cv-list"><li>Optimized services; provided remote technical support, analyzed maintenance logs, reported inconsistencies</li></ul>
+
+<div class="cv-row"><span><span class="cv-bold">Undergraduate Student Researcher</span><a class="cv-more" href="experience/biophotonics-lab.html">Read more →</a></span><span class="cv-date">Jan 2025 - Dec 2025</span></div>
+<div class="cv-sub">HMC Biophotonics Lab, Dept. of Engineering, Harvey Mudd College</div>
+<ul class="cv-list"><li>Co-developed an open-source in vivo imaging system, reduced production cost to &lt;1% of commercial price</li></ul>
+<ul class="cv-list"><li>Improved speckle contrast & bioluminescence imaging capabilities; device used @ Claremont McKenna College</li></ul>
+<ul class="cv-list"><li>Devised experimental optics setups; troubleshot modules with oscilloscopes; processed images with Python</li></ul>
+
+<div class="cv-row"><span><span class="cv-bold">Paid Student Intern</span><a class="cv-more" href="experience/ubc-intern.html">Read more →</a></span><span class="cv-date">Jul 2023 - Jul 2023</span></div>
+<div class="cv-sub">MéridaLabs, Dept. of Mechanical Engineering, University of British Columbia</div>
+<ul class="cv-list"><li>Collaborated with two co-op students to build a JavaScript/Svelte Smart Hydrogen Energy District website</li></ul>
+<ul class="cv-list"><li>Reworked 3D models, produced renders and animations in AutoCAD for a national technology conference</li></ul>
+
+
+<div class="cv-title">Publications and Presentations</div>
+
+<p class="cv-text"><b>Poster/Presenter:</b> “Integrating Laser Speckle Contrast Imaging with OpenIVIS,” <b>Ko, N.</b>, Tran, M., Brake, J. Southern California Conference for Undergraduate Research, Nov 2025</p>
+
+<p class="cv-text"><b>Poster/Presenter:</b> “Open-source bioluminescence imaging for low-light biological applications using the OpenIVIS platform,” Tran, M., <b>Ko, N.</b>, Brake, J. Southern California Conference for Undergraduate Research, Nov 2025</p>
+
+<p class="cv-text"><b>Publication: Ko, N. M. T.</b> (2024). An evaluation of the adhesive capabilities of dry adhesive gecko tapes produced using diffraction gratings. STEM Fellowship Journal, e-First.  https://doi.org/10.17975/sfj-2024-002</p>
+
 </div>
 ```
