@@ -9,7 +9,7 @@
 <meta name="dcterms.date" content="2026-09-30">
 <meta name="description" content="Programmed an MCU to write specific frequencies and durations to play music on a speaker.">
 
-<title>Using MCU to Produce Digital Audio – NK/MECH</title>
+<title>Using a MCU to Produce Music on a Speaker – NK/MECH</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -306,11 +306,18 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Outline</h2>
    
   <ul>
-  <li><a href="#test-heading" id="toc-test-heading" class="nav-link active" data-scroll-target="#test-heading">TEst heading</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#design-and-testing-methodology" id="toc-design-and-testing-methodology" class="nav-link" data-scroll-target="#design-and-testing-methodology">Design and Testing Methodology</a></li>
+  <li><a href="#technical-documentation" id="toc-technical-documentation" class="nav-link" data-scroll-target="#technical-documentation">Technical Documentation</a>
   <ul class="collapse">
-  <li><a href="#yahoooo" id="toc-yahoooo" class="nav-link" data-scroll-target="#yahoooo">YAHOOOO</a></li>
+  <li><a href="#schematic" id="toc-schematic" class="nav-link" data-scroll-target="#schematic">Schematic</a></li>
   </ul></li>
-  <li><a href="#wee-woo" id="toc-wee-woo" class="nav-link" data-scroll-target="#wee-woo">wee woo</a></li>
+  <li><a href="#results-and-discussion" id="toc-results-and-discussion" class="nav-link" data-scroll-target="#results-and-discussion">Results and Discussion</a>
+  <ul class="collapse">
+  <li><a href="#calculations" id="toc-calculations" class="nav-link" data-scroll-target="#calculations">Calculations</a></li>
+  <li><a href="#hardware-deployment" id="toc-hardware-deployment" class="nav-link" data-scroll-target="#hardware-deployment">Hardware Deployment</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
     </div>
@@ -320,7 +327,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Using MCU to Produce Digital Audio</h1>
+<h1 class="title">Using a MCU to Produce Music on a Speaker</h1>
   <div class="quarto-categories">
     <div class="quarto-category">Embedded Systems &amp; Firmware</div>
     <div class="quarto-category">PCB Design &amp; Electronics</div>
@@ -360,14 +367,73 @@ ul.task-list li input[type="checkbox"] {
 <strong>Skills:</strong> C, MCU, Circuit Design, Segger Embedded Studio
 </div>
 </div>
-<section id="test-heading" class="level1">
-<h1>TEst heading</h1>
-<section id="yahoooo" class="level2">
-<h2 class="anchored" data-anchor-id="yahoooo">YAHOOOO</h2>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>In this lab, a design was implemented on the NUCLEO-32 MCU to utilize timers to generate different pitches and play Für Elise on a speaker.</p>
+</section>
+<section id="design-and-testing-methodology" class="level2">
+<h2 class="anchored" data-anchor-id="design-and-testing-methodology">Design and Testing Methodology</h2>
+<p>To design this implementation, two timers were created and linked by main.c. Timers 15 and 16 were chosen over the other timers available because of their PWM generation functionality. The internal clock was set to by 80MHz through using PLL, and this was sent to each timer.</p>
+<p>Timer 15 was used to control the duration of each note. I set the frequency and duration of the note through ARR (because PSC was fixed at 3999).</p>
+<p>Timer 16 was used to control the pitch of each note. I set the frequency of the note through ARR (because PSC was fixed at 19), then gave the timer a PWM duty cycle of 50% through setting CCR1.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab4eqs.jpg" class="img-fluid figure-img"></p>
+<figcaption><strong>Figure 1. Calculations for ARR (max count) and CCR1 (PWM duty cycle)</strong></figcaption>
+</figure>
+</div>
+<p>The minimum and maximum duration and pitch are shown in Figures 2 and 3 below.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab4duration.jpg" class="img-fluid figure-img"></p>
+<figcaption><strong>Figure 2. Calculations for minimum and maximum duration</strong></figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab4pitch.jpg" class="img-fluid figure-img"></p>
+<figcaption><strong>Figure 3. Calculations for minimum and maximum pitch</strong></figcaption>
+</figure>
+</div>
+</section>
+<section id="technical-documentation" class="level2">
+<h2 class="anchored" data-anchor-id="technical-documentation">Technical Documentation</h2>
+<p>The source code for the project can be found in the associated <a href="https://github.com/natalieko2024/E155-Labs/tree/main/E155-Lab4">GitHub repository</a>.</p>
+<section id="schematic" class="level3">
+<h3 class="anchored" data-anchor-id="schematic">Schematic</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab4schematic.jpg" class="img-fluid figure-img"></p>
+<figcaption><strong>Figure 4. Schematic of all circuit components outside the PCB</strong></figcaption>
+</figure>
+</div>
+<p>The schematic in Figure 4 shows the physical circuit connections outside the PCB. Since the GPIO pins didn’t generate enough current to play music directly to the speaker, an LM386 audio amplifier was wired between the pin and speaker to write each note with a gain of 20. A potentiometer was added to control the volume of the sound.</p>
 </section>
 </section>
-<section id="wee-woo" class="level1">
-<h1>wee woo</h1>
+<section id="results-and-discussion" class="level2">
+<h2 class="anchored" data-anchor-id="results-and-discussion">Results and Discussion</h2>
+<p>The design met all intended design objectives.</p>
+<section id="calculations" class="level3">
+<h3 class="anchored" data-anchor-id="calculations">Calculations</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab4table.png" class="img-fluid figure-img"></p>
+<figcaption><strong>Figure 5. Intended and actual output pitches</strong></figcaption>
+</figure>
+</div>
+<p>To confirm my design could play all notes in Für Elise accurately, I calculated the percent difference between the intended frequency and the output frequency. As shown in Figure 5, all the pitches, and 220Hz and 1000Hz are under 1% difference.</p>
+</section>
+<section id="hardware-deployment" class="level3">
+<h3 class="anchored" data-anchor-id="hardware-deployment">Hardware Deployment</h3>
+<p>This video showcases the design running on the MCU and speaker circuit, successfully playing the Für Elise score.</p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/gsBTgKf125U" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>I also created an additional score, which allowed the design to play the intro to the song “Fireflies”.</p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/Bo4-SabeIXc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>The design successfully utilized timers in the MCU to play Für Elise and Fireflies on a speaker.</p>
 
 
 </section>
@@ -379,7 +445,7 @@ ul.task-list li input[type="checkbox"] {
    img = path inside that project's folder, e.g. "images/cover.jpg" (leave "" for the placeholder) ===== */
 const PROJECTS=[
  {"featured":false,"img":"images/motorControl.png","slug": "motorControl", "t": "Leverging MCU Interrupts to Read Stepper Motor Encoders", "d": "Oct 2026 – Oct 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Utilized MCU interrupts to acurrately determine stepper motor speed and direction.", "tech": ["C, MCU, Circuit Design, SEGGER Embedded Studio"]},  
- {"featured":false,"img":"images/digitalAudio.png","slug": "digitalAudio", "t": "Using a MCU to Produce Write Music", "d": "Sept 2026 – Sept 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Programmed an MCU to write specific frequencies and durations to play music on a speaker.", "tech": ["C", "STM32", "Circuit Design", "SEGGER Embedded Studio"]},
+ {"featured":false,"img":"images/digitalAudio.png","slug": "digitalAudio", "t": "Using a MCU to Produce Music on a Speaker", "d": "Sept 2026 – Sept 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Programmed an MCU to write specific frequencies and durations to play music on a speaker.", "tech": ["C", "STM32", "Circuit Design", "SEGGER Embedded Studio"]},
  {"featured":true,"img":"images/keypadScanner.jpeg","slug": "keypadScanner", "t": "Keypad Scanner", "d": "Aug 2026 – Sep 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Programmed an FPGA to read a 4x4 matrix keypad and display the last two hexadecimal inputs on a dual seven-segment display. Accounted for key bounce, multi-press, and timing inconsistencies.", "tech": ["SystemVerilog", "FPGA", "Circuit Design", "Lattice Radiant", "Waveform Simulation", "Testbench"]},  
  {"featured":true,"img":"images/E80Bot.png","slug": "E80Bot", "t": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)", "d": "Mar 2026 – May 2026", "cats": ["Robotics & Control Systems", "PCB Design & Electronics", "Embedded Systems & Firmware", "Mechanical Design & FEA"], "b": "Developed and deployed an AUV to map metal debris distribution on the ocean floor and back-calculate debris drop locations.", "tech": ["P-Control", "Circuit Design", "Mechanical Design", "C++", "MATLAB", "I2C Communication", "Data Analysis", "Troubleshooting", "Technical Documentation"]},
  {"featured":false,"img":"images/radio.jpeg","slug": "crystalRadio", "t": "Crystal Radio Experiments", "d": "Feb 2026 – Mar 2026", "cats": ["PCB Design & Electronics"], "b": "Analysed RLC Circuits to debug Dunwoody, Pickard, and Armstrong crystal radios. Devised an innovative antenna for optimal signal receiving.", "tech": ["Radio Frequency Engineering", "Software Defined Radio", "Circuit Analysis"]},
