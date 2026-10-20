@@ -306,11 +306,18 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Outline</h2>
    
   <ul>
-  <li><a href="#test-heading" id="toc-test-heading" class="nav-link active" data-scroll-target="#test-heading">TEst heading</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#design-and-testing-methodology" id="toc-design-and-testing-methodology" class="nav-link" data-scroll-target="#design-and-testing-methodology">Design and Testing Methodology</a></li>
+  <li><a href="#technical-documentation" id="toc-technical-documentation" class="nav-link" data-scroll-target="#technical-documentation">Technical Documentation</a>
   <ul class="collapse">
-  <li><a href="#yahoooo" id="toc-yahoooo" class="nav-link" data-scroll-target="#yahoooo">YAHOOOO</a></li>
+  <li><a href="#schematic" id="toc-schematic" class="nav-link" data-scroll-target="#schematic">Schematic</a></li>
   </ul></li>
-  <li><a href="#wee-woo" id="toc-wee-woo" class="nav-link" data-scroll-target="#wee-woo">wee woo</a></li>
+  <li><a href="#results-and-discussion" id="toc-results-and-discussion" class="nav-link" data-scroll-target="#results-and-discussion">Results and Discussion</a>
+  <ul class="collapse">
+  <li><a href="#calculations" id="toc-calculations" class="nav-link" data-scroll-target="#calculations">Calculations</a></li>
+  <li><a href="#hardware-deployment" id="toc-hardware-deployment" class="nav-link" data-scroll-target="#hardware-deployment">Hardware Deployment</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
     </div>
@@ -360,14 +367,68 @@ ul.task-list li input[type="checkbox"] {
 <strong>Skills:</strong> C, MCU, Circuit Design, Segger Embedded Studio
 </div>
 </div>
-<section id="test-heading" class="level1">
-<h1>TEst heading</h1>
-<section id="yahoooo" class="level2">
-<h2 class="anchored" data-anchor-id="yahoooo">YAHOOOO</h2>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>In this lab, a design was implemented on the MCU to accurately determine the speed and direction of a stepper motor through encoder outputs.</p>
+</section>
+<section id="design-and-testing-methodology" class="level2">
+<h2 class="anchored" data-anchor-id="design-and-testing-methodology">Design and Testing Methodology</h2>
+<p>The stepper motor has two quadrature encoders with one hall effect sensor each. The sensors are 90° out of phase. To design this implementation, two interrupts were configured to activate at the rising and falling edge of each sensor input. Figure 1 shows a flow chart of the main program and its communications with the interrupt handlers.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab5flowchart.jpeg" class="img-fluid figure-img"></p>
+<figcaption><strong>Figure 1. Flow chart of the implementation</strong></figcaption>
+</figure>
+</div>
+<p>Using the collected pin readings, the direction of the motor spin was derived within each interrupt. This was done to maximize the accuracy of the direction at any point in time. The direction derivation logic is shown in Figure 2.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab5directioncalc.jpeg" class="img-fluid figure-img"></p>
+<figcaption><strong>Figure 2. Motor direction logic</strong></figcaption>
+</figure>
+</div>
+<p>During each interrupt, a count was also incremented. Since the motor has 408 pulses per revolution, Our counter reaches 4*408 every time the motor completes one revolution. The speed (in revolutions per second) was calculated per Figure 3.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab5speedcalc.jpeg" class="img-fluid figure-img"></p>
+<figcaption><strong>Figure 3. Motor speed calculation</strong></figcaption>
+</figure>
+</div>
+<p>The implementation also utilizes a timer to print out the speed and direction at 1Hz. The timer internal clock was configured to run at 10kHz, and when the timer count reached 10000, the speed and direction would print, and then the speed count and print count would both be reset.</p>
+<p>Interrupts are the better option compared to manual polling at high speeds, because with this setup, you never miss a rising and falling edge, whereas the polling intervals may not be fine enough, leading to missed edges. Furthermore, polling doesn’t guarantee we sample at a rising or falling edge, and we are relying on the fact that the two encoder sensors are 90° out of phase. With manual polling, you could sample within the high/low region of either signal incorrectly assume counterclockwise/clockwise motion. If we spin the motor at its maximum theoretical speed of 2.5rev/s, we would need a minimum polling frequency of 4080Hz to accurately capture all pulses (since A and B are 90° out of phase, there are 408 pulses per revolution, and we want 4 samples per pulse). However, the polling frequency needed to accurately measure the motor speed and direction would change as the motor speed changes, because you would be sampling at not clock edge times. Therefore, using interrupts are better.</p>
+<p>One possible tradeoff is that when you use interrupts, everything on the MCU CPU stops running, whereas with polling, nothing stops running while data is being taken. So polling can take samples continuously no matter what, whereas if the interrupt is very long, you might miss signals. However, in our case our interrupt is extremely short, so this effect is negligible.</p>
+</section>
+<section id="technical-documentation" class="level2">
+<h2 class="anchored" data-anchor-id="technical-documentation">Technical Documentation</h2>
+<p>The source code for the project can be found in the associated <a href="https://github.com/natalieko2024/E155-Labs/tree/main/E155-Lab5">GitHub repository</a>.</p>
+<section id="schematic" class="level3">
+<h3 class="anchored" data-anchor-id="schematic">Schematic</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab5schematic.png" class="img-fluid figure-img"></p>
+<figcaption><strong>Figure 4. Schematic of all circuit components outside the PCB</strong></figcaption>
+</figure>
+</div>
+<p>The schematic in Figure 5 shows the physical circuit connections outside the PCB. The encoder sensor pins and power pins were connected to the board, while the motor power terminals were connected directly to a voltage source.</p>
 </section>
 </section>
-<section id="wee-woo" class="level1">
-<h1>wee woo</h1>
+<section id="results-and-discussion" class="level2">
+<h2 class="anchored" data-anchor-id="results-and-discussion">Results and Discussion</h2>
+<p>The design met all intended design objectives.</p>
+<section id="calculations" class="level3">
+<h3 class="anchored" data-anchor-id="calculations">Calculations</h3>
+<p>The resolution of this implementation is four times the number of pulses in a second, because we each pulse has a rising and falling edge that triggers the interrupt logic, and we have two pins reading the pulses.</p>
+<p>The update rate of collecting the motor speed and direction is also four times the number of pulses in a second. However, we only print them out every second (1Hz print clock).</p>
+</section>
+<section id="hardware-deployment" class="level3">
+<h3 class="anchored" data-anchor-id="hardware-deployment">Hardware Deployment</h3>
+<p>This video showcases the design running at various motor speeds and both directions.</p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/rU85bBV-_mE" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>The design successfully utilized interrupts on the MCU to perceive motor speed and direction.</p>
 
 
 </section>
@@ -379,7 +440,7 @@ ul.task-list li input[type="checkbox"] {
    img = path inside that project's folder, e.g. "images/cover.jpg" (leave "" for the placeholder) ===== */
 const PROJECTS=[
  {"featured":false,"img":"images/motorControl.png","slug": "motorControl", "t": "Leverging MCU Interrupts to Read Stepper Motor Encoders", "d": "Oct 2026 – Oct 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Utilized MCU interrupts to acurrately determine stepper motor speed and direction.", "tech": ["C, MCU, Circuit Design, SEGGER Embedded Studio"]},  
- {"featured":false,"img":"images/digitalAudio.png","slug": "digitalAudio", "t": "Using a MCU to Produce Write Music", "d": "Sept 2026 – Sept 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Programmed an MCU to write specific frequencies and durations to play music on a speaker.", "tech": ["C", "STM32", "Circuit Design", "SEGGER Embedded Studio"]},
+ {"featured":false,"img":"images/digitalAudio.png","slug": "digitalAudio", "t": "Using a MCU to Produce Music on a Speaker", "d": "Sept 2026 – Sept 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Programmed an MCU to write specific frequencies and durations to play music on a speaker.", "tech": ["C", "STM32", "Circuit Design", "SEGGER Embedded Studio"]},
  {"featured":true,"img":"images/keypadScanner.jpeg","slug": "keypadScanner", "t": "Keypad Scanner", "d": "Aug 2026 – Sep 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Programmed an FPGA to read a 4x4 matrix keypad and display the last two hexadecimal inputs on a dual seven-segment display. Accounted for key bounce, multi-press, and timing inconsistencies.", "tech": ["SystemVerilog", "FPGA", "Circuit Design", "Lattice Radiant", "Waveform Simulation", "Testbench"]},  
  {"featured":true,"img":"images/E80Bot.png","slug": "E80Bot", "t": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)", "d": "Mar 2026 – May 2026", "cats": ["Robotics & Control Systems", "PCB Design & Electronics", "Embedded Systems & Firmware", "Mechanical Design & FEA"], "b": "Developed and deployed an AUV to map metal debris distribution on the ocean floor and back-calculate debris drop locations.", "tech": ["P-Control", "Circuit Design", "Mechanical Design", "C++", "MATLAB", "I2C Communication", "Data Analysis", "Troubleshooting", "Technical Documentation"]},
  {"featured":false,"img":"images/radio.jpeg","slug": "crystalRadio", "t": "Crystal Radio Experiments", "d": "Feb 2026 – Mar 2026", "cats": ["PCB Design & Electronics"], "b": "Analysed RLC Circuits to debug Dunwoody, Pickard, and Armstrong crystal radios. Devised an innovative antenna for optimal signal receiving.", "tech": ["Radio Frequency Engineering", "Software Defined Radio", "Circuit Analysis"]},

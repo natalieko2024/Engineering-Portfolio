@@ -363,8 +363,25 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#testbench-simulation-1" id="toc-testbench-simulation-1" class="nav-link" data-scroll-target="#testbench-simulation-1">Testbench Simulation</a></li>
   <li><a href="#hardware-deployment-1" id="toc-hardware-deployment-1" class="nav-link" data-scroll-target="#hardware-deployment-1">Hardware Deployment</a></li>
+  <li><a href="#oscilloscope-testing-1" id="toc-oscilloscope-testing-1" class="nav-link" data-scroll-target="#oscilloscope-testing-1">Oscilloscope Testing</a></li>
   </ul></li>
   </ul></li>
+  <li><a href="#phase-3---integrated-keypad-scanner-and-7-segment-output" id="toc-phase-3---integrated-keypad-scanner-and-7-segment-output" class="nav-link" data-scroll-target="#phase-3---integrated-keypad-scanner-and-7-segment-output">Phase 3 - Integrated Keypad Scanner and 7-Segment Output</a>
+  <ul class="collapse">
+  <li><a href="#design-and-testing-methodology-2" id="toc-design-and-testing-methodology-2" class="nav-link" data-scroll-target="#design-and-testing-methodology-2">Design and Testing Methodology</a></li>
+  <li><a href="#technical-documentation-2" id="toc-technical-documentation-2" class="nav-link" data-scroll-target="#technical-documentation-2">Technical Documentation</a>
+  <ul class="collapse">
+  <li><a href="#block-diagram-2" id="toc-block-diagram-2" class="nav-link" data-scroll-target="#block-diagram-2">Block Diagram</a></li>
+  <li><a href="#schematic-1" id="toc-schematic-1" class="nav-link" data-scroll-target="#schematic-1">Schematic</a></li>
+  </ul></li>
+  <li><a href="#results-and-discussion-2" id="toc-results-and-discussion-2" class="nav-link" data-scroll-target="#results-and-discussion-2">Results and Discussion</a>
+  <ul class="collapse">
+  <li><a href="#synthesizer-warnings" id="toc-synthesizer-warnings" class="nav-link" data-scroll-target="#synthesizer-warnings">Synthesizer Warnings</a></li>
+  <li><a href="#testbench-simulation-2" id="toc-testbench-simulation-2" class="nav-link" data-scroll-target="#testbench-simulation-2">Testbench Simulation</a></li>
+  <li><a href="#hardware-deployment-2" id="toc-hardware-deployment-2" class="nav-link" data-scroll-target="#hardware-deployment-2">Hardware Deployment</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
     </div>
@@ -939,10 +956,10 @@ R&amp;=55\Omega
 </div>
 </section>
 <section id="hardware-deployment-1" class="level3">
-<h3 class="anchored">Hardware Deployment</h3>
+<h3 class="anchored" data-anchor-id="hardware-deployment-1">Hardware Deployment</h3>
 <p>These two videos showcases the design running on each circuit.</p>
-<div data-layout-ncol="2">
 <p></p><div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/ctef7_nsyAw" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div> <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/jYaRoXLDaM8" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div><p></p>
+</section>
 <section id="oscilloscope-testing-1" class="level3">
 <h3 class="anchored" data-anchor-id="oscilloscope-testing-1">Oscilloscope Testing</h3>
 <p>The keypad scanning LED frequency was confirmed using an oscilloscope. When the oscilloscope was connected on each end of the LED the signal was observed as in Figures 22a-c.</p>
@@ -982,6 +999,8 @@ R&amp;=55\Omega
 </figure>
 </div>
 <p>All signals oscillate at 2Hz as expected. For the LED outputs, the width of the high signal increases as more adjacent buttons are added, because the LED is on whenever the column is pressed and the row signal is on. As the row signal moves from row 1 to row 2 while the switch is still pressed, the column output will remain for the duration of both rows “ON”s.</p>
+</section>
+</section>
 </section>
 <section id="phase-3---integrated-keypad-scanner-and-7-segment-output" class="level1">
 <h1>Phase 3 - Integrated Keypad Scanner and 7-Segment Output</h1>
@@ -1401,10 +1420,6 @@ R&amp;=55\Omega
 
 
 </section>
-</div>
-</section>
-</section>
-</section>
 
 </main> <!-- /main -->
 <script>
@@ -1558,7 +1573,7 @@ const PROJECTS=[
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/natalieko2024\.github\.io\/Engineering-Portfolio\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

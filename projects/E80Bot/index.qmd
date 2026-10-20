@@ -20,6 +20,10 @@ skills: "P-Control, Circuit Design, Mechanical Design, C++, MATLAB, I2C Communic
 
 # Introduction and Background
 
+The goal of this project was to explore the potential of using an autonomous underwater vehicle (AUV) to map seafloor debris and determine their water surface entry point. The United Nations Educational, Scientific, and Cultural Organization estimates there are three million shipwrecks worldwide, among other catastrophe-induced ocean debris. These wreckages are artifacts of human behaviour and are usually investigated to inform historical and cultural accounts. However, these investigations have historically been difficult because current methods to locate wreckages are complex and inefficient. These methods can be improved by detecting magnetic anomalies that indicate metal wreck pieces due to their material composition underwater and reconstructing their points of entry into the water.
+
+An AUV was constructed to collect pressure, temperature, and magnetic flux density data at Dana Point Pier with a sample rate of 10Hz. Pressure and temperature data can be used to create a 3D vector field map of currents in the ocean. The magnetic flux density data can be used to form a contour plot of the magnetic flux density across the ocean floor. These two plots would enable conclusions to be drawn about ferromagnetic materials, which include most metals, on the seafloor and their possible points of entry on the ocean surface through approximating their trajectory along currents while falling downwards.
+
 # Initial Setup
 ## Frame and Motor Assembly
 
@@ -42,13 +46,13 @@ The team developed several sensor circuits while determining the project scope. 
 I had no prior experience with operational amplifiers, so to get familiar with them (as they would be needed to scale the sensor outputs to get a better resolution when read by the Teensy 4.0 ADC), I first built a single rail, non-inverting amplifier with a gain of 2. I applied a 100mV amplitude sine wave with a 1V offset, then with an offset of 0V, catching each input and output on an oscilloscope. 
 
 :::{layout-ncol="2"}
-![](images/noninvertingschematic1.png)
+![Figure x. Non-Inverting Amplifier Schematic (1V Offset)](images/noninvertingschematic1.png)
 
-![](images/noninvertingschematic0.png)
+![Figure x. Non-Inverting Amplifier Schematic (0V Offset)](images/noninvertingschematic0.png)
 
-![](images/noninvertingoscope1.png)
+![Figure x. Non-Inverting Amplifier Oscilloscope Trace (1V Offset)](images/noninvertingoscope1.png)
 
-![](images/noninvertingoscope0.png)
+![Figure x. Non-Inverting Amplifier Oscilloscope Trace (0V Offset)](images/noninvertingoscope0.png)
 :::
 
 In both traces, the desired gain of 2 was achieved, as seen by the input voltage being scaled by 2 in the output voltage (100mV to around 200mV in the 1V offset one, 100mV to 100mV in the 0V offset one due to clipping). When the signal was sent into the op-amp with a 0V offset, only the positive voltages of the original sine wave show up on the output, with the negative voltages being output as 0V.
@@ -83,13 +87,13 @@ $$
 
 I used $R_g=2k\Omega$ and $R_{p1}=148k\Omega$ based on resistor availability. The schematic is shown in Figure x.
 
-![](images/invertingschematic.png)
+![Figure x. Offset Amplifier Schematic](images/invertingschematic.png)
 
 From the oscilloscope trace, compared to the input signal, the output signal has a -2 gain and 200mV offset, which matches the theoretical design.
 
 This design did not have the non-idealities that the non-inverting amplifier has because it included a 200mV offset with -2 gain, so the -100mV input peak can be output as 0V. Since the op-amp is single-rail and cannot handle negative voltages, this prevents the op-amp from resorting to failure mode as seen in the non-inverting amplifier, and the full output sine wave was visible.
 
-![](images/invertingoscope.png)
+![Figure x. Offset Amplifier Oscilloscope Trace](images/invertingoscope.png)
 
 
 ### 555 Timer LED Driver and Transimpedance Amplifier Circuits
@@ -123,48 +127,53 @@ f&=\frac{1.44}{25000C}\\
 $$
 
 ::: {layout-ncol="2"}
-$500=\frac{1.44}{25000C} gives C_{max} = 115nF$
+$500=\frac{1.44}{25000C}$ gives $C_{max} = 115nF$
 
-$1000=\frac{1.44}{25000C} gives C_{min} = 57.6nF$
+$1000=\frac{1.44}{25000C}$ gives $C_{min} = 57.6nF$
 :::
 
 Based on the available capacitors, we chose $C=100nF$ to produce a frequency of 576Hz. 
 
 From the IR1503 datasheet, it has a 1.2V forward voltage drop when driving a 20mA current. Since the 555 timer input voltage is 5V, the voltage drop across the current limiting resistor between the LED and ground would be $5V-1.2V=3.8V$. Using Ohm's law, an appropriate resistor value was calculated to produce a 20-40mA current through the LED.
 
+:::{layout-ncol="2"}
 $$
 \begin{aligned}
 V_{cc}-V_F&=I_FR_{Fmax}\\
 3.8V&=0.02A*R_{Fmax}\\
 R_{Fmax}&=190\Omega
+\end{aligned}
+$$
 
+$$
 \begin{aligned}
 V_{cc}-V_F&=I_FR_{Fmin}\\
 3.8V&=0.04A*R_{Fmin}\\
 R_{Fmin}&=95\Omega
 \end{aligned}
 $$
+:::
 
-Based on these calculations we chose 100Ω as the current limiting resistor. Figure x shows the 555 timer circuit.
+Based on these calculations we chose 100Ω as the current limiting resistor. Figure x shows the 555 timer schematic.
 
-![Figure x. 555 Timer Circuit](images/555timercircuit.png)
+![Figure x. 555 Timer Schematic](images/555timerschematic.png)
 
 ### Circuit Testing and Calibration
 
 To test the circuits were functioning, we first captured an oscilloscope trace of the 555 timer output to ensure the frequency and duty cycle were correct. In Figure x, the three traces show the 555 timer output, the 555 capacitor node, and the voltage in the middle of the diode resistor string.
 
-![](images/555timeroscope.png)
+![Figure x. 555 Timer Oscilloscope Trace](images/555timeroscope.png)
 
 We then captured an oscilloscope trace of the transimpedance amplifier output when the photodiode was illuminated by the switching IR LED to ensure the circuit could be correctly driven (shown in Figure x). 
 
-![](images/transimpedanceoscope.png)
+![Figure x. Transimpedance AmplifierOscilloscope Trace](images/transimpedanceoscope.png)
 
 To finalize the turbidity meter, 5 solutions of various turbidities were prepared using milk and water, and checked using the TU-2016 turbidity meter. The solution cuvettes were then placed in a 3D-printed fixture that held one IR LED and two photodiodes in the correct orientation. 
 
 :::{layout-ncol="2"}
-![](images/turbidsolutions.png)
+![Figure x. Turbidity Solutions](images/turbidsolutions.png)
 
-![](images/turbiditysetup.jpg)
+![Figure x. Turbidity Setup](images/turbiditysetup.jpg)
 :::
 
 The peak-to-peak voltage of the 90° and 0° transimpedance amplifier outputs were recorded for each solution. The ratio of these voltages were plotted against the calibrated turbidity data to get a calibration curve. The results were plotted in MATLAB and are shown in Figure x.
@@ -172,6 +181,9 @@ The peak-to-peak voltage of the 90° and 0° transimpedance amplifier outputs we
 ![](images/turbidityplot.png)
 
 ## Depth Sensor
+
+The depth sensing circuit utilized a MPX5700 pressure sensor. This was chosen because of its large operating absolute pressure range (15-700kPa), linear relationship between output voltage and pressure, and easy
+integration with the AUV.
 
 ## Temperature Sensors
 

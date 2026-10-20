@@ -95,7 +95,9 @@ section.sec>h2{margin-top:0!important}
 section.level2.sec{margin-top:0;padding-top:0}
 .more-wrap{margin-top:36px;padding-bottom:60px}
 /* ---- CV-style résumé ---- */
-.cv{padding-top:8px}
+.cv{padding-top:8px;
+  max-width: 810px;
+  margin: 2.5rem auto;}
 .cv-head{margin-bottom:8px}.cv-head small{color:var(--mute);margin-left:8px}
 .cv-title{margin:36px 0 14px;padding-bottom:6px;border-bottom:1px solid var(--line);font-size:13px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--or)}
 .cv-row{display:flex;justify-content:space-between;gap:16px;align-items:baseline;margin-top:20px;flex-wrap:wrap}

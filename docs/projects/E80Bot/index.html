@@ -430,6 +430,8 @@ window.Quarto = {
 </div>
 <section id="introduction-and-background" class="level1">
 <h1>Introduction and Background</h1>
+<p>The goal of this project was to explore the potential of using an autonomous underwater vehicle (AUV) to map seafloor debris and determine their water surface entry point. The United Nations Educational, Scientific, and Cultural Organization estimates there are three million shipwrecks worldwide, among other catastrophe-induced ocean debris. These wreckages are artifacts of human behaviour and are usually investigated to inform historical and cultural accounts. However, these investigations have historically been difficult because current methods to locate wreckages are complex and inefficient. These methods can be improved by detecting magnetic anomalies that indicate metal wreck pieces due to their material composition underwater and reconstructing their points of entry into the water.</p>
+<p>An AUV was constructed to collect pressure, temperature, and magnetic flux density data at Dana Point Pier with a sample rate of 10Hz. Pressure and temperature data can be used to create a 3D vector field map of currents in the ocean. The magnetic flux density data can be used to form a contour plot of the magnetic flux density across the ocean floor. These two plots would enable conclusions to be drawn about ferromagnetic materials, which include most metals, on the seafloor and their possible points of entry on the ocean surface through approximating their trajectory along currents while falling downwards.</p>
 </section>
 <section id="initial-setup" class="level1">
 <h1>Initial Setup</h1>
@@ -459,19 +461,39 @@ window.Quarto = {
 <p>I had no prior experience with operational amplifiers, so to get familiar with them (as they would be needed to scale the sensor outputs to get a better resolution when read by the Teensy 4.0 ADC), I first built a single rail, non-inverting amplifier with a gain of 2. I applied a 100mV amplitude sine wave with a 1V offset, then with an offset of 0V, catching each input and output on an oscilloscope.</p>
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="images/noninvertingschematic1.png" class="img-fluid"></p>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/noninvertingschematic1.png" class="img-fluid figure-img"></p>
+<figcaption>Figure x. Non-Inverting Amplifier Schematic (1V Offset)</figcaption>
+</figure>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="images/noninvertingschematic0.png" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/noninvertingschematic0.png" class="img-fluid figure-img"></p>
+<figcaption>Figure x. Non-Inverting Amplifier Schematic (0V Offset)</figcaption>
+</figure>
+</div>
 </div>
 </div>
 <div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="images/noninvertingoscope1.png" class="img-fluid"></p>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/noninvertingoscope1.png" class="img-fluid figure-img"></p>
+<figcaption>Figure x. Non-Inverting Amplifier Oscilloscope Trace (1V Offset)</figcaption>
+</figure>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="images/noninvertingoscope0.png" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/noninvertingoscope0.png" class="img-fluid figure-img"></p>
+<figcaption>Figure x. Non-Inverting Amplifier Oscilloscope Trace (0V Offset)</figcaption>
+</figure>
+</div>
 </div>
 </div>
 </div>
@@ -497,10 +519,20 @@ R_g&amp;=\frac{0.067}{5}R_{p1}+\frac{0.067}{5}R_g\\
 \end{aligned}
 \]</span></p>
 <p>I used <span class="math inline">\(R_g=2k\Omega\)</span> and <span class="math inline">\(R_{p1}=148k\Omega\)</span> based on resistor availability. The schematic is shown in Figure x.</p>
-<p><img src="images/invertingschematic.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/invertingschematic.png" class="img-fluid figure-img"></p>
+<figcaption>Figure x. Offset Amplifier Schematic</figcaption>
+</figure>
+</div>
 <p>From the oscilloscope trace, compared to the input signal, the output signal has a -2 gain and 200mV offset, which matches the theoretical design.</p>
 <p>This design did not have the non-idealities that the non-inverting amplifier has because it included a 200mV offset with -2 gain, so the -100mV input peak can be output as 0V. Since the op-amp is single-rail and cannot handle negative voltages, this prevents the op-amp from resorting to failure mode as seen in the non-inverting amplifier, and the full output sine wave was visible.</p>
-<p><img src="images/invertingoscope.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/invertingoscope.png" class="img-fluid figure-img"></p>
+<figcaption>Figure x. Offset Amplifier Oscilloscope Trace</figcaption>
+</figure>
+</div>
 </section>
 <section id="timer-led-driver-and-transimpedance-amplifier-circuits" class="level3">
 <h3 class="anchored" data-anchor-id="timer-led-driver-and-transimpedance-amplifier-circuits">555 Timer LED Driver and Transimpedance Amplifier Circuits</h3>
@@ -533,49 +565,79 @@ f&amp;=\frac{1.44}{25000C}\\
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<p><span class="math inline">\(500=\frac{1.44}{25000C} gives C_{max} = 115nF\)</span></p>
+<p><span class="math inline">\(500=\frac{1.44}{25000C}\)</span> gives <span class="math inline">\(C_{max} = 115nF\)</span></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<p><span class="math inline">\(1000=\frac{1.44}{25000C} gives C_{min} = 57.6nF\)</span></p>
+<p><span class="math inline">\(1000=\frac{1.44}{25000C}\)</span> gives <span class="math inline">\(C_{min} = 57.6nF\)</span></p>
 </div>
 </div>
 </div>
 <p>Based on the available capacitors, we chose <span class="math inline">\(C=100nF\)</span> to produce a frequency of 576Hz.</p>
 <p>From the IR1503 datasheet, it has a 1.2V forward voltage drop when driving a 20mA current. Since the 555 timer input voltage is 5V, the voltage drop across the current limiting resistor between the LED and ground would be <span class="math inline">\(5V-1.2V=3.8V\)</span>. Using Ohm’s law, an appropriate resistor value was calculated to produce a 20-40mA current through the LED.</p>
-$$
-<span class="math display">\[\begin{aligned}
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><span class="math display">\[
+\begin{aligned}
 V_{cc}-V_F&amp;=I_FR_{Fmax}\\
 3.8V&amp;=0.02A*R_{Fmax}\\
 R_{Fmax}&amp;=190\Omega
-
+\end{aligned}
+\]</span></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><span class="math display">\[
 \begin{aligned}
 V_{cc}-V_F&amp;=I_FR_{Fmin}\\
 3.8V&amp;=0.04A*R_{Fmin}\\
 R_{Fmin}&amp;=95\Omega
-\end{aligned}\]</span>
-<p>$$</p>
-<p>Based on these calculations we chose 100Ω as the current limiting resistor. Figure x shows the 555 timer circuit.</p>
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+</div>
+<p>Based on these calculations we chose 100Ω as the current limiting resistor. Figure x shows the 555 timer schematic.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/555timercircuit.png" class="img-fluid figure-img"></p>
-<figcaption>Figure x. 555 Timer Circuit</figcaption>
+<p><img src="images/555timerschematic.png" class="img-fluid figure-img"></p>
+<figcaption>Figure x. 555 Timer Schematic</figcaption>
 </figure>
 </div>
 </section>
 <section id="circuit-testing-and-calibration" class="level3">
 <h3 class="anchored" data-anchor-id="circuit-testing-and-calibration">Circuit Testing and Calibration</h3>
 <p>To test the circuits were functioning, we first captured an oscilloscope trace of the 555 timer output to ensure the frequency and duty cycle were correct. In Figure x, the three traces show the 555 timer output, the 555 capacitor node, and the voltage in the middle of the diode resistor string.</p>
-<p><img src="images/555timeroscope.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/555timeroscope.png" class="img-fluid figure-img"></p>
+<figcaption>Figure x. 555 Timer Oscilloscope Trace</figcaption>
+</figure>
+</div>
 <p>We then captured an oscilloscope trace of the transimpedance amplifier output when the photodiode was illuminated by the switching IR LED to ensure the circuit could be correctly driven (shown in Figure x).</p>
-<p><img src="images/transimpedanceoscope.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/transimpedanceoscope.png" class="img-fluid figure-img"></p>
+<figcaption>Figure x. Transimpedance AmplifierOscilloscope Trace</figcaption>
+</figure>
+</div>
 <p>To finalize the turbidity meter, 5 solutions of various turbidities were prepared using milk and water, and checked using the TU-2016 turbidity meter. The solution cuvettes were then placed in a 3D-printed fixture that held one IR LED and two photodiodes in the correct orientation.</p>
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="images/turbidsolutions.png" class="img-fluid"></p>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/turbidsolutions.png" class="img-fluid figure-img"></p>
+<figcaption>Figure x. Turbidity Solutions</figcaption>
+</figure>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="images/turbiditysetup.jpg" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/turbiditysetup.jpg" class="img-fluid figure-img"></p>
+<figcaption>Figure x. Turbidity Setup</figcaption>
+</figure>
+</div>
 </div>
 </div>
 </div>
@@ -585,6 +647,7 @@ R_{Fmin}&amp;=95\Omega
 </section>
 <section id="depth-sensor" class="level2">
 <h2 class="anchored" data-anchor-id="depth-sensor">Depth Sensor</h2>
+<p>The depth sensing circuit utilized a MPX5700 pressure sensor. This was chosen because of its large operating absolute pressure range (15-700kPa), linear relationship between output voltage and pressure, and easy integration with the AUV.</p>
 </section>
 <section id="temperature-sensors" class="level2">
 <h2 class="anchored" data-anchor-id="temperature-sensors">Temperature Sensors</h2>
