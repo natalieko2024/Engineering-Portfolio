@@ -1,6 +1,5 @@
 ---
 title: "Food Delivery Robot"
-date: "2025-04-11"
 date-range: "Jan 2025 – Apr 2025"
 description: "Manually machined a hammer using conventional manual machining tools to specifications following technical drawings."
 subtitle : ""

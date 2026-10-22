@@ -9,7 +9,7 @@ title-block-banner: false
  <div>
   <div class="tag mono">// mechatronics engineering · HMC class of 2028</div>
   <h1>Hi there!<br>I build things that <em>move</em>.</h1>
-  <p>Hi I'm Nat! I thrive on the challenge of translating complex human needs into functional, reliable engineering solutions. I'm always tinkering with projects intersecting mechanics, digital and electronic systems, controls, and human-centred design. Whether it's building something new or iterating, I'm always moving to build highly reliable, real-world products!</p>
+  <p>Hi I'm Nat! I thrive on the challenge of translating complex human needs into functional, reliable engineering solutions. I'm always tinkering with projects intersecting mechanics, digital and electronic systems, controls, and human-centred design. Whether it's building something new or iterating, I'm always working to build highly reliable, real-world products!</p>
   <div class="cta"><a class="p" href="projects.html">See projects</a><a href="about.html">About me</a><a href="resume.html">Digital CV</a></div>
  </div>
  <div class="stage"><canvas id="c" width="700" height="700"></canvas>

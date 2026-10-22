@@ -1,6 +1,5 @@
 ---
 title: "Abyss Explorer"
-date: "2025-05-01"
 date-range: "Feb 2025 – May 2025"
 description: "Designed and manufactured a system to raise and lower sensors through a ~600ft radioactive mine shaft (shrinking to an unknown diameter) for data collection without direct human contact."
 subtitle : ""

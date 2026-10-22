@@ -1,6 +1,5 @@
 ---
 title: "Multi-cycle RISC-V Processor"
-date: "2025-12-12"
 date-range: "Nov 2025 – Dec 2025"
 description: "Designed and simulated a 32-bit multi-cycle RISC-V processor, executed RISC-V integer instructions (R, I, S, B, U, and J-Type) given to memory as machine code."
 subtitle : ""

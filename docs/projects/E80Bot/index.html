@@ -6,7 +6,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-05-08">
 <meta name="description" content="Developed and deployed an AUV to map metal debris distribution on the ocean floor and back-calculate debris drop locations.">
 
 <title>Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV) – NK/MECH</title>
@@ -357,12 +356,14 @@ window.Quarto = {
   <li><a href="#depth-sensor" id="toc-depth-sensor" class="nav-link" data-scroll-target="#depth-sensor">Depth Sensor</a></li>
   <li><a href="#temperature-sensors" id="toc-temperature-sensors" class="nav-link" data-scroll-target="#temperature-sensors">Temperature Sensors</a>
   <ul class="collapse">
-  <li><a href="#semiconductor-based-ic-sensor" id="toc-semiconductor-based-ic-sensor" class="nav-link" data-scroll-target="#semiconductor-based-ic-sensor">Semiconductor-based IC Sensor</a></li>
   <li><a href="#thermistor" id="toc-thermistor" class="nav-link" data-scroll-target="#thermistor">Thermistor</a></li>
   <li><a href="#thermocouple" id="toc-thermocouple" class="nav-link" data-scroll-target="#thermocouple">Thermocouple</a></li>
+  <li><a href="#integrated-silicon-linear-sensor" id="toc-integrated-silicon-linear-sensor" class="nav-link" data-scroll-target="#integrated-silicon-linear-sensor">Integrated Silicon Linear Sensor</a></li>
+  <li><a href="#comparing-the-sensors" id="toc-comparing-the-sensors" class="nav-link" data-scroll-target="#comparing-the-sensors">Comparing the Sensors</a></li>
   </ul></li>
   <li><a href="#underwater-acoustics" id="toc-underwater-acoustics" class="nav-link" data-scroll-target="#underwater-acoustics">Underwater Acoustics</a></li>
   <li><a href="#magnetometer" id="toc-magnetometer" class="nav-link" data-scroll-target="#magnetometer">Magnetometer</a></li>
+  <li><a href="#modifications-to-the-circuits-for-deployment" id="toc-modifications-to-the-circuits-for-deployment" class="nav-link" data-scroll-target="#modifications-to-the-circuits-for-deployment">Modifications to the Circuits for Deployment</a></li>
   </ul></li>
   <li><a href="#p-control" id="toc-p-control" class="nav-link" data-scroll-target="#p-control">P-Control</a>
   <ul class="collapse">
@@ -405,12 +406,6 @@ window.Quarto = {
 <div class="quarto-title-meta">
 
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">May 8, 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -648,25 +643,189 @@ R_{Fmin}&amp;=95\Omega
 <section id="depth-sensor" class="level2">
 <h2 class="anchored" data-anchor-id="depth-sensor">Depth Sensor</h2>
 <p>The depth sensing circuit utilized a MPX5700 pressure sensor. This was chosen because of its large operating absolute pressure range (15-700kPa), linear relationship between output voltage and pressure, and easy integration with the AUV.</p>
+<p>The estimated deployment depths were 0-40cm. This is much smaller than the operating range of the sensor, so the sensor outputs were shifted and scaled to maximize the resolution of the Teensy 4.0 readings.</p>
+<p>From the MPX5700 datasheet, the pressure sensor gives an output voltage of <span class="math inline">\(V_p=V_s(0.0012858P+0.04)\)</span>, with <span class="math inline">\(V_s=5V\)</span> and <span class="math inline">\(P\)</span> in kPa. At 0m (sea level), the measured pressure was 96.86kPa. The density of water (ρ) is <span class="math inline">\(1000kgm^{-3}\)</span>, and gravitational acceleration (g) is <span class="math inline">\(9.81ms^{-2}\)</span>. Substituting these values into the equation gives <span class="math inline">\(P = P_0+\rho gh=96.86+\frac{9810h}{1000}\)</span> relating differential pressure in kPa to depth in meters.</p>
+<p>Substituting this and the minimum and maximum depths into the pressure sensor output voltage equation produces a target voltage range of 0.82271294-0.847940336V. This was shifted and scaled to a range of 1.1-2.2V using an offset amplifier with a gain of 43 and a ratio of <span class="math inline">\(R_g\)</span> to <span class="math inline">\(R_{p1}\)</span> of 1:4.856. Figure x. shows the schematic of the depth sensor circuit.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/pressureschematic.png" class="img-fluid figure-img"></p>
+<figcaption>Figure x. Depth Sensor Circuit Schematic</figcaption>
+</figure>
+</div>
+<p>By connecting a tube to the pressure sensor and submerging its other end in a graduated cylinder, the team was able to make a calibration curve of the circuit output voltage to depth. The results were plotted in MATLAB and are shown in Figure x.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/pressureplot.png" class="img-fluid figure-img"></p>
+<figcaption>Figure x. Depth Sensor Calibration Curve</figcaption>
+</figure>
+</div>
+<p>There is some percent error between the predicted and measured voltage outputs because the predicted values were calculated assuming each component (pressure sensor, op-amp, resistors, power supply, etc.) was ideal, but in reality, they all have errors in their values (resistance or output voltage). We also calculated the required resistors and thus output voltage with the assumption that the ambient pressure we recorded was accurate, and that it increased with depth according to Po+ρgh, where ρ = <span class="math inline">\(1000kgm^{-3}\)</span>, and g = <span class="math inline">\(9.81ms^{-2}\)</span>, but these values could have varied based on the barometer we used, the water we used, and the altitude. There are also errors associated with the multimeter reading for the voltage.</p>
 </section>
 <section id="temperature-sensors" class="level2">
 <h2 class="anchored" data-anchor-id="temperature-sensors">Temperature Sensors</h2>
 <p>There are three core temperature sensors, each with advantages and disadvantages. Each sensor was prototyped and tested to determine which would be the best fit for the project.</p>
-<section id="semiconductor-based-ic-sensor" class="level3">
-<h3 class="anchored" data-anchor-id="semiconductor-based-ic-sensor">Semiconductor-based IC Sensor</h3>
-</section>
 <section id="thermistor" class="level3">
 <h3 class="anchored" data-anchor-id="thermistor">Thermistor</h3>
+<p>Thermistors change their resistance based on the temperature they are in contact with. The thermistor used was a NXFT15XH103FEAB035, and to convert the thermistor resistance to a Teensy 4.0 readable voltage, a voltage divider circuit was combined with an offset amplifier to shift and scale the output voltage so that temperatures from 0-20°C corresponded to voltages of 0.3-3V. This was calculated using the thermistor datasheet equation <span class="math inline">\(R=R_0e^{B(\frac{1}{T}-\frac{1}{T_0})}\)</span> where the B-constant for 25°C/50°C is 4050K, <span class="math inline">\(R_0=47k\Omega\)</span>, and <span class="math inline">\(T_0=298.15K\)</span>, as well as voltage divider and offset amplifier calculations. Additionally, a unity gain amplifier was connected to prevent loading from the Teensy 4.0. The schematic of the thermistor circuit is shown in Figure x.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/thermistorschematic.png" class="img-fluid figure-img"></p>
+<figcaption>Figure x. Thermistor Circuit Schematic</figcaption>
+</figure>
+</div>
+<p>The thermistor was placed in approximately 0° and 20°C water baths, and the output voltage was measured with a multimeter. The results are shown in Table x.</p>
+<p><span class="caption">Table 1. Thermistor Circuit Output Voltage and Resistance Measurements at 0°C and 20°C</span></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 20%">
+<col style="width: 19%">
+<col style="width: 20%">
+<col style="width: 19%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Temp (°C)</th>
+<th><span class="math inline">\(R_{predicted}\)</span> (Ω)</th>
+<th><span class="math inline">\(R_{measured}\)</span> (Ω)</th>
+<th><span class="math inline">\(V_{predicted}\)</span> (V)</th>
+<th><span class="math inline">\(V_{measured}\)</span> (V)</th>
+<th>Error (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>162943</td>
+<td>150.8k</td>
+<td>2.980</td>
+<td>2.971</td>
+<td>0.46</td>
+</tr>
+<tr class="even">
+<td>20</td>
+<td>59254</td>
+<td>56.9k</td>
+<td>0.359</td>
+<td>0.300</td>
+<td>2.93</td>
+</tr>
+</tbody>
+</table>
+<p>There is a percentage error between <span class="math inline">\(V_{predicted}\)</span> and <span class="math inline">\(V_{measured}\)</span> values because the <span class="math inline">\(V_{predicted}\)</span> values were calculated assuming each component (thermistor, op-amp, resistors, power supply, etc.) was ideal, but in reality, they all have errors in their values (resistance or output voltage). There are also errors associated with the multimeter reading for <span class="math inline">\(V_{measured}\)</span> and added lead/contact resistance from where the thermistor was connected in the circuit, which would affect the output of the voltage divider. Further errors could come from the water temperature not being exactly 0°C or 20°C, even though they were measured to be this temperature by a digital thermometer. This is due to the thermometer measurement error, and the water temperature being non-uniform. The thermistor and digital thermometer cannot measure the exact same region of water, so they would not be reading the same temperature.</p>
+<p>To relate the output voltage to temperature, the thermistor circuit was put in water baths ranging from 0-80°C, and the output voltage was measured with a multimeter. Using the circuit resistance values, the resistance of the thermistor was backsolved for each temperature. Then, using MATLAB, the Steinhart-Hart coefficients were calculated and a Steinhart-Hart fit was applied. The resulting plots are shown in Figure x.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/steinharthart.png" class="img-fluid figure-img"></p>
+<figcaption>Figure x. Temperature Versus Thermistor Resistance With a Steinhart-Hart Fit and Functional and Observational bounds</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/steinharthartresiduals.png" class="img-fluid figure-img"></p>
+<figcaption>Figure x. Plot of Residuals from the Steinhart-Hart Fit</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="thermocouple" class="level3">
 <h3 class="anchored" data-anchor-id="thermocouple">Thermocouple</h3>
+<p>Thermocouples are temperature sensors that utilize the Seeback Effect (voltage is generated when two dissimilar metals are connected in a circuit and have junctions at different temperatures) to measure temperatures. The team experimented with a K-type thermocouple (chosen for easy measurement directly with a multimeter) to see if the temperature could be easily and accurately measured from the output voltage.</p>
+<p>Using six water baths ranging from 0-80°C (measured with a digital thermometer), the bath temperature was measured using the thermocouple by putting the multimeter in temperature mode, and the thermocouple voltage was measured with a multimeter. Using the principles of cold-junction compensation (since the thermocouple cold junction is at the connection to the multimeter), the temperature could be decoded from the recorded voltage using NIST tables. The results are shown in Table x.</p>
+<p><span class="caption">Table x. Thermocouple Measurement Results</span></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 17%">
+<col style="width: 19%">
+<col style="width: 27%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(T_{thermometer}\)</span> (°C)</th>
+<th><span class="math inline">\(T_{thermocouple}\)</span> (°C)</th>
+<th><span class="math inline">\(V_{thermocouple}\)</span> (mV)</th>
+<th><span class="math inline">\(V_{cold junction compensation}\)</span> (mV)</th>
+<th><span class="math inline">\(T_{decoded}\)</span> (°C)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.2</td>
+<td>-1</td>
+<td>-0.74</td>
+<td>0.0178</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>8.9</td>
+<td>8</td>
+<td>-0.41</td>
+<td>0.3478</td>
+<td>9</td>
+</tr>
+<tr class="odd">
+<td>22.6</td>
+<td>21</td>
+<td>0.1</td>
+<td>0.8578</td>
+<td>21</td>
+</tr>
+<tr class="even">
+<td>34.6</td>
+<td>34</td>
+<td>0.62</td>
+<td>1.3778</td>
+<td>34</td>
+</tr>
+<tr class="odd">
+<td>52.8</td>
+<td>50</td>
+<td>1.36</td>
+<td>2.1178</td>
+<td>52</td>
+</tr>
+<tr class="even">
+<td>72.7</td>
+<td>70</td>
+<td>2.17</td>
+<td>2.9278</td>
+<td>72</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">\(T_{thermometer}\)</span> and <span class="math inline">\(T_{thermocouple}\)</span> do not exactly match because the digital thermometer has errors associated with its reading (affecting <span class="math inline">\(T_{thermometer}\)</span>), and the multimeter has independent errors associated with its reading (affecting <span class="math inline">\(T_{thermocouple}\)</span>). Also, the temperature in the bath was likely non-uniform, and the thermocouple and digital thermometer cannot measure exactly the same point in the water, which contributes to discrepancies between them. In addition, the thermocouple measurements depend on cold junction compensation (even though the multimeter essentially does the NIST lookup), and any difference between the multimeter’s assumed cold-junction temperature and the true junction temperature introduces systematic error.</p>
+</section>
+<section id="integrated-silicon-linear-sensor" class="level3">
+<h3 class="anchored" data-anchor-id="integrated-silicon-linear-sensor">Integrated Silicon Linear Sensor</h3>
+<p>The IC sensor required no special circuitry besides wiring up <span class="math inline">\(V_{DD}\)</span>, <span class="math inline">\(V_{OUT}\)</span> and GND. Since the output voltage is linearly dependent on temperature with an equation in the datasheet, there was no calibration necessary.</p>
+</section>
+<section id="comparing-the-sensors" class="level3">
+<h3 class="anchored" data-anchor-id="comparing-the-sensors">Comparing the Sensors</h3>
+<p>The settling time of the three temperature sensors were compared. Each sensor was directly connected to a multimeter and dipped in a ~0°C bath until the output reading was stable, then transferred to a ~80°C bath. The time it took for the reading to stabilize was recorded. The K-type thermocouple had the fastest settling time of 2.62s, the thermistor had a medium settling time of 16.79s, and the IC sensor (MCP9701A) had the slowest settling time of 42.49s.</p>
+<p>Since the thermocouple had the fastest settling time, the team thought it could be a good option for the AUV, especially if the robot would be travelling at high speeds and need near-immediate temperature readings. However, it would need a second temperature sensor to measure the cold junction temperature as it would be unrealistic to keep it at a constant temperature while the AUV is deployed.</p>
+<p>The thermistor was also seen as a good option for the AUV because its settling time was still pretty fast, and it would be easier to integrate with the AUV. It also gave more accurate readings than the thermocouple, and even though it had a smaller temperature range than the thermocouple the AUV would not be going in regions that exceeded its limits.</p>
+<p>The IC sensor was not considered because its settling time was too slow, even if the AUV were just drifting in water.</p>
 </section>
 </section>
 <section id="underwater-acoustics" class="level2">
 <h2 class="anchored" data-anchor-id="underwater-acoustics">Underwater Acoustics</h2>
+<p>Underwater acoustics are helpful for a variety of sensors, such as sonar, radar,</p>
 </section>
 <section id="magnetometer" class="level2">
 <h2 class="anchored" data-anchor-id="magnetometer">Magnetometer</h2>
+</section>
+<section id="modifications-to-the-circuits-for-deployment" class="level2">
+<h2 class="anchored" data-anchor-id="modifications-to-the-circuits-for-deployment">Modifications to the Circuits for Deployment</h2>
 </section>
 </section>
 <section id="p-control" class="level1">
@@ -706,17 +865,23 @@ R_{Fmin}&amp;=95\Omega
    img = path inside that project's folder, e.g. "images/cover.jpg" (leave "" for the placeholder) ===== */
 const PROJECTS=[
  {"featured":false,"img":"images/motorControl.png","slug": "motorControl", "t": "Leverging MCU Interrupts to Read Stepper Motor Encoders", "d": "Oct 2026 – Oct 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Utilized MCU interrupts to acurrately determine stepper motor speed and direction.", "tech": ["C, MCU, Circuit Design, SEGGER Embedded Studio"]},  
- {"featured":false,"img":"images/digitalAudio.png","slug": "digitalAudio", "t": "Using a MCU to Produce Write Music", "d": "Sept 2026 – Sept 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Programmed an MCU to write specific frequencies and durations to play music on a speaker.", "tech": ["C", "STM32", "Circuit Design", "SEGGER Embedded Studio"]},
- {"featured":true,"img":"images/keypadScanner.jpeg","slug": "keypadScanner", "t": "Keypad Scanner", "d": "Aug 2026 – Sep 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Programmed an FPGA to read a 4x4 matrix keypad and display the last two hexadecimal inputs on a dual seven-segment display. Accounted for key bounce, multi-press, and timing inconsistencies.", "tech": ["SystemVerilog", "FPGA", "Circuit Design", "Lattice Radiant", "Waveform Simulation", "Testbench"]},  
+ {"featured":false,"img":"images/digitalAudio.png","slug": "digitalAudio", "t": "Using a MCU to Produce Music on a Speaker", "d": "Sept 2026 – Sept 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Programmed an MCU to write specific frequencies and durations to play music on a speaker.", "tech": ["C", "STM32", "Circuit Design", "SEGGER Embedded Studio"]},
+ {"featured":true,"img":"images/keypadScanner.jpeg","slug": "keypadScanner", "t": "FPGA-Controlled Keypad Scanner", "d": "Aug 2026 – Sep 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Programmed an FPGA to read a 4x4 matrix keypad and display the last two hexadecimal inputs on a dual seven-segment display. Accounted for key bounce, multi-press, and timing inconsistencies.", "tech": ["SystemVerilog", "FPGA", "Circuit Design", "Lattice Radiant", "Waveform Simulation", "Testbench"]},  
  {"featured":true,"img":"images/E80Bot.png","slug": "E80Bot", "t": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)", "d": "Mar 2026 – May 2026", "cats": ["Robotics & Control Systems", "PCB Design & Electronics", "Embedded Systems & Firmware", "Mechanical Design & FEA"], "b": "Developed and deployed an AUV to map metal debris distribution on the ocean floor and back-calculate debris drop locations.", "tech": ["P-Control", "Circuit Design", "Mechanical Design", "C++", "MATLAB", "I2C Communication", "Data Analysis", "Troubleshooting", "Technical Documentation"]},
  {"featured":false,"img":"images/radio.jpeg","slug": "crystalRadio", "t": "Crystal Radio Experiments", "d": "Feb 2026 – Mar 2026", "cats": ["PCB Design & Electronics"], "b": "Analysed RLC Circuits to debug Dunwoody, Pickard, and Armstrong crystal radios. Devised an innovative antenna for optimal signal receiving.", "tech": ["Radio Frequency Engineering", "Software Defined Radio", "Circuit Analysis"]},
- {"featured":false,"img":"images/windTunnel.png","slug": "E80Fluids", "t": "Wind Tunnel Experiments and Fluid Dynamics Simulation", "d": "Feb 2026 – Mar 2026", "cats": ["Miscellaneous"], "b": "Used the principle of similitude to characterize ROV behaviour in the water through wind tunnel simulations.", "tech": ["COMSOL", "Technical Documentation"]}, 
+
+ {"featured":true,"img":"images/abyssExplorer.jpg","slug": "abyssExplorer", "t": "Abyss Explorer", "d": "Feb 2025 – May 2025", "cats": ["Mechanical Design & FEA", "Manufacturing"], "b": "Designed and manufactured a system to raise and lower sensors through a ~600ft radioactive mine shaft (shrinking to an unknown diameter) for data collection without direct human contact.", "tech": ["SolidWorks", "Mechanical Design", "Prototyping", "Manufacturing", "Project Management", "Technical Documentation"]}
+];
+
+/*  {"featured":false,"img":"images/windTunnel.png","slug": "E80Fluids", "t": "Wind Tunnel Experiments and Fluid Dynamics Simulation", "d": "Feb 2026 – Mar 2026", "cats": ["Miscellaneous"], "b": "Used the principle of similitude to characterize ROV behaviour in the water through wind tunnel simulations.", "tech": ["COMSOL", "Technical Documentation"]}, 
  {"featured":false,"img":"images/riscV.jpeg","slug": "multiCycleProcessor", "t": "Multi-cycle RISC-V Processor", "d": "Nov 2025 – Dec 2025", "cats": ["Embedded Systems & Firmware"], "b": "Designed and simulated a 32-bit multi-cycle RISC-V processor, executed RISC-V integer instructions (R, I, S, B, U, and J-Type) given to memory as machine code.", "tech": ["SystemVerilog", "Waveform Simulation", "RISC-V Architecture"]},  
  {"featured":false,"img":"images/79bot.jpg","slug": "E79Bot", "t": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)", "d": "Aug 2025 – Dec 2025", "cats": ["Robotics & Control Systems", "PCB Design & Electronics", "Mechanical Design & FEA"], "b": "Developed and deployed an PID-controlled ROV to collect temperature and depth measurements underwater.", "tech": ["PID-Control", "Circuit Design", "Mechanical Design", "Data Analysis", "LabView", "Soldering", "Breadboarding", "Mathematical Modeling"]},
  {"featured":false,"img":"images/eyes.jpg","slug": "animatronicEyes", "t": "Animatronic Eyes", "d": "Jul 2025 – Oct 2025", "cats": ["Embedded Systems & Firmware", "Mechanical Design & FEA"],"b": "Designed and programmed a set of animatronic eyes controlled by servo motors and joysticks through Arduino.", "tech": ["SolidWorks", "3D Printing", "C++", "Arduino","Servo Control"]},
- {"featured":true,"img":"images/abyssExplorer.jpg","slug": "abyssExplorer", "t": "Abyss Explorer", "d": "Feb 2025 – May 2025", "cats": ["Mechanical Design & FEA", "Manufacturing"], "b": "Designed and manufactured a system to raise and lower sensors through a ~600ft radioactive mine shaft (shrinking to an unknown diameter) for data collection without direct human contact.", "tech": ["SolidWorks", "Mechanical Design", "Prototyping", "Manufacturing", "Project Management", "Technical Documentation"]},
- {"featured":false,"img":"images/hammer.jpg","slug": "hammer", "t": "Precision Manually Machined Hammer", "d": "Jan 2025 – Apr 2025", "cats": ["Manufacturing"], "b": "Manually machined a hammer using conventional manual machining tools to specifications following technical drawings.", "tech": ["Precision Manual Machining", "Geometric Dimensioning & Tolerancing (GD&T)", "Process Planning & Documentation", "Metallurgy"]}];
-/* ================================================================================ */
+
+  {"featured":false,"img":"images/hammer.jpg","slug": "hammer", "t": "Precision Manually Machined Hammer", "d": "Jan 2025 – Apr 2025", "cats": ["Manufacturing"], "b": "Manually machined a hammer using conventional manual machining tools to specifications following technical drawings.", "tech": ["Precision Manual Machining", "Geometric Dimensioning & Tolerancing (GD&T)", "Process Planning & Documentation", "Metallurgy"]}
+ */
+
+ /* ================================================================================ */
 /* Site-wide behavior: hero arm (IK), stat counters, experience marquee, tech chips. Each part no-ops if its elements are absent. */
 (function(){
  const css=n=>getComputedStyle(document.body).getPropertyValue(n).trim();

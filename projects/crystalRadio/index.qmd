@@ -1,6 +1,5 @@
 ---
 title: "Crystal Radio Experiments"
-date: "2026-05-10"
 date-range: "Feb 2025 – Mar 2026"
 description: "Analysed RLC Circuits to debug Dunwoody, Pickard, and Armstrong crystal radios. Devised an innovative antenna for optimal signal receiving."
 subtitle : ""

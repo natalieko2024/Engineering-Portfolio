@@ -1,6 +1,5 @@
 ---
 title: "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)"
-date: "2026-05-08"
 date-range: "Mar 2026 – May 2026"
 description: "Developed and deployed an AUV to map metal debris distribution on the ocean floor and back-calculate debris drop locations."
 subtitle : ""
@@ -185,17 +184,89 @@ The peak-to-peak voltage of the 90° and 0° transimpedance amplifier outputs we
 The depth sensing circuit utilized a MPX5700 pressure sensor. This was chosen because of its large operating absolute pressure range (15-700kPa), linear relationship between output voltage and pressure, and easy
 integration with the AUV.
 
+The estimated deployment depths were 0-40cm. This is much smaller than the operating range of the sensor, so the sensor outputs were shifted and scaled to maximize the resolution of the Teensy 4.0 readings.
+
+From the MPX5700 datasheet, the pressure sensor gives an output voltage of $V_p=V_s(0.0012858P+0.04)$, with $V_s=5V$ and $P$ in kPa. At 0m (sea level), the measured pressure was 96.86kPa. The density of water (ρ) is $1000kgm^{-3}$, and gravitational acceleration (g) is $9.81ms^{-2}$. Substituting these values into the equation gives $P = P_0+\rho gh=96.86+\frac{9810h}{1000}$ relating differential pressure in kPa to depth in meters.
+
+Substituting this and the minimum and maximum depths into the pressure sensor output voltage equation produces a target voltage range of 0.82271294-0.847940336V. This was shifted and scaled to a range of 1.1-2.2V using an offset amplifier with a gain of 43 and a ratio of $R_g$ to $R_{p1}$ of 1:4.856. Figure x. shows the schematic of the depth sensor circuit.
+
+![Figure x. Depth Sensor Circuit Schematic](images/pressureschematic.png)
+
+By connecting a tube to the pressure sensor and submerging its other end in a graduated cylinder, the team was able to make a calibration curve of the circuit output voltage to depth. The results were plotted in MATLAB and are shown in Figure x.
+
+![Figure x. Depth Sensor Calibration Curve](images/pressureplot.png)
+
+There is some percent error between the predicted and measured voltage outputs because the predicted values were calculated assuming each component (pressure sensor, op-amp, resistors, power supply, etc.) was ideal, but in reality, they all have errors in their values (resistance or output voltage). We also calculated the required resistors and thus output voltage with the assumption that the ambient pressure we recorded was accurate, and that it increased with depth according to Po+ρgh, where ρ = $1000kgm^{-3}$, and g = $9.81ms^{-2}$, but these values could have varied based on the barometer we used, the water we used, and the altitude. There are also errors associated with the multimeter reading for the voltage.
+
 ## Temperature Sensors
 
 There are three core temperature sensors, each with advantages and disadvantages. Each sensor was prototyped and tested to determine which would be the best fit for the project. 
 
-### Semiconductor-based IC Sensor
 ### Thermistor
+
+Thermistors change their resistance based on the temperature they are in contact with. The thermistor used was a NXFT15XH103FEAB035, and to convert the thermistor resistance to a Teensy 4.0 readable voltage, a voltage divider circuit was combined with an offset amplifier to shift and scale the output voltage so that temperatures from 0-20°C corresponded to voltages of 0.3-3V. This was calculated using the thermistor datasheet equation $R=R_0e^{B(\frac{1}{T}-\frac{1}{T_0})}$ where the B-constant for 25°C/50°C is 4050K, $R_0=47k\Omega$, and $T_0=298.15K$, as well as voltage divider and offset amplifier calculations. Additionally, a unity gain amplifier was connected to prevent loading from the Teensy 4.0. The schematic of the thermistor circuit is shown in Figure x.
+
+![Figure x. Thermistor Circuit Schematic](images/thermistorschematic.png)
+
+The thermistor was placed in approximately 0° and 20°C water baths, and the output voltage was measured with a multimeter. The results are shown in Table x.
+
+[Table 1. Thermistor Circuit Output Voltage and Resistance Measurements at 0°C and 20°C]{.caption}
+
+|Temp (°C) | $R_{predicted}$ (Ω) | $R_{measured}$ (Ω) | $V_{predicted}$ (V) | $V_{measured}$ (V) | Error (%) |
+|----------|---------------------|--------------------|---------------------|--------------------|-----------|
+| 0        | 162943              | 150.8k             | 2.980               | 2.971              | 0.46      |
+| 20       | 59254               | 56.9k              | 0.359               | 0.300              | 2.93      |
+
+There is a percentage error between $V_{predicted}$ and $V_{measured}$ values because the $V_{predicted}$ values were calculated assuming each component (thermistor, op-amp, resistors, power supply, etc.) was ideal, but in reality, they all have errors in their values (resistance or output voltage). There are also errors associated with the multimeter reading for $V_{measured}$ and added lead/contact resistance from where the thermistor was connected in the circuit, which would affect the output of the voltage divider. Further errors could come from the water temperature not being exactly 0°C or 20°C, even though they were measured to be this temperature by a digital thermometer. This is due to the thermometer measurement error, and the water temperature being non-uniform. The thermistor and digital thermometer cannot measure the exact same region of water, so they would not be reading the same temperature.
+
+To relate the output voltage to temperature, the thermistor circuit was put in water baths ranging from 0-80°C, and the output voltage was measured with a multimeter. Using the circuit resistance values, the resistance of the thermistor was backsolved for each temperature. Then, using MATLAB, the Steinhart-Hart coefficients were calculated and a Steinhart-Hart fit was applied. The resulting plots are shown in Figure x.
+
+:::{layout-ncol="2"}
+![Figure x. Temperature Versus Thermistor Resistance With a Steinhart-Hart Fit and Functional and Observational bounds](images/steinharthart.png)
+
+![Figure x. Plot of Residuals from the Steinhart-Hart Fit](images/steinharthartresiduals.png)
+:::
+
 ### Thermocouple
+
+Thermocouples are temperature sensors that utilize the Seeback Effect (voltage is generated when two dissimilar metals are connected in a circuit and have junctions at different temperatures) to measure temperatures. The team experimented with a K-type thermocouple (chosen for easy measurement directly with a multimeter) to see if the temperature could be easily and accurately measured from the output voltage.
+
+Using six water baths ranging from 0-80°C (measured with a digital thermometer), the bath temperature was measured using the thermocouple by putting the multimeter in temperature mode, and the thermocouple voltage was measured with a multimeter. Using the principles of cold-junction compensation (since the thermocouple cold junction is at the connection to the multimeter), the temperature could be decoded from the recorded voltage using NIST tables. The results are shown in Table x.
+
+[Table x. Thermocouple Measurement Results]{.caption}
+
+| $T_{thermometer}$ (°C) | $T_{thermocouple}$ (°C) | $V_{thermocouple}$ (mV) | $V_{cold junction compensation}$ (mV) | $T_{decoded}$ (°C) |
+|-----------------------|-------------------------|----------------------------|----------------------------------------|---------------------------|
+| 0.2 | -1 | -0.74 | 0.0178 | 0 |
+| 8.9 | 8 | -0.41 | 0.3478 | 9 |
+| 22.6 | 21 | 0.1 | 0.8578 | 21 |
+| 34.6 | 34 | 0.62 | 1.3778 | 34 |
+| 52.8 | 50 | 1.36 | 2.1178 | 52 |
+| 72.7 | 70 | 2.17 | 2.9278 | 72 |
+
+$T_{thermometer}$ and $T_{thermocouple}$ do not exactly match because the digital thermometer has errors associated with its reading (affecting $T_{thermometer}$), and the multimeter has independent errors associated with its reading (affecting $T_{thermocouple}$). Also, the temperature in the bath was likely non-uniform, and the thermocouple and digital thermometer cannot measure exactly the same point in the water, which contributes to discrepancies between them. In addition, the thermocouple measurements depend on cold junction compensation (even though the multimeter essentially does the NIST lookup), and any difference between the multimeter’s assumed cold-junction temperature and the true junction temperature introduces systematic error. 
+
+### Integrated Silicon Linear Sensor
+
+The IC sensor required no special circuitry besides wiring up $V_{DD}$, $V_{OUT}$ and GND. Since the output voltage is linearly dependent on temperature with an equation in the datasheet, there was no calibration necessary. 
+
+### Comparing the Sensors
+
+The settling time of the three temperature sensors were compared. Each sensor was directly connected to a multimeter and dipped in a ~0°C bath until the output reading was stable, then transferred to a ~80°C bath. The time it took for the reading to stabilize was recorded. The K-type thermocouple had the fastest settling time of 2.62s, the thermistor had a medium settling time of 16.79s, and the IC sensor (MCP9701A) had the slowest settling time of 42.49s.
+
+Since the thermocouple had the fastest settling time, the team thought it could be a good option for the AUV, especially if the robot would be travelling at high speeds and need near-immediate temperature readings. However, it would need a second temperature sensor to measure the cold junction temperature as it would be unrealistic to keep it at a constant temperature while the AUV is deployed.
+
+The thermistor was also seen as a good option for the AUV because its settling time was still pretty fast, and it would be easier to integrate with the AUV. It also gave more accurate readings than the thermocouple, and even though it had a smaller temperature range than the thermocouple the AUV would not be going in regions that exceeded its limits.
+
+The IC sensor was not considered because its settling time was too slow, even if the AUV were just drifting in water.
 
 ## Underwater Acoustics
 
+Underwater acoustics are helpful for a variety of sensors, such as sonar, radar, 
+
 ## Magnetometer
+
+## Modifications to the Circuits for Deployment
 
 # P-Control
 ## Depth Control

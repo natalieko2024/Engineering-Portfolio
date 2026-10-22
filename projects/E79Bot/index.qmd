@@ -1,6 +1,5 @@
 ---
 title: "Temperature and Position Detecting Remotely Operated Vehicle (ROV)"
-date: "2025-12-12"
 date-range: "Aug 2025 – Dec 2025"
 description: "Developed and deployed an PID-controlled ROV to collect temperature and depth measurements underwater."
 subtitle : ""
