@@ -54,13 +54,43 @@ An AUV was constructed to collect pressure, temperature, and magnetic flux densi
 # Initial Setup
 ## Frame and Motor Assembly
 
-## Motherboard Setup
+The base AUV model was made out of PVC pipes and pool floaties (to make it neutrally buoyant). 12V DC motors were prepared by fixing a propeller to each shaft, then waterproofed by covering the motor housing with electrical tape and wax, then putting the whole assembly into a film canister.
 
-### Assembly
+The motors were tested to pull less than 500mA when supplied with 6V from a DC power supply. They were then mounted to the AUV to give two xy-direction motors and one z-direction motor.
+
+## Motherboard Assembly
+
+A battery pigtail, screw terminals, chip sockets, hex buffer, push buttons, slider switches, and female headers were soldered to the AUV PCB, in addition to components that would ensure the safety of the board, such as resistor networks, voltage regulators, motor/battery fault detect LEDs etc. Components such as the IMU and SD card slot came presoldered. The back of the motherboard was covered with an insulating foam sheet to prevent short circuits.
 
 ### Validation, Calibration, and Error Measurement
 
+The motherboard was validated by running a simple Arduino sketch on the Teensy 4.0 to blink several LEDs (confirming overall board power, IMU power, Teensy 4.0 power, and SD card connection), and turn on a motor for four seconds. The SD card was verified to be saving INF and BIN files when the sketch ran, and when opened in MATLAB, acceleration, magnetic field strength, roll, pitch, and yaw values (calculated from the IMU), and motor PWM values were confirmed to be saved.
+
+Another Arduino sketch was run to confirm all the motors could be driven.
+
+The saved accelerator data was analyzed when the board was static. The data needed to be converted from the saved units to $ms^{-2}$. This was done by comparing the value read when the sensor experienced acceleration due to gravity (ie. when one axis of the sensor aligned with the global z-axis) to the value read when the sensor experienced 0 acceleration. The equation for this was $\text{accelerometer unit}=\frac{9.81}{\text{value for accel due to gravity - value for zero}}ms^{-2}.$ The value for acceleration due to gravity in the z direction read 995.2089 accelerometer units. The value for zero in the z direction read –64.6498 accelerometer units. Using the equation, one accelerometer unit is 0.0093 $ms^{-2}$. All acceleration readings from the Teensy could be converted to $ms^{-2}$ by multiplying them by this value. The following figures show the zero acceleration data versus sample time for all three axes, and the acceleration due to gravity data for the z-axis. The mean, standard deviation, estimated standard error, and 95% confidence interval were found using a MATLAB script.
+
+:::{layout-ncol="2"}
+![Figure Xa. Zero Acceleration in the x-direction. Mean: -30.3733 ± 0.9720 (95% confidence)](images/xaccel.png)
+
+![Figure Xb. Zero Acceleration in the y-direction. Mean: 29.7689 ± 1.1129 (95% confidence)](images/yaccel.png)
+
+![Figure Xa. Zero Acceleration in the z-direction. Mean: -64.6498 ± 1.1999 (95% confidence)](images/zaccel.png)
+
+![Figure Xd. Acceleration Due to Gravity in the z-direction. Mean: 995.2089 ± 1.4544 (95% confidence)](images/gaccel.png)
+:::
+
 ## Open-Loop Control Navigation
+
+C++ code was written so the AUV could traverse through an obstacle course. After the obstacle course deployment, the on-board accelerometer readings were plotted, as shown in Figure X. 
+
+![Figure X. Acceleration of the AUV over Time (Represented by Sample Number) in the x, y, and z Directions While Traversing an Obstacle Course](images/accelData)
+
+The governing equation for the AUV's acceleration is $mx"=mg+F_{thrust}-F_{buoyancy}-bx'$. The AUV was neutrally buoyant, so $mg$ and $F_{buoyancy}$ cancel. $b$ represents the damping constant, so when $x'=0$, there is no effect of damping (in this case, drag force - resistance from moving through the water) on the robot. Acceleration will be highest when there is no damping, so we remove the $bx'$ term. So the peak acceleration from rest is $x"_{peak}=\frac{F_{thrust}}{m}$.
+
+Using the x-direction for calculations (because it would have less interference compared to the x-direction and y-direction, since the AUV started from rest and there was significant tilt by the time the x-direction and y-direction acceleration was being affected), the theoretical thrust force could be calculated using a thrust vs duty cycle equation. For the motors used, $F_{thrust}=|-0.6871\text{Duty Cycle}+0.0593|$. The duty cycle could be calculated using $\text{Duty Cycle}=\frac{|\text{PWM}|}{255}$ since 255 is the maximum PWM the motors can run at. The code used had the PWM set to -100 for downward motion in a single motor, giving a duty cycle of 0.3922. This gives a theoretical thrust force of 0.2102 N for one motor. The theoretical peak acceleration was calculated using the governing equation. The total mass of the AUV was measured to be 3297.6g = 3.2976kg, giving a theoretical peak acceleration as 0.0637m/s^2. From Figure X, the measured peak acceleration was $-2.6505ms^{-2}$ in the z-direction. The theoretical value was different from the measured value because the thrust vs duty cycle equation was procured a motor the team did not use, meaning the curve would likely give an inaccurate estimate. Even though we tried to place the robot level in the taken, the robot tilted when the motor started driving, and the motherboard was not level in the box, so the measured acceleration values would contribute to each other’s axes. There was also a lot of noise from the accelerometer and other teams sloshing the water in the tank, which could make the measured acceleration of our robot a lot greater than actually contributed by the motors.
+
+The AUV was programmed to move downward, forward, then upward. The initial large downwards peak in the z-direction represents the z-direction motor activating, moving the AUV downwards. Here, there are fluctuations in the x and y-direction generated from the AUV spinning in the x-y plane when it descended. There is then an upwards peak past the base value in the z-direction caused by the motor deactivating because the AUV was slightly buoyant, making it rise. From around sample number 400 to 600, the forward motors activated, but the AUV made a curve around the obstacle course, causing an increase in acceleration in the x and y-directions. The AUV tilting in various directions while moving also contributed to this increase. Because of buoyancy, the AUV continued rising at the same rate even though the upwards motors was off, so the acceleration hovered at a constant value from around sample number 400 to 650. From around sample number 600 to 650, the AUV reached the surface of the water and stopped tilting, so the x and y-direction data starts to fluctuate around the base value. The z-direction motor activated at around sample number 650, causing the AUV to bob and jitter near the surface of the water, causing reading fluctuations in all three directions. The y-direction reading increased because it started moving in that direction from waves generated from other teams. From this, it is clear thaat open-loop control is not ideal for an autonomous system. Motor behaviour, buoyancy, and waves in the tank threw the AUV off course and resulted in behaviour contrasting its programming.
 
 # Sensor Development
 
@@ -282,7 +312,7 @@ The IC sensor required no special circuitry besides wiring up $V_{DD}$, $V_{OUT}
 
 The settling time of the three temperature sensors were compared. Each sensor was directly connected to a multimeter and dipped in a ~0°C bath until the output reading was stable, then transferred to a ~80°C bath. The time it took for the reading to stabilize was recorded. The K-type thermocouple had the fastest settling time of 2.62s, the thermistor had a medium settling time of 16.79s, and the IC sensor (MCP9701A) had the slowest settling time of 42.49s.
 
-Since the thermocouple had the fastest settling time, the team thought it could be a good option for the AUV, especially if the robot would be travelling at high speeds and need near-immediate temperature readings. However, it would need a second temperature sensor to measure the cold junction temperature as it would be unrealistic to keep it at a constant temperature while the AUV is deployed.
+Since the thermocouple had the fastest settling time, the team thought it could be a good option for the AUV, especially if the AUV would be travelling at high speeds and need near-immediate temperature readings. However, it would need a second temperature sensor to measure the cold junction temperature as it would be unrealistic to keep it at a constant temperature while the AUV is deployed.
 
 The thermistor was also seen as a good option for the AUV because its settling time was still pretty fast, and it would be easier to integrate with the AUV. It also gave more accurate readings than the thermocouple, and even though it had a smaller temperature range than the thermocouple the AUV would not be going in regions that exceeded its limits.
 
@@ -486,7 +516,7 @@ The sensor was re-validated before deployment by using it to collect data in ope
 
 # Mechanical Design: Buoyancy and Waterproofing
 
-The AUV was designed to be a diving and surface robot which would autonomously use P-control to travel to a selected waypoint on the surface of the water located through a GPS. It would then use P-control to dive to selected depth waypoints, stopping at each one for five seconds to take measurements of temperature and magnetic flux density until it either reached the maximum set depth of 3.5m or the sea floor. It would then surface and navigate to a set location for collection.
+The AUV was designed to be a diving and surface AUV which would autonomously use P-control to travel to a selected waypoint on the surface of the water located through a GPS. It would then use P-control to dive to selected depth waypoints, stopping at each one for five seconds to take measurements of temperature and magnetic flux density until it either reached the maximum set depth of 3.5m or the sea floor. It would then surface and navigate to a set location for collection.
 
 As shown in Figure X, the AUV was shaped as a rectangular prism with two z-direction motors for diving and two xy-direction motors for surface navigation attached along the center horizontal axis. A waterproof box enclosing a Teensy 4.0, Inertial Measurement Unit (IMU), Global Positioning System unit (GPS), motor drivers, a microSD card with a reader, and the sensor circuits was placed on the top of the AUV. The magnetometer sensor was enclosed in a separate waterproof box at the bottom of the AUV. This was done to maximize the distance between the motors, the magnetometer sensor at the bottom of the AUV, and the magnetometer integrated in the IMU at the top of the AUV, such that the motors have limited interference with each of the magnetometer’s readings. The pressure sensor tube was fixed along the side of the AUV such that it ended at a point level with the motors, so that when the z-direction motors drove upwards at maximum speed, the pressure tube would end at the surface of the water. The thermistor was fixed along the other side of the AUV such that its head was at the same level as the pressure sensor tube end to take measurements at the same depth.
 
@@ -501,11 +531,21 @@ To make the AUV neutrally buoyant, the force of gravity had to be roughly equal 
 By symmetry, the center of buoyancy and mass of the AUV were along its center z-axis. Due to last-minute changes to the AUV, the center of buoyancy was 30.48cm from the top of the AUV, and the center of mass was 18.43cm from the top of the AUV. Since the center of buoyancy was below the center of mass, the AUV was not stable in the water. However, it still had a limited risk of tipping over because the waves at Dana Point were not strong enough to push the AUV past its restorative balancing point.
 
 # P-Control
-## Depth Control
+## Depth Control Algorithm
+
+A P-control algorithm was programmed in C++ such that the AUV could traverse to a set of waypoints (hardcoded z-directions) and stay at each one for a set amount of time. This was done by tuning the Kp value, calculating the depth error (difference between desired and measured depth), and setting the motor control effort as a function of these two values. This was tested by having the algorithm run and observing the collected depths. 
+
+The algorithm was later modified so the AUV would self-determine if it had reached the seafloor by collecting a series of measurements and comparing the minimum and maximum output voltages. If the difference between these readings in a span of 20 seconds was less than 0.05V, the AUV would be at the seafloor and would surface. (Essentially some kind of comparative shift register!) Otherwise, if it reached the final waypoint instead, it would also surface.
 
 ## Surface Navigation Control
 
-Surface control was ultimately not used during deployment. Although 
+A P-control algorithm was programmed in C++, similar to the depth control such that the AUV could traverse to a set of waypoints (latitude and longitude pairs) and stay at each one for a set amount of time. This involved calibrating the on-board IMU magnetometer (the PNI magnetometer used for seafloor measurements could not be used because the magnetic flux density on the surface would not be measurable underwater) to account for manufacturing errors and local magnetic field disturbances, as well as writing a state estimation algorithm to calculate the xy position of the board with respect to a Cartesian coordinate reference origin.
+
+This part of the code was tested by walking with the board outside on a set path, and reading the collected position data to confirm the same path could be plotted in MATLAB.
+
+Then, the P-control was implemented where the desired yaw angle was calculated, and then left and right motor control efforts were set. Individual Kps were calibrated for each motor to account for uneven motors. 
+
+This part of the code was tested by walking with the board in a straight line, turning the board as necessary to equalize the left and right motor control efforts.
 
 # Deployment
 

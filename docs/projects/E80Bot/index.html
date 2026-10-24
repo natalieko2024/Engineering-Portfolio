@@ -339,9 +339,8 @@ window.Quarto = {
   <li><a href="#initial-setup" id="toc-initial-setup" class="nav-link" data-scroll-target="#initial-setup">Initial Setup</a>
   <ul class="collapse">
   <li><a href="#frame-and-motor-assembly" id="toc-frame-and-motor-assembly" class="nav-link" data-scroll-target="#frame-and-motor-assembly">Frame and Motor Assembly</a></li>
-  <li><a href="#motherboard-setup" id="toc-motherboard-setup" class="nav-link" data-scroll-target="#motherboard-setup">Motherboard Setup</a>
+  <li><a href="#motherboard-assembly" id="toc-motherboard-assembly" class="nav-link" data-scroll-target="#motherboard-assembly">Motherboard Assembly</a>
   <ul class="collapse">
-  <li><a href="#assembly" id="toc-assembly" class="nav-link" data-scroll-target="#assembly">Assembly</a></li>
   <li><a href="#validation-calibration-and-error-measurement" id="toc-validation-calibration-and-error-measurement" class="nav-link" data-scroll-target="#validation-calibration-and-error-measurement">Validation, Calibration, and Error Measurement</a></li>
   </ul></li>
   <li><a href="#open-loop-control-navigation" id="toc-open-loop-control-navigation" class="nav-link" data-scroll-target="#open-loop-control-navigation">Open-Loop Control Navigation</a></li>
@@ -380,14 +379,21 @@ window.Quarto = {
   <li><a href="#mechanical-design-buoyancy-and-waterproofing" id="toc-mechanical-design-buoyancy-and-waterproofing" class="nav-link" data-scroll-target="#mechanical-design-buoyancy-and-waterproofing">Mechanical Design: Buoyancy and Waterproofing</a></li>
   <li><a href="#p-control" id="toc-p-control" class="nav-link" data-scroll-target="#p-control">P-Control</a>
   <ul class="collapse">
-  <li><a href="#depth-control" id="toc-depth-control" class="nav-link" data-scroll-target="#depth-control">Depth Control</a></li>
+  <li><a href="#depth-control-algorithm" id="toc-depth-control-algorithm" class="nav-link" data-scroll-target="#depth-control-algorithm">Depth Control Algorithm</a></li>
   <li><a href="#surface-navigation-control" id="toc-surface-navigation-control" class="nav-link" data-scroll-target="#surface-navigation-control">Surface Navigation Control</a></li>
   </ul></li>
   <li><a href="#deployment" id="toc-deployment" class="nav-link" data-scroll-target="#deployment">Deployment</a>
   <ul class="collapse">
   <li><a href="#deployment-procedure" id="toc-deployment-procedure" class="nav-link" data-scroll-target="#deployment-procedure">Deployment Procedure</a></li>
+  <li><a href="#deployment-safety" id="toc-deployment-safety" class="nav-link" data-scroll-target="#deployment-safety">Deployment Safety</a></li>
   </ul></li>
-  <li><a href="#results-and-conclusion" id="toc-results-and-conclusion" class="nav-link" data-scroll-target="#results-and-conclusion">Results and Conclusion</a></li>
+  <li><a href="#results-and-analysis" id="toc-results-and-analysis" class="nav-link" data-scroll-target="#results-and-analysis">Results and Analysis</a>
+  <ul class="collapse">
+  <li><a href="#pressure-sensor-and-depth-control" id="toc-pressure-sensor-and-depth-control" class="nav-link" data-scroll-target="#pressure-sensor-and-depth-control">Pressure Sensor and Depth Control</a></li>
+  <li><a href="#thermistor-2" id="toc-thermistor-2" class="nav-link" data-scroll-target="#thermistor-2">Thermistor</a></li>
+  <li><a href="#magnetomer" id="toc-magnetomer" class="nav-link" data-scroll-target="#magnetomer">Magnetomer</a></li>
+  </ul></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
   <li><a href="#final-paper" id="toc-final-paper" class="nav-link" data-scroll-target="#final-paper">Final Paper</a></li>
   </ul>
 </nav>
@@ -440,18 +446,69 @@ window.Quarto = {
 <h1>Initial Setup</h1>
 <section id="frame-and-motor-assembly" class="level2">
 <h2 class="anchored" data-anchor-id="frame-and-motor-assembly">Frame and Motor Assembly</h2>
+<p>The base AUV model was made out of PVC pipes and pool floaties (to make it neutrally buoyant). 12V DC motors were prepared by fixing a propeller to each shaft, then waterproofed by covering the motor housing with electrical tape and wax, then putting the whole assembly into a film canister.</p>
+<p>The motors were tested to pull less than 500mA when supplied with 6V from a DC power supply. They were then mounted to the AUV to give two xy-direction motors and one z-direction motor.</p>
 </section>
-<section id="motherboard-setup" class="level2">
-<h2 class="anchored" data-anchor-id="motherboard-setup">Motherboard Setup</h2>
-<section id="assembly" class="level3">
-<h3 class="anchored" data-anchor-id="assembly">Assembly</h3>
-</section>
+<section id="motherboard-assembly" class="level2">
+<h2 class="anchored" data-anchor-id="motherboard-assembly">Motherboard Assembly</h2>
+<p>A battery pigtail, screw terminals, chip sockets, hex buffer, push buttons, slider switches, and female headers were soldered to the AUV PCB, in addition to components that would ensure the safety of the board, such as resistor networks, voltage regulators, motor/battery fault detect LEDs etc. Components such as the IMU and SD card slot came presoldered. The back of the motherboard was covered with an insulating foam sheet to prevent short circuits.</p>
 <section id="validation-calibration-and-error-measurement" class="level3">
 <h3 class="anchored" data-anchor-id="validation-calibration-and-error-measurement">Validation, Calibration, and Error Measurement</h3>
+<p>The motherboard was validated by running a simple Arduino sketch on the Teensy 4.0 to blink several LEDs (confirming overall board power, IMU power, Teensy 4.0 power, and SD card connection), and turn on a motor for four seconds. The SD card was verified to be saving INF and BIN files when the sketch ran, and when opened in MATLAB, acceleration, magnetic field strength, roll, pitch, and yaw values (calculated from the IMU), and motor PWM values were confirmed to be saved.</p>
+<p>Another Arduino sketch was run to confirm all the motors could be driven.</p>
+<p>The saved accelerator data was analyzed when the board was static. The data needed to be converted from the saved units to <span class="math inline">\(ms^{-2}\)</span>. This was done by comparing the value read when the sensor experienced acceleration due to gravity (ie. when one axis of the sensor aligned with the global z-axis) to the value read when the sensor experienced 0 acceleration. The equation for this was <span class="math inline">\(\text{accelerometer unit}=\frac{9.81}{\text{value for accel due to gravity - value for zero}}ms^{-2}.\)</span> The value for acceleration due to gravity in the z direction read 995.2089 accelerometer units. The value for zero in the z direction read –64.6498 accelerometer units. Using the equation, one accelerometer unit is 0.0093 <span class="math inline">\(ms^{-2}\)</span>. All acceleration readings from the Teensy could be converted to <span class="math inline">\(ms^{-2}\)</span> by multiplying them by this value. The following figures show the zero acceleration data versus sample time for all three axes, and the acceleration due to gravity data for the z-axis. The mean, standard deviation, estimated standard error, and 95% confidence interval were found using a MATLAB script.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/xaccel.png" class="img-fluid figure-img"></p>
+<figcaption>Figure Xa. Zero Acceleration in the x-direction. Mean: -30.3733 ± 0.9720 (95% confidence)</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/yaccel.png" class="img-fluid figure-img"></p>
+<figcaption>Figure Xb. Zero Acceleration in the y-direction. Mean: 29.7689 ± 1.1129 (95% confidence)</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/zaccel.png" class="img-fluid figure-img"></p>
+<figcaption>Figure Xa. Zero Acceleration in the z-direction. Mean: -64.6498 ± 1.1999 (95% confidence)</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/gaccel.png" class="img-fluid figure-img"></p>
+<figcaption>Figure Xd. Acceleration Due to Gravity in the z-direction. Mean: 995.2089 ± 1.4544 (95% confidence)</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="open-loop-control-navigation" class="level2">
 <h2 class="anchored" data-anchor-id="open-loop-control-navigation">Open-Loop Control Navigation</h2>
+<p>C++ code was written so the AUV could traverse through an obstacle course. After the obstacle course deployment, the on-board accelerometer readings were plotted, as shown in Figure X.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/accelData.png" class="img-fluid figure-img"></p>
+<figcaption>Figure X. Acceleration of the AUV over Time (Represented by Sample Number) in the x, y, and z Directions While Traversing an Obstacle Course</figcaption>
+</figure>
+</div>
+<p>The governing equation for the AUV’s acceleration is <span class="math inline">\(mx"=mg+F_{thrust}-F_{buoyancy}-bx'\)</span>. The AUV was neutrally buoyant, so <span class="math inline">\(mg\)</span> and <span class="math inline">\(F_{buoyancy}\)</span> cancel. <span class="math inline">\(b\)</span> represents the damping constant, so when <span class="math inline">\(x'=0\)</span>, there is no effect of damping (in this case, drag force - resistance from moving through the water) on the robot. Acceleration will be highest when there is no damping, so we remove the <span class="math inline">\(bx'\)</span> term. So the peak acceleration from rest is <span class="math inline">\(x"_{peak}=\frac{F_{thrust}}{m}\)</span>.</p>
+<p>Using the x-direction for calculations (because it would have less interference compared to the x-direction and y-direction, since the AUV started from rest and there was significant tilt by the time the x-direction and y-direction acceleration was being affected), the theoretical thrust force could be calculated using a thrust vs duty cycle equation. For the motors used, <span class="math inline">\(F_{thrust}=|-0.6871\text{Duty Cycle}+0.0593|\)</span>. The duty cycle could be calculated using <span class="math inline">\(\text{Duty Cycle}=\frac{|\text{PWM}|}{255}\)</span> since 255 is the maximum PWM the motors can run at. The code used had the PWM set to -100 for downward motion in a single motor, giving a duty cycle of 0.3922. This gives a theoretical thrust force of 0.2102 N for one motor. The theoretical peak acceleration was calculated using the governing equation. The total mass of the AUV was measured to be 3297.6g = 3.2976kg, giving a theoretical peak acceleration as 0.0637m/s^2. From Figure X, the measured peak acceleration was <span class="math inline">\(-2.6505ms^{-2}\)</span> in the z-direction. The theoretical value was different from the measured value because the thrust vs duty cycle equation was procured a motor the team did not use, meaning the curve would likely give an inaccurate estimate. Even though we tried to place the robot level in the taken, the robot tilted when the motor started driving, and the motherboard was not level in the box, so the measured acceleration values would contribute to each other’s axes. There was also a lot of noise from the accelerometer and other teams sloshing the water in the tank, which could make the measured acceleration of our robot a lot greater than actually contributed by the motors.</p>
+<p>The AUV was programmed to move downward, forward, then upward. The initial large downwards peak in the z-direction represents the z-direction motor activating, moving the AUV downwards. Here, there are fluctuations in the x and y-direction generated from the AUV spinning in the x-y plane when it descended. There is then an upwards peak past the base value in the z-direction caused by the motor deactivating because the AUV was slightly buoyant, making it rise. From around sample number 400 to 600, the forward motors activated, but the AUV made a curve around the obstacle course, causing an increase in acceleration in the x and y-directions. The AUV tilting in various directions while moving also contributed to this increase. Because of buoyancy, the AUV continued rising at the same rate even though the upwards motors was off, so the acceleration hovered at a constant value from around sample number 400 to 650. From around sample number 600 to 650, the AUV reached the surface of the water and stopped tilting, so the x and y-direction data starts to fluctuate around the base value. The z-direction motor activated at around sample number 650, causing the AUV to bob and jitter near the surface of the water, causing reading fluctuations in all three directions. The y-direction reading increased because it started moving in that direction from waves generated from other teams. From this, it is clear thaat open-loop control is not ideal for an autonomous system. Motor behaviour, buoyancy, and waves in the tank threw the AUV off course and resulted in behaviour contrasting its programming.</p>
 </section>
 </section>
 <section id="sensor-development" class="level1">
@@ -820,7 +877,7 @@ R_{Fmin}&amp;=95\Omega
 <section id="comparing-the-sensors" class="level3">
 <h3 class="anchored" data-anchor-id="comparing-the-sensors">Comparing the Sensors</h3>
 <p>The settling time of the three temperature sensors were compared. Each sensor was directly connected to a multimeter and dipped in a ~0°C bath until the output reading was stable, then transferred to a ~80°C bath. The time it took for the reading to stabilize was recorded. The K-type thermocouple had the fastest settling time of 2.62s, the thermistor had a medium settling time of 16.79s, and the IC sensor (MCP9701A) had the slowest settling time of 42.49s.</p>
-<p>Since the thermocouple had the fastest settling time, the team thought it could be a good option for the AUV, especially if the robot would be travelling at high speeds and need near-immediate temperature readings. However, it would need a second temperature sensor to measure the cold junction temperature as it would be unrealistic to keep it at a constant temperature while the AUV is deployed.</p>
+<p>Since the thermocouple had the fastest settling time, the team thought it could be a good option for the AUV, especially if the AUV would be travelling at high speeds and need near-immediate temperature readings. However, it would need a second temperature sensor to measure the cold junction temperature as it would be unrealistic to keep it at a constant temperature while the AUV is deployed.</p>
 <p>The thermistor was also seen as a good option for the AUV because its settling time was still pretty fast, and it would be easier to integrate with the AUV. It also gave more accurate readings than the thermocouple, and even though it had a smaller temperature range than the thermocouple the AUV would not be going in regions that exceeded its limits.</p>
 <p>The IC sensor was not considered because its settling time was too slow, even if the AUV were just drifting in water.</p>
 </section>
@@ -1106,7 +1163,7 @@ b_k&amp;=\frac{2}{T}\int_{0}^{T}f(t)sin(k\frac{\pi}{L}t)dt\\
 </section>
 <section id="mechanical-design-buoyancy-and-waterproofing" class="level1">
 <h1>Mechanical Design: Buoyancy and Waterproofing</h1>
-<p>The AUV was designed to be a diving and surface robot which would autonomously use P-control to travel to a selected waypoint on the surface of the water located through a GPS. It would then use P-control to dive to selected depth waypoints, stopping at each one for five seconds to take measurements of temperature and magnetic flux density until it either reached the maximum set depth of 3.5m or the sea floor. It would then surface and navigate to a set location for collection.</p>
+<p>The AUV was designed to be a diving and surface AUV which would autonomously use P-control to travel to a selected waypoint on the surface of the water located through a GPS. It would then use P-control to dive to selected depth waypoints, stopping at each one for five seconds to take measurements of temperature and magnetic flux density until it either reached the maximum set depth of 3.5m or the sea floor. It would then surface and navigate to a set location for collection.</p>
 <p>As shown in Figure X, the AUV was shaped as a rectangular prism with two z-direction motors for diving and two xy-direction motors for surface navigation attached along the center horizontal axis. A waterproof box enclosing a Teensy 4.0, Inertial Measurement Unit (IMU), Global Positioning System unit (GPS), motor drivers, a microSD card with a reader, and the sensor circuits was placed on the top of the AUV. The magnetometer sensor was enclosed in a separate waterproof box at the bottom of the AUV. This was done to maximize the distance between the motors, the magnetometer sensor at the bottom of the AUV, and the magnetometer integrated in the IMU at the top of the AUV, such that the motors have limited interference with each of the magnetometer’s readings. The pressure sensor tube was fixed along the side of the AUV such that it ended at a point level with the motors, so that when the z-direction motors drove upwards at maximum speed, the pressure tube would end at the surface of the water. The thermistor was fixed along the other side of the AUV such that its head was at the same level as the pressure sensor tube end to take measurements at the same depth.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1121,11 +1178,17 @@ b_k&amp;=\frac{2}{T}\int_{0}^{T}f(t)sin(k\frac{\pi}{L}t)dt\\
 </section>
 <section id="p-control" class="level1">
 <h1>P-Control</h1>
-<section id="depth-control" class="level2">
-<h2 class="anchored" data-anchor-id="depth-control">Depth Control</h2>
+<section id="depth-control-algorithm" class="level2">
+<h2 class="anchored" data-anchor-id="depth-control-algorithm">Depth Control Algorithm</h2>
+<p>A P-control algorithm was programmed in C++ such that the AUV could traverse to a set of waypoints (hardcoded z-directions) and stay at each one for a set amount of time. This was done by tuning the Kp value, calculating the depth error (difference between desired and measured depth), and setting the motor control effort as a function of these two values. This was tested by having the algorithm run and observing the collected depths.</p>
+<p>The algorithm was later modified so the AUV would self-determine if it had reached the seafloor by collecting a series of measurements and comparing the minimum and maximum output voltages. If the difference between these readings in a span of 20 seconds was less than 0.05V, the AUV would be at the seafloor and would surface. (Essentially some kind of comparative shift register!) Otherwise, if it reached the final waypoint instead, it would also surface.</p>
 </section>
 <section id="surface-navigation-control" class="level2">
 <h2 class="anchored" data-anchor-id="surface-navigation-control">Surface Navigation Control</h2>
+<p>A P-control algorithm was programmed in C++, similar to the depth control such that the AUV could traverse to a set of waypoints (latitude and longitude pairs) and stay at each one for a set amount of time. This involved calibrating the on-board IMU magnetometer (the PNI magnetometer used for seafloor measurements could not be used because the magnetic flux density on the surface would not be measurable underwater) to account for manufacturing errors and local magnetic field disturbances, as well as writing a state estimation algorithm to calculate the xy position of the board with respect to a Cartesian coordinate reference origin.</p>
+<p>This part of the code was tested by walking with the board outside on a set path, and reading the collected position data to confirm the same path could be plotted in MATLAB.</p>
+<p>Then, the P-control was implemented where the desired yaw angle was calculated, and then left and right motor control efforts were set. Individual Kps were calibrated for each motor to account for uneven motors.</p>
+<p>This part of the code was tested by walking with the board in a straight line, turning the board as necessary to equalize the left and right motor control efforts.</p>
 </section>
 </section>
 <section id="deployment" class="level1">
@@ -1140,13 +1203,69 @@ b_k&amp;=\frac{2}{T}\int_{0}^{T}f(t)sin(k\frac{\pi}{L}t)dt\\
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/locations.png" class="img-fluid figure-img"></p>
-<figcaption>Figure X. Deployment locations at Dana Point Pier. Positions are with reference to the set origin of (34.1226883, -117.7650364)</figcaption>
+<figcaption>Figure X. Deployment Locations at Dana Point Pier. Positions are With Reference to the Set Origin of (34.1226883, -117.7650364)</figcaption>
 </figure>
 </div>
+<p>Data was processed by plotting the collected pressure, temperature, and magnetic flux density readings in each deployment over time as separate plots in MATLAB. Since pressure and temperature values were recorded using an Analog to Digital Converter (ADC), the values were converted to voltages using <span class="math inline">\(V_{circuit}=0.0032D\)</span>, where <span class="math inline">\(V_{circuit}\)</span> is the output voltage of the circuit in V and D is the unitless digital output recorded by the ADC. Afterwards, they were converted to depth and temperature using the relevant calibration curves. Deployments which resulted in data that did not match expected values were flagged for further analysis. However, the collected data from each sensor was fairly consistent between all deployments.</p>
+</section>
+<section id="deployment-safety" class="level2">
+<h2 class="anchored" data-anchor-id="deployment-safety">Deployment Safety</h2>
+<p>To prevent environmental waste, a tether was tied to the AUV and held onto during deployments so that if the motors failed, it could be brought back to a retrievable location easily. Parts that could easily disconnect from the AUV, such as pool noodles, motors, and ballasting weights, were taped and zip-tied to the frame to prevent them from being lost in the water.</p>
+<p>To ensure personal safety, both boxes were checked to be sealed with no protruding wires before deployment to prevent the electronics from getting wet and producing hazardous shorts that deployment personnel could touch. Unexpected occurrences, such as the hardware sparking and foaming, led to immediate deployment abortions, and relevant hardware was replaced before redeployment as needed.</p>
 </section>
 </section>
-<section id="results-and-conclusion" class="level1">
-<h1>Results and Conclusion</h1>
+<section id="results-and-analysis" class="level1">
+<h1>Results and Analysis</h1>
+<section id="pressure-sensor-and-depth-control" class="level2">
+<h2 class="anchored" data-anchor-id="pressure-sensor-and-depth-control">Pressure Sensor and Depth Control</h2>
+<p>During each deployment, the AUV recorded depth continuously while performing P-control. Figure X shows the depth tracked during one deployment. The pressure sensor collected very accurate depth measurements, as the recorded depth fluctuated by at most ±0.032m when the AUV was at the surface or bottom of the ocean. Furthermore, the <span class="math inline">\(R^2\)</span> value of the calibration curve was 0.996, suggesting the calibration curve equation used can predict depth based on output voltage very accurately.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Depth.png" class="img-fluid figure-img"></p>
+<figcaption>Figure X. Recorded Depth Data From the AUV Diving to and Hovering at Waypoints 0.5, 1, 1.5, and 2m below the Ocean Surface, and at the Ocean Floor at Dana Point Pier</figcaption>
+</figure>
+</div>
+<p>The P-control was successful in holding the AUV’s position at each waypoint, as over the 5 seconds it had to hold its position for, the largest overshoot was by 0.048m when the AUV attempted to reach the first waypoint at 0.5m. After the overshoot, the AUV almost immediately corrected itself and held its value within ±0.02m before moving to the next waypoint. These depth variations are negligible compared to the deepest deployment of 3m in one trial. The depth control algorithm as a whole was also successful, as the AUV was able to determine it had reached the seafloor at around 2.35m below the ocean surface and autonomously came up. The time it took for the AUV to determine it had reached the seafloor varied greatly between trials. In one trial, the AUV ran the depth control algorithm for around 10 minutes before resurfacing. This is because the algorithm determines if the AUV has reached the seafloor when the difference between maximum and minimum output voltages in a range of about 20 seconds is less than 0.05V. Environmental factors, such as other AUVs being simultaneously deployed, could have shifted the AUV underwater in this time frame and changed the output voltage, thus increasing the time spent on the seafloor.</p>
+</section>
+<section id="thermistor-2" class="level2">
+<h2 class="anchored" data-anchor-id="thermistor-2">Thermistor</h2>
+<p>The AUV also collected temperature measurements continuously. As shown in Figure X, the collected temperature readings of a near-constant 28.0545°C were significantly higher than the obtained ground truth measurement of 18.4-18.7°C from probing the seawater at the surface with a digital thermometer. Upon further analysis, these readings indicated that either the op-amps or the Teensy 4.0 likely railed out, because an output voltage of 0V from the thermistor interface circuit would result in this exact temperature value. Even for the non-constant values, such as the two sharp peaks in Figure X, the temperature is significantly higher than the expected value.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Temp.png" class="img-fluid figure-img"></p>
+<figcaption>Figure X. Thermistor data collected during deployment at Dana Point Pier</figcaption>
+</figure>
+</div>
+<p>It was first hypothesized that the motors running drew too much current, and this could have prevented the thermistor interface circuit from working properly. However, data from the thermistor was collected in the air and with the motors running, and the thermistor read reasonable values of ~13°C. It was then hypothesized that because the thermistor had reasonable readings in air and only railed out in the water, part of the thermistor was shorting in the water. The ends of the heat-shrunk areas of the thermistor were probable entry points for seawater, so they were dried and then wrapped with Parafilm in an attempt to waterproof them. However, this produced the same issue of railing out. The thermistor was then detached from the AUV, and its wire was slowly dropped deeper into the water. When only the head of the thermistor was in the water, output voltages indicated a temperature of around 12°C, but when more of the wire was put into the water, the circuit railed out. This means there was likely a nick somewhere along the wire insulation, and this caused the thermistor to short and effectively make its resistance negligible in seawater. The exact location of this hypothetical nick could not be determined. The obtained 12°C temperature is still significantly different from the ground truth measurement, indicating a separate issue with the thermistor interface circuit. One possible explanation for this issue is that, since resistors were desoldered and replaced to debug the thermistor interface circuit at Dana Point, the individual resistor values could have changed due to soldering at high temperatures of around 700°F.</p>
+</section>
+<section id="magnetomer" class="level2">
+<h2 class="anchored" data-anchor-id="magnetomer">Magnetomer</h2>
+<p>The magnetometer also behaved strangely in the water. As shown in Figure X, when the AUV started descending in the ocean, the magnetic flux density reading would spike to an invalid value (874.733µT is out of the range of the RM3100’s readings) and then read a constant value for the rest of the deployment.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/MagDana.png" class="img-fluid figure-img"></p>
+<figcaption>Figure X. Magnetic Flux Density During Dana Point Pier Deployment With All Data Points (left) and With the Peak Value Removed (right)</figcaption>
+</figure>
+</div>
+<p>It was hypothesized that the motors produced electromagnetic interference (EMI), which interfered with the I2C data transmission. EMI can produce three types of errors in I2C sensors: no communication, erroneous values, and permanent values from the sensor. This aligns with the collected data, in that the large spike is an erroneous value, and the constant value indicates either no communication or a permanent value being transmitted. To confirm this theory that motors producing EMI interfered with the magnetometer’s I2C communication, a recreation of this spike and flatline pattern was attempted by taping a motor to a waterproof box with the magnetometer and circuitry, running the code used at Dana Point on the same hardware, and dropping this setup in a tank of freshwater. With this setup, the magnetometer produced steady readings without any anomalous peaks or flatlines. The magnetometer was then taken out of the box and pressed directly against the running motor. This produced the peak and flatline pattern. Upon further investigation with an oscilloscope, it was found that the DRDY pin output a constant HIGH signal when pressed against the running motor, meaning new data was never being pushed to the relevant registers. Because this pattern only occurred when the magnetometer and motors were far apart in seawater and not in freshwater, it is hypothesized that the seawater amplified the EMI more than freshwater, causing interference only in the Dana Point deployments.</p>
+</section>
+</section>
+<section id="conclusions" class="level1">
+<h1>Conclusions</h1>
+<p>This project aimed to determine the effectiveness of calculating geostrophic flow through pressure and temperature measurements and mapping seafloor debris through magnetometry.</p>
+<p>The pressure sensor was the most successful sensor used. Its calibration curve had an extremely high <span class="math inline">\(R^{2}\)</span> value of 0.996, meaning its output voltages were well correlated with depth, even after amplification from the circuit. Additionally, it worked well with the depth control algorithm, in that the AUV correctly held itself at each waypoint within ±0.02m, correctly determined it had reached the sea floor with readings fluctuating by only ±0.032m, and surfaced on its own.</p>
+<p>The thermistor did not produce any reliable readings underwater. It railed out at around 28°C in each trial. However, from testing, this was likely due to a break along the wire, which would have caused the sensor to short, and this is easily fixable through additional heatshrink or coating the wires with some waterproof material. The narrow 95% confidence intervals for the Steinhart-Hart coefficients from calibrating the thermistor imply that it was well calibrated and had high precision, and fixing this issue would have produced very accurate sensor readings.</p>
+<p>The magnetometer did not produce sufficient data to locate seafloor debris at Dana Point. Although it failed to produce reliable readings at Dana Point, readings in the air fell within the expected range. Thus, further development and exploration into its behaviour with EMI from motors in seawater could improve the reliability of this sensor in the ocean, so that it could be used in a similar AUV.</p>
+<p>Due to the inadequate temperature and magnetic flux density data, geostrophic flow was not calculated, and a map of seafloor debris was not obtained.</p>
+<p>The measured temperature from the thermistor circuit had serious discrepancies with the probed measurement, and the magnetometer readings could not be reasonably correlated with the true magnetic flux density underwater. Future exploration would benefit from finding a better method to waterproof the thermistor and prevent shorts along its path, and exploration into preventing EMI from disrupting I2C sensor readings. After resolving these issues, attempting to characterize geostrophic flow and locating ferromagnetic debris on the seafloor using the collected data would confirm whether utilizing pressure, temperature, and magnetic flux density is a feasible method for accurately locating ocean wreckages.</p>
+<p>As a proof of concept, Figure X shows a contour plot of magnetic flux density collected by scattering neodymium magnets on the floor outside of Parsons Engineering Building in Claremont, CA, and plotting collected magnetic flux density readings from the magnetometer corresponding to GPS-obtained positions. The peak value at around (4833, -1817) and other elevated values at (4846, -1813) and (4839, -1815) roughly correspond to the magnet locations. Assuming more reasonable magnetic flux density readings can be obtained in the ocean, a similar plot outlining the location of ferromagnetic materials on the seafloor could be acquired.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/contourbetterlabels.png" class="img-fluid figure-img"></p>
+<figcaption>Figure X. Contour Plot of Magnetic Flux Density Collected Outside Parsons Engineering Building, Claremont, CA. Positions are With Reference to the Set Origin of (34.1226883, -117.7650364)</figcaption>
+</figure>
+</div>
+<p>Besides improving the method outlined in this paper, work using other sensors that would encompass a more comprehensive view of seafloor debris should be considered. Sensors such as high-resolution side-scan sonar could be used to confirm if detected ferromagnetic materials on the seafloor are actually relevant debris or just part of the ocean’s natural ecosystem. In addition, the high error in the GPS made surface control at Dana Point very unreliable and unusable. Using a more accurate GPS module would increase the accuracy of plotted values in the contour plot and enable the AUV to traverse to various surface waypoints and start depth control at remote locations autonomously.</p>
 </section>
 <section id="final-paper" class="level1">
 <h1>Final Paper</h1>
@@ -1162,8 +1281,8 @@ b_k&amp;=\frac{2}{T}\int_{0}^{T}f(t)sin(k\frac{\pi}{L}t)dt\\
    featured = true to show on the home page (first 3 flagged are used).
    img = path inside that project's folder, e.g. "images/cover.jpg" (leave "" for the placeholder) ===== */
 const PROJECTS=[
- {"featured":false,"img":"images/motorControl.png","slug": "motorControl", "t": "Leverging MCU Interrupts to Read Stepper Motor Encoders", "d": "Oct 2026 – Oct 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Utilized MCU interrupts to acurrately determine stepper motor speed and direction.", "tech": ["C, MCU, Circuit Design, SEGGER Embedded Studio"]},  
- {"featured":false,"img":"images/digitalAudio.png","slug": "digitalAudio", "t": "Using a MCU to Produce Music on a Speaker", "d": "Sept 2026 – Sept 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Programmed an MCU to write specific frequencies and durations to play music on a speaker.", "tech": ["C", "STM32", "Circuit Design", "SEGGER Embedded Studio"]},
+ {"featured":false,"img":"images/motorControl.png","slug": "motorControl", "t": "Leverging MCU Interrupts to Read Stepper Motor Encoders", "d": "Oct 2026 – Oct 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Utilized MCU interrupts to accurately determine stepper motor speed and direction.", "tech": ["C", "MCU", "Circuit Design", "SEGGER Embedded Studio"]},  
+ {"featured":false,"img":"images/digitalAudio.png","slug": "digitalAudio", "t": "Using a MCU to Produce Music on a Speaker", "d": "Sept 2026 – Sept 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Programmed an MCU to write specific frequencies and durations to play music on a speaker.", "tech": ["C", "MCU", "Circuit Design", "SEGGER Embedded Studio"]},
  {"featured":true,"img":"images/keypadScanner.jpeg","slug": "keypadScanner", "t": "FPGA-Controlled Keypad Scanner", "d": "Aug 2026 – Sep 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Programmed an FPGA to read a 4x4 matrix keypad and display the last two hexadecimal inputs on a dual seven-segment display. Accounted for key bounce, multi-press, and timing inconsistencies.", "tech": ["SystemVerilog", "FPGA", "Circuit Design", "Lattice Radiant", "Waveform Simulation", "Testbench"]},  
  {"featured":true,"img":"images/E80Bot.png","slug": "E80Bot", "t": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)", "d": "Mar 2026 – May 2026", "cats": ["Robotics & Control Systems", "PCB Design & Electronics", "Embedded Systems & Firmware", "Mechanical Design & FEA"], "b": "Developed and deployed an AUV to map metal debris distribution on the ocean floor and back-calculate debris drop locations.", "tech": ["P-Control", "Circuit Design", "Mechanical Design", "C++", "MATLAB", "I2C Communication", "Data Analysis", "Troubleshooting", "Technical Documentation"]},
  {"featured":false,"img":"images/radio.jpeg","slug": "crystalRadio", "t": "Crystal Radio Experiments", "d": "Feb 2026 – Mar 2026", "cats": ["PCB Design & Electronics"], "b": "Analysed RLC Circuits to debug Dunwoody, Pickard, and Armstrong crystal radios. Devised an innovative antenna for optimal signal receiving.", "tech": ["Radio Frequency Engineering", "Software Defined Radio", "Circuit Analysis"]},
@@ -1314,7 +1433,7 @@ const PROJECTS=[
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/natalieko2024\.github\.io\/Engineering-Portfolio\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -1649,7 +1768,7 @@ const PROJECTS=[
     </div>   
     <div class="nav-footer-center">
 <p class="footer-cta">
-Let’s build something.
+Let’s build something!
 </p>
 <p><a href="https://www.linkedin.com/in/ko12nat/" target="_blank">LinkedIn</a> · <a href="https://github.com/natalieko2024" target="_blank">GitHub</a><br> <small>© 2026 Natalie Ko. All rights reserved.</small></p>
 </div>

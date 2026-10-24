@@ -1,7 +1,7 @@
 ---
 title: "Leverging MCU Interrupts to Read Stepper Motor Encoders"
 date-range: "Oct 2026 – Oct 2026"
-description: "Utilized MCU interrupts to acurrately determine stepper motor speed and direction."
+description: "Utilized MCU interrupts to accurately determine stepper motor speed and direction."
 subtitle : ""
 image: "motorControl.png"
 categories:
