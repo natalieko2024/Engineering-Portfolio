@@ -48,9 +48,10 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-98c7eacc04dc8a1fe11fe799e0cd156c.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-30791d33a638bff470c098c45da64e7c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-0b321fec9620eeee13feb84e0ed91b59.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-30791d33a638bff470c098c45da64e7c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-cd60a874067294cd65c3e5a97f2f71e1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-59c833cd1e043adc3755b69bc2a5220f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-cd60a874067294cd65c3e5a97f2f71e1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/embedpdf-1.2.4/embedpdf.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -361,55 +362,41 @@ window.Quarto = {
   <li><a href="#integrated-silicon-linear-sensor" id="toc-integrated-silicon-linear-sensor" class="nav-link" data-scroll-target="#integrated-silicon-linear-sensor">Integrated Silicon Linear Sensor</a></li>
   <li><a href="#comparing-the-sensors" id="toc-comparing-the-sensors" class="nav-link" data-scroll-target="#comparing-the-sensors">Comparing the Sensors</a></li>
   </ul></li>
-  <li><a href="#underwater-acoustics" id="toc-underwater-acoustics" class="nav-link" data-scroll-target="#underwater-acoustics">Underwater Acoustics</a></li>
-  <li><a href="#magnetometer" id="toc-magnetometer" class="nav-link" data-scroll-target="#magnetometer">Magnetometer</a></li>
-  <li><a href="#modifications-to-the-circuits-for-deployment" id="toc-modifications-to-the-circuits-for-deployment" class="nav-link" data-scroll-target="#modifications-to-the-circuits-for-deployment">Modifications to the Circuits for Deployment</a></li>
+  <li><a href="#underwater-acoustics" id="toc-underwater-acoustics" class="nav-link" data-scroll-target="#underwater-acoustics">Underwater Acoustics</a>
+  <ul class="collapse">
+  <li><a href="#getting-familiar-with-signal-processing-using-fast-fourier-transforms" id="toc-getting-familiar-with-signal-processing-using-fast-fourier-transforms" class="nav-link" data-scroll-target="#getting-familiar-with-signal-processing-using-fast-fourier-transforms">Getting Familiar With Signal Processing Using Fast Fourier Transforms</a></li>
+  <li><a href="#detecting-auv-position-using-acoustics" id="toc-detecting-auv-position-using-acoustics" class="nav-link" data-scroll-target="#detecting-auv-position-using-acoustics">Detecting AUV Position Using Acoustics</a></li>
+  <li><a href="#experimenting-with-sample-rates" id="toc-experimenting-with-sample-rates" class="nav-link" data-scroll-target="#experimenting-with-sample-rates">Experimenting with Sample Rates</a></li>
   </ul></li>
+  <li><a href="#magnetometer" id="toc-magnetometer" class="nav-link" data-scroll-target="#magnetometer">Magnetometer</a></li>
+  <li><a href="#modifications-to-the-circuits-for-deployment" id="toc-modifications-to-the-circuits-for-deployment" class="nav-link" data-scroll-target="#modifications-to-the-circuits-for-deployment">Modifications to the Circuits for Deployment</a>
+  <ul class="collapse">
+  <li><a href="#sensor-justification" id="toc-sensor-justification" class="nav-link" data-scroll-target="#sensor-justification">Sensor Justification</a></li>
+  <li><a href="#pressure-sensor" id="toc-pressure-sensor" class="nav-link" data-scroll-target="#pressure-sensor">Pressure Sensor</a></li>
+  <li><a href="#thermistor-1" id="toc-thermistor-1" class="nav-link" data-scroll-target="#thermistor-1">Thermistor</a></li>
+  <li><a href="#magnetometer-1" id="toc-magnetometer-1" class="nav-link" data-scroll-target="#magnetometer-1">Magnetometer</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#mechanical-design-buoyancy-and-waterproofing" id="toc-mechanical-design-buoyancy-and-waterproofing" class="nav-link" data-scroll-target="#mechanical-design-buoyancy-and-waterproofing">Mechanical Design: Buoyancy and Waterproofing</a></li>
   <li><a href="#p-control" id="toc-p-control" class="nav-link" data-scroll-target="#p-control">P-Control</a>
   <ul class="collapse">
   <li><a href="#depth-control" id="toc-depth-control" class="nav-link" data-scroll-target="#depth-control">Depth Control</a></li>
   <li><a href="#surface-navigation-control" id="toc-surface-navigation-control" class="nav-link" data-scroll-target="#surface-navigation-control">Surface Navigation Control</a></li>
   </ul></li>
-  <li><a href="#mechanical-design" id="toc-mechanical-design" class="nav-link" data-scroll-target="#mechanical-design">Mechanical Design</a>
+  <li><a href="#deployment" id="toc-deployment" class="nav-link" data-scroll-target="#deployment">Deployment</a>
   <ul class="collapse">
-  <li><a href="#buoyancy" id="toc-buoyancy" class="nav-link" data-scroll-target="#buoyancy">Buoyancy</a></li>
-  <li><a href="#waterproofing" id="toc-waterproofing" class="nav-link" data-scroll-target="#waterproofing">Waterproofing</a></li>
+  <li><a href="#deployment-procedure" id="toc-deployment-procedure" class="nav-link" data-scroll-target="#deployment-procedure">Deployment Procedure</a></li>
   </ul></li>
-  <li><a href="#deployment" id="toc-deployment" class="nav-link" data-scroll-target="#deployment">Deployment</a></li>
   <li><a href="#results-and-conclusion" id="toc-results-and-conclusion" class="nav-link" data-scroll-target="#results-and-conclusion">Results and Conclusion</a></li>
   <li><a href="#final-paper" id="toc-final-paper" class="nav-link" data-scroll-target="#final-paper">Final Paper</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><h1 class="title display-7">Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)</h1></header>
 
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">Robotics &amp; Control Systems</div>
-    <div class="quarto-category">PCB Design &amp; Electronics</div>
-    <div class="quarto-category">Embedded Systems &amp; Firmware</div>
-    <div class="quarto-category">Mechanical Design &amp; FEA</div>
-  </div>
-  </div>
-
-<div>
-  <div class="description">
-    Developed and deployed an AUV to map metal debris distribution on the ocean floor and back-calculate debris drop locations.
-  </div>
-</div>
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
+<header id="title-block-header">
 
 
 </header>
@@ -421,6 +408,27 @@ window.Quarto = {
 </div>
 <div>
 <strong>Skills:</strong> P-Control, Circuit Design, Mechanical Design, C++, MATLAB, I2C Communication, Data Analysis, Troubleshooting, Technical Documentation
+</div>
+<div>
+<strong>Roles:</strong> Circuit Design Lead, Controls and Programming Lead, Field Debugging Lead
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:49%;">
+<p><img src="images/E80Bot.png" class="img-fluid"></p>
+<p><img src="images/AUV.png" class="img-fluid"></p>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:49%;">
+<p><strong>Overview of Work:</strong> Worked in a team of 4 to design and deploy an AUV utilizing a pressure sensor, thermistor, and magnetometer to map the metal debris distribution on the ocean floor of Dana Point Harbour, and back-calculate debris drop locations using the principles of geostrophic balance.</p>
+<p>Key outcomes:</p>
+<ul>
+<li><strong>Built custom operational-amplifier circuits</strong> to scale analog sensor outputs to the input range of a Teensy 4.0 to achieve higher resolutions</li>
+<li><strong>Troubleshot circuits and hardware during deployment</strong>, conducted tests post-deployment to find and assess key failure modes</li>
+<li><strong>Utilized oscilloscopes, multimeters, and other electronic test instruments</strong> to test and debug circuit outputs and <strong>I2C communication protocols</strong></li>
+<li><strong>Programmed feedback control loops in C++</strong> for AUV depth and surface control</li>
+<li><strong>Utilized MATLAB to process collected data</strong>, perform signal processing algorithms (Fast Fourier Transform), and create 2D and contour plots</li>
+</ul>
 </div>
 </div>
 <section id="introduction-and-background" class="level1">
@@ -819,14 +827,297 @@ R_{Fmin}&amp;=95\Omega
 </section>
 <section id="underwater-acoustics" class="level2">
 <h2 class="anchored" data-anchor-id="underwater-acoustics">Underwater Acoustics</h2>
-<p>Underwater acoustics are helpful for a variety of sensors, such as sonar, radar,</p>
+<p>Acoustics are helpful for a variety of sensors, such as sonar and radar. To investigate the feasibility of underwater acoustic measurements, the team used acoustic measurements to locate relative position in a tank with multiple speakers emitting set frequencies.</p>
+<section id="getting-familiar-with-signal-processing-using-fast-fourier-transforms" class="level3">
+<h3 class="anchored" data-anchor-id="getting-familiar-with-signal-processing-using-fast-fourier-transforms">Getting Familiar With Signal Processing Using Fast Fourier Transforms</h3>
+<p>Fast Fourier Transforms were applied using the FFT function of an oscilloscope to 11kHz and 12kHz sine and square waves with 1.5V amplitude and 0V offset.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/FFTOscope11k.png" class="img-fluid figure-img"></p>
+<figcaption>Figure Xa. 11kHz, 1.5V Amplitude, 0V Offset Sine Wave With FFT</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/FFTOscope12k.png" class="img-fluid figure-img"></p>
+<figcaption>Figure Xb. 12kHz, 1.5V Amplitude, 0V Offset Sine Wave With FFT</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/FFTOscopeSquare.png" class="img-fluid figure-img"></p>
+<figcaption>Figure Xc. 11kHz, 1.5V Amplitude, 0V Offset Square Wave With FFT</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/FFTOscopeHanning.png" class="img-fluid figure-img"></p>
+<figcaption>Figure Xd. 11kHz, 1.5V Amplitude, 0V Offset Square Wave With Hanning Window and FFT</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/FFTMatlab.png" class="img-fluid figure-img"></p>
+<figcaption>Figure Xe. MATLAB Plot of the Frequency Spectrum of the 11kHz, 1.5V Amplitude, 0V Offset Square Wave With Hanning Window</figcaption>
+</figure>
+</div>
+<p>The plots of FFT magnitude show the amplitude of frequencies in the signal. Since Figure Xa shows a 11kHz sine wave and its FFT, we see a single peak at 11kHz, whereas Figure Xb shows a 12kHz sine wave and its FFT, so we see a single peak at 12kHz.</p>
+<p>Figure Xc shows a 11kHz square wave and its FFT, and since a square wave can be represented by the sum of sine waves with odd integer multiples of frequencies, we see multiple peaks, each at an odd integer multiple of 11kHz.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Expand for the square wave/sum of sine waves with odd integer multiples of frequencies derivation
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The unit step function is given by: <span class="math display">\[
+\begin{aligned}
+U(x)&amp;=0 \text{ (for }x&lt;0)\\
+U(x)&amp;=\frac{1}{2} \text{ (for }x=0)\\
+U(x)&amp;=1 \text{ (for }x&gt;0)\\
+\end{aligned}
+\]</span></p>
+<p>A square wave with period <span class="math inline">\(T=2L\)</span> can be expressed as <span class="math inline">\(f(t)=2(U(\frac{t}{L})-U(\frac{t}{L}-1))-1\)</span>.</p>
+<p>The Fourier Series representation of this signal is:</p>
+<p><span class="math display">\[
+\begin{aligned}
+f(t)&amp;=a_0+\sum_{k=1}^{\infty}a_kcos(kw_ot)+\sum_{k=1}^{\infty}b_kcos(kw_ot)\\
+&amp;=a_0+\sum_{k=1}^{\infty}a_kcos(k\frac{\pi}{L}t)+\sum_{k=1}^{\infty}b_kcos(k\frac{\pi}{L}t)\\
+\end{aligned}
+\]</span></p>
+<p>Since the square wave is an odd function, <span class="math inline">\(a_o=a_k=0\)</span>. Solving for <span class="math inline">\(b_k\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+b_k&amp;=\frac{2}{T}\int_{0}^{T}f(t)sin(k\frac{\pi}{L}t)dt\\
+&amp;=\frac{1}{T}\int_{0}^{2L}f(t)sin(k\frac{\pi}{L}t)dt\\
+&amp;=\frac{2}{n\pi}(1-(-1)^n)\\
+\end{aligned}
+\]</span></p>
+<p>Which gives <span class="math inline">\(b_k=\frac{4}{n\pi}\)</span> for odd integers k or <span class="math inline">\(b_k=0\)</span> for even integers k.</p>
+<p>Therefore, the sum of sines representation of a square wave is <span class="math inline">\(f(t)=\sum_{n=1,3,5,...}^{\infty}\frac{4}{n\pi}sin(2\pi nft)\)</span>.</p>
+</div>
+</div>
+</div>
+<p>Since n is a positive odd integer, and we take the sum of the function from n to infinity, the frequency peak locations would be equal to nf = positive odd integer multiples of 11kHz. This is why we see them present at 11, 33, 55, 77, 99 kHz (the x-axis only goes up to 105Hz). If the x-axis extended further, the magnitude of the peaks would eventually become so small that we wouldn’t be able to see them anyway. As more n-terms (and thus frequencies) are included, the sum of sines representation of the square wave gets closer to the shape of a perfect square wave.</p>
+<p>Figure Xd also shows a 11kHz square wave, but with a Hanning window applied, and this eliminates the peaks at the non-odd integer multiples of 11kHz due to the Hanning window removing the periodic discontinuities and additional sinusoid component additions to compensate for them.</p>
+<p>Figure Xe shows a MATLAB-generated plot of the frequency spectrum of the same signal in Figure Xd. The FFT peak positions match between Figures Xe and Xd, but the magnitude of the peaks is different because the y-axis of the oscilloscope plot is in decibels, while the y-axis of the MATLAB plot is in volts.</p>
+<p>Fourier transformations expect all data that is put into it to be periodic, but the collected data is unlikely to be cut off at exactly a period of the real signal, so after the Fourier transform extends the collected data by repeating what is given to it, the FFT algorithm will think there is a periodic discontinuity and add a bunch of high frequency sinusoids to account for the mismatch. Multiplying the data by a windowing function makes sure the data goes to 0 at the sides of the window, and this removes any periodic discontinuities when the signal is repeated. Using a rectangular window would be like using no window at all since the whole signal is multiplied by a constant, so it has an assumed periodic discontinuity, and the Fourier transform will add many high-frequency sinusoids to compensate, whereas using a Hanning window would make the data at the sides of the window go to 0, removing the need for these undesired sinusoids.</p>
+</section>
+<section id="detecting-auv-position-using-acoustics" class="level3">
+<h3 class="anchored" data-anchor-id="detecting-auv-position-using-acoustics">Detecting AUV Position Using Acoustics</h3>
+<p>To pick up underwater audio signals, the team built a waterproof electret microphone circuit using op-amps.</p>
+<p>The gain-bandwidth product is given by <span class="math inline">\(GBWP=f\times g\)</span>, where f is the bandwidth and g is the gain. The gain of the circuit would be limited by the gain from this equation at a certain frequency. Since the output of the microphone is very small (~10mV depending on the input), it needed to be scaled to be readable on an oscilloscope. This was done with two non-inverting amplifiers with a gain of 10 in series. The specific op-amp used was chosen by comparing their tolerant frequencies that would allow for this gain.</p>
+<p>The OP07 op-amp has a GBWP of 0.6MHz. Using the GBWP equation with a gain of 10, the OP07 will have ideal op-amp behaviour and allow for a gain of 10 for frequencies up to 60kHz. The bandwidth of the OP07 at each stage is 60kHz with a gain of 10.</p>
+<p>The TL081 op-amp has a GBWP of 4MHz. Using the GBWP equation with a gain of 10, the TL081 will have ideal op-amp behaviour and allow for a gain of 10 for frequencies up to 400kHz. The bandwidth of the TL081 at each stage is 400kHz with a gain of 10.</p>
+<p>The frequencies we used the microphone with were within both these ranges, so using either op-amp was feasible. The TL081 was chosen since it can amplify a wider frequency range. The schematic for the microphone circuit is shown in Figure x.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/microphoneschematic.png" class="img-fluid figure-img"></p>
+<figcaption>Figure x. Microphone Circuit Schematic</figcaption>
+</figure>
+</div>
+<p>The circuit was tested by reading the output using an oscilloscope while someone clapped (shown in Figure x). The oscilloscope internal FFT function showed that the hand clap has frequencies from 570Hz to 1.1kHz, which are all within the human audible frequency range, which makes sense because we can hear hand claps.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/microphoneoscope.png" class="img-fluid figure-img"></p>
+<figcaption>Figure x. Hand Clap Oscilloscope Trace</figcaption>
+</figure>
+</div>
+<p>After testing, the microphone was placed in water close and facing to each beacon. Figures Xa-c show the oscillloscope traces obtained.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/beacon9k.png" class="img-fluid figure-img"></p>
+<figcaption>Figure Xa. 9kHz Signal Received From Beacon 1</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/beacon13k.png" class="img-fluid figure-img"></p>
+<figcaption>Figure Xb. 11kHz Signal Received From Beacon 2</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/beacon11k.png" class="img-fluid figure-img"></p>
+<figcaption>Figure Xc. 13kHz Signal Received From Beacon 3</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>The frequency each beacon was emitting was observed through the highest magnitude FFT frequency read off the oscilloscope when the microphone was next to that beacon. The emitted signal could be recreated by sampling at various distances away from the beacon.</p>
+<p>Each beacon emits a signal travelling in the forward direction (call this <span class="math inline">\(P_F\)</span> and represent it as sinusoid multiplied by the power transmitted by the speaker <span class="math inline">\(P_0\)</span>), and this gets reflected off a wall in the tank so it travels in the reverse direction (call this <span class="math inline">\(P_R\)</span> and represent it as a sinusoid multiplied by the power transmitted by the speaker <span class="math inline">\(P_0\)</span>), which creates [at least 1] multipath. These are functions of time (t), and <span class="math inline">\(t=0\)</span> since we observed a snapshot in time, and we want to know their amplitude at a certain distance away from the source (x), so that we can sum them and get the power the microphone receives.</p>
+<p><span class="math inline">\(P_F=P_0Re(e^{i(t+2\pi fx)}=p_pRe(e^{i2\pi fx}\)</span> and <span class="math inline">\(P_R=P_0Re(e^{i(t-2\pi fx)}=p_pRe(e^{-i2\pi fx}\)</span></p>
+<p>Thus, <span class="math inline">\(P_{total}=P_F+P_R=2P_0cos(2\pi fx)\)</span>.</p>
+<p>The spatial wavelength is the speed of sound in water (<span class="math inline">\(~1500ms^{-1}\)</span>) divided by the frequency emitted by the beacons (f = 9kHz, 11kHz, 13kHz), which gives λ=16.67, 13.64, 11.54cm (this is the distance between when each wave will start repeating). From Nyquist-Shannon Sampling theorem, we need to sample at least twice the maximum frequency emitted by the beacons to observe the correct signal, so we get that the x-axis spacing needs to be 5.77cm. To be safe, samples were taken closer together at 2cm apart since because the ideal behaviour assuming one multipath will likely not occur.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/FFTMatlab.png" class="img-fluid figure-img"></p>
+<figcaption>Figure X. Voltage Magnitudes Versus Distances for Beacon 1</figcaption>
+</figure>
+</div>
+<p>Figure X shows the collected voltage magnitudes when the microphone was held at various distances away from beacon 1 overlaid onto a line of typical magnitude decay behaviour. The collected data points do not exactly line up with the decay because they show a sinusoidal function decaying over time, which lines up with the emitted signal.</p>
+</section>
+<section id="experimenting-with-sample-rates" class="level3">
+<h3 class="anchored" data-anchor-id="experimenting-with-sample-rates">Experimenting with Sample Rates</h3>
+<p>Using an additional offset amplifier, the microphone circuit was connected to the Teensy 4.0 to sample data. Putting the microphone inside the tank, the first 100 data points of time-scale data and the magnitude of FFTs when sampling at 10kS/s and 100kS/s were plotted, as shown in Figures Xa-d.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/FFT10kS.png" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/FFT100kS.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/Time10kS.png" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/Time100kS.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<p>The FFT plots show different frequency magnitude peaks and the time data plots show different sinusoidal behaviour. This is because the maximum transmitted frequency of the sine waves in the tank was 13kHz. From Nyquist-Shannon Sampling theorem, to observe total signal, we need a sampling frequency greater than twice this frequency, so 26kHz or higher. So the 100kS/s (units equivalent to kHz) sampling rate would be enough to fully observe the wave, whereas using the 10kS/s sample rate would result in aliasing. This explains why the data seen in the 100kS/s plots matched the frequencies in the tank whereas the data we see in the 10kS/s plots shows frequencies smaller than expected.</p>
+<p>Figures Xa-b show the FFT magnitude plot and time-scale plot when sampling at 26kS/s. They show correct frequency peaks and superpositioned waveform.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/FFT26kS.png" class="img-fluid figure-img"></p>
+<figcaption>Figure Xa. Plot of FFT Magnitude for 26kS/s Data (Minimum Sampling Frequency)</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Time26kS.png" class="img-fluid figure-img"></p>
+<figcaption>Figure Xb. Plot of Time Samples for 26kS/s Data (Minimum Sampling Frequency)</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="magnetometer" class="level2">
 <h2 class="anchored" data-anchor-id="magnetometer">Magnetometer</h2>
+<p>The team chose to use a magnetometer to collect magnetic flux density readings on the ocean floor. Magnetic flux density is a quantity that describes the magnitude of a magnetic field. Ferromagnetic materials induce magnetism and change the magnetic field around them when they are placed in an external magnetic field. The Earth has a magnetic field that is downward-angled in the northern hemisphere (which includes the deployment site: Dana Point, CA). Thus, ferromagnetic materials in the deployment area would increase the magnetic flux density around them. This change in magnetic field decreases according to the inverse cube of distance. Magnetic flux density is highly dependent on material composition and object size, and these quantities of the underwater debris were unknown. Therefore, the PNI RM3100 sensor, which converts changes in sensor inductance to magnetic flux density readings, was chosen to detect ferromagnetic materials because of its large range (-800 to 800µT), low noise (15nT), and high sensitivity.</p>
+<p>The magnetometer had both I2C and SPI connection protocols. Since the team did not need particularly high speed data readings (readings would only be taken at the sea floor) and did not need to send at receive data at the same time, the I2C protocol was used. The relevant pins were connected to the Teensy 4.0 as shown in Figure x.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/magnetometerschematic.png" class="img-fluid figure-img"></p>
+<figcaption>Figure x. Magnetometer Wiring Schematic</figcaption>
+</figure>
+</div>
+<p>Its functionality was confirmed by holding various magnets at different distances away from it and observing the change in magnetic flux density readings.</p>
 </section>
 <section id="modifications-to-the-circuits-for-deployment" class="level2">
 <h2 class="anchored" data-anchor-id="modifications-to-the-circuits-for-deployment">Modifications to the Circuits for Deployment</h2>
+<p>To prepare the sensors for deployment at Dana Point, the pressure sensor and thermistor circuits were modified to more appropriately scale their predicted output range to the input range of the Teensy 4.0.</p>
+<section id="sensor-justification" class="level3">
+<h3 class="anchored" data-anchor-id="sensor-justification">Sensor Justification</h3>
+<p>The thermistor was chosen over the IC sensor and thermocouple because of its fast response time, higher sensitivity, very low effect of lead resistance on accuracy, and ease of linearising its non-linear relationship between output resistance and temperature.The NXFT15XH103FEAB035 thermistor was chosen to collect temperature data because of its large operating temperature range (-40-125°C), high accuracy (±1% resistance), and easy integration with the AUV.</p>
+<p>The team decided that temperature and pressure sensors would be suitable for this project’s goals because the concept of geostrophic balance would help us back-calculate debris drop locations.</p>
+<p>Geostrophic balance describes the state of fluid flow (currents) in the ocean based on a steady-state force balance between the pressure gradient in the ocean (which is influenced by factors such as surface winds) and the apparent force on particles moving in the water relative to the Earth’s rotating reference frame. The velocity of fluid particles along the Cartesian x and y axes is related to the fluid density, Earth’s rotation rate, and the latitude of the particle. Flows in the ocean occur along lines of equal pressure, so there would be a different set of current vectors at each measured depth. The density of seawater changes throughout the ocean based on the One Atmosphere International Equation of State of Seawater, which is dependent on temperature and salinity. Salinity of ocean water is roughly constant over 10-100m of depth and along the ocean surface. However, temperature in the ocean changes rapidly (10-20°C fluctuation) over the first 400m deep into the ocean, especially in mid-latitude regions (including California). Thus, to characterize oceanic currents according to the above, pressure and temperature readings were collected at various points in the ocean.</p>
 </section>
+<section id="pressure-sensor" class="level3">
+<h3 class="anchored" data-anchor-id="pressure-sensor">Pressure Sensor</h3>
+<p>The MPX5700 outputs voltages that are linearly related to absolute pressure. It was expected that the pressure sensor would output voltages of 0.85-1.04V corresponding to depths of 0-3m below the ocean’s surface. The 0-3m range was chosen because Dana Point Harbour has depths between 6-15ft (1.83-4.57m), and the deployment locations were in shallower regions with a 0-3m range. As shown in Figure X, the offset amplifier (U3) was modified to scale this output to nearly fill the 0-3.3V input range of the Teensy 4.0 microcontroller to maximize data resolution. A unity gain buffer (U2) was placed between the pressure sensor and offset amplifier to prevent loading effects.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/finalPressureSchematic.png" class="img-fluid figure-img"></p>
+<figcaption>Figure X. Modified Pressure Sensor Circuit Schematic</figcaption>
+</figure>
+</div>
+<p>The offset amplifier was designed with an offset of 14.56V and a gain of -14, calculated using the offset amplifier equation <span class="math inline">\(V_{out}=5\left(1+\frac{R_f}{R_{n1}}\right)\left(\frac{R_g}{R_{p1}+R_g}\right)-\frac{V_{in}R_f}{R_{n1}}\label{eq}\)</span>. The variable values in this equation for this circuit are as depicted in Figure X. This resulted in theoretical output voltages of 0.01-2.73V for depths 3-0m, which is within the desired range. A small voltage buffer was left on each side of the output to ensure fluctuations from noise and unanticipated depths slightly outside the expected range would not cause the circuit to rail out.</p>
+<p>The output of the pressure sensor is DC voltage, so the 10Hz sampling frequency in the code was sufficient. However, as described in the P-control section, the depth control algorithm was modified to allow the AUV to autonomously determine if it had reached the seafloor to isolate magnetometer readings at the bottom of the ocean. The sensor was calibrated to derive an equation relating the output voltage to depth by taping a pressure tube connected to the pressure sensor to a meterstick. The output voltage of the circuit was recorded while holding the end of the tube at depths from 0-0.4m in increments of 0.05m in a graduated cylinder filled with seawater. Figure X shows the resultant calibration curve with 95% confidence level upper and lower observational and functional bounds. The <span class="math inline">\(R^2\)</span> value for the fit was 0.996. After calibration, it was noted that the maximum depth that could be recorded was 3.76m under the surface of the water, which was outside the planned 0-3m range.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/PressureCalibration.png" class="img-fluid figure-img"></p>
+<figcaption>Figure X. Modified Pressure Sensor Circuit Calibration Curve</figcaption>
+</figure>
+</div>
+</section>
+<section id="thermistor-1" class="level3">
+<h3 class="anchored" data-anchor-id="thermistor-1">Thermistor</h3>
+<p>The NXFT15XH103FEAB035 changes its resistance based on its contact temperature. From its datasheet, thermistor resistances of 95420-47000 <span class="math inline">\(\Omega\)</span> were expected for temperatures of 10-25°C, which is the approximate ocean temperature at Dana Point in April with a 2-5°C buffer on each side. As shown in Figure X, a voltage divider was created with the thermistor to convert this output resistance to an output voltage. A unity gain buffer and offset amplifier were then used to scale this output to 0-3.3V in the same way as the pressure sensor. The voltage divider equation is <span class="math inline">\(V_{in}=\frac{5R_{div}}{R_t+R_{div}}\)</span>, with the variable values as depicted in Figure X.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/finalThermistorSchematic.png" class="img-fluid figure-img"></p>
+<figcaption>Figure X. Modified Thermistor Interface Circuit</figcaption>
+</figure>
+</div>
+<p>The offset amplifier was designed with an offset of 12.13V and a gain of -3. This resulted in theoretical output voltages of 0.37-2.95V for temperatures 25-10°C, which is within the desired range. Like the pressure sensor, the voltage buffer on each side of the output prevents railing out during deployment.</p>
+<p>The output of the thermistor interface circuit is DC voltage, so the default 10Hz sampling frequency in the code was sufficient, and no software modifications were made.</p>
+<p>The thermistor resistance is related to temperature based on the Steinhart-Hart equation, where T is the temperature in K, R is the thermistor resistance in <span class="math inline">\(\Omega\)</span>, and A, B, C, and D are unitless Steinhart-Hart coefficients. As shown in Figure X, the thermistor was calibrated by measuring output voltages when placing the thermistor in 10-25°C water baths, backcalculating the thermistor resistance using, and finding the Steinhart-Hart coefficients. The coefficients with 95% confidence bounds were found to be A=0.02348 (-0.1563, 0.2032), B=-0.005701 (-0.05414, 0.04274), C=5.159 <span class="math inline">\(\times10^{-4}\)</span> (-0.003816, 0.004848), and D=-1.487 <span class="math inline">\(\times10^{-5}\)</span> (-1.424×<span class="math inline">\(10^{-4}\)</span>, 1.127×<span class="math inline">\(10^{-4}\)</span>). Combining the offset amplifier equation and Steinhart-Hart equation determined the relationship between output voltage and temperature.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/SHFit2.png" class="img-fluid figure-img"></p>
+<figcaption>Figure X. Steinhart-Hart Fit With 95% Confidence Lebel Upper and Lower Functional/Observational Bounds Relating Thermistor Resistance to Contact Temperature</figcaption>
+</figure>
+</div>
+</section>
+<section id="magnetometer-1" class="level3">
+<h3 class="anchored" data-anchor-id="magnetometer-1">Magnetometer</h3>
+<p>The magnetometer interface circuit was not modified after the I2C connection (Serial Clock (SCL), Serial Data (SDA), and Data Ready (DRDY) lines) was tested to work.</p>
+<p>The default 10Hz sampling frequency in the code was sufficient for the magnetometer readings. The magnetic flux density was expected to be a roughly constant value at each position, and not a periodic signal, so the sampling frequency producing aliasing was not a concern. Separately, the RM3100 has a data update rate of 37Hz, meaning it would complete a measurement and flag DRDY every 0.027s [13]. If the sampling frequency were more than 37Hz, the Teensy 4.0 could attempt to read data when there is no real output, producing gaps or anomalous values in the recorded data.</p>
+<p>Modifications to the code were made in the form of writing C++ functions and constants necessary for the magnetometer to collect and save separate-axis and total magnitude magnetic flux density readings in µT.</p>
+<p>The sensor was re-validated before deployment by using it to collect data in open air and away from any ferromagnetic objects (apart from data collection hardware) for around 10 minutes. Figure X shows the results of this data collection, where readings fluctuated between around 50.25-50.6µT, which falls within the expected range of 22-67µT on the Earth’s surface.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/MagParsons.png" class="img-fluid figure-img"></p>
+<figcaption>Figure X. Magnetic Flux Density Readings Collected in Open Air Over 10 Minutes</figcaption>
+</figure>
+</div>
+</section>
+</section>
+</section>
+<section id="mechanical-design-buoyancy-and-waterproofing" class="level1">
+<h1>Mechanical Design: Buoyancy and Waterproofing</h1>
+<p>The AUV was designed to be a diving and surface robot which would autonomously use P-control to travel to a selected waypoint on the surface of the water located through a GPS. It would then use P-control to dive to selected depth waypoints, stopping at each one for five seconds to take measurements of temperature and magnetic flux density until it either reached the maximum set depth of 3.5m or the sea floor. It would then surface and navigate to a set location for collection.</p>
+<p>As shown in Figure X, the AUV was shaped as a rectangular prism with two z-direction motors for diving and two xy-direction motors for surface navigation attached along the center horizontal axis. A waterproof box enclosing a Teensy 4.0, Inertial Measurement Unit (IMU), Global Positioning System unit (GPS), motor drivers, a microSD card with a reader, and the sensor circuits was placed on the top of the AUV. The magnetometer sensor was enclosed in a separate waterproof box at the bottom of the AUV. This was done to maximize the distance between the motors, the magnetometer sensor at the bottom of the AUV, and the magnetometer integrated in the IMU at the top of the AUV, such that the motors have limited interference with each of the magnetometer’s readings. The pressure sensor tube was fixed along the side of the AUV such that it ended at a point level with the motors, so that when the z-direction motors drove upwards at maximum speed, the pressure tube would end at the surface of the water. The thermistor was fixed along the other side of the AUV such that its head was at the same level as the pressure sensor tube end to take measurements at the same depth.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/AUV.png" class="img-fluid figure-img"></p>
+<figcaption>Figure X. Annotated Isometric View of the AUV</figcaption>
+</figure>
+</div>
+<p>The waterproof boxes were adapted to fit all wires and the pressure tube using penetrator bolts coated with marine epoxy. The top box had five penetrator bolts to hold the pressure tube, 2 wires for the thermistor, 2 wires for each of the 4 motors, and 6 wires for the magnetometer ground, power, and data lines. The bottom box had two penetrator bolts to hold the 6 magnetometer wires, and the ground and power wires were later split to accommodate the necessary pins. All sensors were waterproofed to prevent shorts in the water by heat-shrinking any exposed solder connections.</p>
+<p>The AUV was designed to be approximately neutrally buoyant so that the z-direction motors could generate enough thrust for both descending and ascending in the water. The AUV had a total mass of 2.45kg. Using the equation for buoyancy force <span class="math inline">\(F_b=\rho Vg\)</span> , where <span class="math inline">\(F_{b}\)</span> is the buoyancy force of an object in N, <span class="math inline">\(\rho\)</span> is the density of fluid the object is in in <span class="math inline">\(kgm^{-3}\)</span>, V is the object volume in <span class="math inline">\(m^3\)</span>, and g is the gravitational acceleration in <span class="math inline">\(ms^{-2}\)</span>, the total buoyancy force from all components such as the waterproof boxes, pool noodles, and motors on the AUV was 41.80N.</p>
+<p>To make the AUV neutrally buoyant, the force of gravity had to be roughly equal to the buoyancy force. The mass of ballast that needed to be added to the AUV to achieve this was calculated using <span class="math inline">\(m_{ballast}=\frac{F_b}{g}-m_{AUV}\)</span>, where <span class="math inline">\(m_{ballast}\)</span> is the required mass of ballast in kg, <span class="math inline">\(F_b\)</span> is the total buoyancy force on the AUV in N, g is the gravitational acceleration in <span class="math inline">\(ms^{-2}\)</span>, and <span class="math inline">\(m_{AUV}\)</span> is the total mass of the AUV in kg. By calculation, ballast weighing around 1.8kg was needed. However, after adding this, the AUV was slightly positively buoyant at the test deployment site pHake Lake, so a total of around 2kg of ballast was used. After this addition, the AUV was also positively buoyant at Dana Point due to the higher density of saltwater versus freshwater, so a total ballasting weight of 2.4977kg was used.</p>
+<p>By symmetry, the center of buoyancy and mass of the AUV were along its center z-axis. Due to last-minute changes to the AUV, the center of buoyancy was 30.48cm from the top of the AUV, and the center of mass was 18.43cm from the top of the AUV. Since the center of buoyancy was below the center of mass, the AUV was not stable in the water. However, it still had a limited risk of tipping over because the waves at Dana Point were not strong enough to push the AUV past its restorative balancing point.</p>
 </section>
 <section id="p-control" class="level1">
 <h1>P-Control</h1>
@@ -837,23 +1128,30 @@ R_{Fmin}&amp;=95\Omega
 <h2 class="anchored" data-anchor-id="surface-navigation-control">Surface Navigation Control</h2>
 </section>
 </section>
-<section id="mechanical-design" class="level1">
-<h1>Mechanical Design</h1>
-<section id="buoyancy" class="level2">
-<h2 class="anchored" data-anchor-id="buoyancy">Buoyancy</h2>
-</section>
-<section id="waterproofing" class="level2">
-<h2 class="anchored" data-anchor-id="waterproofing">Waterproofing</h2>
-</section>
-</section>
 <section id="deployment" class="level1">
 <h1>Deployment</h1>
+<section id="deployment-procedure" class="level2">
+<h2 class="anchored" data-anchor-id="deployment-procedure">Deployment Procedure</h2>
+<p>A test deployment was conducted at pHake Lake, but no usable data was collected due to the Teensy 4.0 combusting from an internal short and a bug in the Arduino IDE code that caused a replacement Teensy 4.0 to reset every 5 seconds.</p>
+<p>Deployments at Dana Point were conducted in the early morning to minimize human activity that could interfere with the AUV’s position while diving. Initially, it was planned that both surface and depth control would be used to deploy the AUV autonomously. However, the GPS readings were too unreliable to use surface control, as the readings would fluctuate on a scale of 5m, and the AUV refused to move past the first waypoint. Additionally, the GPS lock would be lost after diving and would take over 10 minutes to reconnect to satellites, so it would not be able to return to shore reliably. Only depth control was used for data collection.</p>
+<p>At Dana Point, a new calibration curve was obtained for the pressure sensor circuit. The resultant calibration equation was entered into the C++ code to ensure accurate depth readings during deployment. The voltage output of the pressure sensor interface circuit indicated surface pressures of 96.03-97.57kPa, which was close to the 101.7kPa measured with a phone barometer app. The thermistor and magnetometer were not formally recalibrated or revalidated at Dana Point, but magnetic flux density readings from the magnetometer in the air were 30.15-46.58µT, which aligned with the expected range, and the voltage output of the thermistor interface circuit indicated air temperatures of 13.14-13.18°C, which was within range of the probed measurements of around 12-14°C.</p>
+<p>In each deployment, 8 depth waypoints from 0 to 3.5m in increments of 0.5m were entered through Arduino IDE. The microSD card was placed in its reader, the Teensy 4.0 was then connected to a laptop through a USB cable, and the code was uploaded through Arduino IDE. After confirming data was being logged and that reasonable outputs from the magnetometer were displayed on the serial monitor, the Teensy 4.0 was disconnected, the waterproof boxes were sealed and strapped to the AUV with velcro strips, and the AUV was dropped in the ocean upright. The approximate latitude and longitude of the deployment point were recorded by dropping a pin on Google Maps. After the AUV resurfaced, it was removed from the water by pulling on an attached tether. It was dried off with a towel, and the microSD card was removed so that its logged data could be taken and analyzed using MATLAB.</p>
+<p>To collect experimental data, the AUV was deployed along the edge of Dana Point Pier in increments of about 1.5m away from each previous trial. This location was chosen for the easy monitoring and retrieval of the AUV, and the ability to deploy the AUV in a gridlike path to collect magnetic flux density readings at approximated locations, without using surface control or the unreliable AUV GPS readings. Figure X shows the deployment locations as red dots on a map of Dana Point Pier. The plotted points may not be accurate because the latitude and longitude of deployment locations and image cropping bounds were approximated on Google Maps.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/locations.png" class="img-fluid figure-img"></p>
+<figcaption>Figure X. Deployment locations at Dana Point Pier. Positions are with reference to the set origin of (34.1226883, -117.7650364)</figcaption>
+</figure>
+</div>
+</section>
 </section>
 <section id="results-and-conclusion" class="level1">
 <h1>Results and Conclusion</h1>
 </section>
 <section id="final-paper" class="level1">
 <h1>Final Paper</h1>
+<p>Read through my IEEE-formatted technical report about this project here!</p>
+<div class="embedpdf" data-src="docs/NKoE80FinalReport.pdf" data-renderer="auto" data-width="100%" data-height="600"><a href="docs/NKoE80FinalReport.pdf" download="">Download PDF file.</a></div>
 
 
 </section>
@@ -1365,4 +1663,7 @@ Let’s build something.
 
 
 <script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../../site_libs/quarto-contrib/embedpdf-1.2.4/embedpdf-viewer.js" type="module"></script>
+<script src="../../site_libs/quarto-contrib/embedpdf-pdfjs-1.2.4/pdf.min.mjs" type="text/x-embedpdf-pdfjs"></script>
+<script src="../../site_libs/quarto-contrib/embedpdf-pdfjs-1.2.4/pdf.worker.min.mjs" type="text/x-embedpdf-worker"></script>
 </body></html>
