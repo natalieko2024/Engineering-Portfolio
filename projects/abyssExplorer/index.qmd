@@ -2,6 +2,7 @@
 title: "Abyss Explorer"
 date-range: "Feb 2025 – May 2025"
 description: "Designed and manufactured a system to raise and lower sensors through a ~600ft radioactive mine shaft (shrinking to an unknown diameter) for data collection without direct human contact."
+title-block-style: none
 subtitle : ""
 image: "abyssExplorer.jpg"
 resources:
@@ -20,10 +21,30 @@ roles: "Payload Design Lead, Test Engineering Lead (Team of 5)"
   <div><strong>Roles:</strong> {{< meta roles >}}</div>
 </div>
 
-# Here's a short clip of our design in action!
-::: {style="display: flex; justify-content: center;"}
-::: {style="width: 50%; max-width: 65%;"}
+:::{.columns}
+
+::: {.column width="49%"}
 {{< video videos/testing.mov autoplay=true muted=true loop=true >}}
+
+![](images/CADAssembly.png)
+:::
+
+::: {.column width="2%"}
+:::
+
+::: {.column width="49%"}
+**Overview of Work:**
+
+Worked in a team of 5 to design and manufacture a system to raise and lower sensors through a ~600ft radioactive mine shaft (shrinking to an unknown diameter) for data collection without direct human contact.
+
+Key outcomes:
+
+- **Designed a protective sensor payload** (≤6" diameter) **and lowering mechanism** capable of traversing 600ft at ≥1ft/s while withstanding 70-90% humidity, 20-110°F temperatures, and shock impacts
+- **Authored full industry-standard manufacturing deliverables,** including technical drawings, SolidWorks Pack and Go, Bill of Materials (BOM), and process routers for future client reference, fabrication, and field-testing
+- **Iteratively prototyped** from low to high-resolution prototypes and designed experiments to clarify project scope and requirements
+- **Utilized structured decision matrix tools** (Pairwise Comparison Charts, Morphological Charts, and Best of Class Charts) to downselect design alternatives
+- Translated vague client requirements into quantifiable functions, constraints, and objectives to **prevent scope creep and ensure client needs are met**
+
 :::
 :::
 
