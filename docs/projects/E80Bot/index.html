@@ -377,17 +377,16 @@ window.Quarto = {
   <li><a href="#magnetometer-1" id="toc-magnetometer-1" class="nav-link" data-scroll-target="#magnetometer-1">Magnetometer</a></li>
   </ul></li>
   </ul></li>
+  <li><a href="#mechanical-design-buoyancy-and-waterproofing" id="toc-mechanical-design-buoyancy-and-waterproofing" class="nav-link" data-scroll-target="#mechanical-design-buoyancy-and-waterproofing">Mechanical Design: Buoyancy and Waterproofing</a></li>
   <li><a href="#p-control" id="toc-p-control" class="nav-link" data-scroll-target="#p-control">P-Control</a>
   <ul class="collapse">
   <li><a href="#depth-control" id="toc-depth-control" class="nav-link" data-scroll-target="#depth-control">Depth Control</a></li>
   <li><a href="#surface-navigation-control" id="toc-surface-navigation-control" class="nav-link" data-scroll-target="#surface-navigation-control">Surface Navigation Control</a></li>
   </ul></li>
-  <li><a href="#mechanical-design" id="toc-mechanical-design" class="nav-link" data-scroll-target="#mechanical-design">Mechanical Design</a>
+  <li><a href="#deployment" id="toc-deployment" class="nav-link" data-scroll-target="#deployment">Deployment</a>
   <ul class="collapse">
-  <li><a href="#buoyancy" id="toc-buoyancy" class="nav-link" data-scroll-target="#buoyancy">Buoyancy</a></li>
-  <li><a href="#waterproofing" id="toc-waterproofing" class="nav-link" data-scroll-target="#waterproofing">Waterproofing</a></li>
+  <li><a href="#deployment-procedure" id="toc-deployment-procedure" class="nav-link" data-scroll-target="#deployment-procedure">Deployment Procedure</a></li>
   </ul></li>
-  <li><a href="#deployment" id="toc-deployment" class="nav-link" data-scroll-target="#deployment">Deployment</a></li>
   <li><a href="#results-and-conclusion" id="toc-results-and-conclusion" class="nav-link" data-scroll-target="#results-and-conclusion">Results and Conclusion</a></li>
   <li><a href="#final-paper" id="toc-final-paper" class="nav-link" data-scroll-target="#final-paper">Final Paper</a></li>
   </ul>
@@ -1099,11 +1098,26 @@ b_k&amp;=\frac{2}{T}\int_{0}^{T}f(t)sin(k\frac{\pi}{L}t)dt\\
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/MagParsons.png" class="img-fluid figure-img"></p>
-<figcaption>Figure X. Magnetic Flux Density Readings Collected in Open Air over 10 Minutes</figcaption>
+<figcaption>Figure X. Magnetic Flux Density Readings Collected in Open Air Over 10 Minutes</figcaption>
 </figure>
 </div>
 </section>
 </section>
+</section>
+<section id="mechanical-design-buoyancy-and-waterproofing" class="level1">
+<h1>Mechanical Design: Buoyancy and Waterproofing</h1>
+<p>The AUV was designed to be a diving and surface robot which would autonomously use P-control to travel to a selected waypoint on the surface of the water located through a GPS. It would then use P-control to dive to selected depth waypoints, stopping at each one for five seconds to take measurements of temperature and magnetic flux density until it either reached the maximum set depth of 3.5m or the sea floor. It would then surface and navigate to a set location for collection.</p>
+<p>As shown in Figure X, the AUV was shaped as a rectangular prism with two z-direction motors for diving and two xy-direction motors for surface navigation attached along the center horizontal axis. A waterproof box enclosing a Teensy 4.0, Inertial Measurement Unit (IMU), Global Positioning System unit (GPS), motor drivers, a microSD card with a reader, and the sensor circuits was placed on the top of the AUV. The magnetometer sensor was enclosed in a separate waterproof box at the bottom of the AUV. This was done to maximize the distance between the motors, the magnetometer sensor at the bottom of the AUV, and the magnetometer integrated in the IMU at the top of the AUV, such that the motors have limited interference with each of the magnetometer’s readings. The pressure sensor tube was fixed along the side of the AUV such that it ended at a point level with the motors, so that when the z-direction motors drove upwards at maximum speed, the pressure tube would end at the surface of the water. The thermistor was fixed along the other side of the AUV such that its head was at the same level as the pressure sensor tube end to take measurements at the same depth.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/AUV.png" class="img-fluid figure-img"></p>
+<figcaption>Figure X. Annotated Isometric View of the AUV</figcaption>
+</figure>
+</div>
+<p>The waterproof boxes were adapted to fit all wires and the pressure tube using penetrator bolts coated with marine epoxy. The top box had five penetrator bolts to hold the pressure tube, 2 wires for the thermistor, 2 wires for each of the 4 motors, and 6 wires for the magnetometer ground, power, and data lines. The bottom box had two penetrator bolts to hold the 6 magnetometer wires, and the ground and power wires were later split to accommodate the necessary pins. All sensors were waterproofed to prevent shorts in the water by heat-shrinking any exposed solder connections.</p>
+<p>The AUV was designed to be approximately neutrally buoyant so that the z-direction motors could generate enough thrust for both descending and ascending in the water. The AUV had a total mass of 2.45kg. Using the equation for buoyancy force <span class="math inline">\(F_b=\rho Vg\)</span> , where <span class="math inline">\(F_{b}\)</span> is the buoyancy force of an object in N, <span class="math inline">\(\rho\)</span> is the density of fluid the object is in in <span class="math inline">\(kgm^{-3}\)</span>, V is the object volume in <span class="math inline">\(m^3\)</span>, and g is the gravitational acceleration in <span class="math inline">\(ms^{-2}\)</span>, the total buoyancy force from all components such as the waterproof boxes, pool noodles, and motors on the AUV was 41.80N.</p>
+<p>To make the AUV neutrally buoyant, the force of gravity had to be roughly equal to the buoyancy force. The mass of ballast that needed to be added to the AUV to achieve this was calculated using <span class="math inline">\(m_{ballast}=\frac{F_b}{g}-m_{AUV}\)</span>, where <span class="math inline">\(m_{ballast}\)</span> is the required mass of ballast in kg, <span class="math inline">\(F_b\)</span> is the total buoyancy force on the AUV in N, g is the gravitational acceleration in <span class="math inline">\(ms^{-2}\)</span>, and <span class="math inline">\(m_{AUV}\)</span> is the total mass of the AUV in kg. By calculation, ballast weighing around 1.8kg was needed. However, after adding this, the AUV was slightly positively buoyant at the test deployment site pHake Lake, so a total of around 2kg of ballast was used. After this addition, the AUV was also positively buoyant at Dana Point due to the higher density of saltwater versus freshwater, so a total ballasting weight of 2.4977kg was used.</p>
+<p>By symmetry, the center of buoyancy and mass of the AUV were along its center z-axis. Due to last-minute changes to the AUV, the center of buoyancy was 30.48cm from the top of the AUV, and the center of mass was 18.43cm from the top of the AUV. Since the center of buoyancy was below the center of mass, the AUV was not stable in the water. However, it still had a limited risk of tipping over because the waves at Dana Point were not strong enough to push the AUV past its restorative balancing point.</p>
 </section>
 <section id="p-control" class="level1">
 <h1>P-Control</h1>
@@ -1114,17 +1128,22 @@ b_k&amp;=\frac{2}{T}\int_{0}^{T}f(t)sin(k\frac{\pi}{L}t)dt\\
 <h2 class="anchored" data-anchor-id="surface-navigation-control">Surface Navigation Control</h2>
 </section>
 </section>
-<section id="mechanical-design" class="level1">
-<h1>Mechanical Design</h1>
-<section id="buoyancy" class="level2">
-<h2 class="anchored" data-anchor-id="buoyancy">Buoyancy</h2>
-</section>
-<section id="waterproofing" class="level2">
-<h2 class="anchored" data-anchor-id="waterproofing">Waterproofing</h2>
-</section>
-</section>
 <section id="deployment" class="level1">
 <h1>Deployment</h1>
+<section id="deployment-procedure" class="level2">
+<h2 class="anchored" data-anchor-id="deployment-procedure">Deployment Procedure</h2>
+<p>A test deployment was conducted at pHake Lake, but no usable data was collected due to the Teensy 4.0 combusting from an internal short and a bug in the Arduino IDE code that caused a replacement Teensy 4.0 to reset every 5 seconds.</p>
+<p>Deployments at Dana Point were conducted in the early morning to minimize human activity that could interfere with the AUV’s position while diving. Initially, it was planned that both surface and depth control would be used to deploy the AUV autonomously. However, the GPS readings were too unreliable to use surface control, as the readings would fluctuate on a scale of 5m, and the AUV refused to move past the first waypoint. Additionally, the GPS lock would be lost after diving and would take over 10 minutes to reconnect to satellites, so it would not be able to return to shore reliably. Only depth control was used for data collection.</p>
+<p>At Dana Point, a new calibration curve was obtained for the pressure sensor circuit. The resultant calibration equation was entered into the C++ code to ensure accurate depth readings during deployment. The voltage output of the pressure sensor interface circuit indicated surface pressures of 96.03-97.57kPa, which was close to the 101.7kPa measured with a phone barometer app. The thermistor and magnetometer were not formally recalibrated or revalidated at Dana Point, but magnetic flux density readings from the magnetometer in the air were 30.15-46.58µT, which aligned with the expected range, and the voltage output of the thermistor interface circuit indicated air temperatures of 13.14-13.18°C, which was within range of the probed measurements of around 12-14°C.</p>
+<p>In each deployment, 8 depth waypoints from 0 to 3.5m in increments of 0.5m were entered through Arduino IDE. The microSD card was placed in its reader, the Teensy 4.0 was then connected to a laptop through a USB cable, and the code was uploaded through Arduino IDE. After confirming data was being logged and that reasonable outputs from the magnetometer were displayed on the serial monitor, the Teensy 4.0 was disconnected, the waterproof boxes were sealed and strapped to the AUV with velcro strips, and the AUV was dropped in the ocean upright. The approximate latitude and longitude of the deployment point were recorded by dropping a pin on Google Maps. After the AUV resurfaced, it was removed from the water by pulling on an attached tether. It was dried off with a towel, and the microSD card was removed so that its logged data could be taken and analyzed using MATLAB.</p>
+<p>To collect experimental data, the AUV was deployed along the edge of Dana Point Pier in increments of about 1.5m away from each previous trial. This location was chosen for the easy monitoring and retrieval of the AUV, and the ability to deploy the AUV in a gridlike path to collect magnetic flux density readings at approximated locations, without using surface control or the unreliable AUV GPS readings. Figure X shows the deployment locations as red dots on a map of Dana Point Pier. The plotted points may not be accurate because the latitude and longitude of deployment locations and image cropping bounds were approximated on Google Maps.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/locations.png" class="img-fluid figure-img"></p>
+<figcaption>Figure X. Deployment locations at Dana Point Pier. Positions are with reference to the set origin of (34.1226883, -117.7650364)</figcaption>
+</figure>
+</div>
+</section>
 </section>
 <section id="results-and-conclusion" class="level1">
 <h1>Results and Conclusion</h1>
@@ -1295,7 +1314,7 @@ const PROJECTS=[
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/natalieko2024\.github\.io\/Engineering-Portfolio\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
