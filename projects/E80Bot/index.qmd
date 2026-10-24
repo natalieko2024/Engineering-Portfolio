@@ -505,6 +505,8 @@ By symmetry, the center of buoyancy and mass of the AUV were along its center z-
 
 ## Surface Navigation Control
 
+Surface control was ultimately not used during deployment. Although 
+
 # Deployment
 
 ## Deployment Procedure
@@ -530,6 +532,50 @@ To prevent environmental waste, a tether was tied to the AUV and held onto durin
 To ensure personal safety, both boxes were checked to be sealed with no protruding wires before deployment to prevent the electronics from getting wet and producing hazardous shorts that deployment personnel could touch. Unexpected occurrences, such as the hardware sparking and foaming, led to immediate deployment abortions, and relevant hardware was replaced before redeployment as needed.
 
 # Results and Analysis
+
+## Pressure Sensor and Depth Control
+
+During each deployment, the AUV recorded depth continuously while performing P-control. Figure X shows the depth tracked during one deployment. The pressure sensor collected very accurate depth measurements, as the recorded depth fluctuated by at most ±0.032m when the AUV was at the surface or bottom of the ocean. Furthermore, the $R^2$ value of the calibration curve was 0.996, suggesting the calibration curve equation used can predict depth based on output voltage very accurately.
+
+![Figure X. Recorded Depth Data From the AUV Diving to and Hovering at Waypoints 0.5, 1, 1.5, and 2m below the Ocean Surface, and at the Ocean Floor at Dana Point Pier](images/Depth.png)
+
+The P-control was successful in holding the AUV’s position at each waypoint, as over the 5 seconds it had to hold its position for, the largest overshoot was by 0.048m when the AUV attempted to reach the first waypoint at 0.5m. After the overshoot, the AUV almost immediately corrected itself and held its value within ±0.02m before moving to the next waypoint. These depth variations are negligible compared to the deepest deployment of 3m in one trial. The depth control algorithm as a whole was also successful, as the AUV was able to determine it had reached the seafloor at around 2.35m below the ocean surface and autonomously came up. The time it took for the AUV to determine it had reached the seafloor varied greatly between trials. In one trial, the AUV ran the depth control algorithm for around 10 minutes before resurfacing. This is because the algorithm determines if the AUV has reached the seafloor when the difference between maximum and minimum output voltages in a range of about 20 seconds is less than 0.05V. Environmental factors, such as other AUVs being simultaneously deployed, could have shifted the AUV underwater in this time frame and changed the output voltage, thus increasing the time spent on the seafloor.
+
+## Thermistor
+
+The AUV also collected temperature measurements continuously. As shown in Figure X, the collected temperature readings of a near-constant 28.0545°C were significantly higher than the obtained ground truth measurement of 18.4-18.7°C from probing the seawater at the surface with a digital thermometer. Upon further analysis, these readings indicated that either the op-amps or the Teensy 4.0 likely railed out, because an output voltage of 0V from the thermistor interface circuit would result in this exact temperature value. Even for the non-constant values, such as the two sharp peaks in Figure X, the temperature is significantly higher than the expected value.
+
+![Figure X. Thermistor data collected during deployment at Dana Point Pier](images/Temp.png)
+
+It was first hypothesized that the motors running drew too much current, and this could have prevented the thermistor interface circuit from working properly. However, data from the thermistor was collected in the air and with the motors running, and the thermistor read reasonable values of ~13°C. It was then hypothesized that because the thermistor had reasonable readings in air and only railed out in the water, part of the thermistor was shorting in the water. The ends of the heat-shrunk areas of the thermistor were probable entry points for seawater, so they were dried and then wrapped with Parafilm in an attempt to waterproof them. However, this produced the same issue of railing out. The thermistor was then detached from the AUV, and its wire was slowly dropped deeper into the water. When only the head of the thermistor was in the water, output voltages indicated a temperature of around 12°C, but when more of the wire was put into the water, the circuit railed out. This means there was likely a nick somewhere along the wire insulation, and this caused the thermistor to short and effectively make its resistance negligible in seawater. The exact location of this hypothetical nick could not be determined. The obtained 12°C temperature is still significantly different from the ground truth measurement, indicating a separate issue with the thermistor interface circuit. One possible explanation for this issue is that, since resistors were desoldered and replaced to debug the thermistor interface circuit at Dana Point, the individual resistor values could have changed due to soldering at high temperatures of around 700°F.
+
+## Magnetomer
+
+The magnetometer also behaved strangely in the water. As shown in Figure X, when the AUV started descending in the ocean, the magnetic flux density reading would spike to an invalid value (874.733µT is out of the range of the RM3100’s readings) and then read a constant value for the rest of the deployment. 
+
+![Figure X. Magnetic Flux Density During Dana Point Pier Deployment With All Data Points (left) and With the Peak Value Removed (right)](images/MagDana.png)
+
+It was hypothesized that the motors produced electromagnetic interference (EMI), which interfered with the I2C data transmission. EMI can produce three types of errors in I2C sensors: no communication, erroneous values, and permanent values from the sensor. This aligns with the collected data, in that the large spike is an erroneous value, and the constant value indicates either no communication or a permanent value being transmitted. To confirm this theory that motors producing EMI interfered with the magnetometer’s I2C communication, a recreation of this spike and flatline pattern was attempted by taping a motor to a waterproof box with the magnetometer and circuitry, running the code used at Dana Point on the same hardware, and dropping this setup in a tank of freshwater. With this setup, the magnetometer produced steady readings without any anomalous peaks or flatlines. The magnetometer was then taken out of the box and pressed directly against the running motor. This produced the peak and flatline pattern. Upon further investigation with an oscilloscope, it was found that the DRDY pin output a constant HIGH signal when pressed against the running motor, meaning new data was never being pushed to the relevant registers. Because this pattern only occurred when the magnetometer and motors were far apart in seawater and not in freshwater, it is hypothesized that the seawater amplified the EMI more than freshwater, causing interference only in the Dana Point deployments.
+
+# Conclusions
+
+This project aimed to determine the effectiveness of calculating geostrophic flow through pressure and temperature measurements and mapping seafloor debris through magnetometry.
+
+The pressure sensor was the most successful sensor used. Its calibration curve had an extremely high $R^{2}$ value of 0.996, meaning its output voltages were well correlated with depth, even after amplification from the circuit. Additionally, it worked well with the depth control algorithm, in that the AUV correctly held itself at each waypoint within ±0.02m, correctly determined it had reached the sea floor with readings fluctuating by only ±0.032m, and surfaced on its own.
+
+The thermistor did not produce any reliable readings underwater. It railed out at around 28°C in each trial. However, from testing, this was likely due to a break along the wire, which would have caused the sensor to short, and this is easily fixable through additional heatshrink or coating the wires with some waterproof material. The narrow 95% confidence intervals for the Steinhart-Hart coefficients from calibrating the thermistor imply that it was well calibrated and had high precision, and fixing this issue would have produced very accurate sensor readings.
+
+The magnetometer did not produce sufficient data to locate seafloor debris at Dana Point. Although it failed to produce reliable readings at Dana Point, readings in the air fell within the expected range. Thus, further development and exploration into its behaviour with EMI from motors in seawater could improve the reliability of this sensor in the ocean, so that it could be used in a similar AUV.
+
+Due to the inadequate temperature and magnetic flux density data, geostrophic flow was not calculated, and a map of seafloor debris was not obtained.
+
+The measured temperature from the thermistor circuit had serious discrepancies with the probed measurement, and the magnetometer readings could not be reasonably correlated with the true magnetic flux density underwater. Future exploration would benefit from finding a better method to waterproof the thermistor and prevent shorts along its path, and exploration into preventing EMI from disrupting I2C sensor readings. After resolving these issues, attempting to characterize geostrophic flow and locating ferromagnetic debris on the seafloor using the collected data would confirm whether utilizing pressure, temperature, and magnetic flux density is a feasible method for accurately locating ocean wreckages.
+
+As a proof of concept, Figure X shows a contour plot of magnetic flux density collected by scattering neodymium magnets on the floor outside of Parsons Engineering Building in Claremont, CA, and plotting collected magnetic flux density readings from the magnetometer corresponding to GPS-obtained positions. The peak value at around (4833, -1817) and other elevated values at (4846, -1813) and (4839, -1815) roughly correspond to the magnet locations. Assuming more reasonable magnetic flux density readings can be obtained in the ocean, a similar plot outlining the location of ferromagnetic materials on the seafloor could be acquired.
+
+![Figure X. Contour Plot of Magnetic Flux Density Collected Outside Parsons Engineering Building, Claremont, CA. Positions are With Reference to the Set Origin of (34.1226883, -117.7650364)](images/contourbetterlabels.png)
+
+Besides improving the method outlined in this paper, work using other sensors that would encompass a more comprehensive view of seafloor debris should be considered. Sensors such as high-resolution side-scan sonar could be used to confirm if detected ferromagnetic materials on the seafloor are actually relevant debris or just part of the ocean’s natural ecosystem. In addition, the high error in the GPS made surface control at Dana Point very unreliable and unusable. Using a more accurate GPS module would increase the accuracy of plotted values in the contour plot and enable the AUV to traverse to various surface waypoints and start depth control at remote locations autonomously. 
 
 # Final Paper
 
