@@ -1,0 +1,31 @@
+---
+title: "Undergraduate Research Assistant"
+subtitle: "On-Campus Job/Research for Academic Credit, Harvey Mudd College Biophotonics Lab"
+date-range: "Jan 2025 - Dec 2025"
+skills: "Optics, Fourier Analysis, Equipment Design, Technical Documentation"
+search: false
+---
+
+<div class="project-metadata-bar">
+  <div><strong>Timeline:</strong> {{< meta date-range >}}</div>
+  <div><strong>Skills:</strong> <span class="skills-val">{{< meta skills >}}</span></div>
+</div>
+
+[← Back to Digital CV](../resume.qmd){.btn-pill}
+
+The Harvey Mudd College Biophotonics Lab works to democratize access to biomedical optical instruments by building on existing methods. The project I worked on was the development of a low-cost, open-source in vivo imaging system. Commercial in vivo imaging systems have a wide range of powerful imaging capabilities, but are very expensive and inaccessible to many small institutions. This project would help democratize access to these imaging capabilities at a similar sensitivity level while remaining easy for manufacture and set up in a home or school setting.
+
+Key experiences and outcomes include:
+- Refined/redesigned an open-source, low-cost in vivo imaging system (OpenIVIS)
+    - Collaborated with two undergraduate students to refine to work on this project
+    - Reduced the production cost of the IVIS by over 99% compared to commercial systems
+    - Improved the laser speckle contrast and bioluminescence imaging capabilities compared to the base OpenIVIS system, successfully processing collected images using Python
+- Deployed the system in a separate research lab setting 
+    - The system was used for imaging iLux and NanoLuc enzymes at Claremont McKenna College’s Rathbun Lab
+    - Plotted intensity vs photon count, intensity vs enzyme concentration, and concentration vs photon count using Python
+- Experimented and troubleshot the setup for optimal imaging capabilities
+    - Troubleshot Raspberry Pi hardware components using oscilloscopes and software using Terminal
+    - Devised experimental optics setups (using traditional components and 3D printed stands) and configured them for optimal magnification
+- Authored and presented technical documentation
+    - Wrote white papers, updated documentation, and presented on progress to other Engineering researchers
+    - Wrote and presented a poster about Laser Speckle Contrast Imaging and OpenIVIS at the Southern California Conferences for Undergraduate Research in November 2025

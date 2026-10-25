@@ -1,0 +1,41 @@
+---
+title: "Repair Steward"
+subtitle: "Paid On-Campus Job, Makerspace, Harvey Mudd College"
+date-range: "Jan 2025 – Present"
+skills: "Troubleshooting, Mechanical Analysis, Electrical Analysis, Technical Documentation, Standard Operating Procedures, Collaboration"
+search: false
+---
+
+<div class="project-metadata-bar">
+  <div><strong>Timeline:</strong> {{< meta date-range >}}</div>
+  <div><strong>Skills:</strong> <span class="skills-val">{{< meta skills >}}</span></div>
+</div>
+
+[← Back to Digital CV](../resume.qmd){.btn-pill}
+
+The Harvey Mudd College Makerspace is a collaborative workspace for personal and academic projects. It serves over 2500 users (staff, student, and faculty) across the 7 Claremont Institutions (5 undergraduate colleges and 2 graduate universities).
+
+Key experiences and outcomes include:
+
+- Maintained, repaired, & troubleshoot equipment failures, performed corrective & preventative maintenance on equipment such as laser cutters, FDM/SLA 3D Printers, waterjet cutters, sewing machines, embroidery machines etc.
+- Coordinated with 5 other repair stewards to write and update user, safety, & repair manuals for all equipment
+- Optimized services by providing remote technical support to other stewards & users, analyzing maintenance logs, & reporting inconsistencies to the head of department
+- Taught other stewards how to perform corrective & preventative maintenance on equipment while amending Standard Operating Procedures
+
+
+Some of my projects in this role include:
+
+- Troubleshooting the Full Spectrum 48 Laser Cutter
+  - An arc from the high voltage side of the power supply melted insulation and damaged the tube
+  - A small amount of algae was growing in the water cooling setup, which likely contributed to the arc
+  - I aided in the tube replacement & deciding future precautionary procedures
+- Writing a new user manual for the FDM 3D Printing processes supported by the Makerspace
+  - This included safety guidelines, slicing & upload procedures, special slicing parameters etc.
+  - Through this manual, I oversaw a transition from the native slicing and printing process in OrcaSlicer to the 3DPrinterOS Management Software
+- Troubleshooting the ProtoMAX Waterjet with multiple failure modes
+  - One servo driver fried (likely through a small amount of moisture getting through the servo housing, supported by the rubber gasket observed to be cracked post-teardown)
+  - The mixing tube kept getting clogged, leading to water being sprayed in the opposite direction outside the waterjet housing
+  - I aided in motor debugging and replacement, performing a full cleanup of the ProtoMAX interior, and contributed to a new ProtoMAX repair SOP
+- Writing a new user manual for the Brother PE800 embroidery machine
+  - This included software guides for Inkscape and Hatch and troubleshooting steps for thread tension
+  - Through this manual, I observed several failure modes of this embroidery machine model, and wrote guidelines for navigating them in manual

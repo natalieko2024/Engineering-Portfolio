@@ -32,6 +32,7 @@ roles: "Circuit Design Lead, Controls and Programming Lead, Field Debugging Lead
 
 ::: {.column width="49%"}
 **Overview of Work:**
+
 Worked in a team of 4 to design and deploy an AUV utilizing a pressure sensor, thermistor, and magnetometer to map the metal debris distribution on the ocean floor of Dana Point Harbour, and back-calculate debris drop locations using the principles of geostrophic balance. 
 
 Key outcomes:

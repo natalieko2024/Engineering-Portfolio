@@ -1,0 +1,39 @@
+---
+title: "CAD Lab Teaching Assistant / Lab Improver / On-Call Grader & Tutor"
+subtitle: "Paid On-Campus Job(s), Intro to Engineering Design/Manufacturing, Harvey Mudd College"
+date-range: "Aug 2025 - Present"
+skills: "Teaching, SolidWorks, Technical Drawings, Software Troubleshooting, Design for Manufacturing, Advanced Assemblies, Finite Element Analysis"
+search: false
+---
+
+<div class="project-metadata-bar">
+  <div><strong>Timeline:</strong> {{< meta date-range >}}</div>
+  <div><strong>Skills:</strong> <span class="skills-val">{{< meta skills >}}</span></div>
+</div>
+
+[← Back to Digital CV](../resume.qmd){.btn-pill}
+
+Introduction to Engineering Design/Manufacturing is a course where students work in teams to solve open-ended design problems for real external clients. Students learn the design process, project management, teamwork, prototyping, manufacturing, and CAD.
+
+In my first semester, I was a CAD Lab Teaching Assistant. Key experiences and outcomes include:
+
+- Provided individualized support for 20+ students per semester in using SolidWorks, including best practices in creating CAD parts, advanced assemblies, and drawings, motion studies and finite element analysis
+- Taught tolerancing, prototyping, fabrication method selection, and materials selection for 35+ students per semester
+- Reviewed technical drawings for the manufacturing of final products by external clients in graduate-level research labs, Engineering courses, and school services
+
+In my second semester, I continued my teaching assistant role, and became an On-Call Grader & Tutor (Grutor). When the regular grutors could not make their shifts or complete lab grading on time, I would step in to finish the relevant tasks.
+
+In my third semester, I started working as a Lab Improver in addition to the grutor role. This is a **new student role** I proposed to the teaching team, because over my year of helping out in E4, I noticed a variety of common errors, misconceptions, and areas needing further guidance students had about CAD best practices, SolidWorks, and design for manufacturing. In addition, Harvey Mudd College was transitioning from SolidWorks 2023 to SolidWorks 2025, and the teaching team was anticipating revisions to the lab manuals because of this. What I did:
+
+- I authored 5 SolidWorks tutorials
+  - These tutorials served as an introduction to CAD parts, assemblies, and drawings
+  - They also taught general feature logic and software troubleshooting, for remote help when TAs or grutors are unavailable
+- Eliminated continuity errors between teachings and deliverable expectations
+  - As part of the final project in this class, students are required to submit a SolidWorks Pack and Go including parts, subassemblies, and assemblies, and a PDF of assembly and part drawings. However, the content covered in the original labs did not match the expectations of these deliverables, such as not teaching students how to make an exploded view assembly drawing. I revised the relevant content so the teachings and deliverables were aligned.
+- Authored additional manuals for technical drawings
+  - Designed guides for choosing technical drawing structures
+  - Wrote tutorials for creating exploded views and exploded view drawings
+  - Developed rubrics to make industry expectations clear to students and provide guidance for Professor grading
+- Lectured about technical drawing best practices in classes of ~20 students
+
+All the material I authored is used by 60+ Engineering freshmen and sophomores every semester.

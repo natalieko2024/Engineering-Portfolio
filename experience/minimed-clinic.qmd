@@ -1,0 +1,15 @@
+---
+title: "R&D Manufacturing Engineering Contractor"
+subtitle: "Harvey Mudd Engineering Clinic Program, Medtronic MiniMed"
+date-range: "Aug 2026 - Present"
+skills: "Mechanical Design, Prototyping, Materials Analysis, Human Centered Design"
+search: false
+---
+
+<div class="project-metadata-bar">
+  <div><strong>Timeline:</strong> {{< meta date-range >}}</div>
+  <div><strong>Skills:</strong> <span class="skills-val">{{< meta skills >}}</span></div>
+</div>
+
+[← Back to Digital CV](../resume.qmd){.btn-pill}
+

@@ -1,0 +1,38 @@
+---
+title: "Paid Maintenance & Reliability Engineering Intern"
+subtitle: "Summer Intern, Cathay Pacific, Hong Kong SAR"
+date-range: "Jul 2026 - Aug 2026"
+skills: "MS Power Apps, MS Power BI, MS Power Query, Ultramain, Skywise, Ultralytics YOLO, Swift App Development"
+search: false
+---
+
+<div class="project-metadata-bar">
+  <div><strong>Timeline:</strong> {{< meta date-range >}}</div>
+  <div><strong>Skills:</strong> <span class="skills-val">{{< meta skills >}}</span></div>
+</div>
+
+[← Back to Digital CV](../resume.qmd){.btn-pill}
+
+Cathay Pacific is a Skytrax-certified 5-star airline, known for setting and meeting global best practices for its onboard products. I worked in the Technical Services: Cabin Standards and Interiors team.
+
+I owned several projects in this role including:
+
+- Cross-company maintenance MS Power App
+    - This was a new maintenance workflow designed to streamline communications between Cathay Pacific and their maintenance, repair, and overhaul (MRO) partner
+    - Through my app features, I was able to cut daily task time from 1hr+ to 24min
+    - I ensured 100% adoption through interviewing the end users and integrating their needs and wants into the platform
+    - The app communicated and automatically updated a spreadsheet to make a dynamic historical log
+- MS PowerBI automated predictive model
+    - This tool optimized servicing for all consumer aircraft (13 cabin layouts) under operational limits
+    - By visualizing dynamic trends in the maintenance occurrences, my team could tell which tasks were most commonly delayed and why, and see which tasks could be reasonable outsourced for faster completion
+- Real-time maintenance planning tool
+    - This tool automatically pulled Acceptable Deferred Defects (ADDs) form Ultramain and Skywise to analyze the number of ADDs, which ones could be immediately worked on, which ones would need to be prioritized, and which ones needed preliminary steps before completion
+    - These analyses would improve aircraft regulatory compliance by redesignating the servicing task order
+- Computer vision iOS app to automate cabin inspections
+    - I built an Ultralytics YOLO-based computer vision model that would automatically detect cabin defects through a simple camera scan
+    - This tool would help automate some cabin inspection tasks between flights
+    - I integrated the model within an iOS app for easy future deployment
+
+At the end of my internship, I successfully handed off all of my projects to a graduate trainee for future upkeeping, ensuring my tools could continue to be utilized by the department without issues.
+
+I also formally presented a summary of my work to the heads of the Engineering Department (all team and subteam heads).
