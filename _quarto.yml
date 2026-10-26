@@ -8,7 +8,6 @@ project:
 
 website:
   title: "NK/MECH"
-  site-url: "https://www.ko12nat.com"
   navbar:
     right:
       - {href: index.qmd, text: Home}

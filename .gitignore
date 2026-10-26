@@ -1,5 +1,6 @@
 /.quarto/
 /_site/
+/docs/
 .DS_Store
 Thumbs.db
 **/*.quarto_ipynb
