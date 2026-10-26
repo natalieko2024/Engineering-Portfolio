@@ -572,5 +572,124 @@
     "title": "Engineering a world within reach.",
     "section": "Toolbox",
     "text": "Toolbox\n\nMechanicalSolidWorksFusion360AutoCADFEAGD&TFabrication EquipmentManual Machining\n\nElectronicsKiCadCircuit DesignMotor DriversOscilloscopeMultimeterPower SuppliesSoldering\n\nSoftwareC / C++MATLAB / SimulinkSystemVerilogPythonArduinoIDEJavaGit (Version Control)\n\nControlsPID TuningStability AnalysisSensor FusionSystem ModelingSignal Processing"
+  },
+  {
+    "objectID": "projects/SPItempSensor/spitempsensor.html",
+    "href": "projects/SPItempSensor/spitempsensor.html",
+    "title": "SPI and UART Communication Protocols Using an MCU",
+    "section": "",
+    "text": "Timeline: Oct 2026 – Oct 2026\n\n\nSkills: C, MCU, SPI, UART, Osilloscope Debugging, Circuit Design, Segger Embedded Studio"
+  },
+  {
+    "objectID": "projects/SPItempSensor/spitempsensor.html#introduction",
+    "href": "projects/SPItempSensor/spitempsensor.html#introduction",
+    "title": "SPI and UART Communication Protocols Using an MCU",
+    "section": "Introduction",
+    "text": "Introduction\nIn this lab, a design was implemented on the MCU to host a web server on an ESP8266 through UART communication and read temperature readings of various resolutions using a temperature sensor through SPI communication. Data from the peripherals connected to the MCU would be displayed on the webpage."
+  },
+  {
+    "objectID": "projects/SPItempSensor/spitempsensor.html#design-and-testing-methodology",
+    "href": "projects/SPItempSensor/spitempsensor.html#design-and-testing-methodology",
+    "title": "SPI and UART Communication Protocols Using an MCU",
+    "section": "Design and Testing Methodology",
+    "text": "Design and Testing Methodology\nOn the MCU, SPI was configured for full-duplex communication. This was chosen over simplex communications because apart from receiving temperature readings from the sensor, the MCU would have to write to the configuration register throughout deployment to adjust the resolution of the temperature communicated. It was also chosen over half-duplex communication to increase the speed the devices could communicate at, which would lead to more accurate readings.\nThe temperature sensor used (DS1722) required a clock phase (CPHA) of 1. I chose to use a clock polarity (CPOL) of 1 so that data would be sampled on the rising edge of SCK.\nFull-duplex SPI communication works by each device sending and receiving bits at the same time. So, for writing to the temperature sensor (ex. for writing the initial configuration and for writing new resolution bits), I would write the entire configuration and receive junk in return (that I wouldn’t use). For reading temperatures from the sensor, I would write junk bits to the sensor and receive the temperature bits in return. Because of how the temperature sensor registers were configured, I would read the integer bits and decimal bits separately.\nThe MCU and ESP8266 interface through a 125000 baud serial UART connection on TX and RX lines. Because of this, to prevent sampling differences, the MCU and temperature sensor baud rate was also set to 125000.\nHTML code was written so that the temperature and LED data could be properly displayed on the webpage, and users could press buttons to toggle the LED state and change the temperature resolution."
+  },
+  {
+    "objectID": "projects/SPItempSensor/spitempsensor.html#technical-documentation",
+    "href": "projects/SPItempSensor/spitempsensor.html#technical-documentation",
+    "title": "SPI and UART Communication Protocols Using an MCU",
+    "section": "Technical Documentation",
+    "text": "Technical Documentation\nThe source code for the project can be found in the associated GitHub repository.\n\nSchematic\n\n\n\nFigure 1. Schematic of all circuit components outside the PCB\n\n\nThe schematic in Figure 1 shows the physical circuit connections outside the PCB. The ESP8266 was not included as that was plugged directly into the motherboard."
+  },
+  {
+    "objectID": "projects/SPItempSensor/spitempsensor.html#results-and-discussion",
+    "href": "projects/SPItempSensor/spitempsensor.html#results-and-discussion",
+    "title": "SPI and UART Communication Protocols Using an MCU",
+    "section": "Results and Discussion",
+    "text": "Results and Discussion\nThe design met all intended design objectives.\n\nHardware Deployment\nThis video showcases the design webpage outputs and LED states when each button is pressed. The LED state matches the LED on/off in real life, and the maximum number of decimal values the temperature sensor displays matches the selected resolution.\n\n\n\nOscilloscope Confirmation\n\n\n\n\n\n\nFigure 2. Oscilloscope trace for writing sensor configuration\n\n\n\n\n\n\n\nFigure 3. Oscilloscope trace for reading temperature values\n\n\n\n\n\n\n\n\n\nFigure 4. Oscilloscope trace for writing a new sensor resolution\n\n\n\n\n\nThese oscilloscope traces confirm the intended SPI behaviour during configuration, read, and write. CS was pulled high during read/write and pulled low otherwise, and the correct values were transmitted over MISO and MOSI."
+  },
+  {
+    "objectID": "projects/SPItempSensor/spitempsensor.html#conclusion",
+    "href": "projects/SPItempSensor/spitempsensor.html#conclusion",
+    "title": "SPI and UART Communication Protocols Using an MCU",
+    "section": "Conclusion",
+    "text": "Conclusion\nThe design successfully utilized SPI and UART communication protocols to interface a temperature sensor, MCU implementation, and ESP8266 webpage together."
+  },
+  {
+    "objectID": "projects/bionicHand/index.html#yahoooo",
+    "href": "projects/bionicHand/index.html#yahoooo",
+    "title": "Bionic Hand",
+    "section": "YAHOOOO",
+    "text": "YAHOOOO"
+  },
+  {
+    "objectID": "projects/spiTempSensor/spiTempSensor.html#introduction",
+    "href": "projects/spiTempSensor/spiTempSensor.html#introduction",
+    "title": "SPI and UART Communication Protocols Using an MCU",
+    "section": "Introduction",
+    "text": "Introduction\nIn this lab, a design was implemented on the MCU to host a web server on an ESP8266 through UART communication and read temperature readings of various resolutions using a temperature sensor through SPI communication. Data from the peripherals connected to the MCU would be displayed on the webpage."
+  },
+  {
+    "objectID": "projects/spiTempSensor/spiTempSensor.html#design-and-testing-methodology",
+    "href": "projects/spiTempSensor/spiTempSensor.html#design-and-testing-methodology",
+    "title": "SPI and UART Communication Protocols Using an MCU",
+    "section": "Design and Testing Methodology",
+    "text": "Design and Testing Methodology\nOn the MCU, SPI was configured for full-duplex communication. This was chosen over simplex communications because apart from receiving temperature readings from the sensor, the MCU would have to write to the configuration register throughout deployment to adjust the resolution of the temperature communicated. It was also chosen over half-duplex communication to increase the speed the devices could communicate at, which would lead to more accurate readings.\nThe temperature sensor used (DS1722) required a clock phase (CPHA) of 1. I chose to use a clock polarity (CPOL) of 1 so that data would be sampled on the rising edge of SCK.\nFull-duplex SPI communication works by each device sending and receiving bits at the same time. So, for writing to the temperature sensor (ex. for writing the initial configuration and for writing new resolution bits), I would write the entire configuration and receive junk in return (that I wouldn’t use). For reading temperatures from the sensor, I would write junk bits to the sensor and receive the temperature bits in return. Because of how the temperature sensor registers were configured, I would read the integer bits and decimal bits separately.\nThe MCU and ESP8266 interface through a 125000 baud serial UART connection on TX and RX lines. Because of this, to prevent sampling differences, the MCU and temperature sensor baud rate was also set to 125000.\nHTML code was written so that the temperature and LED data could be properly displayed on the webpage, and users could press buttons to toggle the LED state and change the temperature resolution."
+  },
+  {
+    "objectID": "projects/spiTempSensor/spiTempSensor.html#technical-documentation",
+    "href": "projects/spiTempSensor/spiTempSensor.html#technical-documentation",
+    "title": "SPI and UART Communication Protocols Using an MCU",
+    "section": "Technical Documentation",
+    "text": "Technical Documentation\nThe source code for the project can be found in the associated GitHub repository.\n\nSchematic\n\n\n\nFigure 1. Schematic of all circuit components outside the PCB\n\n\nThe schematic in Figure 1 shows the physical circuit connections outside the PCB. The ESP8266 was not included as that was plugged directly into the motherboard."
+  },
+  {
+    "objectID": "projects/spiTempSensor/spiTempSensor.html#results-and-discussion",
+    "href": "projects/spiTempSensor/spiTempSensor.html#results-and-discussion",
+    "title": "SPI and UART Communication Protocols Using an MCU",
+    "section": "Results and Discussion",
+    "text": "Results and Discussion\nThe design met all intended design objectives.\n\nHardware Deployment\nThis video showcases the design webpage outputs and LED states when each button is pressed. The LED state matches the LED on/off in real life, and the maximum number of decimal values the temperature sensor displays matches the selected resolution.\n\n\n\nOscilloscope Confirmation\n\n\n\n\n\n\nFigure 2. Oscilloscope trace for writing sensor configuration\n\n\n\n\n\n\n\nFigure 3. Oscilloscope trace for reading temperature values\n\n\n\n\n\n\n\n\n\nFigure 4. Oscilloscope trace for writing a new sensor resolution\n\n\n\n\n\nThese oscilloscope traces confirm the intended SPI behaviour during configuration, read, and write. CS was pulled high during read/write and pulled low otherwise, and the correct values were transmitted over MISO and MOSI."
+  },
+  {
+    "objectID": "projects/spiTempSensor/spiTempSensor.html#conclusion",
+    "href": "projects/spiTempSensor/spiTempSensor.html#conclusion",
+    "title": "SPI and UART Communication Protocols Using an MCU",
+    "section": "Conclusion",
+    "text": "Conclusion\nThe design successfully utilized SPI and UART communication protocols to interface a temperature sensor, MCU implementation, and ESP8266 webpage together."
+  },
+  {
+    "objectID": "projects/spiTempSensor/index.html#introduction",
+    "href": "projects/spiTempSensor/index.html#introduction",
+    "title": "SPI and UART Communication Protocols Using an MCU",
+    "section": "Introduction",
+    "text": "Introduction\nIn this lab, a design was implemented on the MCU to host a web server on an ESP8266 through UART communication and read temperature readings of various resolutions using a temperature sensor through SPI communication. Data from the peripherals connected to the MCU would be displayed on the webpage."
+  },
+  {
+    "objectID": "projects/spiTempSensor/index.html#design-and-testing-methodology",
+    "href": "projects/spiTempSensor/index.html#design-and-testing-methodology",
+    "title": "SPI and UART Communication Protocols Using an MCU",
+    "section": "Design and Testing Methodology",
+    "text": "Design and Testing Methodology\nOn the MCU, SPI was configured for full-duplex communication. This was chosen over simplex communications because apart from receiving temperature readings from the sensor, the MCU would have to write to the configuration register throughout deployment to adjust the resolution of the temperature communicated. It was also chosen over half-duplex communication to increase the speed the devices could communicate at, which would lead to more accurate readings.\nThe temperature sensor used (DS1722) required a clock phase (CPHA) of 1. I chose to use a clock polarity (CPOL) of 1 so that data would be sampled on the rising edge of SCK.\nFull-duplex SPI communication works by each device sending and receiving bits at the same time. So, for writing to the temperature sensor (ex. for writing the initial configuration and for writing new resolution bits), I would write the entire configuration and receive junk in return (that I wouldn’t use). For reading temperatures from the sensor, I would write junk bits to the sensor and receive the temperature bits in return. Because of how the temperature sensor registers were configured, I would read the integer bits and decimal bits separately.\nThe MCU and ESP8266 interface through a 125000 baud serial UART connection on TX and RX lines. Because of this, to prevent sampling differences, the MCU and temperature sensor baud rate was also set to 125000.\nHTML code was written so that the temperature and LED data could be properly displayed on the webpage, and users could press buttons to toggle the LED state and change the temperature resolution."
+  },
+  {
+    "objectID": "projects/spiTempSensor/index.html#technical-documentation",
+    "href": "projects/spiTempSensor/index.html#technical-documentation",
+    "title": "SPI and UART Communication Protocols Using an MCU",
+    "section": "Technical Documentation",
+    "text": "Technical Documentation\nThe source code for the project can be found in the associated GitHub repository.\n\nSchematic\n\n\n\nFigure 1. Schematic of all circuit components outside the PCB\n\n\nThe schematic in Figure 1 shows the physical circuit connections outside the PCB. The ESP8266 was not included as that was plugged directly into the motherboard."
+  },
+  {
+    "objectID": "projects/spiTempSensor/index.html#results-and-discussion",
+    "href": "projects/spiTempSensor/index.html#results-and-discussion",
+    "title": "SPI and UART Communication Protocols Using an MCU",
+    "section": "Results and Discussion",
+    "text": "Results and Discussion\nThe design met all intended design objectives.\n\nHardware Deployment\nThis video showcases the design webpage outputs and LED states when each button is pressed. The LED state matches the LED on/off in real life, and the maximum number of decimal values the temperature sensor displays matches the selected resolution.\n\n\n\nOscilloscope Confirmation\n\n\n\n\n\n\nFigure 2. Oscilloscope trace for writing sensor configuration\n\n\n\n\n\n\n\nFigure 3. Oscilloscope trace for reading temperature values\n\n\n\n\n\n\n\n\n\nFigure 4. Oscilloscope trace for writing a new sensor resolution\n\n\n\n\n\nThese oscilloscope traces confirm the intended SPI behaviour during configuration, read, and write. CS was pulled high during read/write and pulled low otherwise, and the correct values were transmitted over MISO and MOSI."
+  },
+  {
+    "objectID": "projects/spiTempSensor/index.html#conclusion",
+    "href": "projects/spiTempSensor/index.html#conclusion",
+    "title": "SPI and UART Communication Protocols Using an MCU",
+    "section": "Conclusion",
+    "text": "Conclusion\nThe design successfully utilized SPI and UART communication protocols to interface a temperature sensor, MCU implementation, and ESP8266 webpage together."
   }
 ]

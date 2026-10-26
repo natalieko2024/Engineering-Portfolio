@@ -2,6 +2,7 @@
 title: "Bionic Hand"
 date-range: ""
 description: ""
+title-block-style: none
 subtitle : ""
 image: ""
 categories:

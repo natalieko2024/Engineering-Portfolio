@@ -2,6 +2,7 @@
 title: "Animatronic Eyes"
 date-range: "Jul 2025 – Oct 2025"
 description: "Designed and programmed a set of animatronic eyes controlled by servo motors and joysticks through Arduino."
+title-block-style: none
 subtitle : ""
 image: "eyes.jpg"
 categories:

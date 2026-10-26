@@ -2,6 +2,7 @@
 title: "Using a MCU to Produce Music on a Speaker"
 date-range: "Sept 2026 – Sept 2026"
 description: "Programmed an MCU to write specific frequencies and durations to play music on a speaker."
+title-block-style: none
 subtitle : ""
 image: "digitalAudio.png"
 categories:

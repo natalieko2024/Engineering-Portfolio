@@ -2,6 +2,7 @@
 title: "Hammer"
 date-range: "Jan 2025 – Apr 2025"
 description: "Manually machined a hammer using conventional manual machining tools to specifications following technical drawings."
+title-block-style: none
 subtitle : ""
 image: "hammer.jpg"
 categories:

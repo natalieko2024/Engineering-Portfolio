@@ -2,6 +2,7 @@
 title: "FPGA-Controlled Keypad Scanner"
 date-range: "Aug 2026 – Sep 2026"
 description: "Programmed an FPGA to read a 4x4 matrix keypad and display the last two hexadecimal inputs on a dual seven-segment display. Accounted for key bounce, multi-press, and timing inconsistencies."
+title-block-style: none
 subtitle : ""
 image: "keypadScanner.jpeg"
 categories:
