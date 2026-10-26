@@ -48,9 +48,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-98c7eacc04dc8a1fe11fe799e0cd156c.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-30791d33a638bff470c098c45da64e7c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-0b321fec9620eeee13feb84e0ed91b59.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-30791d33a638bff470c098c45da64e7c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-cd60a874067294cd65c3e5a97f2f71e1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-59c833cd1e043adc3755b69bc2a5220f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-cd60a874067294cd65c3e5a97f2f71e1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -335,33 +335,10 @@ ul.task-list li input[type="checkbox"] {
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><h1 class="title display-7">Temperature and Position Detecting Remotely Operated Vehicle (ROV)</h1></header>
 
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Temperature and Position Detecting Remotely Operated Vehicle (ROV)</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">Robotics &amp; Control Systems</div>
-    <div class="quarto-category">PCB Design &amp; Electronics</div>
-    <div class="quarto-category">Mechanical Design &amp; FEA</div>
-  </div>
-  </div>
-
-<div>
-  <div class="description">
-    Developed and deployed an PID-controlled ROV to collect temperature and depth measurements underwater.
-  </div>
-</div>
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
+<header id="title-block-header">
 
 
 </header>
@@ -438,6 +415,7 @@ ul.task-list li input[type="checkbox"] {
    featured = true to show on the home page (first 3 flagged are used).
    img = path inside that project's folder, e.g. "images/cover.jpg" (leave "" for the placeholder) ===== */
 const PROJECTS=[
+ {"featured":false,"img":"images/config.jpg","slug": "spiTempSensor", "t": "SPI and UART Communication Protocols Using an MCU", "d": "Oct 2026 – Oct 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Utilized SPI and UART communication protocols to interface a temperature sensor, MCU implementation, and ESP8266 webpage.", "tech": ["C", "MCU", "SPI", "UART", "Osilloscope Debugging", "Circuit Design", "SEGGER Embedded Studio"]},  
  {"featured":false,"img":"images/motorControl.png","slug": "motorControl", "t": "Leverging MCU Interrupts to Read Stepper Motor Encoders", "d": "Oct 2026 – Oct 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Utilized MCU interrupts to accurately determine stepper motor speed and direction.", "tech": ["C", "MCU", "Circuit Design", "SEGGER Embedded Studio"]},  
  {"featured":false,"img":"images/digitalAudio.png","slug": "digitalAudio", "t": "Using a MCU to Produce Music on a Speaker", "d": "Sept 2026 – Sept 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Programmed an MCU to write specific frequencies and durations to play music on a speaker.", "tech": ["C", "MCU", "Circuit Design", "SEGGER Embedded Studio"]},
  {"featured":true,"img":"images/keypadScanner.jpeg","slug": "keypadScanner", "t": "FPGA-Controlled Keypad Scanner", "d": "Aug 2026 – Sep 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Programmed an FPGA to read a 4x4 matrix keypad and display the last two hexadecimal inputs on a dual seven-segment display. Accounted for key bounce, multi-press, and timing inconsistencies.", "tech": ["SystemVerilog", "FPGA", "Circuit Design", "Lattice Radiant", "Waveform Simulation", "Testbench"]},  

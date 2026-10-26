@@ -112,13 +112,6 @@
     "text": "Physical Deliverables\nThe physical product was also handed off to the client for deployment.\n\n\n\n\n\n\nFigure 29a. Final Manufactured Product\n\n\n\n\n\n\n\nFigure 29b. Final CAD Assembly in SolidWorks"
   },
   {
-    "objectID": "projects/digitalAudio/index.html",
-    "href": "projects/digitalAudio/index.html",
-    "title": "Using a MCU to Produce Music on a Speaker",
-    "section": "",
-    "text": "Timeline: Sept 2026 – Sept 2026\n\n\nSkills: C, MCU, Circuit Design, Segger Embedded Studio"
-  },
-  {
     "objectID": "projects/digitalAudio/index.html#introduction",
     "href": "projects/digitalAudio/index.html#introduction",
     "title": "Using a MCU to Produce Music on a Speaker",
@@ -154,13 +147,6 @@
     "text": "Conclusion\nThe design successfully utilized timers in the MCU to play Für Elise and Fireflies on a speaker."
   },
   {
-    "objectID": "projects/E80Fluids/index.html",
-    "href": "projects/E80Fluids/index.html",
-    "title": "Wind Tunnel Experiments and Fluid Dynamics Simulation",
-    "section": "",
-    "text": "Timeline: Feb 2026 – Mar 2026\n\n\nSkills: COMSOL, Technical Documentation"
-  },
-  {
     "objectID": "projects/E80Fluids/index.html#yahoooo",
     "href": "projects/E80Fluids/index.html#yahoooo",
     "title": "Wind Tunnel Experiments and Fluid Dynamics Simulation",
@@ -168,16 +154,121 @@
     "text": "YAHOOOO"
   },
   {
-    "objectID": "projects/multiCycleProcessor/index.html",
-    "href": "projects/multiCycleProcessor/index.html",
-    "title": "Multi-cycle RISC-V Processor",
-    "section": "",
-    "text": "Timeline: Nov 2025 – Dec 2025\n\n\nSkills: SystemVerilog, Waveform Simulation"
-  },
-  {
     "objectID": "projects/multiCycleProcessor/index.html#yahoooo",
     "href": "projects/multiCycleProcessor/index.html#yahoooo",
     "title": "Multi-cycle RISC-V Processor",
+    "section": "YAHOOOO",
+    "text": "YAHOOOO"
+  },
+  {
+    "objectID": "projects/crystalRadio/index.html#pickard-crystal-radio",
+    "href": "projects/crystalRadio/index.html#pickard-crystal-radio",
+    "title": "Crystal Radio Experiments",
+    "section": "Pickard Crystal Radio",
+    "text": "Pickard Crystal Radio\nI started with the Pickard Crystal Radio, because it looked the simplest. It only had a variable inductor, a capacitor, resistor and diode. Because I knew radios could be tuned to different frequencies, I assumed the variable inductor would be used for tuning. My knowledge of RLC circuits helped me understand that this circuit would resonate at a specific frequency, based on the component values. Since the inductor was variable, I could adjust the resonant frequency to match the desired broadcast frequency. I also knew the basics of diodes, so I assumed it would have to go in a specific direction in order to hear any sound. It turns out this specifically needed to be a germanium diode, as opposed to the more common silicone diodes, because of their lower forward voltage drop. This prevents the diode from absorbing too much of the signal (since the power output of the crystal radio is tiny), which would make most AM signals inaudible. Figure 1. shows the schematic I ended up using.\n\n\n\nFigure 1. Pickard Crystal Radio Schematic"
+  },
+  {
+    "objectID": "projects/crystalRadio/index.html#dunwoody-crystal-radio",
+    "href": "projects/crystalRadio/index.html#dunwoody-crystal-radio",
+    "title": "Crystal Radio Experiments",
+    "section": "Dunwoody Crystal Radio",
+    "text": "Dunwoody Crystal Radio\nThe Dunwoody Crystal Radio was similar to the Pickard Crystal Radio in that it used similar components. However, it had two tuning capacitors in addition to the variable inductor. This would allow for more fine-tuning of the selected frequency. Instead of the variable inductor being adjustable by a simple conductive slider, the inductor had various coil taps that I first adjusted to select the broad operational frequency. I then adjusted the tuning capacitors to fine-tune the selected signal. Figure 2. shows the schematic of the circuit.\n\n\n\nFigure 2. Dunwoody Crystal Radio Schematic"
+  },
+  {
+    "objectID": "projects/crystalRadio/index.html#armstrong-regenerative-circuit-radio",
+    "href": "projects/crystalRadio/index.html#armstrong-regenerative-circuit-radio",
+    "title": "Crystal Radio Experiments",
+    "section": "Armstrong Regenerative Circuit Radio",
+    "text": "Armstrong Regenerative Circuit Radio\nThis circuit was very different. It used a combination of inductors with a tickler coil to feed the output signal back into the circuit. It also used a triode vacuum tube to amplify the signal, which meant it needed two external power sources to work. Figure 3. shows the schematic of the circuit.\n\n\n\nFigure 3. Armstrong Regenerative Circuit Radio Schematic\n\n\nI was not able to get this circuit to work, even after replacing all components apart from the vacuum tube, which I could not find a replacement for. This led me to believe the vacuum tube was faulty.\nFrom my research, I believe replacing the vacuum tube with a JFET (Junction Field-Effect Transistor) would be a viable next step for debugging. The vacuum tube works as an electron valve, controlling a current with a tiny input voltage. When the radio signal fluctuates slightly, the current output of the vacuum tube has large fluctuations, which is how the signal gets amplified. JFETs similarly change current flow based on input voltage.\nI also think this would be a good substitution to do in general since the vacuum tube needed a really large voltage supply (45V+ battery) to run, while a JFET could function in the same way using a 9V battery. This would make the radio more accessible and cheaper to run as the setup I was using chained five 9V batteries together in series."
+  },
+  {
+    "objectID": "projects/E79Bot/index.html#assembly-and-initial-deployment",
+    "href": "projects/E79Bot/index.html#assembly-and-initial-deployment",
+    "title": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)",
+    "section": "Assembly and Initial Deployment",
+    "text": "Assembly and Initial Deployment\n\nRobot Frame Assembly\n\n\nWaterproofing the Motors\n\n\nPhysical Testing"
+  },
+  {
+    "objectID": "projects/E79Bot/index.html#simulation-of-rov-motion",
+    "href": "projects/E79Bot/index.html#simulation-of-rov-motion",
+    "title": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)",
+    "section": "Simulation of ROV Motion",
+    "text": "Simulation of ROV Motion"
+  },
+  {
+    "objectID": "projects/E79Bot/index.html#mathematical-modelling",
+    "href": "projects/E79Bot/index.html#mathematical-modelling",
+    "title": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)",
+    "section": "Mathematical Modelling",
+    "text": "Mathematical Modelling"
+  },
+  {
+    "objectID": "projects/E79Bot/index.html#pressure-sensing-circuit",
+    "href": "projects/E79Bot/index.html#pressure-sensing-circuit",
+    "title": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)",
+    "section": "Pressure Sensing Circuit",
+    "text": "Pressure Sensing Circuit"
+  },
+  {
+    "objectID": "projects/E79Bot/index.html#temperature-sensing-circuit",
+    "href": "projects/E79Bot/index.html#temperature-sensing-circuit",
+    "title": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)",
+    "section": "Temperature Sensing Circuit",
+    "text": "Temperature Sensing Circuit"
+  },
+  {
+    "objectID": "projects/E79Bot/index.html#visualizing-the-first-order-transient-response",
+    "href": "projects/E79Bot/index.html#visualizing-the-first-order-transient-response",
+    "title": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)",
+    "section": "Visualizing the First-Order Transient Response",
+    "text": "Visualizing the First-Order Transient Response"
+  },
+  {
+    "objectID": "projects/E79Bot/index.html#test-deployment-and-second-order-transient-response",
+    "href": "projects/E79Bot/index.html#test-deployment-and-second-order-transient-response",
+    "title": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)",
+    "section": "Test Deployment and Second-Order Transient Response",
+    "text": "Test Deployment and Second-Order Transient Response"
+  },
+  {
+    "objectID": "projects/E79Bot/index.html#constructing-bode-plots",
+    "href": "projects/E79Bot/index.html#constructing-bode-plots",
+    "title": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)",
+    "section": "Constructing Bode Plots",
+    "text": "Constructing Bode Plots"
+  },
+  {
+    "objectID": "projects/E79Bot/index.html#pulse-width-modulation-and-time-scale-separation",
+    "href": "projects/E79Bot/index.html#pulse-width-modulation-and-time-scale-separation",
+    "title": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)",
+    "section": "Pulse Width Modulation and Time Scale Separation",
+    "text": "Pulse Width Modulation and Time Scale Separation"
+  },
+  {
+    "objectID": "projects/E79Bot/index.html#p-control-design",
+    "href": "projects/E79Bot/index.html#p-control-design",
+    "title": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)",
+    "section": "P-Control Design",
+    "text": "P-Control Design"
+  },
+  {
+    "objectID": "resume.html",
+    "href": "resume.html",
+    "title": "NK/MECH",
+    "section": "",
+    "text": "Download PDF Resume ↓\n\nEducation\nB.S., Engineering (Mechatronics Specialization)Expected May 2028\nHarvey Mudd College - Claremont, California, USA\nMajor GPA 4.0/4.0 · Cumulative GPA 3.918/4.0 · Dean's List (all graded semesters)\nRelevant Coursework: Microprocessor Systems: Design & Application; Digital Electronics & Computer Engineering; Continuum Mechanics; Electrical & Magnetic Circuits/Devices; Advanced Systems Engineering; Experimental Engineering; Engineering Systems; Intro to Engineering Design/Manufacturing; Applied Math for Engineering; Probability/Stats for Engineers; Intro to Computer Science\n\nAwards and Achievements\n\nTau Beta Pi Member (United States Engineering Honor Society, Top 12.5% of Junior Class)2026 - Present\nHarvey Mudd College\n\nHarvey Mudd Merit Scholarship (Top 15% of Entering Class)2024 - Present\nHarvey Mudd College\n\n\nExperience\n\nR&D Manufacturing Engineering ContractorRead more →Aug 2026 - Present\nMedtronic MiniMed (Through Harvey Mudd College Clinic Program), Claremont, California, USA\nOptimizing Continuous Glucose Monitor sensor manufacturing process through reducing cycle time\nPrototyped & tested sensor clamping fixtures, prevented sensor damage & improved operator ergonomics\nPerformed materials analysis & testing, met ISO 7 classifications & withstood corrosive baths during 24/5 use\n\nPaid Maintenance & Reliability Engineering InternRead more →Jul 2026 - Aug 2026\nCathay Pacific, Hong Kong SAR\nDeveloped a cross-company maintenance Power App; cut daily task time from 1hr+ to 24min (100% adoption)\nBuilt a Power BI automated predictive model, optimized servicing for 13 cabin layouts under operational limits\nImproved aircraft regulatory compliance by analyzing Acceptable Deferred Defects in Ultramain & Skywise\nCo-developed an Ultralytics YOLO computer vision model to detect cabin defects & automate inspections\n\nUndergraduate Student ResearcherRead more →Jan 2026 - Present\nFlow Imaging Lab at Mudd, Dept. of Engineering, Harvey Mudd College\nDesigned & manufactured a mechanical 3-axis calibrator for a live class-4 laser for Particle Image Velocimetry\nProcessed 6-axis load cell data using MATLAB to quantify thrust generated by a biomimetic fish fin\nProgrammed a PI-controlled rotational degree of freedom for the fin; troubleshot load cell/motor interference\nManaged waterjet safety & maintenance; advised team of 5 on machining processes to eliminate fin defects\n\nCAD Lab Teaching Assistant / Lab Improver / On-Call Grader & TutorRead more →Aug 2025 - Present\nIntro to Engineering Design/Manufacturing, Harvey Mudd College\nTaught 20+ students SolidWorks, CAD, motion studies, finite element analysis, prototyping, material selection\nReviewed technical drawings for manufacturing; final products used in research labs, courses, school services\nAuthored 5 SolidWorks tutorials teaching feature logic and software troubleshooting, used by 60+ students\nPioneered new student role, eliminated continuity errors between teachings & deliverable expectations\n\nRepair StewardRead more →Jan 2025 - Present\nMakerspace, Harvey Mudd College\nMaintained, repaired & troubleshot fabrication equipment failures; minimized downtime for 2500+ users\nCoordinated with 5 undergraduates to write/update user, safety & repair manuals & SOPs for all equipment\nOptimized services; provided remote technical support, analyzed maintenance logs, reported inconsistencies\n\nUndergraduate Student ResearcherRead more →Jan 2025 - Dec 2025\nHMC Biophotonics Lab, Dept. of Engineering, Harvey Mudd College\nCo-developed an open-source in vivo imaging system, reduced production cost to &lt;1% of commercial price\nImproved speckle contrast & bioluminescence imaging capabilities; device used @ Claremont McKenna College\nDevised experimental optics setups; troubleshot modules with oscilloscopes; processed images with Python\n\nPaid Student InternRead more →Jul 2023 - Jul 2023\nMéridaLabs, Dept. of Mechanical Engineering, University of British Columbia\nCollaborated with two co-op students to build a JavaScript/Svelte Smart Hydrogen Energy District website\nReworked 3D models, produced renders and animations in AutoCAD for a national technology conference\n\n\nPublications and Presentations\n\nPoster/Presenter: “Integrating Laser Speckle Contrast Imaging with OpenIVIS,” Ko, N., Tran, M., Brake, J. Southern California Conference for Undergraduate Research, Nov 2025\n\nPoster/Presenter: “Open-source bioluminescence imaging for low-light biological applications using the OpenIVIS platform,” Tran, M., Ko, N., Brake, J. Southern California Conference for Undergraduate Research, Nov 2025\n\nPublication: Ko, N. M. T. (2024). An evaluation of the adhesive capabilities of dry adhesive gecko tapes produced using diffraction gratings. STEM Fellowship Journal, e-First.  https://doi.org/10.17975/sfj-2024-002"
+  },
+  {
+    "objectID": "resume.html#cv-natalie-ko",
+    "href": "resume.html#cv-natalie-ko",
+    "title": "NK/MECH",
+    "section": "",
+    "text": "Download PDF Resume ↓\n\nEducation\nB.S., Engineering (Mechatronics Specialization)Expected May 2028\nHarvey Mudd College - Claremont, California, USA\nMajor GPA 4.0/4.0 · Cumulative GPA 3.918/4.0 · Dean's List (all graded semesters)\nRelevant Coursework: Microprocessor Systems: Design & Application; Digital Electronics & Computer Engineering; Continuum Mechanics; Electrical & Magnetic Circuits/Devices; Advanced Systems Engineering; Experimental Engineering; Engineering Systems; Intro to Engineering Design/Manufacturing; Applied Math for Engineering; Probability/Stats for Engineers; Intro to Computer Science\n\nAwards and Achievements\n\nTau Beta Pi Member (United States Engineering Honor Society, Top 12.5% of Junior Class)2026 - Present\nHarvey Mudd College\n\nHarvey Mudd Merit Scholarship (Top 15% of Entering Class)2024 - Present\nHarvey Mudd College\n\n\nExperience\n\nR&D Manufacturing Engineering ContractorRead more →Aug 2026 - Present\nMedtronic MiniMed (Through Harvey Mudd College Clinic Program), Claremont, California, USA\nOptimizing Continuous Glucose Monitor sensor manufacturing process through reducing cycle time\nPrototyped & tested sensor clamping fixtures, prevented sensor damage & improved operator ergonomics\nPerformed materials analysis & testing, met ISO 7 classifications & withstood corrosive baths during 24/5 use\n\nPaid Maintenance & Reliability Engineering InternRead more →Jul 2026 - Aug 2026\nCathay Pacific, Hong Kong SAR\nDeveloped a cross-company maintenance Power App; cut daily task time from 1hr+ to 24min (100% adoption)\nBuilt a Power BI automated predictive model, optimized servicing for 13 cabin layouts under operational limits\nImproved aircraft regulatory compliance by analyzing Acceptable Deferred Defects in Ultramain & Skywise\nCo-developed an Ultralytics YOLO computer vision model to detect cabin defects & automate inspections\n\nUndergraduate Student ResearcherRead more →Jan 2026 - Present\nFlow Imaging Lab at Mudd, Dept. of Engineering, Harvey Mudd College\nDesigned & manufactured a mechanical 3-axis calibrator for a live class-4 laser for Particle Image Velocimetry\nProcessed 6-axis load cell data using MATLAB to quantify thrust generated by a biomimetic fish fin\nProgrammed a PI-controlled rotational degree of freedom for the fin; troubleshot load cell/motor interference\nManaged waterjet safety & maintenance; advised team of 5 on machining processes to eliminate fin defects\n\nCAD Lab Teaching Assistant / Lab Improver / On-Call Grader & TutorRead more →Aug 2025 - Present\nIntro to Engineering Design/Manufacturing, Harvey Mudd College\nTaught 20+ students SolidWorks, CAD, motion studies, finite element analysis, prototyping, material selection\nReviewed technical drawings for manufacturing; final products used in research labs, courses, school services\nAuthored 5 SolidWorks tutorials teaching feature logic and software troubleshooting, used by 60+ students\nPioneered new student role, eliminated continuity errors between teachings & deliverable expectations\n\nRepair StewardRead more →Jan 2025 - Present\nMakerspace, Harvey Mudd College\nMaintained, repaired & troubleshot fabrication equipment failures; minimized downtime for 2500+ users\nCoordinated with 5 undergraduates to write/update user, safety & repair manuals & SOPs for all equipment\nOptimized services; provided remote technical support, analyzed maintenance logs, reported inconsistencies\n\nUndergraduate Student ResearcherRead more →Jan 2025 - Dec 2025\nHMC Biophotonics Lab, Dept. of Engineering, Harvey Mudd College\nCo-developed an open-source in vivo imaging system, reduced production cost to &lt;1% of commercial price\nImproved speckle contrast & bioluminescence imaging capabilities; device used @ Claremont McKenna College\nDevised experimental optics setups; troubleshot modules with oscilloscopes; processed images with Python\n\nPaid Student InternRead more →Jul 2023 - Jul 2023\nMéridaLabs, Dept. of Mechanical Engineering, University of British Columbia\nCollaborated with two co-op students to build a JavaScript/Svelte Smart Hydrogen Energy District website\nReworked 3D models, produced renders and animations in AutoCAD for a national technology conference\n\n\nPublications and Presentations\n\nPoster/Presenter: “Integrating Laser Speckle Contrast Imaging with OpenIVIS,” Ko, N., Tran, M., Brake, J. Southern California Conference for Undergraduate Research, Nov 2025\n\nPoster/Presenter: “Open-source bioluminescence imaging for low-light biological applications using the OpenIVIS platform,” Tran, M., Ko, N., Brake, J. Southern California Conference for Undergraduate Research, Nov 2025\n\nPublication: Ko, N. M. T. (2024). An evaluation of the adhesive capabilities of dry adhesive gecko tapes produced using diffraction gratings. STEM Fellowship Journal, e-First.  https://doi.org/10.17975/sfj-2024-002"
+  },
+  {
+    "objectID": "projects/hammer/index.html#yahoooo",
+    "href": "projects/hammer/index.html#yahoooo",
+    "title": "Hammer",
     "section": "YAHOOOO",
     "text": "YAHOOOO"
   },
@@ -294,144 +385,39 @@
     "text": "Magnetomer\nThe magnetometer also behaved strangely in the water. As shown in Figure X, when the AUV started descending in the ocean, the magnetic flux density reading would spike to an invalid value (874.733µT is out of the range of the RM3100’s readings) and then read a constant value for the rest of the deployment.\n\n\n\nFigure X. Magnetic Flux Density During Dana Point Pier Deployment With All Data Points (left) and With the Peak Value Removed (right)\n\n\nIt was hypothesized that the motors produced electromagnetic interference (EMI), which interfered with the I2C data transmission. EMI can produce three types of errors in I2C sensors: no communication, erroneous values, and permanent values from the sensor. This aligns with the collected data, in that the large spike is an erroneous value, and the constant value indicates either no communication or a permanent value being transmitted. To confirm this theory that motors producing EMI interfered with the magnetometer’s I2C communication, a recreation of this spike and flatline pattern was attempted by taping a motor to a waterproof box with the magnetometer and circuitry, running the code used at Dana Point on the same hardware, and dropping this setup in a tank of freshwater. With this setup, the magnetometer produced steady readings without any anomalous peaks or flatlines. The magnetometer was then taken out of the box and pressed directly against the running motor. This produced the peak and flatline pattern. Upon further investigation with an oscilloscope, it was found that the DRDY pin output a constant HIGH signal when pressed against the running motor, meaning new data was never being pushed to the relevant registers. Because this pattern only occurred when the magnetometer and motors were far apart in seawater and not in freshwater, it is hypothesized that the seawater amplified the EMI more than freshwater, causing interference only in the Dana Point deployments."
   },
   {
-    "objectID": "projects/hammer/index.html",
-    "href": "projects/hammer/index.html",
-    "title": "Hammer",
-    "section": "",
-    "text": "Timeline: Jan 2025 – Apr 2025\n\n\nSkills: Precision Manual Machining, Geometric Dimensioning & Tolerancing (GD&T), Process Planning & Documentation, Metallurgy"
+    "objectID": "projects/spiTempSensor/index.html#introduction",
+    "href": "projects/spiTempSensor/index.html#introduction",
+    "title": "SPI and UART Communication Protocols Using an MCU",
+    "section": "Introduction",
+    "text": "Introduction\nIn this lab, a design was implemented on the MCU to host a web server on an ESP8266 through UART communication and read temperature readings of various resolutions using a temperature sensor through SPI communication. Data from the peripherals connected to the MCU would be displayed on the webpage."
   },
   {
-    "objectID": "projects/hammer/index.html#yahoooo",
-    "href": "projects/hammer/index.html#yahoooo",
-    "title": "Hammer",
-    "section": "YAHOOOO",
-    "text": "YAHOOOO"
+    "objectID": "projects/spiTempSensor/index.html#design-and-testing-methodology",
+    "href": "projects/spiTempSensor/index.html#design-and-testing-methodology",
+    "title": "SPI and UART Communication Protocols Using an MCU",
+    "section": "Design and Testing Methodology",
+    "text": "Design and Testing Methodology\nOn the MCU, SPI was configured for full-duplex communication. This was chosen over simplex communications because apart from receiving temperature readings from the sensor, the MCU would have to write to the configuration register throughout deployment to adjust the resolution of the temperature communicated. It was also chosen over half-duplex communication to increase the speed the devices could communicate at, which would lead to more accurate readings.\nThe temperature sensor used (DS1722) required a clock phase (CPHA) of 1. I chose to use a clock polarity (CPOL) of 1 so that data would be sampled on the rising edge of SCK.\nFull-duplex SPI communication works by each device sending and receiving bits at the same time. So, for writing to the temperature sensor (ex. for writing the initial configuration and for writing new resolution bits), I would write the entire configuration and receive junk in return (that I wouldn’t use). For reading temperatures from the sensor, I would write junk bits to the sensor and receive the temperature bits in return. Because of how the temperature sensor registers were configured, I would read the integer bits and decimal bits separately.\nThe MCU and ESP8266 interface through a 125000 baud serial UART connection on TX and RX lines. Because of this, to prevent sampling differences, the MCU and temperature sensor baud rate was also set to 125000.\nHTML code was written so that the temperature and LED data could be properly displayed on the webpage, and users could press buttons to toggle the LED state and change the temperature resolution."
   },
   {
-    "objectID": "resume.html",
-    "href": "resume.html",
-    "title": "NK/MECH",
-    "section": "",
-    "text": "Download PDF Resume ↓\n\nEducation\nB.S., Engineering (Mechatronics Specialization)Expected May 2028\nHarvey Mudd College - Claremont, California, USA\nMajor GPA 4.0/4.0 · Cumulative GPA 3.918/4.0 · Dean's List (all graded semesters)\nRelevant Coursework: Microprocessor Systems: Design & Application; Digital Electronics & Computer Engineering; Continuum Mechanics; Electrical & Magnetic Circuits/Devices; Advanced Systems Engineering; Experimental Engineering; Engineering Systems; Intro to Engineering Design/Manufacturing; Applied Math for Engineering; Probability/Stats for Engineers; Intro to Computer Science\n\nAwards and Achievements\n\nTau Beta Pi Member (United States Engineering Honor Society, Top 12.5% of Junior Class)2026 - Present\nHarvey Mudd College\n\nHarvey Mudd Merit Scholarship (Top 15% of Entering Class)2024 - Present\nHarvey Mudd College\n\n\nExperience\n\nR&D Manufacturing Engineering ContractorRead more →Aug 2026 - Present\nMedtronic MiniMed (Through Harvey Mudd College Clinic Program), Claremont, California, USA\nOptimizing Continuous Glucose Monitor sensor manufacturing process through reducing cycle time\nPrototyped & tested sensor clamping fixtures, prevented sensor damage & improved operator ergonomics\nPerformed materials analysis & testing, met ISO 7 classifications & withstood corrosive baths during 24/5 use\n\nPaid Maintenance & Reliability Engineering InternRead more →Jul 2026 - Aug 2026\nCathay Pacific, Hong Kong SAR\nDeveloped a cross-company maintenance Power App; cut daily task time from 1hr+ to 24min (100% adoption)\nBuilt a Power BI automated predictive model, optimized servicing for 13 cabin layouts under operational limits\nImproved aircraft regulatory compliance by analyzing Acceptable Deferred Defects in Ultramain & Skywise\nCo-developed an Ultralytics YOLO computer vision model to detect cabin defects & automate inspections\n\nUndergraduate Student ResearcherRead more →Jan 2026 - Present\nFlow Imaging Lab at Mudd, Dept. of Engineering, Harvey Mudd College\nDesigned & manufactured a mechanical 3-axis calibrator for a live class-4 laser for Particle Image Velocimetry\nProcessed 6-axis load cell data using MATLAB to quantify thrust generated by a biomimetic fish fin\nProgrammed a PI-controlled rotational degree of freedom for the fin; troubleshot load cell/motor interference\nManaged waterjet safety & maintenance; advised team of 5 on machining processes to eliminate fin defects\n\nCAD Lab Teaching Assistant / Lab Improver / On-Call Grader & TutorRead more →Aug 2025 - Present\nIntro to Engineering Design/Manufacturing, Harvey Mudd College\nTaught 20+ students SolidWorks, CAD, motion studies, finite element analysis, prototyping, material selection\nReviewed technical drawings for manufacturing; final products used in research labs, courses, school services\nAuthored 5 SolidWorks tutorials teaching feature logic and software troubleshooting, used by 60+ students\nPioneered new student role, eliminated continuity errors between teachings & deliverable expectations\n\nRepair StewardRead more →Jan 2025 - Present\nMakerspace, Harvey Mudd College\nMaintained, repaired & troubleshot fabrication equipment failures; minimized downtime for 2500+ users\nCoordinated with 5 undergraduates to write/update user, safety & repair manuals & SOPs for all equipment\nOptimized services; provided remote technical support, analyzed maintenance logs, reported inconsistencies\n\nUndergraduate Student ResearcherRead more →Jan 2025 - Dec 2025\nHMC Biophotonics Lab, Dept. of Engineering, Harvey Mudd College\nCo-developed an open-source in vivo imaging system, reduced production cost to &lt;1% of commercial price\nImproved speckle contrast & bioluminescence imaging capabilities; device used @ Claremont McKenna College\nDevised experimental optics setups; troubleshot modules with oscilloscopes; processed images with Python\n\nPaid Student InternRead more →Jul 2023 - Jul 2023\nMéridaLabs, Dept. of Mechanical Engineering, University of British Columbia\nCollaborated with two co-op students to build a JavaScript/Svelte Smart Hydrogen Energy District website\nReworked 3D models, produced renders and animations in AutoCAD for a national technology conference\n\n\nPublications and Presentations\n\nPoster/Presenter: “Integrating Laser Speckle Contrast Imaging with OpenIVIS,” Ko, N., Tran, M., Brake, J. Southern California Conference for Undergraduate Research, Nov 2025\n\nPoster/Presenter: “Open-source bioluminescence imaging for low-light biological applications using the OpenIVIS platform,” Tran, M., Ko, N., Brake, J. Southern California Conference for Undergraduate Research, Nov 2025\n\nPublication: Ko, N. M. T. (2024). An evaluation of the adhesive capabilities of dry adhesive gecko tapes produced using diffraction gratings. STEM Fellowship Journal, e-First.  https://doi.org/10.17975/sfj-2024-002"
+    "objectID": "projects/spiTempSensor/index.html#technical-documentation",
+    "href": "projects/spiTempSensor/index.html#technical-documentation",
+    "title": "SPI and UART Communication Protocols Using an MCU",
+    "section": "Technical Documentation",
+    "text": "Technical Documentation\nThe source code for the project can be found in the associated GitHub repository.\n\nSchematic\n\n\n\nFigure 1. Schematic of all circuit components outside the PCB\n\n\nThe schematic in Figure 1 shows the physical circuit connections outside the PCB. The ESP8266 was not included as that was plugged directly into the motherboard."
   },
   {
-    "objectID": "resume.html#cv-natalie-ko",
-    "href": "resume.html#cv-natalie-ko",
-    "title": "NK/MECH",
-    "section": "",
-    "text": "Download PDF Resume ↓\n\nEducation\nB.S., Engineering (Mechatronics Specialization)Expected May 2028\nHarvey Mudd College - Claremont, California, USA\nMajor GPA 4.0/4.0 · Cumulative GPA 3.918/4.0 · Dean's List (all graded semesters)\nRelevant Coursework: Microprocessor Systems: Design & Application; Digital Electronics & Computer Engineering; Continuum Mechanics; Electrical & Magnetic Circuits/Devices; Advanced Systems Engineering; Experimental Engineering; Engineering Systems; Intro to Engineering Design/Manufacturing; Applied Math for Engineering; Probability/Stats for Engineers; Intro to Computer Science\n\nAwards and Achievements\n\nTau Beta Pi Member (United States Engineering Honor Society, Top 12.5% of Junior Class)2026 - Present\nHarvey Mudd College\n\nHarvey Mudd Merit Scholarship (Top 15% of Entering Class)2024 - Present\nHarvey Mudd College\n\n\nExperience\n\nR&D Manufacturing Engineering ContractorRead more →Aug 2026 - Present\nMedtronic MiniMed (Through Harvey Mudd College Clinic Program), Claremont, California, USA\nOptimizing Continuous Glucose Monitor sensor manufacturing process through reducing cycle time\nPrototyped & tested sensor clamping fixtures, prevented sensor damage & improved operator ergonomics\nPerformed materials analysis & testing, met ISO 7 classifications & withstood corrosive baths during 24/5 use\n\nPaid Maintenance & Reliability Engineering InternRead more →Jul 2026 - Aug 2026\nCathay Pacific, Hong Kong SAR\nDeveloped a cross-company maintenance Power App; cut daily task time from 1hr+ to 24min (100% adoption)\nBuilt a Power BI automated predictive model, optimized servicing for 13 cabin layouts under operational limits\nImproved aircraft regulatory compliance by analyzing Acceptable Deferred Defects in Ultramain & Skywise\nCo-developed an Ultralytics YOLO computer vision model to detect cabin defects & automate inspections\n\nUndergraduate Student ResearcherRead more →Jan 2026 - Present\nFlow Imaging Lab at Mudd, Dept. of Engineering, Harvey Mudd College\nDesigned & manufactured a mechanical 3-axis calibrator for a live class-4 laser for Particle Image Velocimetry\nProcessed 6-axis load cell data using MATLAB to quantify thrust generated by a biomimetic fish fin\nProgrammed a PI-controlled rotational degree of freedom for the fin; troubleshot load cell/motor interference\nManaged waterjet safety & maintenance; advised team of 5 on machining processes to eliminate fin defects\n\nCAD Lab Teaching Assistant / Lab Improver / On-Call Grader & TutorRead more →Aug 2025 - Present\nIntro to Engineering Design/Manufacturing, Harvey Mudd College\nTaught 20+ students SolidWorks, CAD, motion studies, finite element analysis, prototyping, material selection\nReviewed technical drawings for manufacturing; final products used in research labs, courses, school services\nAuthored 5 SolidWorks tutorials teaching feature logic and software troubleshooting, used by 60+ students\nPioneered new student role, eliminated continuity errors between teachings & deliverable expectations\n\nRepair StewardRead more →Jan 2025 - Present\nMakerspace, Harvey Mudd College\nMaintained, repaired & troubleshot fabrication equipment failures; minimized downtime for 2500+ users\nCoordinated with 5 undergraduates to write/update user, safety & repair manuals & SOPs for all equipment\nOptimized services; provided remote technical support, analyzed maintenance logs, reported inconsistencies\n\nUndergraduate Student ResearcherRead more →Jan 2025 - Dec 2025\nHMC Biophotonics Lab, Dept. of Engineering, Harvey Mudd College\nCo-developed an open-source in vivo imaging system, reduced production cost to &lt;1% of commercial price\nImproved speckle contrast & bioluminescence imaging capabilities; device used @ Claremont McKenna College\nDevised experimental optics setups; troubleshot modules with oscilloscopes; processed images with Python\n\nPaid Student InternRead more →Jul 2023 - Jul 2023\nMéridaLabs, Dept. of Mechanical Engineering, University of British Columbia\nCollaborated with two co-op students to build a JavaScript/Svelte Smart Hydrogen Energy District website\nReworked 3D models, produced renders and animations in AutoCAD for a national technology conference\n\n\nPublications and Presentations\n\nPoster/Presenter: “Integrating Laser Speckle Contrast Imaging with OpenIVIS,” Ko, N., Tran, M., Brake, J. Southern California Conference for Undergraduate Research, Nov 2025\n\nPoster/Presenter: “Open-source bioluminescence imaging for low-light biological applications using the OpenIVIS platform,” Tran, M., Ko, N., Brake, J. Southern California Conference for Undergraduate Research, Nov 2025\n\nPublication: Ko, N. M. T. (2024). An evaluation of the adhesive capabilities of dry adhesive gecko tapes produced using diffraction gratings. STEM Fellowship Journal, e-First.  https://doi.org/10.17975/sfj-2024-002"
+    "objectID": "projects/spiTempSensor/index.html#results-and-discussion",
+    "href": "projects/spiTempSensor/index.html#results-and-discussion",
+    "title": "SPI and UART Communication Protocols Using an MCU",
+    "section": "Results and Discussion",
+    "text": "Results and Discussion\nThe design met all intended design objectives.\n\nHardware Deployment\nThis video showcases the design webpage outputs and LED states when each button is pressed. The LED state matches the LED on/off in real life, and the maximum number of decimal values the temperature sensor displays matches the selected resolution.\n\n\n\nOscilloscope Confirmation\n\n\n\n\n\n\nFigure 2. Oscilloscope trace for writing sensor configuration\n\n\n\n\n\n\n\nFigure 3. Oscilloscope trace for reading temperature values\n\n\n\n\n\n\n\n\n\nFigure 4. Oscilloscope trace for writing a new sensor resolution\n\n\n\n\n\nThese oscilloscope traces confirm the intended SPI behaviour during configuration, read, and write. CS was pulled high during read/write and pulled low otherwise, and the correct values were transmitted over MISO and MOSI."
   },
   {
-    "objectID": "projects/E79Bot/index.html",
-    "href": "projects/E79Bot/index.html",
-    "title": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)",
-    "section": "",
-    "text": "Timeline: Aug 2025 – Dec 2025\n\n\nSkills: PID-Control, Circuit Design, Mechanical Design, Data Analysis, LabView, Soldering, Breadboarding, Mathematical Modeling"
-  },
-  {
-    "objectID": "projects/E79Bot/index.html#assembly-and-initial-deployment",
-    "href": "projects/E79Bot/index.html#assembly-and-initial-deployment",
-    "title": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)",
-    "section": "Assembly and Initial Deployment",
-    "text": "Assembly and Initial Deployment\n\nRobot Frame Assembly\n\n\nWaterproofing the Motors\n\n\nPhysical Testing"
-  },
-  {
-    "objectID": "projects/E79Bot/index.html#simulation-of-rov-motion",
-    "href": "projects/E79Bot/index.html#simulation-of-rov-motion",
-    "title": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)",
-    "section": "Simulation of ROV Motion",
-    "text": "Simulation of ROV Motion"
-  },
-  {
-    "objectID": "projects/E79Bot/index.html#mathematical-modelling",
-    "href": "projects/E79Bot/index.html#mathematical-modelling",
-    "title": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)",
-    "section": "Mathematical Modelling",
-    "text": "Mathematical Modelling"
-  },
-  {
-    "objectID": "projects/E79Bot/index.html#pressure-sensing-circuit",
-    "href": "projects/E79Bot/index.html#pressure-sensing-circuit",
-    "title": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)",
-    "section": "Pressure Sensing Circuit",
-    "text": "Pressure Sensing Circuit"
-  },
-  {
-    "objectID": "projects/E79Bot/index.html#temperature-sensing-circuit",
-    "href": "projects/E79Bot/index.html#temperature-sensing-circuit",
-    "title": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)",
-    "section": "Temperature Sensing Circuit",
-    "text": "Temperature Sensing Circuit"
-  },
-  {
-    "objectID": "projects/E79Bot/index.html#visualizing-the-first-order-transient-response",
-    "href": "projects/E79Bot/index.html#visualizing-the-first-order-transient-response",
-    "title": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)",
-    "section": "Visualizing the First-Order Transient Response",
-    "text": "Visualizing the First-Order Transient Response"
-  },
-  {
-    "objectID": "projects/E79Bot/index.html#test-deployment-and-second-order-transient-response",
-    "href": "projects/E79Bot/index.html#test-deployment-and-second-order-transient-response",
-    "title": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)",
-    "section": "Test Deployment and Second-Order Transient Response",
-    "text": "Test Deployment and Second-Order Transient Response"
-  },
-  {
-    "objectID": "projects/E79Bot/index.html#constructing-bode-plots",
-    "href": "projects/E79Bot/index.html#constructing-bode-plots",
-    "title": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)",
-    "section": "Constructing Bode Plots",
-    "text": "Constructing Bode Plots"
-  },
-  {
-    "objectID": "projects/E79Bot/index.html#pulse-width-modulation-and-time-scale-separation",
-    "href": "projects/E79Bot/index.html#pulse-width-modulation-and-time-scale-separation",
-    "title": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)",
-    "section": "Pulse Width Modulation and Time Scale Separation",
-    "text": "Pulse Width Modulation and Time Scale Separation"
-  },
-  {
-    "objectID": "projects/E79Bot/index.html#p-control-design",
-    "href": "projects/E79Bot/index.html#p-control-design",
-    "title": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)",
-    "section": "P-Control Design",
-    "text": "P-Control Design"
-  },
-  {
-    "objectID": "projects/crystalRadio/index.html",
-    "href": "projects/crystalRadio/index.html",
-    "title": "Crystal Radio Experiments",
-    "section": "",
-    "text": "Timeline: Feb 2025 – Mar 2026\n\n\nSkills: Radio Frequency Engineering, Software Defined Radio, Circuit Analysis\n\n\nRoles: Electrical Debugging and Analysis Lead (Team of 4)"
-  },
-  {
-    "objectID": "projects/crystalRadio/index.html#pickard-crystal-radio",
-    "href": "projects/crystalRadio/index.html#pickard-crystal-radio",
-    "title": "Crystal Radio Experiments",
-    "section": "Pickard Crystal Radio",
-    "text": "Pickard Crystal Radio\nI started with the Pickard Crystal Radio, because it looked the simplest. It only had a variable inductor, a capacitor, resistor and diode. Because I knew radios could be tuned to different frequencies, I assumed the variable inductor would be used for tuning. My knowledge of RLC circuits helped me understand that this circuit would resonate at a specific frequency, based on the component values. Since the inductor was variable, I could adjust the resonant frequency to match the desired broadcast frequency. I also knew the basics of diodes, so I assumed it would have to go in a specific direction in order to hear any sound. It turns out this specifically needed to be a germanium diode, as opposed to the more common silicone diodes, because of their lower forward voltage drop. This prevents the diode from absorbing too much of the signal (since the power output of the crystal radio is tiny), which would make most AM signals inaudible. Figure 1. shows the schematic I ended up using.\n\n\n\nFigure 1. Pickard Crystal Radio Schematic"
-  },
-  {
-    "objectID": "projects/crystalRadio/index.html#dunwoody-crystal-radio",
-    "href": "projects/crystalRadio/index.html#dunwoody-crystal-radio",
-    "title": "Crystal Radio Experiments",
-    "section": "Dunwoody Crystal Radio",
-    "text": "Dunwoody Crystal Radio\nThe Dunwoody Crystal Radio was similar to the Pickard Crystal Radio in that it used similar components. However, it had two tuning capacitors in addition to the variable inductor. This would allow for more fine-tuning of the selected frequency. Instead of the variable inductor being adjustable by a simple conductive slider, the inductor had various coil taps that I first adjusted to select the broad operational frequency. I then adjusted the tuning capacitors to fine-tune the selected signal. Figure 2. shows the schematic of the circuit.\n\n\n\nFigure 2. Dunwoody Crystal Radio Schematic"
-  },
-  {
-    "objectID": "projects/crystalRadio/index.html#armstrong-regenerative-circuit-radio",
-    "href": "projects/crystalRadio/index.html#armstrong-regenerative-circuit-radio",
-    "title": "Crystal Radio Experiments",
-    "section": "Armstrong Regenerative Circuit Radio",
-    "text": "Armstrong Regenerative Circuit Radio\nThis circuit was very different. It used a combination of inductors with a tickler coil to feed the output signal back into the circuit. It also used a triode vacuum tube to amplify the signal, which meant it needed two external power sources to work. Figure 3. shows the schematic of the circuit.\n\n\n\nFigure 3. Armstrong Regenerative Circuit Radio Schematic\n\n\nI was not able to get this circuit to work, even after replacing all components apart from the vacuum tube, which I could not find a replacement for. This led me to believe the vacuum tube was faulty.\nFrom my research, I believe replacing the vacuum tube with a JFET (Junction Field-Effect Transistor) would be a viable next step for debugging. The vacuum tube works as an electron valve, controlling a current with a tiny input voltage. When the radio signal fluctuates slightly, the current output of the vacuum tube has large fluctuations, which is how the signal gets amplified. JFETs similarly change current flow based on input voltage.\nI also think this would be a good substitution to do in general since the vacuum tube needed a really large voltage supply (45V+ battery) to run, while a JFET could function in the same way using a 9V battery. This would make the radio more accessible and cheaper to run as the setup I was using chained five 9V batteries together in series."
-  },
-  {
-    "objectID": "projects/keypadScanner/index.html",
-    "href": "projects/keypadScanner/index.html",
-    "title": "FPGA-Controlled Keypad Scanner",
-    "section": "",
-    "text": "Timeline: Aug 2026 – Sep 2026\n\n\nSkills: SystemVerilog, FPGA, Circuit Design, Lattice Radiant, Waveform Simulation, Testbench"
+    "objectID": "projects/spiTempSensor/index.html#conclusion",
+    "href": "projects/spiTempSensor/index.html#conclusion",
+    "title": "SPI and UART Communication Protocols Using an MCU",
+    "section": "Conclusion",
+    "text": "Conclusion\nThe design successfully utilized SPI and UART communication protocols to interface a temperature sensor, MCU implementation, and ESP8266 webpage together."
   },
   {
     "objectID": "projects/keypadScanner/index.html#design-and-testing-methodology",
@@ -497,25 +483,11 @@
     "text": "Results and Discussion\nThe design met all intended design objectives.\n\nSynthesizer Warnings\n\n\n\nFigure 29. Image of Radiant Synthesizer Outputs\n\n\nRadiant didn’t give me any errors, warnings of latches or tristate buffers etc. The only warning I got was that my ports were rejected, but these do not affect deployment.\n\n\nTestbench Simulation\nFigure 30 shows a screenshot of the QuestaSim simulation waveforms for my flip flop submodule. It behaved correctly because the output is always 1 clock rising edge behind the input when enabled. When disabled the output stops flowing, and when reset the output is set to 0. This was also confirmed by my automatic testbench (figure 31).\n\n\n\n\n\n\nNoteClick to view flip flop submodule simulation waveforms\n\n\n\n\n\n\n\n\nFigure 30. Flip flop submodule simulation waveforms\n\n\n\n\n\n\n\n\n\n\n\nNoteClick to view flip flop submodule testbench outputs\n\n\n\n\n\n\n\n\nFigure 31. Flip flop submodule testbench outputs\n\n\n\n\n\nFigure 32 shows a screenshot of the QuestaSim simulation waveforms for my synchronizer submodule. It behaved correctly because the output is always 2 clock rising edges behind the input. This was also confirmed by my automatic testbench (figure 33).\n\n\n\n\n\n\nNoteClick to view synchronizer submodule simulation waveforms\n\n\n\n\n\n\n\n\nFigure 32. Synchronizer submodule simulation waveforms\n\n\n\n\n\n\n\n\n\n\n\nNoteClick to view synchronizer submodule testbench outputs\n\n\n\n\n\n\n\n\nFigure 33. Synchronizer submodule testbench outputs\n\n\n\n\n\nThe scanning submodule was retested because it was slightly modified so it could be parametrized instead of only having a fixed scanning frequency. As shown in Figure 34, after each 1/8 clock cycle, the output rows were correct, including after a reset and after setting enable to low and then resetting again. This is also demonstrated by the automatic testbench outputs (see Figure 35).\n\n\n\n\n\n\nNoteClick to view scanning submodule simulation waveforms\n\n\n\n\n\n\n\n\nFigure 34. Scanning submodule simulation waveforms\n\n\n\n\n\n\n\n\n\n\n\nNoteClick to view scanning submodule testbench outputs\n\n\n\n\n\n\n\n\nFigure 35. Scanning submodule testbench outputs\n\n\n\n\n\nFigure 36 shows a screenshot of the QuestaSim simulation waveforms for my keymap submodule. When each of the rows were high, the column inputs were mapped to the keymap correctly with both single presses and multi presses. When reset was enabled, the keymap reset to all 0s. This was also confirmed by my automatic testbench (figure 37).\n\n\n\n\n\n\nNoteClick to view keymap submodule simulation waveforms\n\n\n\n\n\n\n\n\nFigure 36. Keymap submodule simulation waveforms\n\n\n\n\n\n\n\n\n\n\n\nNoteClick to view keymap submodule testbench outputs\n\n\n\n\n\n\n\n\nFigure 37. Keymap submodule testbench outputs\n\n\n\n\n\nFigure 38 shows the QuestaSim simulation waveforms for the debounce submodule. It behaved correctly because after oscillating the keymap bits repeatedly, the output was only changed value after the input was constant. After toggling the reset, the output would not change. This was also confirmed by the automatic testbench (figure 39).\n\n\n\n\n\n\nNoteClick to view debounce submodule simulation waveforms\n\n\n\n\n\n\n\n\nFigure 38. Debounce submodule simulation waveforms\n\n\n\n\n\n\n\n\n\n\n\nNoteClick to view debounce submodule testbench outputs\n\n\n\n\n\n\n\n\nFigure 39. Debounce submodule testbench outputs\n\n\n\n\n\nFigure 40 shows the QuestaSim simulation waveforms for the FSM. All state transitions (including the reset) and outputs were tested to work. This was also confirmed by the automatic testbench (figure 41).\n\n\n\n\n\n\nNoteClick to view FSM submodule simulation waveforms\n\n\n\n\n\n\n\n\nFigure 40. FSM submodule simulation waveforms\n\n\n\n\n\n\n\n\n\n\n\nNoteClick to view FSM submodule testbench outputs\n\n\n\n\n\n\n\n\nFigure 41. FSM submodule testbench outputs\n\n\n\n\n\nFigures 42 and 43 show the QuestaSim simulation waveforms and testbench output for the keymap to switch input converter. Each keymap combination was converted to the correct switch combination.\n\n\n\n\n\n\nNoteClick to view map to switch converter submodule simulation waveforms\n\n\n\n\n\n\n\n\nFigure 42. Map to switch converter submodule simulation waveforms\n\n\n\n\n\n\n\n\n\n\n\nNoteClick to view map to switch converter submodule testbench outputs\n\n\n\n\n\n\n\n\nFigure 43. Map to switch converter submodule testbench outputs\n\n\n\n\n\nFigures 44 and 45 show the QuestaSim simulation waveforms and testbench output for the top level module. The column inputs were bounced for 10ms, then were held high, only when that particular row was high. The anodes changed at the right time, and the segment outputs matched the column inputs after they were held high. The segments were reset to 0 and the anode reset to 2’b10 when the reset was toggled.\n\n\n\n\n\n\nNoteClick to view top level module simulation waveforms\n\n\n\n\n\n\n\n\nFigure 44. Top level module simulation waveforms\n\n\n\n\n\n\n\n\n\n\n\nNoteClick to view top level module testbench outputs\n\n\n\n\n\n\n\n\nFigure 45. Top level module testbench outputs\n\n\n\n\n\n\n\nHardware Deployment\nHere is a video showcasing the design running on hardware."
   },
   {
-    "objectID": "projects/animatronicEyes/index.html",
-    "href": "projects/animatronicEyes/index.html",
-    "title": "Animatronic Eyes",
-    "section": "",
-    "text": "Timeline: Jul 2025 – Oct 2025\n\n\nSkills: SolidWorks, 3D Printing, C++, Arduino"
-  },
-  {
     "objectID": "projects/animatronicEyes/index.html#yahoooo",
     "href": "projects/animatronicEyes/index.html#yahoooo",
     "title": "Animatronic Eyes",
     "section": "YAHOOOO",
     "text": "YAHOOOO"
-  },
-  {
-    "objectID": "projects/motorControl/index.html",
-    "href": "projects/motorControl/index.html",
-    "title": "Leverging MCU Interrupts to Read Stepper Motor Encoders",
-    "section": "",
-    "text": "Timeline: Oct 2026 – Oct 2026\n\n\nSkills: C, MCU, Circuit Design, Segger Embedded Studio"
   },
   {
     "objectID": "projects/motorControl/index.html#introduction",
