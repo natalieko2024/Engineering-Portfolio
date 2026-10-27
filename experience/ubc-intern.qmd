@@ -16,6 +16,7 @@ search: false
 MéridaLabs is a clean energy research lab in the University of British Columbia's Vancouver campus. One of their projects is the Smart Hydrogen Energy District (SHED), North America’s first integrated energy system at the city scale. It combines a hydrogen refuelling station and solar panel-powered electric vehicle parkade to supply clean energy on a city scale. 
 
 I worked on two projects during my time there:
+
 - 3D Photo and Video Renders
     - Reworked CAD models in AutoCAD to ensure conformity with real-life components; interfaced SolidWorks-generated parts with the AutoCAD assembly
     - Produced still-image renders and video animations in AutoCAD for a national technology conference in Alberta, CA
