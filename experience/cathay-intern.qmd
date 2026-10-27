@@ -1,6 +1,6 @@
 ---
 title: "Paid Maintenance & Reliability Engineering Intern"
-subtitle: "Summer Intern, Cathay Pacific, Hong Kong SAR"
+subtitle: "Summer Internship, Cathay Pacific, Hong Kong SAR"
 date-range: "Jul 2026 - Aug 2026"
 skills: "MS Power Apps, MS Power BI, MS Power Query, Ultramain, Skywise, Ultralytics YOLO, Swift App Development"
 search: false

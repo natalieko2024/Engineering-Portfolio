@@ -10,8 +10,9 @@ section.band{padding:60px 0}
 /* hero */
 .hero{display:grid;grid-template-columns:1.1fr 1fr;gap:30px;align-items:center;min-height:calc(100vh - 90px)}
 body:has(.hero) main.content{padding-top:0!important;margin-top:0!important}
-.hero h1{font-size:clamp(40px,7vw,84px);line-height:1;margin:.1em 0;border:0}
-.hero h1 em{font-style:normal;color:var(--or)}
+.hero h1{font-size:clamp(40px,7vw,84px);line-height:1.1;margin:.1em 0 .15em;border:0}
+.hero h2{font-size:clamp(28px,4vw,70px);line-height:1;margin:.1em 0;border:0;font-weight:700}
+.hero h1 em,.hero h2 em{font-style:normal;color:var(--or)}
 .hero .tag{color:var(--bl);font-size:14px}
 .hero p{color:var(--mute);max-width:46ch}
 .cta{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}

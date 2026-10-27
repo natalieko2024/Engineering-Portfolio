@@ -1,0 +1,26 @@
+---
+title: "Paid Student Intern"
+subtitle: "Summer Internship, MéridaLabs, Dept. of Mechanical Engineering, University of British Columbia"
+date-range: "Jul 2023 - Jul 2023"
+skills: "AutoCAD, CAD Rendering and Animation, SolidWorks, JavaScript"
+search: false
+---
+
+<div class="project-metadata-bar">
+  <div><strong>Timeline:</strong> {{< meta date-range >}}</div>
+  <div><strong>Skills:</strong> <span class="skills-val">{{< meta skills >}}</span></div>
+</div>
+
+[← Back to Digital CV](../resume.qmd){.btn-pill}
+
+MéridaLabs is a clean energy research lab in the University of British Columbia's Vancouver campus. One of their projects is the Smart Hydrogen Energy District (SHED), North America’s first integrated energy system at the city scale. It combines a hydrogen refuelling station and solar panel-powered electric vehicle parkade to supply clean energy on a city scale. 
+
+I worked on two projects during my time there:
+- 3D Photo and Video Renders
+    - Reworked CAD models in AutoCAD to ensure conformity with real-life components; interfaced SolidWorks-generated parts with the AutoCAD assembly
+    - Produced still-image renders and video animations in AutoCAD for a national technology conference in Alberta, CA
+- SHED Interactive Website
+    - Collaborated with 2 undergraduate co-op students
+    - Utilized JavaScript and Svelte to make website components dynamic and user-interactive
+
+
