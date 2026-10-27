@@ -527,21 +527,21 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Engineering a world within reach.",
+    "title": "Natalie Ko",
     "section": "",
-    "text": "// mechatronics engineering · accessible design\n  \n  Hi I'm Nat! I thrive on the challenge of translating complex human needs into functional, reliable engineering solutions. I'm always tinkering with projects intersecting mechanics, digital and electronic systems, controls, and human-centred design. Whether it's building something new or iterating, I'm always working to build highly reliable, real-world products!\n  See projectsAbout meDigital CV\n \n \n  θ₁ 0° · θ₂ 0°x 0 · y 0 mm\n  move cursor · inverse kinematics live · the arm always reaches for you"
+    "text": "// mechatronics engineering · accessible design\n  \n  \n  I thrive on the challenge of translating complex human needs into functional, reliable engineering solutions. I'm always tinkering with projects intersecting mechanics, digital and electronic systems, controls, and human-centred design. Whether it's building something new or iterating, I'm always working to build highly reliable, real-world products!\n  See projectsAbout meDigital CV\n \n \n  θ₁ 0° · θ₂ 0°x 0 · y 0 mm\n  move cursor · inverse kinematics live · the arm always reaches for you"
   },
   {
     "objectID": "index.html#featured-projects",
     "href": "index.html#featured-projects",
-    "title": "Engineering a world within reach.",
+    "title": "Natalie Ko",
     "section": "Featured projects",
     "text": "Featured projects\n\nView all projects →"
   },
   {
     "objectID": "index.html#toolbox",
     "href": "index.html#toolbox",
-    "title": "Engineering a world within reach.",
+    "title": "Natalie Ko",
     "section": "Toolbox",
     "text": "Toolbox\n\nMechanicalSolidWorksFusion360AutoCADFEAGD&TFabrication EquipmentManual Machining\n\nElectronicsKiCadCircuit DesignMotor DriversOscilloscopeMultimeterPower SuppliesSoldering\n\nSoftwareC / C++MATLAB / SimulinkSystemVerilogPythonArduinoIDEJavaGit (Version Control)\n\nControlsPID TuningStability AnalysisSensor FusionSystem ModelingSignal Processing"
   }
