@@ -18,9 +18,13 @@ Diabetes is a worldwide problem that affects 12% of people in the USA. One solut
 So far, my tasks have included:
 
 - Project scoping
+  - Interviewed the clients to determine the problem statement, and appropriate objectives, functions, and constraints
+  - Sought client feedback and advice on current processes, design alternatives, and project limitations in weekly meetings
+  - Presented project progress and held interactive design test sessions to 14 students
 - Prototyping
   - Prototyped several new clamping designs, including a pen-click lock mechanism and a sliding bar lock mechanism
   - Produced low-resolution prototypes with readily available springs and screws
   - Produced higher-resolution prototypes through SolidWorks parts and assemblies, and 3D printing
 - Materials analysis
   - Researched suitable materials to comply with ISO 7 cleanroom standards and highly corrosive electroplating baths
+  - Evaluated tradeoffs between materials and components to minimize maintenance costs and part lifecycles
