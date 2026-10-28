@@ -402,6 +402,25 @@ window.Quarto = {
 <strong>Skills:</strong> SystemVerilog, FPGA, Circuit Design, Lattice Radiant, Waveform Simulation, Testbench
 </div>
 </div>
+<div class="columns">
+<div class="column" style="width:49%;">
+<p><strong>Video Showcasing Hardware Deployment:</strong></p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/qhZsKVxzVlM" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p><img src="images/statetransitiondiagram.jpg" class="img-fluid"></p>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:49%;">
+<p><strong>Overview of Work:</strong></p>
+<p>Designed and deployed an FPGA implementation to read a 4x4 matrix keypad and display the last two hexadecimal inputs on a dual seven-segment display. Accounted for key bounce, multi-press, and timing inconsistencies.</p>
+<p>Key outcomes:</p>
+<ul>
+<li><strong>Designed and deployed a Finite State Machine on an FPGA</strong> to control a time-multiplexed 7-segment display, account for switch bounce, and account for multi-key press states</li>
+<li><strong>Programmed in SystemVerilog, ran testbenches, and analyzed waveforms in Questa</strong> to ensure system functionality, even during edge cases</li>
+<li><strong>Developed NPN and PNP transistor-based circuits</strong> to ensure full keypad functionality given GPIO pins</li>
+<li><strong>Utilized oscilloscopes, multimeters, and other electronic test instruments</strong> to test and debug circuit outputs</li>
+</ul>
+</div>
+</div>
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
 <p>In this project, I designed an FPGA implementation to read a 4x4 matrix keypad input and display the last two hexadecimal digits on a dual seven-segment display with the most recent entry always appearing on the right. The design made it so each key press was recorded only once independent of the press length. If multiple keys were held at the same time, only the last key held would be displayed.</p>
@@ -998,7 +1017,7 @@ R&amp;=55\Omega
 <p>These modules were all tested using automatic testbenches, waveform simulation, and hardware deployment.</p>
 <p>I think my debouncing strategy is more accurate and time efficient than other strategies. One other strategy I can think of is just waiting 10ms (maximum bouncing time) after the first button press before using the keyMap. However, this doesn’t guarantee that after you wait, the button is actually debounced - it could slightly fluctuate, or if your count is off by a little bit you would read and use the bounce. Adding a strategy of storing the initial read and comparing at the end of the wait time to confirm debouncing could work. However, if another button happens to activate during the 10ms wait time, that button could still bounce after the first button is done, so then you would have to wait again. Using the shift register method means you don’t have to have logic determining the first key press, or wait a specified amount of time. You always read until all registers log the same value.</p>
 <p>However, the other strategies are probably more hardware efficient as I do use 9 flip-flops (probably could’ve used less, I was just being cautious), whereas the waiting strategy would just rely on a counter output that uses 1 flip-flop.</p>
-<p>My design technically includes 2 communicating FSMs that evaluates the current debounced keyMap against the saved keyMap. I think another way to do achieve the end goal (with the alternative debouncing strategies described above) is to have a canonical FSM managing the display/scanning states communicate with another canonical FSM to control whether debouncing is active or not, or communicate with a non-canonical FSM which is a counter to keep track of how long to wait for. However, I think this is more complicated and could make the overal FSM structure less reliable since switching or keeping states depend on more conditions that could be unexpected values right when the clock edge occurs, meaning you have to wait for the next cycle to actually transition correctly.</p>
+<p>My design technically includes 2 communicating FSMs that evaluates the current debounced keyMap against the saved keyMap. I think another way to do achieve the end goal (with the alternative debouncing strategies described above) is to have a canonical FSM managing the display/scanning states communicate with another canonical FSM to control whether debouncing is active or not, or communicate with a non-canonical FSM which is a counter to keep track of how long to wait for. However, I think this is more complicated and could make the overall FSM structure less reliable since switching or keeping states depend on more conditions that could be unexpected values right when the clock edge occurs, meaning you have to wait for the next cycle to actually transition correctly.</p>
 </section>
 <section id="technical-documentation-2" class="level2">
 <h2 class="anchored" data-anchor-id="technical-documentation-2">Technical Documentation</h2>

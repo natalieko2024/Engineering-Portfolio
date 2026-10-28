@@ -338,6 +338,24 @@ ul.task-list li input[type="checkbox"] {
 <strong>Skills:</strong> C, MCU, SPI, UART, Osilloscope Debugging, Circuit Design, Segger Embedded Studio
 </div>
 </div>
+<div class="columns">
+<div class="column" style="width:49%;">
+<p><strong>Video Showcasing Hardware Deployment:</strong></p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/h1CneQq5_-U" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p><img src="images/config.jpg" class="img-fluid"></p>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:49%;">
+<p><strong>Overview of Work:</strong></p>
+<p>Designed and deployed an FPGA implementation to read a 4x4 matrix keypad and display the last two hexadecimal inputs on a dual seven-segment display. Accounted for key bounce, multi-press, and timing inconsistencies.</p>
+<p>Key outcomes:</p>
+<ul>
+<li><strong>Interfaced the MCU with an ESP8266</strong> to host a webpage displaying updated temperature sensor readings and led states</li>
+<li><strong>Communicated</strong> with the ESP8266 and sensor using <strong>SPI and UART protocols</strong></li>
+<li><strong>Utilized a 4-channel oscilloscope</strong> to confirm SPI behaviour during configuration, read, and write</li>
+</ul>
+</div>
+</div>
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>In this lab, a design was implemented on the MCU to host a web server on an ESP8266 through UART communication and read temperature readings of various resolutions using a temperature sensor through SPI communication. Data from the peripherals connected to the MCU would be displayed on the webpage.</p>
