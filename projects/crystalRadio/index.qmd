@@ -17,6 +17,34 @@ roles: "Electrical Debugging and Analysis Lead (Team of 4)"
   <div><strong>Roles:</strong> {{< meta roles >}}</div>
 </div>
 
+:::{.columns}
+::: {.column width="49%"}
+**Video Showcasing Hardware Deployment:**
+
+{{< video https://youtu.be/GzzDK9j3i3Y >}}
+
+![](images/armstrong.png)
+
+:::
+
+::: {.column width="2%"}
+:::
+
+::: {.column width="49%"}
+**Overview of Work:**
+
+Analysed RLC Circuits to debug Dunwoody, Pickard, and Armstrong crystal radios, and produced a new radio circuit to pick up shortwave signals. Devised an innovative antenna for optimal signal receiving. Confirmed intercepted radio signals with Software Defined Radio (SDR).
+
+Key outcomes:
+
+- **Analysed RLC circuits** to debug WWI/WWII-era radios, so even without a power source, audio could be heard reliably
+- **Problem-solved for radio deployment in the field**, in face of limited accessible structures that could be used as a suitable antenna
+- **Confirmed intercepted signals** using software defined radio
+- Combined components to **increase the frequency range of the existing radios**
+
+:::
+:::
+
 # Introduction and Background
 This started out as a history project analyzing the evolution of different sources of sound and how they affect our perception of the information conveyed. As part of this, my team chose to analyze various radios from the WWI/WWII era, and borrowed the relevant materials from Pomona College's music department to experiment with, even though the professor who owned them claimed students in previous years couldn't get them to work. I was fascinated by how these radios did not need any external power source to work. Seeing an opportunity to apply my skills from my Engineering Systems course, I decided to attempt to debug the radios so we could hear real signals out of them. I didn't have any experience with any kind of radios before, and minimal experience solving for the transient response of RLC circuits only theoretically, so this was a great hands-on experience getting to know analog circuits!
 

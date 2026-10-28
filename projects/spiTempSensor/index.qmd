@@ -16,6 +16,33 @@ skills: "C, MCU, SPI, UART, Osilloscope Debugging, Circuit Design, Segger Embedd
   <div><strong>Skills:</strong> {{< meta skills >}}</div>
 </div>
 
+:::{.columns}
+::: {.column width="49%"}
+**Video Showcasing Hardware Deployment:**
+
+{{< video https://youtu.be/h1CneQq5_-U >}}
+
+![](images/config.jpg)
+
+:::
+
+::: {.column width="2%"}
+:::
+
+::: {.column width="49%"}
+**Overview of Work:**
+
+Designed and deployed an FPGA implementation to read a 4x4 matrix keypad and display the last two hexadecimal inputs on a dual seven-segment display. Accounted for key bounce, multi-press, and timing inconsistencies.
+
+Key outcomes:
+
+- **Interfaced the MCU with an ESP8266** to host a webpage displaying updated temperature sensor readings and led states
+- **Communicated** with the ESP8266 and sensor using **SPI and UART protocols**
+- **Utilized a 4-channel oscilloscope** to confirm SPI behaviour during configuration, read, and write
+
+:::
+:::
+
 ## Introduction
 In this lab, a design was implemented on the MCU to host a web server on an ESP8266 through UART communication and read temperature readings of various resolutions using a temperature sensor through SPI communication. Data from the peripherals connected to the MCU would be displayed on the webpage.
 

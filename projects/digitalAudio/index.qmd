@@ -16,6 +16,34 @@ skills: "C, MCU, Circuit Design, Segger Embedded Studio"
   <div><strong>Skills:</strong> {{< meta skills >}}</div>
 </div>
 
+:::{.columns}
+::: {.column width="49%"}
+**Videos Showcasing Hardware Deployment:**
+
+{{< video https://youtu.be/gsBTgKf125U >}}
+
+{{< video https://youtu.be/Bo4-SabeIXc >}}
+
+:::
+
+::: {.column width="2%"}
+:::
+
+::: {.column width="49%"}
+**Overview of Work:**
+
+Designed and deployed an MCU implementation to play custom music scores of a series of intended frequencies and durations.
+
+Key outcomes:
+
+- **Utilized MCU timers** to generate appropriate frequencies and note durations
+- **Developed an audio amplifier circuit** with a gain of 20 to ensure audible speaker output
+- **Compared intended and actual pitches** to ensure imperceptible note differences
+- **Calculated minimum and maximum frequencies and durations** to ensure full MCU implementation
+
+:::
+:::
+
 ## Introduction
 In this lab, a design was implemented on the NUCLEO-32 MCU to utilize timers to generate different pitches and play Für Elise on a speaker.
 

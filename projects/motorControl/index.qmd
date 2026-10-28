@@ -16,6 +16,29 @@ skills: "C, MCU, Circuit Design, Segger Embedded Studio"
   <div><strong>Skills:</strong> {{< meta skills >}}</div>
 </div>
 
+:::{.columns}
+::: {.column width="49%"}
+![](images/lab5flowchart.jpeg)
+:::
+
+::: {.column width="2%"}
+:::
+
+::: {.column width="49%"}
+**Overview of Work:**
+
+Designed and deployed an MCU implementation to determine motor speed and direction based on quadrature encoder signals.
+
+Key outcomes:
+
+- **Utilized MCU interrupts** to determine speed and direction based on two quadrature encoders
+- **Evaluated the tradeoffs of using MCU interrupts versus using manual polling**
+- **Utilized a bench top power supply** to test speed readings at all edge cases (maximum speed, 0 speed, rotating in the opposite direction) 
+- **Confirmed the motor revolutions per second using gear ratio calculations**
+
+:::
+:::
+
 ## Introduction
 In this lab, a design was implemented on the MCU to accurately determine the speed and direction of a stepper motor through encoder outputs.
 

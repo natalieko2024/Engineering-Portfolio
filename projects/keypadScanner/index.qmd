@@ -16,6 +16,34 @@ skills: "SystemVerilog, FPGA, Circuit Design, Lattice Radiant, Waveform Simulati
   <div><strong>Skills:</strong> {{< meta skills >}}</div>
 </div>
 
+:::{.columns}
+::: {.column width="49%"}
+**Video Showcasing Hardware Deployment:**
+
+{{< video https://youtu.be/qhZsKVxzVlM >}}
+
+![](images/statetransitiondiagram.jpg)
+
+:::
+
+::: {.column width="2%"}
+:::
+
+::: {.column width="49%"}
+**Overview of Work:**
+
+Designed and deployed an FPGA implementation to read a 4x4 matrix keypad and display the last two hexadecimal inputs on a dual seven-segment display. Accounted for key bounce, multi-press, and timing inconsistencies.
+
+Key outcomes:
+
+- **Designed and deployed a Finite State Machine on an FPGA** to control a time-multiplexed 7-segment display, account for switch bounce, and account for multi-key press states
+- **Programmed in SystemVerilog, ran testbenches, and analyzed waveforms in Questa** to ensure system functionality, even during edge cases
+- **Developed NPN and PNP transistor-based circuits** to ensure full keypad functionality given GPIO pins
+- **Utilized oscilloscopes, multimeters, and other electronic test instruments** to test and debug circuit outputs
+
+:::
+:::
+
 # Introduction
 In this project, I designed an FPGA implementation to read a 4x4 matrix keypad input and display the last two hexadecimal digits on a dual seven-segment display with the most recent entry always appearing on the right. The design made it so each key press was recorded only once independent of the press length. If multiple keys were held at the same time, only the last key held would be displayed.
 
@@ -361,7 +389,7 @@ I think my debouncing strategy is more accurate and time efficient than other st
 
 However, the other strategies are probably more hardware efficient as I do use 9 flip-flops (probably could've used less, I was just being cautious), whereas the waiting strategy would just rely on a counter output that uses 1 flip-flop.
 
-My design technically includes 2 communicating FSMs that evaluates the current debounced keyMap against the saved keyMap. I think another way to do achieve the end goal (with the alternative debouncing strategies described above) is to have a canonical FSM managing the display/scanning states communicate with another canonical FSM to control whether debouncing is active or not, or communicate with a non-canonical FSM which is a counter to keep track of how long to wait for. However, I think this is more complicated and could make the overal FSM structure less reliable since switching or keeping states depend on more conditions that could be unexpected values right when the clock edge occurs, meaning you have to wait for the next cycle to actually transition correctly.
+My design technically includes 2 communicating FSMs that evaluates the current debounced keyMap against the saved keyMap. I think another way to do achieve the end goal (with the alternative debouncing strategies described above) is to have a canonical FSM managing the display/scanning states communicate with another canonical FSM to control whether debouncing is active or not, or communicate with a non-canonical FSM which is a counter to keep track of how long to wait for. However, I think this is more complicated and could make the overall FSM structure less reliable since switching or keeping states depend on more conditions that could be unexpected values right when the clock edge occurs, meaning you have to wait for the next cycle to actually transition correctly.
 
 ## Technical Documentation
 The source code for this part of the project can be found in the associated [GitHub repository](https://github.com/natalieko2024/E155-Labs/tree/main/E155-Lab3).
