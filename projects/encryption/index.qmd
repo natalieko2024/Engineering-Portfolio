@@ -1,0 +1,31 @@
+---
+title: "AES Encryption on an FPGA and MCU"
+date-range: "Oct 2026 – Oct 2026"
+description: "Implemented the AES encryption standard on an FPGA and MCU"
+title-block-style: none
+subtitle : ""
+image: ""
+categories:
+  - "Embedded Systems & Firmware"
+  - "PCB Design & Electronics"
+skills: "SystemVerilog, FPGA, MCU, Lattice Radiant, Waveform Simulation, Testbench"
+---
+
+<div class="project-metadata-bar">
+  <div><strong>Timeline:</strong> {{< meta date-range >}}</div>
+  <div><strong>Skills:</strong> {{< meta skills >}}</div>
+</div>
+
+# Introduction
+
+# Design and Testing Methodology
+
+# Technical Documentation
+
+## Block Diagram
+
+# Results and Discussion
+
+## Testbench Simulation
+
+# Conclusion
