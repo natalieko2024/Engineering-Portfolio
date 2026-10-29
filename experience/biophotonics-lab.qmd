@@ -16,6 +16,7 @@ search: false
 The Harvey Mudd College Biophotonics Lab works to democratize access to biomedical optical instruments by building on existing methods. The project I worked on was the development of a low-cost, open-source in vivo imaging system. Commercial in vivo imaging systems have a wide range of powerful imaging capabilities, but are very expensive and inaccessible to many small institutions. This project would help democratize access to these imaging capabilities at a similar sensitivity level while remaining easy for manufacture and set up in a home or school setting.
 
 Key experiences and outcomes include:
+
 - Refined/redesigned an open-source, low-cost in vivo imaging system (OpenIVIS)
     - Collaborated with two undergraduate students to refine to work on this project
     - Reduced the production cost of the IVIS by over 99% compared to commercial systems
