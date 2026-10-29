@@ -57,9 +57,9 @@ title-block-banner: false
 
 ```{=html}
 <div class="skills">
-<div><h3 class="mono">Mechanical</h3><div class="chips"><span>SolidWorks</span><span>Fusion360</span><span>AutoCAD</span><span>FEA</span><span>GD&T</span><span>Fabrication Equipment</span><span>Manual Machining</span></div></div>
+<div><h3 class="mono">Mechanical</h3><div class="chips"><span>SolidWorks</span><span>AutoCAD</span><span>FEA</span><span>GD&T</span><span>Fabrication Equipment</span><span>Precision Manual Machining</span><span>Process Documentation</span><span>Metallurgy</span><span>Fusion360</span></div></div>
 
-<div><h3 class="mono">Electronics</h3><div class="chips"><span>KiCad</span><span>Circuit Design</span><span>Motor Drivers</span><span>Oscilloscope</span><span>Multimeter</span><span>Power Supplies</span><span>Soldering</span></div></div>
+<div><h3 class="mono">Electronics/Hardware</h3><div class="chips"><span>MCU</span><span>FPGA</span><span>KiCad</span><span>Analog/Digital Circuit Design</span><span>STM32</span><span>iCE40K</span><span>Oscilloscope</span><span>Motor Drivers</span><span>Multimeter</span><span>Power Supplies</span><span>Soldering</span></div></div>
 
 <div><h3 class="mono">Software</h3><div class="chips"><span>C / C++</span><span>MATLAB / Simulink</span><span>SystemVerilog</span><span>Python</span><span>ArduinoIDE</span><span>Java</span><span>Git (Version Control)</span></div></div>
 
