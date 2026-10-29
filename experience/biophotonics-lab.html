@@ -334,7 +334,30 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p><a href="../resume.html" class="btn-pill">← Back to Digital CV</a></p>
 <p>The Harvey Mudd College Biophotonics Lab works to democratize access to biomedical optical instruments by building on existing methods. The project I worked on was the development of a low-cost, open-source in vivo imaging system. Commercial in vivo imaging systems have a wide range of powerful imaging capabilities, but are very expensive and inaccessible to many small institutions. This project would help democratize access to these imaging capabilities at a similar sensitivity level while remaining easy for manufacture and set up in a home or school setting.</p>
-<p>Key experiences and outcomes include: - Refined/redesigned an open-source, low-cost in vivo imaging system (OpenIVIS) - Collaborated with two undergraduate students to refine to work on this project - Reduced the production cost of the IVIS by over 99% compared to commercial systems - Improved the laser speckle contrast and bioluminescence imaging capabilities compared to the base OpenIVIS system, successfully processing collected images using Python - Deployed the system in a separate research lab setting - The system was used for imaging iLux and NanoLuc enzymes at Claremont McKenna College’s Rathbun Lab - Plotted intensity vs photon count, intensity vs enzyme concentration, and concentration vs photon count using Python - Experimented and troubleshot the setup for optimal imaging capabilities - Troubleshot Raspberry Pi hardware components using oscilloscopes and software using Terminal - Devised experimental optics setups (using traditional components and 3D printed stands) and configured them for optimal magnification - Authored and presented technical documentation - Wrote white papers, updated documentation, and presented on progress to other Engineering researchers - Wrote and presented a poster about Laser Speckle Contrast Imaging and OpenIVIS at the Southern California Conferences for Undergraduate Research in November 2025</p>
+<p>Key experiences and outcomes include:</p>
+<ul>
+<li>Refined/redesigned an open-source, low-cost in vivo imaging system (OpenIVIS)
+<ul>
+<li>Collaborated with two undergraduate students to refine to work on this project</li>
+<li>Reduced the production cost of the IVIS by over 99% compared to commercial systems</li>
+<li>Improved the laser speckle contrast and bioluminescence imaging capabilities compared to the base OpenIVIS system, successfully processing collected images using Python</li>
+</ul></li>
+<li>Deployed the system in a separate research lab setting
+<ul>
+<li>The system was used for imaging iLux and NanoLuc enzymes at Claremont McKenna College’s Rathbun Lab</li>
+<li>Plotted intensity vs photon count, intensity vs enzyme concentration, and concentration vs photon count using Python</li>
+</ul></li>
+<li>Experimented and troubleshot the setup for optimal imaging capabilities
+<ul>
+<li>Troubleshot Raspberry Pi hardware components using oscilloscopes and software using Terminal</li>
+<li>Devised experimental optics setups (using traditional components and 3D printed stands) and configured them for optimal magnification</li>
+</ul></li>
+<li>Authored and presented technical documentation
+<ul>
+<li>Wrote white papers, updated documentation, and presented on progress to other Engineering researchers</li>
+<li>Wrote and presented a poster about Laser Speckle Contrast Imaging and OpenIVIS at the Southern California Conferences for Undergraduate Research in November 2025</li>
+</ul></li>
+</ul>
 
 
 
@@ -351,7 +374,8 @@ const PROJECTS=[
  {"featured":true,"img":"images/E80Bot.png","slug": "E80Bot", "t": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)", "d": "Mar 2026 – May 2026", "cats": ["Robotics & Control Systems", "PCB Design & Electronics", "Embedded Systems & Firmware", "Mechanical Design & FEA"], "b": "Developed and deployed an AUV to map metal debris distribution on the ocean floor and back-calculate debris drop locations.", "tech": ["P-Control", "Circuit Design", "Mechanical Design", "C++", "MATLAB", "I2C Communication", "Data Analysis", "Troubleshooting", "Technical Documentation"]},
  {"featured":false,"img":"images/radio.jpeg","slug": "crystalRadio", "t": "Crystal Radio Experiments", "d": "Feb 2026 – Mar 2026", "cats": ["PCB Design & Electronics"], "b": "Analysed RLC Circuits to debug Dunwoody, Pickard, and Armstrong crystal radios. Devised an innovative antenna for optimal signal receiving.", "tech": ["Radio Frequency Engineering", "Software Defined Radio", "Circuit Analysis"]},
 
- {"featured":true,"img":"images/abyssExplorer.jpg","slug": "abyssExplorer", "t": "Abyss Explorer", "d": "Feb 2025 – May 2025", "cats": ["Mechanical Design & FEA", "Manufacturing"], "b": "Designed and manufactured a system to raise and lower sensors through a ~600ft radioactive mine shaft (shrinking to an unknown diameter) for data collection without direct human contact.", "tech": ["SolidWorks", "Mechanical Design", "Prototyping", "Manufacturing", "Project Management", "Technical Documentation"]}
+ {"featured":true,"img":"images/abyssExplorer.jpg","slug": "abyssExplorer", "t": "Abyss Explorer", "d": "Feb 2025 – May 2025", "cats": ["Mechanical Design & FEA", "Manufacturing"], "b": "Designed and manufactured a system to raise and lower sensors through a ~600ft radioactive mine shaft (shrinking to an unknown diameter) for data collection without direct human contact.", "tech": ["SolidWorks", "Mechanical Design", "Prototyping", "Manufacturing", "Project Management", "Technical Documentation"]},
+ {"featured":false,"img":"images/hammer.jpg","slug": "hammer", "t": "Precision Manually Machined Hammer", "d": "Jan 2025 – Apr 2025", "cats": ["Mechanical Design & FEA", "Manufacturing"], "b": "Manually machined a hammer using conventional manual machining tools to specifications following technical drawings.", "tech": ["Precision Manual Machining", "Geometric Dimensioning & Tolerancing (GD&T)", "Process Planning & Documentation", "Metallurgy"]}
 ];
 
 /*  {"featured":false,"img":"images/windTunnel.png","slug": "E80Fluids", "t": "Wind Tunnel Experiments and Fluid Dynamics Simulation", "d": "Feb 2026 – Mar 2026", "cats": ["Miscellaneous"], "b": "Used the principle of similitude to characterize ROV behaviour in the water through wind tunnel simulations.", "tech": ["COMSOL", "Technical Documentation"]}, 
@@ -359,7 +383,7 @@ const PROJECTS=[
  {"featured":false,"img":"images/79bot.jpg","slug": "E79Bot", "t": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)", "d": "Aug 2025 – Dec 2025", "cats": ["Robotics & Control Systems", "PCB Design & Electronics", "Mechanical Design & FEA"], "b": "Developed and deployed an PID-controlled ROV to collect temperature and depth measurements underwater.", "tech": ["PID-Control", "Circuit Design", "Mechanical Design", "Data Analysis", "LabView", "Soldering", "Breadboarding", "Mathematical Modeling"]},
  {"featured":false,"img":"images/eyes.jpg","slug": "animatronicEyes", "t": "Animatronic Eyes", "d": "Jul 2025 – Oct 2025", "cats": ["Embedded Systems & Firmware", "Mechanical Design & FEA"],"b": "Designed and programmed a set of animatronic eyes controlled by servo motors and joysticks through Arduino.", "tech": ["SolidWorks", "3D Printing", "C++", "Arduino","Servo Control"]},
 
-  {"featured":false,"img":"images/hammer.jpg","slug": "hammer", "t": "Precision Manually Machined Hammer", "d": "Jan 2025 – Apr 2025", "cats": ["Manufacturing"], "b": "Manually machined a hammer using conventional manual machining tools to specifications following technical drawings.", "tech": ["Precision Manual Machining", "Geometric Dimensioning & Tolerancing (GD&T)", "Process Planning & Documentation", "Metallurgy"]}
+  
  */
 
  /* ================================================================================ */

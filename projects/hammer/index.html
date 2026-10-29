@@ -8,7 +8,7 @@
 
 <meta name="description" content="Manually machined a hammer using conventional manual machining tools to specifications following technical drawings.">
 
-<title>Hammer – NK/MECH</title>
+<title>Precision Manually Machined Hammer – NK/MECH</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -305,16 +305,31 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Outline</h2>
    
   <ul>
-  <li><a href="#test-heading" id="toc-test-heading" class="nav-link active" data-scroll-target="#test-heading">TEst heading</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#stand" id="toc-stand" class="nav-link" data-scroll-target="#stand">Stand</a>
   <ul class="collapse">
-  <li><a href="#yahoooo" id="toc-yahoooo" class="nav-link" data-scroll-target="#yahoooo">YAHOOOO</a></li>
+  <li><a href="#laser-cutting" id="toc-laser-cutting" class="nav-link" data-scroll-target="#laser-cutting">Laser Cutting</a></li>
+  <li><a href="#d-printing" id="toc-d-printing" class="nav-link" data-scroll-target="#d-printing">3D Printing</a></li>
+  <li><a href="#assembly" id="toc-assembly" class="nav-link" data-scroll-target="#assembly">Assembly</a></li>
   </ul></li>
-  <li><a href="#wee-woo" id="toc-wee-woo" class="nav-link" data-scroll-target="#wee-woo">wee woo</a></li>
+  <li><a href="#head" id="toc-head" class="nav-link" data-scroll-target="#head">Head</a>
+  <ul class="collapse">
+  <li><a href="#lathe" id="toc-lathe" class="nav-link" data-scroll-target="#lathe">Lathe</a></li>
+  <li><a href="#mill" id="toc-mill" class="nav-link" data-scroll-target="#mill">Mill</a></li>
+  </ul></li>
+  <li><a href="#faces" id="toc-faces" class="nav-link" data-scroll-target="#faces">Faces</a>
+  <ul class="collapse">
+  <li><a href="#hard-face" id="toc-hard-face" class="nav-link" data-scroll-target="#hard-face">Hard Face</a></li>
+  <li><a href="#soft-face" id="toc-soft-face" class="nav-link" data-scroll-target="#soft-face">Soft Face</a></li>
+  </ul></li>
+  <li><a href="#handle" id="toc-handle" class="nav-link" data-scroll-target="#handle">Handle</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#appendix" id="toc-appendix" class="nav-link" data-scroll-target="#appendix">Appendix</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><h1 class="title display-7">Hammer</h1></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><h1 class="title display-7">Precision Manually Machined Hammer</h1></header>
 
 
 <header id="title-block-header">
@@ -331,14 +346,89 @@ ul.task-list li input[type="checkbox"] {
 <strong>Skills:</strong> Precision Manual Machining, Geometric Dimensioning &amp; Tolerancing (GD&amp;T), Process Planning &amp; Documentation, Metallurgy
 </div>
 </div>
-<section id="test-heading" class="level1">
-<h1>TEst heading</h1>
-<section id="yahoooo" class="level2">
-<h2 class="anchored" data-anchor-id="yahoooo">YAHOOOO</h2>
+<div class="columns">
+<div class="column" style="width:49%;">
+<p><img src="images/hammer.jpg" class="img-fluid"></p>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:49%;">
+<p><strong>Overview of Work:</strong></p>
+<p>Manually machined a hammer following technical drawings and process routers using equipment such as the mill, lathe, bandsaw, and router table. All dimensions were within specified tolerances.</p>
+<p>Key outcomes:</p>
+<ul>
+<li><strong>Followed technical drawings and process routers</strong> to manually machine all parts to spec</li>
+<li><strong>Used micrometers, calipers, and pin gauges</strong>, so the hard face could be press-fit into the head without risk of coming loose</li>
+<li><strong>Utilized metallurgy principles</strong> to heat treat and temper AISI 4340 steel, adjusting its hardness and internal stresses</li>
+<li><strong>Read material and cutting tool speed specifications for the mill and lathe</strong> to ensure safety while working in the machine shop</li>
+</ul>
+</div>
+</div>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>This hammer (HMC E4 Hammer) is the engineering “rite of passage” freshmen and sophomore engineers complete to make a custom metal and wood hammer. It involves using conventional manual machining equipment (as well as automated manufacturing equipment such as laser cutters), following technical drawings and process routers, and measuring everything to specification all in each student’s own time.</p>
+</section>
+<section id="stand" class="level1">
+<h1>Stand</h1>
+<p>The hammer stand is made of laser cut wood and 3D printed PLA.</p>
+<section id="laser-cutting" class="level2">
+<h2 class="anchored" data-anchor-id="laser-cutting">Laser Cutting</h2>
+<p>First, the hammer stand template was loaded into the Retina Engrave software, with all lines set to vector. The speed and power of the laser were configured so the Full Spectrum PS48 laser cutter could fully cut through 0.125” birch plywood without risking burn marks or a possible fire. I added rasters (text and SVG drawings) to personalize my hammer stand.</p>
+<p>A sheet of 0.125” birch plywood was laid down on the laser cutter bed. The cutting lens was focused to the sheet using the provided focusing tool and the bed movement buttons such that the end of the focusing tool was flush with the surface of the sheet. The “run perimeter” option was selected to ensure the design fit on the plywood sheet, and if not, the sheet was moved into a position that fully included the design area.</p>
+<p>Making sure the laser cutter lid was closed, I cut my design.</p>
+<p>After cutting, I sanded my pieces down and applied wood glue to the mortise and tenon joints to fix them together.</p>
+</section>
+<section id="d-printing" class="level2">
+<h2 class="anchored" data-anchor-id="d-printing">3D Printing</h2>
+<p>The hammer stand STL file was opened in OrcaSlicer, and given appropriate slicing parameters to print on a Bambu X1C printer using PLA. After slicing, the .gcode file was uploaded to the printer via cloud, and the print was monitored for the full duration to prevent spaghetti errors / bed adhesion problems (especially since there was a power outage in the middle of the print!).</p>
+</section>
+<section id="assembly" class="level2">
+<h2 class="anchored" data-anchor-id="assembly">Assembly</h2>
+<p>The print was attached to the wooden base using a 4 x 0.25” brass round head wood screw.</p>
 </section>
 </section>
-<section id="wee-woo" class="level1">
-<h1>wee woo</h1>
+<section id="head" class="level1">
+<h1>Head</h1>
+<section id="lathe" class="level2">
+<h2 class="anchored" data-anchor-id="lathe">Lathe</h2>
+<p>Following the head process router and technical drawings, the lathe (with the RH HSS cutting tool, carbide cutting tool, countersink tool) was used to face AISI 1015 (steel) stock, produce shoulders, and countersink holes. Drill bits, taps, and reamers were used with the lathe (either running or static to make the piece concentric in the chuck) to produce holes and threads for the soft and hard face connections.</p>
+</section>
+<section id="mill" class="level2">
+<h2 class="anchored" data-anchor-id="mill">Mill</h2>
+<p>The fly cutter, drill bits, and end mills were used with the mill to cut flats for the head and produce an elongated through hole slot to fit the handle. This slot was deburred with a file.</p>
+<p>Afterward, my number was stamped on one flat using an arbor press.</p>
+</section>
+</section>
+<section id="faces" class="level1">
+<h1>Faces</h1>
+<section id="hard-face" class="level2">
+<h2 class="anchored" data-anchor-id="hard-face">Hard Face</h2>
+<p>The hard face was first machined in the lathe. To ensure a successful press-fit, pin gauges were used to measure the hard face hole in the finished head. The hard face small diameter was adjusted accordingly with roughing cuts and finishing cuts (I successfully used autofeed!).</p>
+<p>To create the rounded end of the hard face, a pneumatic grinder with varying grit sandpaper/polishing disks (starting from 80-grit at 800RPM) was held to the edge until the radius was ground to spec.</p>
+<p>The hard face was then heat treated in a small oven. The part was heated to 677°C and spent 45 minutes at that temperature, then the oven was turned up to 875°C. After 50 minutes at 875°C, the part was removed and quenched in oil until no more smoke emitted. The part was set out to cool to 66-51°C. Then, the part was tempered in a large oven. It was gently wiped of excess oil and heated to 338°C for 1 hour. Then it was let air cool.</p>
+<p>The heating at 677-875°C generated a uniform austenite sample, which was transformed into martensite during quenching. Cooling it to 66-51°C decreased the internal stresses and prevented cracks from forming. Tempering at 338°C is right below the eutectoid temperature, relieving the material stresses and increasing ductility while retaining hardness. Air cooling as a final step minimized shrinking or quenching stresses.</p>
+<p>After the heat treating process, the hard face was sandblasted to remove carbon soot without changing part dimensions, and then press fit into the head using an arbor press. The hardened steel is harder than the head steel, allowing the hard face to slightly deform the reamed hole and ensure a tight fit.</p>
+</section>
+<section id="soft-face" class="level2">
+<h2 class="anchored" data-anchor-id="soft-face">Soft Face</h2>
+<p>The soft face (made of nylon) was machined in the lathe using HSS cutting tools, HSS parting tools, drill bits, and taps. It was then secured to the head with a 1/4-20 UNC - 2B screw.</p>
+</section>
+</section>
+<section id="handle" class="level1">
+<h1>Handle</h1>
+<p>The handle rough shape was engraved on to a piece of 1x1.5” clear oak stock using the laser cutter. This contour was cut out using relief cuts on the vertical bandsaw. It was sanded to the rough shape using a spindle sander and belt sander.</p>
+<p>The second contour of the handle was cut out on a piece of tape using the laser cutter and stuck to the now uneven side of the handle. This was done because the laser cannot focus its beam on uneven surfaces, and so would be a fire risk. This was also cut out and sanded down with the vertical bandsaw and sanders.</p>
+<p>A router table was used to add a 3/8” radius to each corner of the handle. The radii were blended together, and the handle was dimensioned to spec via hand sanding.</p>
+<p>I then stamped my number on the end of the hammer with a(nother) hammer and number stamps. The handle was attached to the head by a press fit, and then hammering a wedge through the handle slot.</p>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>My manually machined hammer passed all specified dimension tolerances, material hardness (for the hard face), and component fits (no component security issues, no splintering, no gaps between the head/handle/faces), and had a good quality of manufacturing. The only minor issue was that the head shoulders had very fine lines across them instead of being completely polished. This is likely due to the dull HSS cutting tool used.</p>
+<p>You can see my hammer (and stand) here!</p>
+<p><img src="images/hammer.jpg" class="img-fluid"></p>
+</section>
+<section id="appendix" class="level1">
+<h1>Appendix</h1>
+<p><a href="https://sites.google.com/g.hmc.edu/hmc-machine-shop/courses/e4/hammer?authuser=0">Click here</a> to go to the HMC machine shop website to read up on the hammer documentation!</p>
 
 
 </section>
@@ -356,7 +446,8 @@ const PROJECTS=[
  {"featured":true,"img":"images/E80Bot.png","slug": "E80Bot", "t": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)", "d": "Mar 2026 – May 2026", "cats": ["Robotics & Control Systems", "PCB Design & Electronics", "Embedded Systems & Firmware", "Mechanical Design & FEA"], "b": "Developed and deployed an AUV to map metal debris distribution on the ocean floor and back-calculate debris drop locations.", "tech": ["P-Control", "Circuit Design", "Mechanical Design", "C++", "MATLAB", "I2C Communication", "Data Analysis", "Troubleshooting", "Technical Documentation"]},
  {"featured":false,"img":"images/radio.jpeg","slug": "crystalRadio", "t": "Crystal Radio Experiments", "d": "Feb 2026 – Mar 2026", "cats": ["PCB Design & Electronics"], "b": "Analysed RLC Circuits to debug Dunwoody, Pickard, and Armstrong crystal radios. Devised an innovative antenna for optimal signal receiving.", "tech": ["Radio Frequency Engineering", "Software Defined Radio", "Circuit Analysis"]},
 
- {"featured":true,"img":"images/abyssExplorer.jpg","slug": "abyssExplorer", "t": "Abyss Explorer", "d": "Feb 2025 – May 2025", "cats": ["Mechanical Design & FEA", "Manufacturing"], "b": "Designed and manufactured a system to raise and lower sensors through a ~600ft radioactive mine shaft (shrinking to an unknown diameter) for data collection without direct human contact.", "tech": ["SolidWorks", "Mechanical Design", "Prototyping", "Manufacturing", "Project Management", "Technical Documentation"]}
+ {"featured":true,"img":"images/abyssExplorer.jpg","slug": "abyssExplorer", "t": "Abyss Explorer", "d": "Feb 2025 – May 2025", "cats": ["Mechanical Design & FEA", "Manufacturing"], "b": "Designed and manufactured a system to raise and lower sensors through a ~600ft radioactive mine shaft (shrinking to an unknown diameter) for data collection without direct human contact.", "tech": ["SolidWorks", "Mechanical Design", "Prototyping", "Manufacturing", "Project Management", "Technical Documentation"]},
+ {"featured":false,"img":"images/hammer.jpg","slug": "hammer", "t": "Precision Manually Machined Hammer", "d": "Jan 2025 – Apr 2025", "cats": ["Mechanical Design & FEA", "Manufacturing"], "b": "Manually machined a hammer using conventional manual machining tools to specifications following technical drawings.", "tech": ["Precision Manual Machining", "Geometric Dimensioning & Tolerancing (GD&T)", "Process Planning & Documentation", "Metallurgy"]}
 ];
 
 /*  {"featured":false,"img":"images/windTunnel.png","slug": "E80Fluids", "t": "Wind Tunnel Experiments and Fluid Dynamics Simulation", "d": "Feb 2026 – Mar 2026", "cats": ["Miscellaneous"], "b": "Used the principle of similitude to characterize ROV behaviour in the water through wind tunnel simulations.", "tech": ["COMSOL", "Technical Documentation"]}, 
@@ -364,7 +455,7 @@ const PROJECTS=[
  {"featured":false,"img":"images/79bot.jpg","slug": "E79Bot", "t": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)", "d": "Aug 2025 – Dec 2025", "cats": ["Robotics & Control Systems", "PCB Design & Electronics", "Mechanical Design & FEA"], "b": "Developed and deployed an PID-controlled ROV to collect temperature and depth measurements underwater.", "tech": ["PID-Control", "Circuit Design", "Mechanical Design", "Data Analysis", "LabView", "Soldering", "Breadboarding", "Mathematical Modeling"]},
  {"featured":false,"img":"images/eyes.jpg","slug": "animatronicEyes", "t": "Animatronic Eyes", "d": "Jul 2025 – Oct 2025", "cats": ["Embedded Systems & Firmware", "Mechanical Design & FEA"],"b": "Designed and programmed a set of animatronic eyes controlled by servo motors and joysticks through Arduino.", "tech": ["SolidWorks", "3D Printing", "C++", "Arduino","Servo Control"]},
 
-  {"featured":false,"img":"images/hammer.jpg","slug": "hammer", "t": "Precision Manually Machined Hammer", "d": "Jan 2025 – Apr 2025", "cats": ["Manufacturing"], "b": "Manually machined a hammer using conventional manual machining tools to specifications following technical drawings.", "tech": ["Precision Manual Machining", "Geometric Dimensioning & Tolerancing (GD&T)", "Process Planning & Documentation", "Metallurgy"]}
+  
  */
 
  /* ================================================================================ */
