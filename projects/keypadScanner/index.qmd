@@ -8,7 +8,7 @@ image: "keypadScanner.jpeg"
 categories:
   - "Embedded Systems & Firmware"
   - "PCB Design & Electronics"
-skills: "SystemVerilog, FPGA, Circuit Design, Lattice Radiant, Waveform Simulation, Testbench"
+skills: "SystemVerilog, FPGA (iCE40UP5K), Circuit Design, Lattice Radiant, Waveform Simulation, Testbench"
 ---
 
 <div class="project-metadata-bar">

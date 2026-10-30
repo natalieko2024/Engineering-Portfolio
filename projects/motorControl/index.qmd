@@ -8,7 +8,7 @@ image: "motorControl.png"
 categories:
   - "PCB Design & Electronics"
   - "Embedded Systems & Firmware"
-skills: "C, MCU, Circuit Design, Segger Embedded Studio"
+skills: "C, MCU (STM32), Circuit Design, Segger Embedded Studio"
 ---
 
 <div class="project-metadata-bar">
@@ -39,10 +39,10 @@ Key outcomes:
 :::
 :::
 
-## Introduction
+# Introduction
 In this lab, a design was implemented on the MCU to accurately determine the speed and direction of a stepper motor through encoder outputs.
 
-## Design and Testing Methodology
+# Design and Testing Methodology
 The stepper motor has two quadrature encoders with one hall effect sensor each. The sensors are 90° out of phase. To design this implementation, two interrupts were configured to activate at the rising and falling edge of each sensor input. Figure 1 shows a flow chart of the main program and its communications with the interrupt handlers.
 
 ![**Figure 1. Flow chart of the implementation**](images/lab5flowchart.jpeg)
@@ -61,26 +61,26 @@ Interrupts are the better option compared to manual polling at high speeds, beca
 
 One possible tradeoff is that when you use interrupts, everything on the MCU CPU stops running, whereas with polling, nothing stops running while data is being taken. So polling can take samples continuously no matter what, whereas if the interrupt is very long, you might miss signals. However, in our case our interrupt is extremely short, so this effect is negligible.
 
-## Technical Documentation
+# Technical Documentation
 The source code for the project can be found in the associated [GitHub repository](https://github.com/natalieko2024/E155-Labs/tree/main/E155-Lab5).
 
-### Schematic
+## Schematic
 ![**Figure 4. Schematic of all circuit components outside the PCB**](images/lab5schematic.png)
 
 The schematic in Figure 5 shows the physical circuit connections outside the PCB. The encoder sensor pins and power pins were connected to the board, while the motor power terminals were connected directly to a voltage source.
 
-## Results and Discussion
+# Results and Discussion
 The design met all intended design objectives.
 
-### Calculations
+## Calculations
 The resolution of this implementation is four times the number of pulses in a second, because we each pulse has a rising and falling edge that triggers the interrupt logic, and we have two pins reading the pulses.
 
 The update rate of collecting the motor speed and direction is also four times the number of pulses in a second. However, we only print them out every second (1Hz print clock).
 
-### Hardware Deployment
+## Hardware Deployment
 This video showcases the design running at various motor speeds and both directions.
 
 {{< video https://youtu.be/rU85bBV-_mE >}}
 
-## Conclusion
+# Conclusion
 The design successfully utilized interrupts on the MCU to perceive motor speed and direction.

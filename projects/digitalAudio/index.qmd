@@ -8,7 +8,7 @@ image: "digitalAudio.png"
 categories:
   - "Embedded Systems & Firmware"
   - "PCB Design & Electronics"
-skills: "C, MCU, Circuit Design, Segger Embedded Studio"
+skills: "C, MCU (STM32), Circuit Design, Segger Embedded Studio"
 ---
 
 <div class="project-metadata-bar">

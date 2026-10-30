@@ -1,0 +1,105 @@
+---
+title: "Animatronic Eyes"
+date-range: "Jul 2025 – Oct 2025"
+description: "Designed and programmed a set of animatronic eyes controlled by servo motors and joysticks through Arduino Uno."
+title-block-style: none
+subtitle : ""
+image: "eyes.jpg"
+categories:
+  - "Embedded Systems & Firmware"
+  - "Mechanical Design & FEA"
+skills: "SolidWorks, Mechanical Design, Prototyping,  C++, Arduino, Servo Control, 3D Printing"
+---
+
+<div class="project-metadata-bar">
+  <div><strong>Timeline:</strong> {{< meta date-range >}}</div>
+  <div><strong>Skills:</strong> {{< meta skills >}}</div>
+</div>
+
+:::{.columns}
+::: {.column width="49%"}
+**Video Showcasing Working Eyes:**
+
+{{< video https://youtu.be/yQmyn-5CIA0 >}}
+
+:::
+
+::: {.column width="2%"}
+:::
+
+::: {.column width="49%"}
+**Overview of Work:**
+
+Designed a set of joystick and SG90 servo controlled animatronic eyes with a C++ program running on Arduino Uno.
+
+Key outcomes:
+
+- **Designed the mechanical assembly in SolidWorks**, accounting for rotational origins and pivot points
+- **Rapid prototyped with FDM 3D printed components**
+- **Added appropriate tolerances to mounting slots and holes** to ensure printed system compatability
+- **Programmed servo control and joystick mappings in C++** for Arduino Uno deployment
+
+:::
+:::
+
+# Introduction and Background
+
+I've always been fascinated by animatronics and mechatronic design. I decided to get started on developing these skills on my own through designing some controllable animatronic eyes. These would later be integrated into my Halloween costume where I made a moving Glamrock Freddy head (from the Five Nights at Freddy franchise).
+
+# Mechanical Design
+
+I started by investigating different types of existing eye mechanisms. These included SlenderDummy's mechanism, which was incorporated into a REPO robot animatronic, as well as Will Cogley's eye mechanisms.
+
+:::{layout-ncol="2"}
+
+:::
+
+I liked how Will Cogley's design was very simple (as it only utilized SG90 servos, mechanical hardware like screws and nuts, and 3D printed parts) and compact, allowing it to fit in a more diverse profile of animatronics. However, I thought a more ideal case would include SlenderDummy's functionality of allowing each eyeball to move independently, which would be a closer imitation of real life (some people can go cross-eyed). This came with the tradeoff of a lot more bulk from additional servos and complex components that add to dimension constraints such as ball-socket joints.
+
+So I attempted to design a hybrid of the two designs that would allow me to retain independent eye movements while keeping a low-profile and easily manufacturable design.
+
+I utilized the fixed bar and jointed pegs from Will Cogley's design to create the side-to-side movement for the eyes. Because I wanted independent movement, I had one servo for each eyeball instead of having one control both. 
+
+:::{layout-ncol="2"}
+![](images/DualMovement.jpg)
+
+{{< video https://youtu.be/kOUNUDOLywQ >}}
+:::
+
+However, after integrating this with the vertical movement mechanism, I realised the movement would be severely limited due to the length of the servo-holding system. Whenever the eyes were moved up or down, the rest of the system would collide with the base or the mover itself.
+
+I experimented with producing my own design similar to SlenderDummy's, but it was proving to be too time-consuming to get something working by Halloween. So, I decided to recreate Will Cogley's mechanism from scratch. 
+
+After a lot of CAD attempts, I figured out that: 
+- The side-to-side pivot points had to be in the center of each eyeball otherwise they wouldn't rotate correctly
+- Similarly, the vertical mover had to be in line with the center of the eyes 
+- Appropriate FDM printing tolerances for the servo motor slots, screw holes, eyeball vs eyelid joins etc.
+
+Here's a video of my initial working CAD assembly:
+
+{{< video https://youtu.be/yvlP7SD0Qfg >}}
+
+# Servo Control and Arduino
+
+I used an Arduino Uno for this project. Why? Because it was readily available, and I didn't feel like breadboarding. None of the components I used required additional components like resistors, capacitors etc, so it was easier to directly connect everything to the Uno through jumpers. Also, none of my software was particularly heavy, so the Uno was sufficient.
+
+I used Adafruit's PWM servo driver to control the eye motion. After using analogRead to read the joystick X and Y outputs, the values were mapped to appropriate servo positions based on the minimum and maximum rotation 0° and 180°. The button press enabled the blinking motion without any mapping: the servo positions were immediately writte.
+
+Here are videos showcasing me testing the eye positions and the blinking:
+
+:::{layout-ncol="2"}
+{{< video https://youtube.com/watch?v=DW_S2SNNAfo?feature=share >}}
+
+{{< video https://youtu.be/3Adl9M3jHOU >}}
+:::
+
+# Conclusion
+
+The eyes worked for all joystick-mapped left/right and up/down behaviour. 
+
+{{< video https://youtu.be/yQmyn-5CIA0 >}}
+
+I later integrated them into a 3D printed Glamrock Freddy head. Note: when I initially fixed them in, one of the eyelids became detatched (as in the video below). This was later fixed.
+
+{{< video https://youtube.com/watch?v=tEQ7JAUmWRE?feature=share >}}
+
