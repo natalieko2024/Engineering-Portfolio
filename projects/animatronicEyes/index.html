@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Designed and programmed a set of animatronic eyes controlled by servo motors and joysticks through Arduino.">
+<meta name="description" content="Designed and programmed a set of animatronic eyes controlled by servo motors and joysticks through Arduino Uno.">
 
 <title>Animatronic Eyes – NK/MECH</title>
 <style>
@@ -305,11 +305,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Outline</h2>
    
   <ul>
-  <li><a href="#test-heading" id="toc-test-heading" class="nav-link active" data-scroll-target="#test-heading">TEst heading</a>
-  <ul class="collapse">
-  <li><a href="#yahoooo" id="toc-yahoooo" class="nav-link" data-scroll-target="#yahoooo">YAHOOOO</a></li>
-  </ul></li>
-  <li><a href="#wee-woo" id="toc-wee-woo" class="nav-link" data-scroll-target="#wee-woo">wee woo</a></li>
+  <li><a href="#introduction-and-background" id="toc-introduction-and-background" class="nav-link active" data-scroll-target="#introduction-and-background">Introduction and Background</a></li>
+  <li><a href="#mechanical-design" id="toc-mechanical-design" class="nav-link" data-scroll-target="#mechanical-design">Mechanical Design</a></li>
+  <li><a href="#servo-control-and-arduino" id="toc-servo-control-and-arduino" class="nav-link" data-scroll-target="#servo-control-and-arduino">Servo Control and Arduino</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
     </div>
@@ -328,17 +327,78 @@ ul.task-list li input[type="checkbox"] {
 <strong>Timeline:</strong> Jul 2025 – Oct 2025
 </div>
 <div>
-<strong>Skills:</strong> SolidWorks, 3D Printing, C++, Arduino
+<strong>Skills:</strong> SolidWorks, Mechanical Design, Prototyping, C++, Arduino, Servo Control, 3D Printing
 </div>
 </div>
-<section id="test-heading" class="level1">
-<h1>TEst heading</h1>
-<section id="yahoooo" class="level2">
-<h2 class="anchored" data-anchor-id="yahoooo">YAHOOOO</h2>
+<div class="columns">
+<div class="column" style="width:49%;">
+<p><strong>Video Showcasing Working Eyes:</strong></p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/yQmyn-5CIA0" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:49%;">
+<p><strong>Overview of Work:</strong></p>
+<p>Designed a set of joystick and SG90 servo controlled animatronic eyes with a C++ program running on Arduino Uno.</p>
+<p>Key outcomes:</p>
+<ul>
+<li><strong>Designed the mechanical assembly in SolidWorks</strong>, accounting for rotational origins and pivot points</li>
+<li><strong>Rapid prototyped with FDM 3D printed components</strong></li>
+<li><strong>Added appropriate tolerances to mounting slots and holes</strong> to ensure printed system compatability</li>
+<li><strong>Programmed servo control and joystick mappings in C++</strong> for Arduino Uno deployment</li>
+</ul>
+</div>
+</div>
+<section id="introduction-and-background" class="level1">
+<h1>Introduction and Background</h1>
+<p>I’ve always been fascinated by animatronics and mechatronic design. I decided to get started on developing these skills on my own through designing some controllable animatronic eyes. These would later be integrated into my Halloween costume where I made a moving Glamrock Freddy head (from the Five Nights at Freddy franchise).</p>
 </section>
+<section id="mechanical-design" class="level1">
+<h1>Mechanical Design</h1>
+<p>I started by investigating different types of existing eye mechanisms. These included SlenderDummy’s mechanism, which was incorporated into a REPO robot animatronic, as well as Will Cogley’s eye mechanisms.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+
+</div>
+<p>I liked how Will Cogley’s design was very simple (as it only utilized SG90 servos, mechanical hardware like screws and nuts, and 3D printed parts) and compact, allowing it to fit in a more diverse profile of animatronics. However, I thought a more ideal case would include SlenderDummy’s functionality of allowing each eyeball to move independently, which would be a closer imitation of real life (some people can go cross-eyed). This came with the tradeoff of a lot more bulk from additional servos and complex components that add to dimension constraints such as ball-socket joints.</p>
+<p>So I attempted to design a hybrid of the two designs that would allow me to retain independent eye movements while keeping a low-profile and easily manufacturable design.</p>
+<p>I utilized the fixed bar and jointed pegs from Will Cogley’s design to create the side-to-side movement for the eyes. Because I wanted independent movement, I had one servo for each eyeball instead of having one control both.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/DualMovement.jpg" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/kOUNUDOLywQ" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+</div>
+</div>
+</div>
+<p>However, after integrating this with the vertical movement mechanism, I realised the movement would be severely limited due to the length of the servo-holding system. Whenever the eyes were moved up or down, the rest of the system would collide with the base or the mover itself.</p>
+<p>I experimented with producing my own design similar to SlenderDummy’s, but it was proving to be too time-consuming to get something working by Halloween. So, I decided to recreate Will Cogley’s mechanism from scratch.</p>
+<p>After a lot of CAD attempts, I figured out that: - The side-to-side pivot points had to be in the center of each eyeball otherwise they wouldn’t rotate correctly - Similarly, the vertical mover had to be in line with the center of the eyes - Appropriate FDM printing tolerances for the servo motor slots, screw holes, eyeball vs eyelid joins etc.</p>
+<p>Here’s a video of my initial working CAD assembly:</p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/yvlP7SD0Qfg" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 </section>
-<section id="wee-woo" class="level1">
-<h1>wee woo</h1>
+<section id="servo-control-and-arduino" class="level1">
+<h1>Servo Control and Arduino</h1>
+<p>I used an Arduino Uno for this project. Why? Because it was readily available, and I didn’t feel like breadboarding. None of the components I used required additional components like resistors, capacitors etc, so it was easier to directly connect everything to the Uno through jumpers. Also, none of my software was particularly heavy, so the Uno was sufficient.</p>
+<p>I used Adafruit’s PWM servo driver to control the eye motion. After using analogRead to read the joystick X and Y outputs, the values were mapped to appropriate servo positions based on the minimum and maximum rotation 0° and 180°. The button press enabled the blinking motion without any mapping: the servo positions were immediately writte.</p>
+<p>Here are videos showcasing me testing the eye positions and the blinking:</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/DW_S2SNNAfo?feature=share" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/3Adl9M3jHOU" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+</div>
+</div>
+</div>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>The eyes worked for all joystick-mapped left/right and up/down behaviour.</p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/yQmyn-5CIA0" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>I later integrated them into a 3D printed Glamrock Freddy head. Note: when I initially fixed them in, one of the eyelids became detatched (as in the video below). This was later fixed.</p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/tEQ7JAUmWRE?feature=share" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 
 
 </section>
@@ -349,22 +409,24 @@ ul.task-list li input[type="checkbox"] {
    featured = true to show on the home page (first 3 flagged are used).
    img = path inside that project's folder, e.g. "images/cover.jpg" (leave "" for the placeholder) ===== */
 const PROJECTS=[
- {"featured":false,"img":"images/config.jpg","slug": "spiTempSensor", "t": "SPI and UART Communication Protocols Using an MCU", "d": "Oct 2026 – Oct 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Utilized SPI and UART communication protocols to interface a temperature sensor, MCU implementation, and ESP8266 webpage.", "tech": ["C", "MCU", "SPI", "UART", "Osilloscope Debugging", "Circuit Design", "SEGGER Embedded Studio"]},  
- {"featured":false,"img":"images/motorControl.png","slug": "motorControl", "t": "Leveraging MCU Interrupts to Read Stepper Motor Encoders", "d": "Oct 2026 – Oct 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Utilized MCU interrupts to accurately determine stepper motor speed and direction.", "tech": ["C", "MCU", "Circuit Design", "SEGGER Embedded Studio"]},  
- {"featured":false,"img":"images/digitalAudio.png","slug": "digitalAudio", "t": "Using an MCU to Produce Music on a Speaker", "d": "Sept 2026 – Sept 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Programmed an MCU to write specific frequencies and durations to play music on a speaker.", "tech": ["C", "MCU", "Circuit Design", "SEGGER Embedded Studio"]},
- {"featured":true,"img":"images/keypadScanner.jpeg","slug": "keypadScanner", "t": "FPGA-Controlled Keypad Scanner", "d": "Aug 2026 – Sep 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Programmed an FPGA to read a 4x4 matrix keypad and display the last two hexadecimal inputs on a dual seven-segment display. Accounted for key bounce, multi-press, and timing inconsistencies.", "tech": ["SystemVerilog", "FPGA", "Circuit Design", "Lattice Radiant", "Waveform Simulation", "Testbench"]},  
- {"featured":true,"img":"images/E80Bot.png","slug": "E80Bot", "t": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)", "d": "Mar 2026 – May 2026", "cats": ["Robotics & Control Systems", "PCB Design & Electronics", "Embedded Systems & Firmware", "Mechanical Design & FEA"], "b": "Developed and deployed an AUV to map metal debris distribution on the ocean floor and back-calculate debris drop locations.", "tech": ["P-Control", "Circuit Design", "Mechanical Design", "C++", "MATLAB", "I2C Communication", "Data Analysis", "Troubleshooting", "Technical Documentation"]},
+ {"featured":false,"img":"images/config.jpg","slug": "spiTempSensor", "t": "SPI and UART Communication Protocols Using an MCU", "d": "Oct 2026 – Oct 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Utilized SPI and UART communication protocols to interface a temperature sensor, MCU implementation, and ESP8266 webpage.", "tech": ["C", "MCU (STM32)", "SPI Protocol", "UART Protocol", "Osilloscope Debugging", "Circuit Design", "SEGGER Embedded Studio"]},  
+ {"featured":false,"img":"images/motorControl.png","slug": "motorControl", "t": "Leveraging MCU Interrupts to Read Stepper Motor Encoders", "d": "Oct 2026 – Oct 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Utilized MCU interrupts to accurately determine stepper motor speed and direction.", "tech": ["C", "MCU (STM32)", "Circuit Design", "SEGGER Embedded Studio"]},  
+ {"featured":false,"img":"images/digitalAudio.png","slug": "digitalAudio", "t": "Using an MCU to Produce Music on a Speaker", "d": "Sept 2026 – Sept 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Programmed an MCU to write specific frequencies and durations to play music on a speaker.", "tech": ["C", "MCU (STM32)", "Circuit Design", "SEGGER Embedded Studio"]},
+ {"featured":true,"img":"images/keypadScanner.jpeg","slug": "keypadScanner", "t": "FPGA-Controlled Keypad Scanner", "d": "Aug 2026 – Sep 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Programmed an FPGA to read a 4x4 matrix keypad and display the last two hexadecimal inputs on a dual seven-segment display. Accounted for key bounce, multi-press, and timing inconsistencies.", "tech": ["SystemVerilog", "FPGA (iCE40UP5K)", "Circuit Design", "Lattice Radiant", "Waveform Simulation", "Testbench"]},  
+ {"featured":true,"img":"images/E80Bot.png","slug": "E80Bot", "t": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)", "d": "Mar 2026 – May 2026", "cats": ["Robotics & Control Systems", "PCB Design & Electronics", "Embedded Systems & Firmware", "Mechanical Design & FEA"], "b": "Developed and deployed an AUV to map metal debris distribution on the ocean floor and back-calculate debris drop locations.", "tech": ["P-Control", "Circuit Design", "Mechanical Design", "C++", "MATLAB", "I2C Protocol", "Data Analysis", "Troubleshooting", "Technical Documentation"]},
  {"featured":false,"img":"images/radio.jpeg","slug": "crystalRadio", "t": "Crystal Radio Experiments", "d": "Feb 2026 – Mar 2026", "cats": ["PCB Design & Electronics"], "b": "Analysed RLC Circuits to debug Dunwoody, Pickard, and Armstrong crystal radios. Devised an innovative antenna for optimal signal receiving.", "tech": ["Radio Frequency Engineering", "Software Defined Radio", "Circuit Analysis"]},
 
- {"featured":true,"img":"images/abyssExplorer.jpg","slug": "abyssExplorer", "t": "Abyss Explorer", "d": "Feb 2025 – May 2025", "cats": ["Mechanical Design & FEA", "Manufacturing"], "b": "Designed and manufactured a system to raise and lower sensors through a ~600ft radioactive mine shaft (shrinking to an unknown diameter) for data collection without direct human contact.", "tech": ["SolidWorks", "Mechanical Design", "Prototyping", "Manufacturing", "Project Management", "Technical Documentation"]}
+ {"featured":false,"img":"images/eyes.jpg","slug": "animatronicEyes", "t": "Animatronic Eyes", "d": "Jul 2025 – Oct 2025", "cats": ["Embedded Systems & Firmware", "Mechanical Design & FEA"],"b": "Designed and programmed a set of animatronic eyes controlled by servo motors and joysticks through Arduino Uno.", "tech": ["SolidWorks", "Mechanical Design", "Prototyping", "C++", "Arduino", "Servo Control", "3D Printing"]},
+ {"featured":true,"img":"images/abyssExplorer.jpg","slug": "abyssExplorer", "t": "Abyss Explorer", "d": "Feb 2025 – May 2025", "cats": ["Mechanical Design & FEA", "Manufacturing"], "b": "Designed and manufactured a system to raise and lower sensors through a ~600ft radioactive mine shaft (shrinking to an unknown diameter) for data collection without direct human contact.", "tech": ["SolidWorks", "Mechanical Design", "Prototyping", "Manufacturing", "Project Management", "Technical Documentation"]},
+ {"featured":false,"img":"images/hammer.jpg","slug": "hammer", "t": "Precision Manually Machined Hammer", "d": "Jan 2025 – Apr 2025", "cats": ["Mechanical Design & FEA", "Manufacturing"], "b": "Manually machined a hammer using conventional manual machining tools to specifications following technical drawings.", "tech": ["Precision Manual Machining", "Geometric Dimensioning & Tolerancing (GD&T)", "Process Planning & Documentation", "Metallurgy"]}
 ];
 
 /*  {"featured":false,"img":"images/windTunnel.png","slug": "E80Fluids", "t": "Wind Tunnel Experiments and Fluid Dynamics Simulation", "d": "Feb 2026 – Mar 2026", "cats": ["Miscellaneous"], "b": "Used the principle of similitude to characterize ROV behaviour in the water through wind tunnel simulations.", "tech": ["COMSOL", "Technical Documentation"]}, 
  {"featured":false,"img":"images/riscV.jpeg","slug": "multiCycleProcessor", "t": "Multi-cycle RISC-V Processor", "d": "Nov 2025 – Dec 2025", "cats": ["Embedded Systems & Firmware"], "b": "Designed and simulated a 32-bit multi-cycle RISC-V processor, executed RISC-V integer instructions (R, I, S, B, U, and J-Type) given to memory as machine code.", "tech": ["SystemVerilog", "Waveform Simulation", "RISC-V Architecture"]},  
  {"featured":false,"img":"images/79bot.jpg","slug": "E79Bot", "t": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)", "d": "Aug 2025 – Dec 2025", "cats": ["Robotics & Control Systems", "PCB Design & Electronics", "Mechanical Design & FEA"], "b": "Developed and deployed an PID-controlled ROV to collect temperature and depth measurements underwater.", "tech": ["PID-Control", "Circuit Design", "Mechanical Design", "Data Analysis", "LabView", "Soldering", "Breadboarding", "Mathematical Modeling"]},
- {"featured":false,"img":"images/eyes.jpg","slug": "animatronicEyes", "t": "Animatronic Eyes", "d": "Jul 2025 – Oct 2025", "cats": ["Embedded Systems & Firmware", "Mechanical Design & FEA"],"b": "Designed and programmed a set of animatronic eyes controlled by servo motors and joysticks through Arduino.", "tech": ["SolidWorks", "3D Printing", "C++", "Arduino","Servo Control"]},
+ 
 
-  {"featured":false,"img":"images/hammer.jpg","slug": "hammer", "t": "Precision Manually Machined Hammer", "d": "Jan 2025 – Apr 2025", "cats": ["Manufacturing"], "b": "Manually machined a hammer using conventional manual machining tools to specifications following technical drawings.", "tech": ["Precision Manual Machining", "Geometric Dimensioning & Tolerancing (GD&T)", "Process Planning & Documentation", "Metallurgy"]}
+  
  */
 
  /* ================================================================================ */

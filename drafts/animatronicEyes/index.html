@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Designed and programmed a set of animatronic eyes controlled by servo motors and joysticks through Arduino.">
+<meta name="description" content="Designed and programmed a set of animatronic eyes controlled by servo motors and joysticks through Arduino Uno.">
 
 <title>Animatronic Eyes – NK/MECH</title>
 <style>
@@ -316,17 +316,29 @@ ul.task-list li input[type="checkbox"] {
 <strong>Timeline:</strong> Jul 2025 – Oct 2025
 </div>
 <div>
-<strong>Skills:</strong> SolidWorks, 3D Printing, C++, Arduino
+<strong>Skills:</strong> SolidWorks, Mechanical Design, Prototyping, C++, Arduino, Servo Control, 3D Printing
 </div>
 </div>
-<section id="test-heading" class="level1">
-<h1>TEst heading</h1>
-<section id="yahoooo" class="level2">
-<h2 class="anchored" data-anchor-id="yahoooo">YAHOOOO</h2>
+<section id="introduction-and-background" class="level1">
+<h1>Introduction and Background</h1>
+<p>I’ve always been fascinated by animatronics and mechatronic design. I decided to get started on developing these skills on my own through designing some controllable animatronic eyes. These would later be integrated into my Halloween costume where I made a moving Glamrock Freddy head (from the Five Nights at Freddy franchise).</p>
 </section>
+<section id="mechanical-design" class="level1">
+<h1>Mechanical Design</h1>
+<p>I started by investigating different types of existing eye mechanisms. These included SlenderDummy’s mechanism, which was incorporated into a REPO robot animatronic, as well as Will Cogley’s eye mechanisms.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+
+</div>
+<p>I liked how Will Cogley’s design was very simple (as it only utilized SG90 servos, mechanical hardware like screws and nuts, and 3D printed parts) and compact, allowing it to fit in a more diverse profile of animatronics. However, I thought a more ideal case would include SlenderDummy’s functionality of allowing each eyeball to move independently, which would be a closer imitation of real life (some people can go cross-eyed). This came with the tradeoff of a lot more bulk from additional servos and complex components that add to dimension constraints such as ball-socket joints.</p>
+<p>So I attempted to design a hybrid of the two designs that would allow me to retain independent eye movements while keeping a low-profile and easily manufacturable design.</p>
+<p>I utilized the fixed bar and jointed pegs from Will Cogley’s design to create the side-to-side movement for the eyes. Because I wanted independent movement, I had one servo for each eyeball instead of having one control both.</p>
+<p><img src="images/DualMovement.jpg" class="img-fluid"></p>
 </section>
-<section id="wee-woo" class="level1">
-<h1>wee woo</h1>
+<section id="servo-control-and-arduino" class="level1">
+<h1>Servo Control and Arduino</h1>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
 
 
 </section>
@@ -337,11 +349,11 @@ ul.task-list li input[type="checkbox"] {
    featured = true to show on the home page (first 3 flagged are used).
    img = path inside that project's folder, e.g. "images/cover.jpg" (leave "" for the placeholder) ===== */
 const PROJECTS=[
- {"featured":false,"img":"images/config.jpg","slug": "spiTempSensor", "t": "SPI and UART Communication Protocols Using an MCU", "d": "Oct 2026 – Oct 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Utilized SPI and UART communication protocols to interface a temperature sensor, MCU implementation, and ESP8266 webpage.", "tech": ["C", "MCU", "SPI", "UART", "Osilloscope Debugging", "Circuit Design", "SEGGER Embedded Studio"]},  
- {"featured":false,"img":"images/motorControl.png","slug": "motorControl", "t": "Leveraging MCU Interrupts to Read Stepper Motor Encoders", "d": "Oct 2026 – Oct 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Utilized MCU interrupts to accurately determine stepper motor speed and direction.", "tech": ["C", "MCU", "Circuit Design", "SEGGER Embedded Studio"]},  
- {"featured":false,"img":"images/digitalAudio.png","slug": "digitalAudio", "t": "Using an MCU to Produce Music on a Speaker", "d": "Sept 2026 – Sept 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Programmed an MCU to write specific frequencies and durations to play music on a speaker.", "tech": ["C", "MCU", "Circuit Design", "SEGGER Embedded Studio"]},
- {"featured":true,"img":"images/keypadScanner.jpeg","slug": "keypadScanner", "t": "FPGA-Controlled Keypad Scanner", "d": "Aug 2026 – Sep 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Programmed an FPGA to read a 4x4 matrix keypad and display the last two hexadecimal inputs on a dual seven-segment display. Accounted for key bounce, multi-press, and timing inconsistencies.", "tech": ["SystemVerilog", "FPGA", "Circuit Design", "Lattice Radiant", "Waveform Simulation", "Testbench"]},  
- {"featured":true,"img":"images/E80Bot.png","slug": "E80Bot", "t": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)", "d": "Mar 2026 – May 2026", "cats": ["Robotics & Control Systems", "PCB Design & Electronics", "Embedded Systems & Firmware", "Mechanical Design & FEA"], "b": "Developed and deployed an AUV to map metal debris distribution on the ocean floor and back-calculate debris drop locations.", "tech": ["P-Control", "Circuit Design", "Mechanical Design", "C++", "MATLAB", "I2C Communication", "Data Analysis", "Troubleshooting", "Technical Documentation"]},
+ {"featured":false,"img":"images/config.jpg","slug": "spiTempSensor", "t": "SPI and UART Communication Protocols Using an MCU", "d": "Oct 2026 – Oct 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Utilized SPI and UART communication protocols to interface a temperature sensor, MCU implementation, and ESP8266 webpage.", "tech": ["C", "MCU (STM32)", "SPI Protocol", "UART Protocol", "Osilloscope Debugging", "Circuit Design", "SEGGER Embedded Studio"]},  
+ {"featured":false,"img":"images/motorControl.png","slug": "motorControl", "t": "Leveraging MCU Interrupts to Read Stepper Motor Encoders", "d": "Oct 2026 – Oct 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Utilized MCU interrupts to accurately determine stepper motor speed and direction.", "tech": ["C", "MCU (STM32)", "Circuit Design", "SEGGER Embedded Studio"]},  
+ {"featured":false,"img":"images/digitalAudio.png","slug": "digitalAudio", "t": "Using an MCU to Produce Music on a Speaker", "d": "Sept 2026 – Sept 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Programmed an MCU to write specific frequencies and durations to play music on a speaker.", "tech": ["C", "MCU (STM32)", "Circuit Design", "SEGGER Embedded Studio"]},
+ {"featured":true,"img":"images/keypadScanner.jpeg","slug": "keypadScanner", "t": "FPGA-Controlled Keypad Scanner", "d": "Aug 2026 – Sep 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Programmed an FPGA to read a 4x4 matrix keypad and display the last two hexadecimal inputs on a dual seven-segment display. Accounted for key bounce, multi-press, and timing inconsistencies.", "tech": ["SystemVerilog", "FPGA (iCE40UP5K)", "Circuit Design", "Lattice Radiant", "Waveform Simulation", "Testbench"]},  
+ {"featured":true,"img":"images/E80Bot.png","slug": "E80Bot", "t": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)", "d": "Mar 2026 – May 2026", "cats": ["Robotics & Control Systems", "PCB Design & Electronics", "Embedded Systems & Firmware", "Mechanical Design & FEA"], "b": "Developed and deployed an AUV to map metal debris distribution on the ocean floor and back-calculate debris drop locations.", "tech": ["P-Control", "Circuit Design", "Mechanical Design", "C++", "MATLAB", "I2C Protocol", "Data Analysis", "Troubleshooting", "Technical Documentation"]},
  {"featured":false,"img":"images/radio.jpeg","slug": "crystalRadio", "t": "Crystal Radio Experiments", "d": "Feb 2026 – Mar 2026", "cats": ["PCB Design & Electronics"], "b": "Analysed RLC Circuits to debug Dunwoody, Pickard, and Armstrong crystal radios. Devised an innovative antenna for optimal signal receiving.", "tech": ["Radio Frequency Engineering", "Software Defined Radio", "Circuit Analysis"]},
 
  {"featured":true,"img":"images/abyssExplorer.jpg","slug": "abyssExplorer", "t": "Abyss Explorer", "d": "Feb 2025 – May 2025", "cats": ["Mechanical Design & FEA", "Manufacturing"], "b": "Designed and manufactured a system to raise and lower sensors through a ~600ft radioactive mine shaft (shrinking to an unknown diameter) for data collection without direct human contact.", "tech": ["SolidWorks", "Mechanical Design", "Prototyping", "Manufacturing", "Project Management", "Technical Documentation"]},
@@ -351,7 +363,7 @@ const PROJECTS=[
 /*  {"featured":false,"img":"images/windTunnel.png","slug": "E80Fluids", "t": "Wind Tunnel Experiments and Fluid Dynamics Simulation", "d": "Feb 2026 – Mar 2026", "cats": ["Miscellaneous"], "b": "Used the principle of similitude to characterize ROV behaviour in the water through wind tunnel simulations.", "tech": ["COMSOL", "Technical Documentation"]}, 
  {"featured":false,"img":"images/riscV.jpeg","slug": "multiCycleProcessor", "t": "Multi-cycle RISC-V Processor", "d": "Nov 2025 – Dec 2025", "cats": ["Embedded Systems & Firmware"], "b": "Designed and simulated a 32-bit multi-cycle RISC-V processor, executed RISC-V integer instructions (R, I, S, B, U, and J-Type) given to memory as machine code.", "tech": ["SystemVerilog", "Waveform Simulation", "RISC-V Architecture"]},  
  {"featured":false,"img":"images/79bot.jpg","slug": "E79Bot", "t": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)", "d": "Aug 2025 – Dec 2025", "cats": ["Robotics & Control Systems", "PCB Design & Electronics", "Mechanical Design & FEA"], "b": "Developed and deployed an PID-controlled ROV to collect temperature and depth measurements underwater.", "tech": ["PID-Control", "Circuit Design", "Mechanical Design", "Data Analysis", "LabView", "Soldering", "Breadboarding", "Mathematical Modeling"]},
- {"featured":false,"img":"images/eyes.jpg","slug": "animatronicEyes", "t": "Animatronic Eyes", "d": "Jul 2025 – Oct 2025", "cats": ["Embedded Systems & Firmware", "Mechanical Design & FEA"],"b": "Designed and programmed a set of animatronic eyes controlled by servo motors and joysticks through Arduino.", "tech": ["SolidWorks", "3D Printing", "C++", "Arduino","Servo Control"]},
+ {"featured":false,"img":"images/eyes.jpg","slug": "animatronicEyes", "t": "Animatronic Eyes", "d": "Jul 2025 – Oct 2025", "cats": ["Embedded Systems & Firmware", "Mechanical Design & FEA"],"b": "Designed and programmed a set of animatronic eyes controlled by servo motors and joysticks through Arduino Uno.", "tech": ["SolidWorks", "Mechanical Design", "Prototyping", "C++", "Arduino", "Servo Control", "3D Printing"]},
 
   
  */
@@ -491,7 +503,7 @@ const PROJECTS=[
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/natalieko2024\.github\.io\/Engineering-Portfolio\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

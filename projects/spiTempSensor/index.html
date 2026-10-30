@@ -335,7 +335,7 @@ ul.task-list li input[type="checkbox"] {
 <strong>Timeline:</strong> Oct 2026 – Oct 2026
 </div>
 <div>
-<strong>Skills:</strong> C, MCU, SPI, UART, Osilloscope Debugging, Circuit Design, Segger Embedded Studio
+<strong>Skills:</strong> C, MCU (STM32), SPI Protocol, UART Protocol, Osilloscope Debugging, Circuit Design, Segger Embedded Studio
 </div>
 </div>
 <div class="columns">
@@ -356,23 +356,23 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </div>
 </div>
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
 <p>In this lab, a design was implemented on the MCU to host a web server on an ESP8266 through UART communication and read temperature readings of various resolutions using a temperature sensor through SPI communication. Data from the peripherals connected to the MCU would be displayed on the webpage.</p>
 </section>
-<section id="design-and-testing-methodology" class="level2">
-<h2 class="anchored" data-anchor-id="design-and-testing-methodology">Design and Testing Methodology</h2>
+<section id="design-and-testing-methodology" class="level1">
+<h1>Design and Testing Methodology</h1>
 <p>On the MCU, SPI was configured for full-duplex communication. This was chosen over simplex communications because apart from receiving temperature readings from the sensor, the MCU would have to write to the configuration register throughout deployment to adjust the resolution of the temperature communicated. It was also chosen over half-duplex communication to increase the speed the devices could communicate at, which would lead to more accurate readings.</p>
 <p>The temperature sensor used (DS1722) required a clock phase (CPHA) of 1. I chose to use a clock polarity (CPOL) of 1 so that data would be sampled on the rising edge of SCK.</p>
 <p>Full-duplex SPI communication works by each device sending and receiving bits at the same time. So, for writing to the temperature sensor (ex. for writing the initial configuration and for writing new resolution bits), I would write the entire configuration and receive junk in return (that I wouldn’t use). For reading temperatures from the sensor, I would write junk bits to the sensor and receive the temperature bits in return. Because of how the temperature sensor registers were configured, I would read the integer bits and decimal bits separately.</p>
 <p>The MCU and ESP8266 interface through a 125000 baud serial UART connection on TX and RX lines. Because of this, to prevent sampling differences, the MCU and temperature sensor baud rate was also set to 125000.</p>
 <p>HTML code was written so that the temperature and LED data could be properly displayed on the webpage, and users could press buttons to toggle the LED state and change the temperature resolution.</p>
 </section>
-<section id="technical-documentation" class="level2">
-<h2 class="anchored" data-anchor-id="technical-documentation">Technical Documentation</h2>
+<section id="technical-documentation" class="level1">
+<h1>Technical Documentation</h1>
 <p>The source code for the project can be found in the associated <a href="https://github.com/natalieko2024/E155-Labs/tree/main/E155-Lab6">GitHub repository</a>.</p>
-<section id="schematic" class="level3">
-<h3 class="anchored" data-anchor-id="schematic">Schematic</h3>
+<section id="schematic" class="level2">
+<h2 class="anchored" data-anchor-id="schematic">Schematic</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/lab6schematic.png" class="img-fluid figure-img"></p>
@@ -382,16 +382,16 @@ ul.task-list li input[type="checkbox"] {
 <p>The schematic in Figure 1 shows the physical circuit connections outside the PCB. The ESP8266 was not included as that was plugged directly into the motherboard.</p>
 </section>
 </section>
-<section id="results-and-discussion" class="level2">
-<h2 class="anchored" data-anchor-id="results-and-discussion">Results and Discussion</h2>
+<section id="results-and-discussion" class="level1">
+<h1>Results and Discussion</h1>
 <p>The design met all intended design objectives.</p>
-<section id="hardware-deployment" class="level3">
-<h3 class="anchored" data-anchor-id="hardware-deployment">Hardware Deployment</h3>
+<section id="hardware-deployment" class="level2">
+<h2 class="anchored" data-anchor-id="hardware-deployment">Hardware Deployment</h2>
 <p>This video showcases the design webpage outputs and LED states when each button is pressed. The LED state matches the LED on/off in real life, and the maximum number of decimal values the temperature sensor displays matches the selected resolution.</p>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/h1CneQq5_-U" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 </section>
-<section id="oscilloscope-confirmation" class="level3">
-<h3 class="anchored" data-anchor-id="oscilloscope-confirmation">Oscilloscope Confirmation</h3>
+<section id="oscilloscope-confirmation" class="level2">
+<h2 class="anchored" data-anchor-id="oscilloscope-confirmation">Oscilloscope Confirmation</h2>
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -425,8 +425,8 @@ ul.task-list li input[type="checkbox"] {
 <p>These oscilloscope traces confirm the intended SPI behaviour during configuration, read, and write. CS was pulled high during read/write and pulled low otherwise, and the correct values were transmitted over MISO and MOSI.</p>
 </section>
 </section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
 <p>The design successfully utilized SPI and UART communication protocols to interface a temperature sensor, MCU implementation, and ESP8266 webpage together.</p>
 
 
@@ -438,13 +438,14 @@ ul.task-list li input[type="checkbox"] {
    featured = true to show on the home page (first 3 flagged are used).
    img = path inside that project's folder, e.g. "images/cover.jpg" (leave "" for the placeholder) ===== */
 const PROJECTS=[
- {"featured":false,"img":"images/config.jpg","slug": "spiTempSensor", "t": "SPI and UART Communication Protocols Using an MCU", "d": "Oct 2026 – Oct 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Utilized SPI and UART communication protocols to interface a temperature sensor, MCU implementation, and ESP8266 webpage.", "tech": ["C", "MCU", "SPI", "UART", "Osilloscope Debugging", "Circuit Design", "SEGGER Embedded Studio"]},  
- {"featured":false,"img":"images/motorControl.png","slug": "motorControl", "t": "Leveraging MCU Interrupts to Read Stepper Motor Encoders", "d": "Oct 2026 – Oct 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Utilized MCU interrupts to accurately determine stepper motor speed and direction.", "tech": ["C", "MCU", "Circuit Design", "SEGGER Embedded Studio"]},  
- {"featured":false,"img":"images/digitalAudio.png","slug": "digitalAudio", "t": "Using an MCU to Produce Music on a Speaker", "d": "Sept 2026 – Sept 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Programmed an MCU to write specific frequencies and durations to play music on a speaker.", "tech": ["C", "MCU", "Circuit Design", "SEGGER Embedded Studio"]},
- {"featured":true,"img":"images/keypadScanner.jpeg","slug": "keypadScanner", "t": "FPGA-Controlled Keypad Scanner", "d": "Aug 2026 – Sep 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Programmed an FPGA to read a 4x4 matrix keypad and display the last two hexadecimal inputs on a dual seven-segment display. Accounted for key bounce, multi-press, and timing inconsistencies.", "tech": ["SystemVerilog", "FPGA", "Circuit Design", "Lattice Radiant", "Waveform Simulation", "Testbench"]},  
- {"featured":true,"img":"images/E80Bot.png","slug": "E80Bot", "t": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)", "d": "Mar 2026 – May 2026", "cats": ["Robotics & Control Systems", "PCB Design & Electronics", "Embedded Systems & Firmware", "Mechanical Design & FEA"], "b": "Developed and deployed an AUV to map metal debris distribution on the ocean floor and back-calculate debris drop locations.", "tech": ["P-Control", "Circuit Design", "Mechanical Design", "C++", "MATLAB", "I2C Communication", "Data Analysis", "Troubleshooting", "Technical Documentation"]},
+ {"featured":false,"img":"images/config.jpg","slug": "spiTempSensor", "t": "SPI and UART Communication Protocols Using an MCU", "d": "Oct 2026 – Oct 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Utilized SPI and UART communication protocols to interface a temperature sensor, MCU implementation, and ESP8266 webpage.", "tech": ["C", "MCU (STM32)", "SPI Protocol", "UART Protocol", "Osilloscope Debugging", "Circuit Design", "SEGGER Embedded Studio"]},  
+ {"featured":false,"img":"images/motorControl.png","slug": "motorControl", "t": "Leveraging MCU Interrupts to Read Stepper Motor Encoders", "d": "Oct 2026 – Oct 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Utilized MCU interrupts to accurately determine stepper motor speed and direction.", "tech": ["C", "MCU (STM32)", "Circuit Design", "SEGGER Embedded Studio"]},  
+ {"featured":false,"img":"images/digitalAudio.png","slug": "digitalAudio", "t": "Using an MCU to Produce Music on a Speaker", "d": "Sept 2026 – Sept 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Programmed an MCU to write specific frequencies and durations to play music on a speaker.", "tech": ["C", "MCU (STM32)", "Circuit Design", "SEGGER Embedded Studio"]},
+ {"featured":true,"img":"images/keypadScanner.jpeg","slug": "keypadScanner", "t": "FPGA-Controlled Keypad Scanner", "d": "Aug 2026 – Sep 2026", "cats": ["Embedded Systems & Firmware", "PCB Design & Electronics"], "b": "Programmed an FPGA to read a 4x4 matrix keypad and display the last two hexadecimal inputs on a dual seven-segment display. Accounted for key bounce, multi-press, and timing inconsistencies.", "tech": ["SystemVerilog", "FPGA (iCE40UP5K)", "Circuit Design", "Lattice Radiant", "Waveform Simulation", "Testbench"]},  
+ {"featured":true,"img":"images/E80Bot.png","slug": "E80Bot", "t": "Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)", "d": "Mar 2026 – May 2026", "cats": ["Robotics & Control Systems", "PCB Design & Electronics", "Embedded Systems & Firmware", "Mechanical Design & FEA"], "b": "Developed and deployed an AUV to map metal debris distribution on the ocean floor and back-calculate debris drop locations.", "tech": ["P-Control", "Circuit Design", "Mechanical Design", "C++", "MATLAB", "I2C Protocol", "Data Analysis", "Troubleshooting", "Technical Documentation"]},
  {"featured":false,"img":"images/radio.jpeg","slug": "crystalRadio", "t": "Crystal Radio Experiments", "d": "Feb 2026 – Mar 2026", "cats": ["PCB Design & Electronics"], "b": "Analysed RLC Circuits to debug Dunwoody, Pickard, and Armstrong crystal radios. Devised an innovative antenna for optimal signal receiving.", "tech": ["Radio Frequency Engineering", "Software Defined Radio", "Circuit Analysis"]},
 
+ {"featured":false,"img":"images/eyes.jpg","slug": "animatronicEyes", "t": "Animatronic Eyes", "d": "Jul 2025 – Oct 2025", "cats": ["Embedded Systems & Firmware", "Mechanical Design & FEA"],"b": "Designed and programmed a set of animatronic eyes controlled by servo motors and joysticks through Arduino Uno.", "tech": ["SolidWorks", "Mechanical Design", "Prototyping", "C++", "Arduino", "Servo Control", "3D Printing"]},
  {"featured":true,"img":"images/abyssExplorer.jpg","slug": "abyssExplorer", "t": "Abyss Explorer", "d": "Feb 2025 – May 2025", "cats": ["Mechanical Design & FEA", "Manufacturing"], "b": "Designed and manufactured a system to raise and lower sensors through a ~600ft radioactive mine shaft (shrinking to an unknown diameter) for data collection without direct human contact.", "tech": ["SolidWorks", "Mechanical Design", "Prototyping", "Manufacturing", "Project Management", "Technical Documentation"]},
  {"featured":false,"img":"images/hammer.jpg","slug": "hammer", "t": "Precision Manually Machined Hammer", "d": "Jan 2025 – Apr 2025", "cats": ["Mechanical Design & FEA", "Manufacturing"], "b": "Manually machined a hammer using conventional manual machining tools to specifications following technical drawings.", "tech": ["Precision Manual Machining", "Geometric Dimensioning & Tolerancing (GD&T)", "Process Planning & Documentation", "Metallurgy"]}
 ];
@@ -452,7 +453,7 @@ const PROJECTS=[
 /*  {"featured":false,"img":"images/windTunnel.png","slug": "E80Fluids", "t": "Wind Tunnel Experiments and Fluid Dynamics Simulation", "d": "Feb 2026 – Mar 2026", "cats": ["Miscellaneous"], "b": "Used the principle of similitude to characterize ROV behaviour in the water through wind tunnel simulations.", "tech": ["COMSOL", "Technical Documentation"]}, 
  {"featured":false,"img":"images/riscV.jpeg","slug": "multiCycleProcessor", "t": "Multi-cycle RISC-V Processor", "d": "Nov 2025 – Dec 2025", "cats": ["Embedded Systems & Firmware"], "b": "Designed and simulated a 32-bit multi-cycle RISC-V processor, executed RISC-V integer instructions (R, I, S, B, U, and J-Type) given to memory as machine code.", "tech": ["SystemVerilog", "Waveform Simulation", "RISC-V Architecture"]},  
  {"featured":false,"img":"images/79bot.jpg","slug": "E79Bot", "t": "Temperature and Position Detecting Remotely Operated Vehicle (ROV)", "d": "Aug 2025 – Dec 2025", "cats": ["Robotics & Control Systems", "PCB Design & Electronics", "Mechanical Design & FEA"], "b": "Developed and deployed an PID-controlled ROV to collect temperature and depth measurements underwater.", "tech": ["PID-Control", "Circuit Design", "Mechanical Design", "Data Analysis", "LabView", "Soldering", "Breadboarding", "Mathematical Modeling"]},
- {"featured":false,"img":"images/eyes.jpg","slug": "animatronicEyes", "t": "Animatronic Eyes", "d": "Jul 2025 – Oct 2025", "cats": ["Embedded Systems & Firmware", "Mechanical Design & FEA"],"b": "Designed and programmed a set of animatronic eyes controlled by servo motors and joysticks through Arduino.", "tech": ["SolidWorks", "3D Printing", "C++", "Arduino","Servo Control"]},
+ 
 
   
  */
