@@ -24,16 +24,27 @@ skills: "PID-Control, Circuit Design, Mechanical Design, Data Analysis, LabView,
 
 ## Assembly and Initial Deployment 
 
-### Robot Frame Assembly
+### ROV Frame Assembly
+
+The ROV was assembled using 6.5", 5", 4.5", 4", 2.5", and 1.5" PVC pipes and elbow and tee joints. 1/4" holes were drilled into various points of the pipes to ensure water would flow into the interior space, adjusting the buoyancy and negating the need for ballasting. However, this would make the ROV negatively buoyant, so pool noodles were added to the ROV to make it slightly positively buoyant (but as close to neutrally buoyant as possible). This buoyancy was tuned during physical testing.
 
 ### Waterproofing the Motors
 
+Simple DC motors were used to provide thrust for the ROV. However, since the ROV was intended for underwater deployment, the motors had to be waterproofed to prevent shorts. After wires were soldered to the positive and negative terminals of the motors, the shell of the motors were sealed with one layer of electrical tape (to minimize thickness), then coated with a layer of wax. 1/32" holes were drilled in the center of a film canister and cap as spaces for wires and the shaft. The wax coated motors were then put into the drilled film canisters.
+
+Each motor was tested using a 6V power supply, and then a propeller was mounted onto the shaft. Three of these motors were mounted onto the ROV frame using zip-ties to provide port, starboard, and vertical thrusters.
+
 ### Physical Testing
+
+A clothes hanger was attached to the ROV. Using a motor control box, the ROV was driven to the bottom of a tank and the clothes hanger was used to hook a diving hoop. The ROV was driven upwards for retrieval. This confirmed the three motors could function underwater and that the ROV was not negatively buoyant.
 
 ## Simulation of ROV Motion
 
 ## Mathematical Modelling
 
+Using LabVIEW, I modelled the ROV acceleration given its mass, buoyancy, drag coefficient, velocity, and thrust input. Adding numeric controls for mass, thrust, buoyancy, drag coefficient, and velocity (in standard SI units) and a numeric indicator for acceleration to the front panel, I would be able to change input parameters and see their effect on the output.
+
+In the block diagram, all the function blocks corresponding to numeric controls had their outputs connected to the inputs of a formula node function block (in addition to a numeric constant 9.81 for the gravity term)
 
 # Electrical Design
 

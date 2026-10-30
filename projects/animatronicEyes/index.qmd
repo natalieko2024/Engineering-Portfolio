@@ -51,7 +51,9 @@ I've always been fascinated by animatronics and mechatronic design. I decided to
 I started by investigating different types of existing eye mechanisms. These included SlenderDummy's mechanism, which was incorporated into a REPO robot animatronic, as well as Will Cogley's eye mechanisms.
 
 :::{layout-ncol="2"}
+![Figure 1. SlenderDummy's mechanism (Credit: SlenderDummy)](images/example1.png)
 
+![Figure 2. Will Cogley's mechanism (Credit: Will Cogley, NM Robotics)](images/example2.png)
 :::
 
 I liked how Will Cogley's design was very simple (as it only utilized SG90 servos, mechanical hardware like screws and nuts, and 3D printed parts) and compact, allowing it to fit in a more diverse profile of animatronics. However, I thought a more ideal case would include SlenderDummy's functionality of allowing each eyeball to move independently, which would be a closer imitation of real life (some people can go cross-eyed). This came with the tradeoff of a lot more bulk from additional servos and complex components that add to dimension constraints such as ball-socket joints.

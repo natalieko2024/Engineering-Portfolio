@@ -54,30 +54,61 @@ Timer 15 was used to control the duration of each note. I set the frequency and 
 
 Timer 16 was used to control the pitch of each note. I set the frequency of the note through ARR (because PSC was fixed at 19), then gave the timer a PWM duty cycle of 50% through setting CCR1.
 
-![**Figure 1. Calculations for ARR (max count) and CCR1 (PWM duty cycle)**](images/lab4eqs.jpg)
+From the STM32L432KC reference manual (28.6.10 and 28.7.9), $f_{CK\_CNT}=\frac{f_{CK\_PSC}}{PSC[15:0]+1}$.
 
-The minimum and maximum duration and pitch are shown in Figures 2 and 3 below.
+The internal clock I used for $f_{CK\_PSC}$ was 80MHz. I used a fixed PSC value of 3999 for my duration timer (TIM15) and a value of 19 for my pitch timer (TIM16) because they became nice numbers after adding 1.
 
-![**Figure 2. Calculations for minimum and maximum duration**](images/lab4duration.jpg)
+:::{.columns}
+::: {.column width="49%"}
+For the duration timer,
 
-![**Figure 3. Calculations for minimum and maximum pitch**](images/lab4pitch.jpg)
+$$
+\begin{aligned}
+f_{CK\_CNT}&=\frac{f_{CK\_PSC}}{PSC[15:0]+1}\\
+&= \frac{80000000}{3999+1}\\
+&= 20000Hz\\
+\end{aligned}
+$$
 
+This means each count takes 0.05ms. To get the maximum count (the value of ARR), $ARR=\frac{duration}{0.05}$.
+:::
+
+::: {.column width="2%"}
+:::
+
+::: {.column width="49%"}
+For the pitch timer,
+
+$$
+\begin{aligned}
+ARR&=\frac{f_{CK\_PSC}}{pitch * (PSC[15:0]+1)}-1\\
+&=\frac{80000000}{20pitch}-1\\
+\end{aligned}
+$$
+
+And then I used PWM mode to get a 50% duty cycle, so $CCR1=\frac{ARR}{2}$.
+:::
+:::
+
+To find the minimum and maximum duration supported, I used the fact that TIM15 is a 16-bit timer. $ARR_{MAX}=2^{16}-1$ and $ARR_{MIN}=0$. Solving for the duration, the maximum duration is 3276ms (rounded down because duration is an integer), and the minimum duration is 0ms.
+
+To find the minimum and maximum pitch supported, I again used the fact that TIM16 is a 16-bit timer. The minimum pitch is 61Hz (with the exception that I implemented a special case for pitch = 0), and the maximum pitch is 4000000Hz.
 
 ## Technical Documentation
 The source code for the project can be found in the associated [GitHub repository](https://github.com/natalieko2024/E155-Labs/tree/main/E155-Lab4).
 
 ### Schematic
-![**Figure 4. Schematic of all circuit components outside the PCB**](images/lab4schematic.jpg)
+![**Figure 1. Schematic of all circuit components outside the PCB**](images/lab4schematic.jpg)
 
-The schematic in Figure 4 shows the physical circuit connections outside the PCB. Since the GPIO pins didn't generate enough current to play music directly to the speaker, an LM386 audio amplifier was wired between the pin and speaker to write each note with a gain of 20. A potentiometer was added to control the volume of the sound.
+The schematic in Figure 1 shows the physical circuit connections outside the PCB. Since the GPIO pins didn't generate enough current to play music directly to the speaker, an LM386 audio amplifier was wired between the pin and speaker to write each note with a gain of 20. A potentiometer was added to control the volume of the sound.
 
 ## Results and Discussion
 The design met all intended design objectives.
 
 ### Calculations
-![**Figure 5. Intended and actual output pitches**](images/lab4table.png)
+![**Figure 2. Intended and actual output pitches**](images/lab4table.png)
 
-To confirm my design could play all notes in Für Elise accurately, I calculated the percent difference between the intended frequency and the output frequency. As shown in Figure 5, all the pitches, and 220Hz and 1000Hz are under 1% difference.
+To confirm my design could play all notes in Für Elise accurately, I calculated the percent difference between the intended frequency and the output frequency. As shown in Figure 2, all the pitches, and 220Hz and 1000Hz are under 1% difference.
 
 ### Hardware Deployment
 This video showcases the design running on the MCU and speaker circuit, successfully playing the Für Elise score.
