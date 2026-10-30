@@ -85,7 +85,7 @@ The saved accelerator data was analyzed when the board was static. The data need
 
 C++ code was written so the AUV could traverse through an obstacle course. After the obstacle course deployment, the on-board accelerometer readings were plotted, as shown in Figure 2. 
 
-![Figure 2. Acceleration of the AUV over Time (Represented by Sample Number) in the x, y, and z Directions While Traversing an Obstacle Course](images/accelData)
+![Figure 2. Acceleration of the AUV over Time (Represented by Sample Number) in the x, y, and z Directions While Traversing an Obstacle Course](images/accelData.png)
 
 The governing equation for the AUV's acceleration is $mx"=mg+F_{thrust}-F_{buoyancy}-bx'$. The AUV was neutrally buoyant, so $mg$ and $F_{buoyancy}$ cancel. $b$ represents the damping constant, so when $x'=0$, there is no effect of damping (in this case, drag force - resistance from moving through the water) on the robot. Acceleration will be highest when there is no damping, so we remove the $bx'$ term. So the peak acceleration from rest is $x"_{peak}=\frac{F_{thrust}}{m}$.
 
@@ -143,7 +143,7 @@ R_g&=\frac{0.067}{5}R_{p1}+\frac{0.067}{5}R_g\\
 \end{aligned}
 $$
 
-I used $R_g=2k\Omega$ and $R_{p1}=148k\Omega$ based on resistor availability. The schematic is shown in Figure x.
+I used $R_g=2k\Omega$ and $R_{p1}=148k\Omega$ based on resistor availability. The schematic is shown in Figure 7.
 
 ![Figure 7. Offset Amplifier Schematic](images/invertingschematic.png)
 
@@ -575,7 +575,7 @@ To ensure personal safety, both boxes were checked to be sealed with no protrudi
 
 ## Pressure Sensor and Depth Control
 
-During each deployment, the AUV recorded depth continuously while performing P-control. Figure X shows the depth tracked during one deployment. The pressure sensor collected very accurate depth measurements, as the recorded depth fluctuated by at most ±0.032m when the AUV was at the surface or bottom of the ocean. Furthermore, the $R^2$ value of the calibration curve was 0.996, suggesting the calibration curve equation used can predict depth based on output voltage very accurately.
+During each deployment, the AUV recorded depth continuously while performing P-control. Figure 34 shows the depth tracked during one deployment. The pressure sensor collected very accurate depth measurements, as the recorded depth fluctuated by at most ±0.032m when the AUV was at the surface or bottom of the ocean. Furthermore, the $R^2$ value of the calibration curve was 0.996, suggesting the calibration curve equation used can predict depth based on output voltage very accurately.
 
 ![Figure 34. Recorded Depth Data From the AUV Diving to and Hovering at Waypoints 0.5, 1, 1.5, and 2m below the Ocean Surface, and at the Ocean Floor at Dana Point Pier](images/Depth.png)
 

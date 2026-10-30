@@ -63,7 +63,7 @@ So I attempted to design a hybrid of the two designs that would allow me to reta
 I utilized the fixed bar and jointed pegs from Will Cogley's design to create the side-to-side movement for the eyes. Because I wanted independent movement, I had one servo for each eyeball instead of having one control both. 
 
 :::{layout-ncol="2"}
-![](images/DualMovement.jpg)
+![Figure 3. Dual Movement Prototype CAD](images/DualMovement.jpg)
 
 {{< video https://youtu.be/kOUNUDOLywQ >}}
 :::
