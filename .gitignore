@@ -1,5 +1,6 @@
 /.quarto/
 /_site/
+/drafts/
 /docs/
 .DS_Store
 Thumbs.db
