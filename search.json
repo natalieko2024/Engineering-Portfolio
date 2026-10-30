@@ -14,6 +14,20 @@
     "text": "CONTACT\n ko12nat[at]gmail[dot]com\n Claremont, California, USA\n Vancouver, British Columbia, Canada\n Hong Kong, Hong Kong\n LinkedIn\n GitHub\n\n\n\nI’m an junior Engineering student at Harvey Mudd College specializing in mechatronics, with a Humanities, Social Sciences, and Arts concentration in Science, Technology, and Society. My work focuses on building reliable engineering solutions that prioritize the end user. My goal is to make Engineering solutions more accessible to everyone.\nI thrive on solving physical problems through dynamic mechanical, electrical, and computer design, analytical modeling, rapid prototyping, and live troubleshooting.\n\n\n\nMechatronics: Integrating electronic sensors and actuators with mechanical design, and controlling them through embedded systems and firmware.\nControl Systems: Utilizing feedback loops, characterizing system behaviour, predicting system outputs.\nHuman Centered Design: Prioritizing human needs through empathizing with users and understanding their problems.\nManufacturing: Optimizing manufacturing and maintenance processes, ensuring efficiency, quality, and safety.\n\n\n\n\nTo be honest, I consider all of the projects on this page as well as my on-campus jobs part of my hobbies (they’re fun!), but outside of that…\n\nMusic: Composing and arranging music, playing in bands or solo (mainly trumpet and drum kit).\nPhysical Activity: Competitive ball hockey (ice hockey but you run instead of skate), biking, axe-throwing, hiking."
   },
   {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "NK/MECH",
+    "section": "",
+    "text": "SPI and UART Communication Protocols Using an MCU\n  Leveraging MCU Interrupts to Read Stepper Motor Encoders\n  Using an MCU to Produce Music on a Speaker\n  FPGA-Controlled Keypad Scanner\n  Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)\n  Crystal Radio Experiments\n  Animatronic Eyes\n  Abyss Explorer\n  Precision Manually Machined Hammer"
+  },
+  {
+    "objectID": "projects.html#all-projects",
+    "href": "projects.html#all-projects",
+    "title": "NK/MECH",
+    "section": "",
+    "text": "SPI and UART Communication Protocols Using an MCU\n  Leveraging MCU Interrupts to Read Stepper Motor Encoders\n  Using an MCU to Produce Music on a Speaker\n  FPGA-Controlled Keypad Scanner\n  Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)\n  Crystal Radio Experiments\n  Animatronic Eyes\n  Abyss Explorer\n  Precision Manually Machined Hammer"
+  },
+  {
     "objectID": "projects/motorControl/index.html#schematic",
     "href": "projects/motorControl/index.html#schematic",
     "title": "Leverging MCU Interrupts to Read Stepper Motor Encoders",
@@ -242,7 +256,7 @@
     "href": "projects/hammer/index.html#soft-face",
     "title": "Precision Manually Machined Hammer",
     "section": "Soft Face",
-    "text": "Soft Face\n\n\n\nFigure 3. Soft Face Drawing (Credit: HMC Maching Shop)\n\n\nThe soft face (made of nylon) was machined in the lathe using HSS cutting tools, HSS parting tools, drill bits, and taps. It was then secured to the head with a 1/4-20 UNC - 2B screw."
+    "text": "Soft Face\n\n\n\nFigure 3. Soft Face Drawing (Credit: HMC Machine Shop)\n\n\nThe soft face (made of nylon) was machined in the lathe using HSS cutting tools, HSS parting tools, drill bits, and taps. It was then secured to the head with a 1/4-20 UNC - 2B screw."
   },
   {
     "objectID": "projects/E80Bot/index.html#frame-and-motor-assembly",

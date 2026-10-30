@@ -312,6 +312,21 @@ ul.task-list li input[type="checkbox"] {
 <div id="filters" class="filters"></div>
 <div id="grid" class="pgrid"></div>
 
+<noscript>
+<ul>
+  <li><a href="projects/spiTempSensor/index.html">SPI and UART Communication Protocols Using an MCU</a></li>
+  <li><a href="projects/motorControl/index.html">Leveraging MCU Interrupts to Read Stepper Motor Encoders</a></li>
+  <li><a href="projects/digitalAudio/index.html">Using an MCU to Produce Music on a Speaker</a></li>
+  <li><a href="projects/keypadScanner/index.html">FPGA-Controlled Keypad Scanner</a></li>
+  <li><a href="projects/E80Bot/index.html">Ocean Debris-Detecting Autonomous Underwater Vehicle (AUV)</a></li>
+  <li><a href="projects/crystalRadio/index.html">Crystal Radio Experiments</a></li>
+  <li><a href="projects/animatronicEyes/index.html">Animatronic Eyes</a></li>
+  <li><a href="projects/abyssExplorer/index.html">Abyss Explorer</a></li>
+  <li><a href="projects/hammer/index.html">Precision Manually Machined Hammer</a></li>
+
+</ul>
+</noscript>
+
 
 </section>
 
@@ -476,7 +491,7 @@ const PROJECTS=[
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/natalieko2024\.github\.io\/Engineering-Portfolio\/");
+        var filterRegex = new RegExp("https:\/\/natalieko\.github\.io\/Engineering-Portfolio");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
