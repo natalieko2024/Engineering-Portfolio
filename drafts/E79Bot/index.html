@@ -326,14 +326,18 @@ ul.task-list li input[type="checkbox"] {
 <h1>Mechanical Design</h1>
 <section id="assembly-and-initial-deployment" class="level2">
 <h2 class="anchored" data-anchor-id="assembly-and-initial-deployment">Assembly and Initial Deployment</h2>
-<section id="robot-frame-assembly" class="level3">
-<h3 class="anchored" data-anchor-id="robot-frame-assembly">Robot Frame Assembly</h3>
+<section id="rov-frame-assembly" class="level3">
+<h3 class="anchored" data-anchor-id="rov-frame-assembly">ROV Frame Assembly</h3>
+<p>The ROV was assembled using 6.5”, 5”, 4.5”, 4”, 2.5”, and 1.5” PVC pipes and elbow and tee joints. 1/4” holes were drilled into various points of the pipes to ensure water would flow into the interior space, adjusting the buoyancy and negating the need for ballasting. However, this would make the ROV negatively buoyant, so pool noodles were added to the ROV to make it slightly positively buoyant (but as close to neutrally buoyant as possible). This buoyancy was tuned during physical testing.</p>
 </section>
 <section id="waterproofing-the-motors" class="level3">
 <h3 class="anchored" data-anchor-id="waterproofing-the-motors">Waterproofing the Motors</h3>
+<p>Simple DC motors were used to provide thrust for the ROV. However, since the ROV was intended for underwater deployment, the motors had to be waterproofed to prevent shorts. After wires were soldered to the positive and negative terminals of the motors, the shell of the motors were sealed with one layer of electrical tape (to minimize thickness), then coated with a layer of wax. 1/32” holes were drilled in the center of a film canister and cap as spaces for wires and the shaft. The wax coated motors were then put into the drilled film canisters.</p>
+<p>Each motor was tested using a 6V power supply, and then a propeller was mounted onto the shaft. Three of these motors were mounted onto the ROV frame using zip-ties to provide port, starboard, and vertical thrusters.</p>
 </section>
 <section id="physical-testing" class="level3">
 <h3 class="anchored" data-anchor-id="physical-testing">Physical Testing</h3>
+<p>A clothes hanger was attached to the ROV. Using a motor control box, the ROV was driven to the bottom of a tank and the clothes hanger was used to hook a diving hoop. The ROV was driven upwards for retrieval. This confirmed the three motors could function underwater and that the ROV was not negatively buoyant.</p>
 </section>
 </section>
 <section id="simulation-of-rov-motion" class="level2">
@@ -341,6 +345,8 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="mathematical-modelling" class="level2">
 <h2 class="anchored" data-anchor-id="mathematical-modelling">Mathematical Modelling</h2>
+<p>Using LabVIEW, I modelled the ROV acceleration given its mass, buoyancy, drag coefficient, velocity, and thrust input. Adding numeric controls for mass, thrust, buoyancy, drag coefficient, and velocity (in standard SI units) and a numeric indicator for acceleration to the front panel, I would be able to change input parameters and see their effect on the output.</p>
+<p>In the block diagram, all the function blocks corresponding to numeric controls had their outputs connected to the inputs of a formula node function block (in addition to a numeric constant 9.81 for the gravity term)</p>
 </section>
 </section>
 <section id="electrical-design" class="level1">

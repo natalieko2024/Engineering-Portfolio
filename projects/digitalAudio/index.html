@@ -80,6 +80,35 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -366,25 +395,34 @@ ul.task-list li input[type="checkbox"] {
 <p>To design this implementation, two timers were created and linked by main.c. Timers 15 and 16 were chosen over the other timers available because of their PWM generation functionality. The internal clock was set to by 80MHz through using PLL, and this was sent to each timer.</p>
 <p>Timer 15 was used to control the duration of each note. I set the frequency and duration of the note through ARR (because PSC was fixed at 3999).</p>
 <p>Timer 16 was used to control the pitch of each note. I set the frequency of the note through ARR (because PSC was fixed at 19), then gave the timer a PWM duty cycle of 50% through setting CCR1.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/lab4eqs.jpg" class="img-fluid figure-img"></p>
-<figcaption><strong>Figure 1. Calculations for ARR (max count) and CCR1 (PWM duty cycle)</strong></figcaption>
-</figure>
+<p>From the STM32L432KC reference manual (28.6.10 and 28.7.9), <span class="math inline">\(f_{CK\_CNT}=\frac{f_{CK\_PSC}}{PSC[15:0]+1}\)</span>.</p>
+<p>The internal clock I used for <span class="math inline">\(f_{CK\_PSC}\)</span> was 80MHz. I used a fixed PSC value of 3999 for my duration timer (TIM15) and a value of 19 for my pitch timer (TIM16) because they became nice numbers after adding 1.</p>
+<div class="columns">
+<div class="column" style="width:49%;">
+<p>For the duration timer,</p>
+<p><span class="math display">\[
+\begin{aligned}
+f_{CK\_CNT}&amp;=\frac{f_{CK\_PSC}}{PSC[15:0]+1}\\
+&amp;= \frac{80000000}{3999+1}\\
+&amp;= 20000Hz\\
+\end{aligned}
+\]</span></p>
+<p>This means each count takes 0.05ms. To get the maximum count (the value of ARR), <span class="math inline">\(ARR=\frac{duration}{0.05}\)</span>.</p>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:49%;">
+<p>For the pitch timer,</p>
+<p><span class="math display">\[
+\begin{aligned}
+ARR&amp;=\frac{f_{CK\_PSC}}{pitch * (PSC[15:0]+1)}-1\\
+&amp;=\frac{80000000}{20pitch}-1\\
+\end{aligned}
+\]</span></p>
+<p>And then I used PWM mode to get a 50% duty cycle, so <span class="math inline">\(CCR1=\frac{ARR}{2}\)</span>.</p>
 </div>
-<p>The minimum and maximum duration and pitch are shown in Figures 2 and 3 below.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/lab4duration.jpg" class="img-fluid figure-img"></p>
-<figcaption><strong>Figure 2. Calculations for minimum and maximum duration</strong></figcaption>
-</figure>
 </div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/lab4pitch.jpg" class="img-fluid figure-img"></p>
-<figcaption><strong>Figure 3. Calculations for minimum and maximum pitch</strong></figcaption>
-</figure>
-</div>
+<p>To find the minimum and maximum duration supported, I used the fact that TIM15 is a 16-bit timer. <span class="math inline">\(ARR_{MAX}=2^{16}-1\)</span> and <span class="math inline">\(ARR_{MIN}=0\)</span>. Solving for the duration, the maximum duration is 3276ms (rounded down because duration is an integer), and the minimum duration is 0ms.</p>
+<p>To find the minimum and maximum pitch supported, I again used the fact that TIM16 is a 16-bit timer. The minimum pitch is 61Hz (with the exception that I implemented a special case for pitch = 0), and the maximum pitch is 4000000Hz.</p>
 </section>
 <section id="technical-documentation" class="level2">
 <h2 class="anchored" data-anchor-id="technical-documentation">Technical Documentation</h2>
@@ -394,10 +432,10 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/lab4schematic.jpg" class="img-fluid figure-img"></p>
-<figcaption><strong>Figure 4. Schematic of all circuit components outside the PCB</strong></figcaption>
+<figcaption><strong>Figure 1. Schematic of all circuit components outside the PCB</strong></figcaption>
 </figure>
 </div>
-<p>The schematic in Figure 4 shows the physical circuit connections outside the PCB. Since the GPIO pins didn’t generate enough current to play music directly to the speaker, an LM386 audio amplifier was wired between the pin and speaker to write each note with a gain of 20. A potentiometer was added to control the volume of the sound.</p>
+<p>The schematic in Figure 1 shows the physical circuit connections outside the PCB. Since the GPIO pins didn’t generate enough current to play music directly to the speaker, an LM386 audio amplifier was wired between the pin and speaker to write each note with a gain of 20. A potentiometer was added to control the volume of the sound.</p>
 </section>
 </section>
 <section id="results-and-discussion" class="level2">
@@ -408,10 +446,10 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/lab4table.png" class="img-fluid figure-img"></p>
-<figcaption><strong>Figure 5. Intended and actual output pitches</strong></figcaption>
+<figcaption><strong>Figure 2. Intended and actual output pitches</strong></figcaption>
 </figure>
 </div>
-<p>To confirm my design could play all notes in Für Elise accurately, I calculated the percent difference between the intended frequency and the output frequency. As shown in Figure 5, all the pitches, and 220Hz and 1000Hz are under 1% difference.</p>
+<p>To confirm my design could play all notes in Für Elise accurately, I calculated the percent difference between the intended frequency and the output frequency. As shown in Figure 2, all the pitches, and 220Hz and 1000Hz are under 1% difference.</p>
 </section>
 <section id="hardware-deployment" class="level3">
 <h3 class="anchored" data-anchor-id="hardware-deployment">Hardware Deployment</h3>
