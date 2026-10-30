@@ -8,7 +8,7 @@ image: "config.jpg"
 categories:
   - "PCB Design & Electronics"
   - "Embedded Systems & Firmware"
-skills: "C, MCU (STM32), SPI Protocol, UART Protocol, Osilloscope Debugging, Circuit Design, Segger Embedded Studio"
+skills: "C, MCU (STM32), SPI Protocol, UART Protocol, Oscilloscope Debugging, Circuit Design, Segger Embedded Studio"
 ---
 
 <div class="project-metadata-bar">

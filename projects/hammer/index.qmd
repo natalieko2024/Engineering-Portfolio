@@ -69,7 +69,7 @@ The print was attached to the wooden base using a 4 x 0.25" brass round head woo
 
 # Head
 
-![Figure 1. Hammer Head Drawing (Credit: HMC Maching Shop)](images/headdrawing.jpg)
+![Figure 1. Hammer Head Drawing (Credit: HMC Machine Shop)](images/headdrawing.jpg)
 
 ## Lathe
 
@@ -83,7 +83,7 @@ Afterward, my number was stamped on one flat using an arbor press.
 
 # Faces
 
-![Figure 2. Hard Face Drawing (Credit: HMC Maching Shop)](images/hardfacedrawing.jpg)
+![Figure 2. Hard Face Drawing (Credit: HMC Machine Shop)](images/hardfacedrawing.jpg)
 
 ## Hard Face
 
@@ -99,13 +99,13 @@ After the heat treating process, the hard face was sandblasted to remove carbon 
 
 ## Soft Face
 
-![Figure 3. Soft Face Drawing (Credit: HMC Maching Shop)](images/softfacedrawing.jpg)
+![Figure 3. Soft Face Drawing (Credit: HMC Machine Shop)](images/softfacedrawing.jpg)
 
 The soft face (made of nylon) was machined in the lathe using HSS cutting tools, HSS parting tools, drill bits, and taps. It was then secured to the head with a 1/4-20 UNC - 2B screw.
 
 # Handle
 
-![Figure 4. Handle Drawing (Credit: HMC Maching Shop)](images/handledrwaing.jpg)
+![Figure 4. Handle Drawing (Credit: HMC Machine Shop)](images/handledrwaing.jpg)
 
 The handle rough shape was engraved on to a piece of 1x1.5" clear oak stock using the laser cutter. This contour was cut out using relief cuts on the vertical bandsaw. It was sanded to the rough shape using a spindle sander and belt sander.
 
@@ -121,7 +121,7 @@ My manually machined hammer passed all specified dimension tolerances, material 
 
 You can see my hammer (and stand) here!
 
-![](images/hammer.jpg)
+![Figure 5. Finished Hammer and Stand](images/hammer.jpg)
 
 # Appendix
 [Click here](https://sites.google.com/g.hmc.edu/hmc-machine-shop/courses/e4/hammer?authuser=0) to go to the HMC machine shop website to read up on the hammer documentation!
