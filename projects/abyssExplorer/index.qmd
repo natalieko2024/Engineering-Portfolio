@@ -364,7 +364,7 @@ This full assembly drawing shows how all the components fit together to make the
 
 {{< pdf docs/ABYSSEXPLORER_assemblydrawing.pdf width=100% height=550 >}}
 
-The individual technical drawings show the relevant manufacturing specifications and 3D shape for each component.
+The individual technical drawings show the relevant manufacturing specifications and 3D shape for each component. With these, I want to highlight my GD&T for particular features, such as the (+0.015/−0.000 in) for the spool and axle slip fit.
 
 {{< pdf docs/ABYSSEXPLORER_technicaldrawings.pdf width=100% height=550 >}}
 
