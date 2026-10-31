@@ -12,7 +12,7 @@ categories:
   - "Mechanical Design & FEA"
   - "Manufacturing"
 skills: "SolidWorks, Mechanical Design, Prototyping, Manufacturing, Geometric Dimensioning & Tolerancing (GD&T), Project Management, Technical Documentation"
-roles: "Payload Design Lead, Test Engineering Lead (Team of 5)"
+roles: "System Design Lead, Test Engineering Lead (Team of 5)"
 ---
 
 <div class="project-metadata-bar">

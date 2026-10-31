@@ -2,13 +2,14 @@ project:
   type: website
   output-dir: docs   # GitHub Pages can serve /docs; or use the included gh-pages workflow
   resources:
+    - "Engineering-Portfolio/index.html"
     - "projects/*/images/*"
     - "projects/*/videos/*"
     - "projects/*/docs/*"
 
 website:
   title: "NK/MECH"
-  site-url: "https://natalieko2024.github.io/Engineering-Portfolio"
+  site-url: "https://natalieko2024.github.io"
   navbar:
     right:
       - {href: index.qmd, text: Home}
