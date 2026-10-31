@@ -8,7 +8,7 @@ project:
 
 website:
   title: "NK/MECH"
-  site-url: "https://natalieko.github.io/Engineering-Portfolio"
+  site-url: "https://natalieko2024.github.io/Engineering-Portfolio"
   navbar:
     right:
       - {href: index.qmd, text: Home}
